@@ -30,6 +30,8 @@ Thanks to [Pikaso.me](https://pikaso.me/) for screenshot!
 
 Support your fellow indie hackers and find more useful social media tools [here &rarr;](https://github.com/MobileFirstLLC/social-media-hacker-list).
 
+* * *
+
 ### Interesting features & facts
 
 - 🤯 **This extension impersonates the current user.** You do not have to sign in/grant access.
