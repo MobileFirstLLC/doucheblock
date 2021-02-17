@@ -22,24 +22,27 @@ src="https://raw.githubusercontent.com/MobileFirstLLC/shortcuts-for-chrome/maste
 
 This is a Chrome extension was inspired by this Tweet:
 
-![img](https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/screenshot.png)
+<p align="center">
+<img alt="screenshot" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/screenshot.png"/>
+</p>
 
 Thanks to [Pikaso.me](https://pikaso.me/) for screenshot! Support your fellow indie hackers
 and find more useful social media tools [here](https://github.com/MobileFirstLLC/social-media-hacker-list).
 
 ### Interesting features and facts:
 
-- 🤯 This extension impersonates the current user. You do not have to sign in/grant access.
+- 🤯 **This extension impersonates the current user.** You do not have to sign in/grant access.
 Study the source to learn how.
 
-- 🙈 This extension contains no tracking, analytics, or any such privacy violations. What you see in  this repo is what you get.
+- 🙈 **This extension contains no tracking, analytics, or any such privacy violations.** What you see in  this repo is what you get.
 
-- ⏱️ It took 12 hours to build it from start to finish, including how to hack the API.
+- ⏱️ **It took 12 hours to build** it from start to finish, including how to hack the API.
 
+* * *
 
-## Development 
+### Developer Notes 
 
-### Available Commands
+#### Available Commands
 
 | Commands | Description |
 | --- | --- |
@@ -51,5 +54,6 @@ Study the source to learn how.
 | `npm run sync` | update config files |
 
 This extension was created with [Extension CLI](https://oss.mobilefirst.me/extension-cli/)!
+
 For CLI instructions see [User Guide &rarr;](https://oss.mobilefirst.me/extension-cli/)
 
