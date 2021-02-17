@@ -26,10 +26,11 @@ This is a Chrome extension was inspired by this Tweet:
 <img alt="screenshot" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/screenshot.png"/>
 </p>
 
-Thanks to [Pikaso.me](https://pikaso.me/) for screenshot! Support your fellow indie hackers
-and find more useful social media tools [here](https://github.com/MobileFirstLLC/social-media-hacker-list).
+Thanks to [Pikaso.me](https://pikaso.me/) for screenshot! 
 
-### Interesting features and facts:
+Support your fellow indie hackers and find more useful social media tools [here &rarr;](https://github.com/MobileFirstLLC/social-media-hacker-list).
+
+### Interesting features & facts
 
 - 🤯 **This extension impersonates the current user.** You do not have to sign in/grant access.
 Study the source to learn how.
@@ -42,18 +43,14 @@ Study the source to learn how.
 
 ### Developer Notes 
 
-#### Available Commands
-
-| Commands | Description |
-| --- | --- |
-| `npm run start` | build extension, watch file changes |
-| `npm run build` | generate release version |
-| `npm run docs` | generate source code docs |
-| `npm run clean` | remove temporary files |
-| `npm run test` | run unit tests |
-| `npm run sync` | update config files |
-
 This extension was created with [Extension CLI](https://oss.mobilefirst.me/extension-cli/)!
 
 For CLI instructions see [User Guide &rarr;](https://oss.mobilefirst.me/extension-cli/)
 
+* * *
+
+**Issues & Feature Requests:** [Submit on Github](https://github.com/MobileFirstLLC/doucheblock/issues/new/choose)
+
+**Maker:** [Mobile First](https://mobilefirst.me)  &nbsp;  [![Twitter Follow](https://img.shields.io/twitter/follow/mobilefirstllc?label=follow&style=social)](https://twitter.com/intent/follow?screen_name=mobilefirstllc&tw_p=followbutton)
+
+**License:** [CC0-1.0 License](https://github.com/MobileFirstLLC/doucheblock/blob/master/LICENSE)
