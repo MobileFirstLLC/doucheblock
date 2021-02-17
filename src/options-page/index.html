@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>&nbsp;</title>
+    <style>
+        body {
+            background: #1DA1F2;
+            color: #fff;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body, input, textarea {
+            font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 120%;
+        }
+
+        .content {
+            box-sizing: border-box;
+            width: 680px;
+            max-width: 95%;
+            margin: 0 auto;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        #block-count {
+            margin-bottom: 3rem;
+            font-weight: 800;
+            color: #111;
+            padding: .5rem;
+            opacity: 0;
+            animation-name: entranceAnim;
+            animation-fill-mode: both;
+            animation-duration: 1s;
+            animation-delay: 1000ms;
+        }
+
+        .block {
+            margin-bottom: 1rem;
+        }
+
+        .block.checkbox {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+            border-radius: 9px;
+            padding: 1rem;
+            width: 100%;
+            margin: .5rem auto 0 auto;
+            border: none;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        textarea:hover, textarea:focus {
+            box-shadow: 0 0 0 2px #657786;
+        }
+
+        label {
+            font-weight: 700;
+            display: block;
+            text-align: left;
+        }
+
+        input[type=checkbox] {
+            width: 26px;
+            height: 26px;
+            margin: 0 1rem 0 0;
+        }
+
+        .buttons {
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        button {
+            background: #14171A;
+            color: #fff;
+            border-radius: 9999px;
+            border: none;
+            height: 46px;
+            padding: 0 22px;
+            text-transform: capitalize;
+            font-weight: 900;
+            font-size: 19px;
+            cursor: pointer;
+            transition: background-color .2s ease;
+            outline: none;
+        }
+
+        button:hover, button:focus {
+            background: #34383c;
+        }
+
+        #bmc {
+            position: absolute;
+            bottom: 50px;
+            right: 50px;
+            opacity: 0;
+        }
+
+        #bmc[visible] {
+            animation-name: enterBottomAnim;
+            animation-fill-mode: both;
+            animation-duration: 1s;
+            animation-delay: 2000ms;
+            opacity: 1;
+        }
+
+        #bmc img {
+            width: 158px;
+        }
+
+        @keyframes entranceAnim {
+            from {
+                transform: translate3d(0, -100%, 0);
+                visibility: visible;
+            }
+
+            to {
+                transform: translate3d(0, 0, 0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes enterBottomAnim {
+            from,
+            60%,
+            75%,
+            90%,
+            to {
+                animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            }
+
+            from {
+                opacity: 0;
+                transform: translate3d(0, 3000px, 0) scaleY(5);
+            }
+
+            60% {
+                opacity: 1;
+                transform: translate3d(0, -20px, 0) scaleY(0.9);
+            }
+
+            75% {
+                transform: translate3d(0, 10px, 0) scaleY(0.95);
+            }
+
+            90% {
+                transform: translate3d(0, -5px, 0) scaleY(0.985);
+            }
+
+            to {
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <div id="block-count"></div>
+
+    <h1 id="title"></h1>
+
+    <div class="block">
+        <label id="block-label">&nbsp;</label>
+        <textarea id="block-words"></textarea>
+    </div>
+    <div class="block checkbox">
+        <input type="checkbox" id="confirm"/>
+        <label id="confirm-label">&nbsp;</label>
+    </div>
+
+    <div class="buttons">
+        <button id="save"></button>
+    </div>
+</div>
+
+<a href="https://www.buymeacoffee.com/mobilefirstllc" id="bmc">
+    <img src="./icons/bmc.png" alt="Buy me a coffee"/>
+</a>
+
+<script src="../options.js"></script>
+</body>
+</html>

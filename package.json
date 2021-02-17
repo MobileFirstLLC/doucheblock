@@ -1,0 +1,79 @@
+{
+  "name": "doucheblock-for-twitter",
+  "description": "Automatically block anyone with specific keywords in their profile bio",
+  "version": "0.0.3",
+  "homepage": "https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi",
+  "author": "Mobile First LLC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MobileFirstLLC/doucheblock"
+  },
+  "scripts": {
+    "start": "xt-build -e dev -w",
+    "build": "xt-build -e prod",
+    "clean": "xt-clean",
+    "docs": "xt-docs",
+    "test": "xt-test",
+    "sync": "xt-sync --travis"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "eslintIgnore": [
+    "test/**/*"
+  ],
+  "devDependencies": {
+    "extension-cli": "latest"
+  },
+  "xtdocs": {
+    "source": {
+      "include": [
+        "README.md",
+        "src"
+      ]
+    },
+    "opts": {
+      "destination": "./pages"
+    },
+    "templates": {
+      "inlineNav": true,
+      "search": false,
+      "analytics": {
+        "ua": "UA-129118591-7",
+        "domain": "https://oss.mobilefirst.me/doucheblock"
+      },
+      "systemName": "DoucheBlock for Twitter",
+      "systemSummary": "Blocks anyone with specific keywords in their profile",
+      "systemColor": "#1DA1F2",
+      "methodHeadingReturns": false,
+      "stylesheets": [
+        "data:text/css;base64,Zm9vdGVyewogICAgZGlzcGxheTpub25lIWltcG9ydGFudDsKfQ==",
+        "data:text/css;base64,Ym9keSB7CiAgICAtd2Via2l0LWZvbnQtc21vb3RoaW5nOiBhbnRpYWxpYXNlZDsKICAgIC1tb3otb3N4LWZvbnQtc21vb3RoaW5nOiBncmF5c2NhbGU7CiAgICBmb250LXNpemU6IDE2cHg7Cn0KCmJvZHksCi5zeW1ib2wtdGl0bGUgaDEsCi5zeW1ib2wtdGl0bGUgaDIsCi5zeW1ib2wtdGl0bGUgaDMsCi5zeW1ib2wtdGl0bGUgaDQsCi5zeW1ib2wtdGl0bGUgaDUgewogICAgZm9udC1mYW1pbHk6IHN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAiU2Vnb2UgVUkiLAogICAgUm9ib3RvLCBVYnVudHUsICJIZWx2ZXRpY2EgTmV1ZSIsIHNhbnMtc2VyaWYgIWltcG9ydGFudDsKfQoKLnJlYWRtZS1zZWN0aW9uIGgxIHsKICAgIGRpc3BsYXk6IG5vbmU7Cn0KCi5yZWFkbWUtc2VjdGlvbiAuZmVhdHVyZSB7CiAgICBkaXNwbGF5OiBibG9jazsKICAgIG1hcmdpbjogNHJlbSAwOwp9CgoudG9jIC5uYXYgPiBsaSA+IGEsCi50b2MgLm5hdiAubmF2ID4gbGkgPiBhLAouYmFjay10by10b3AgewogICAgZm9udC1zaXplOiAxZW07Cn0KCi5jb250ZW50IHAgewogICAgbGluZS1oZWlnaHQ6IDEuNTsKfQoKLnJlYWRtZS1zZWN0aW9uIGgyLAoucmVhZG1lLXNlY3Rpb24gaDMsCi50dXRvcmlhbC1zZWN0aW9uIGgyLAoudHV0b3JpYWwtc2VjdGlvbiBoMyB7CiAgICBtYXJnaW4tdG9wOiAzcmVtOwogICAgbWFyZ2luLWJvdHRvbTogMnJlbTsKfQoKLnRvYyAuc2lnbmF0dXJlLW5ldywKLnBhZ2UtaGVhZGVyIC5raW5kLAoudG9jIC5uYXYgPiBsaSA+IGEgLm5hbWUtc2lnbmF0dXJlLAoudG9jIC5uYXYgPiBsaSA+IGEgLnNpZ25hdHVyZS1wYXJhbXMgewogICAgZGlzcGxheTogbm9uZTsKfQoKLnN5bWJvbC1kZXRhaWxzLmNvbGxhcHNpYmxlLXN5bWJvbC50cmFuc2l0aW9uIHsKICAgIHRyYW5zaXRpb246IG5vbmU7Cn0KCmNvZGV7CiAgICBmb250LXdlaWdodDogYm9sZDsKICAgIGJhY2tncm91bmQ6ICNlZWU7CiAgICBjb2xvcjogI2ZmMTc0NDsKfQpwcmUgY29kZXsKICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7Cn0K"
+      ],
+      "navMembers": [
+        {
+          "kind": "module",
+          "title": "Modules"
+        }
+      ]
+    }
+  },
+  "xtbuild": {
+    "js_bundles": [
+      {
+        "name": "content",
+        "src": "./src/content.js"
+      },
+      {
+        "name": "options",
+        "src": "./src/options.js"
+      },
+      {
+        "name": "background",
+        "src": "./src/background.js"
+      }
+    ]
+  }
+}

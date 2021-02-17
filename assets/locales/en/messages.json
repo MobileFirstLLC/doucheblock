@@ -1,0 +1,38 @@
+{
+  "appName": {
+    "message": "DoucheBlock for Twitter"
+  },
+  "appShortName": {
+    "message": "DoucheBlock for Twitter"
+  },
+  "appDescription": {
+    "message": "Block users with specific keywords in their profile"
+  },
+  "blockedWords": {
+    "message": "List of bio words that will activate blocking, separate by comma:"
+  },
+  "confirmBlock": {
+    "message": "Ask me to confirm before blocking"
+  },
+  "saveChanges": {
+    "message": "Save"
+  },
+  "saved": {
+    "message": "Saved!"
+  },
+  "blockCount": {
+    "message": "This extension has blocked {N} douches for you."
+  },
+  "doucheAlert": {
+    "message": "⚠️ MAJOR DOUCHE ALERT ⚠️"
+  },
+  "proceedToBlock": {
+    "message": "DO YOU WANT TO BLOCK $name$?️",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "this user"
+      }
+    }
+  }
+}

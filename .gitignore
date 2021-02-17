@@ -1,0 +1,9 @@
+.idea/
+.vscode/
+node_modules/
+.nyc_output/
+coverage/
+dist/
+pages/
+release.zip
+yarn-error.log
