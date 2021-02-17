@@ -37,7 +37,7 @@ Study the source to learn how.
 
 - 🙈 **This extension contains no tracking, analytics, or any such privacy violations.** What you see in  this repo is what you get.
 
-- ⏱️ **It took 12 hours to build** it from start to finish, including how to hack the API.
+- ⏱️ **It took 12 hours to build** this, from start to finish, including how to hack the API.
 
 * * *
 
