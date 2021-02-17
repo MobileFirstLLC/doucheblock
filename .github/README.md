@@ -28,7 +28,7 @@ This Chrome extension was inspired by this Tweet:
 
 Thanks to [Pikaso.me](https://pikaso.me/) for screenshot! 
 
-Support your fellow indie hackers and find more useful social media tools [here &rarr;](https://github.com/MobileFirstLLC/social-media-hacker-list).
+Support your fellow indie hackers and find more useful social media tools [here &rarr;](https://github.com/MobileFirstLLC/social-media-hacker-list)
 
 * * *
 
