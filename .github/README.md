@@ -47,7 +47,7 @@ This extension was created with [Extension CLI](https://oss.mobilefirst.me/exten
 
 For CLI instructions see [User Guide &rarr;](https://oss.mobilefirst.me/extension-cli/)
 
-* * *
+### About
 
 **Issues & Feature Requests:** [Submit on Github](https://github.com/MobileFirstLLC/doucheblock/issues/new/choose)
 
