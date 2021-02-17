@@ -20,7 +20,7 @@ src="https://raw.githubusercontent.com/MobileFirstLLC/shortcuts-for-chrome/maste
 </a>
 </p>
 
-This is a Chrome extension was inspired by this Tweet:
+This Chrome extension was inspired by this Tweet:
 
 <p align="center">
 <img alt="screenshot" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/screenshot.png"/>
