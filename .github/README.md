@@ -9,8 +9,14 @@
 </h1>
 
 <h3 align="center">
-  Automatically block anyone with specific keywords in their Twitter bio.<br/><br/>
+  Block anyone with specific keywords in their Twitter bio.<br/><br/>
 </h3>
+
+You can set it to confirm before blocking or just allow it to block automatically.
+
+<p align="center">
+<img alt="how it works" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/preview.gif"/>
+</p>
 
 <p align="center">
 <strong>Install at Chrome Web Store</strong><br/>
@@ -20,7 +26,7 @@ src="https://raw.githubusercontent.com/MobileFirstLLC/shortcuts-for-chrome/maste
 </a>
 </p>
 
-This Chrome extension was inspired by this Tweet:
+This Chrome extension was inspired by this tweet:
 
 <p align="center">
 <img alt="screenshot" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/screenshot.png"/>
