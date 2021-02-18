@@ -36,7 +36,7 @@ This Chrome extension was inspired by [this tweet](https://twitter.com/awilkinso
 <img width="500" border="1" alt="screenshot" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/screenshot.png"/>
 </p>
 
-Thanks to [Pikaso.me](https://pikaso.me/) for screenshot! 
+**Thanks to [Pikaso.me](https://pikaso.me/) for screenshot!** 
 
 Support your fellow indie hackers and find more useful social media tools [here &rarr;](https://github.com/MobileFirstLLC/social-media-hacker-list)
 
