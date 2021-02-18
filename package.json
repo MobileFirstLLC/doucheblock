@@ -13,8 +13,7 @@
     "build": "xt-build -e prod",
     "clean": "xt-clean",
     "docs": "xt-docs",
-    "test": "xt-test",
-    "sync": "xt-sync --travis"
+    "test": "xt-test"
   },
   "babel": {
     "presets": [
