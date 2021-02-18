@@ -16,7 +16,8 @@
 <img alt="how it works" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/preview.gif"/>
 </p>
 
-You can set it to confirm before blocking or just allow it to block automatically. You do not need to be viewing the profile for the extension to find these douches - above example is just for demo purposes to explain the functionality.
+You can set it to confirm before blocking or just allow it to block automatically. 
+You do not need to be viewing the profile for the extension to find these douches; the above is for demo purposes to explain the idea.
 
 <p align="center">
 <strong>Install at Chrome Web Store</strong><br/>
@@ -29,7 +30,7 @@ src="https://raw.githubusercontent.com/MobileFirstLLC/shortcuts-for-chrome/maste
 This Chrome extension was inspired by this tweet:
 
 <p align="center">
-<img alt="screenshot" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/screenshot.png"/>
+<img width="500" alt="screenshot" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/screenshot.png"/>
 </p>
 
 Thanks to [Pikaso.me](https://pikaso.me/) for screenshot! 
