@@ -29,7 +29,7 @@
   "xtdocs": {
     "source": {
       "include": [
-        "README.md",
+        "./github/README.md",
         "src"
       ]
     },
