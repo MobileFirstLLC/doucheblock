@@ -49,7 +49,10 @@ Study the source to learn how.
 
 - 🙈 **This extension contains no tracking, analytics, or any such privacy violations.** What you see in  this repo is what you get.
 
-- ⏱️ **It took 12 hours to build** this, from start to finish, including how to hack the API.
+- ⏱️ **It took 12 hours to build**, from start to finish, including how to hack the API, build automation, tests and docs 
+    <br/> &nbsp; &nbsp; &nbsp; (use [extension-cli](https://github.com/MobileFirstLLC/extension-cli) for speed)
+
+- 🎉 **This extension runs 100% on client** there is no backend server, which means it scales beautifully.
 
 * * *
 
