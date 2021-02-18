@@ -59,10 +59,10 @@ This extension was created with [Extension CLI](https://oss.mobilefirst.me/exten
 
 For CLI instructions see [User Guide &rarr;](https://oss.mobilefirst.me/extension-cli/)
 
+[Documentation for this source code &rarr;](http://oss.mobilefirst.me/doucheblock/)
+
 ### About
 
 **Issues & Feature Requests:** [Submit on Github](https://github.com/MobileFirstLLC/doucheblock/issues/new/choose)
-
-**Maker:** [Mobile First](https://mobilefirst.me)  &nbsp;  [![Twitter Follow](https://img.shields.io/twitter/follow/mobilefirstllc?label=follow&style=social)](https://twitter.com/intent/follow?screen_name=mobilefirstllc&tw_p=followbutton)
 
 **License:** [CC0-1.0 License](https://github.com/MobileFirstLLC/doucheblock/blob/master/LICENSE)
