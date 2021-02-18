@@ -12,11 +12,11 @@
   Block anyone with specific keywords in their Twitter bio.<br/><br/>
 </h3>
 
-You can set it to confirm before blocking or just allow it to block automatically.
-
 <p align="center">
 <img alt="how it works" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/preview.gif"/>
 </p>
+
+You can set it to confirm before blocking or just allow it to block automatically. You do not need to be viewing the profile for the extension to find these douches - above example is just for demo purposes to explain the functionality.
 
 <p align="center">
 <strong>Install at Chrome Web Store</strong><br/>
