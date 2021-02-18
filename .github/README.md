@@ -13,13 +13,6 @@
 </h3>
 
 <p align="center">
-<img alt="how it works" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/preview.gif"/>
-</p>
-
-You can set it to confirm before blocking or just allow it to block automatically. 
-You do not need to be viewing the profile for the extension to find these douches; the above is for demo purposes to explain the idea.
-
-<p align="center">
 <strong>Install at Chrome Web Store</strong><br/>
 <a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi">
 <img alt="install at chrome web store" width="250" 
@@ -27,10 +20,20 @@ src="https://raw.githubusercontent.com/MobileFirstLLC/shortcuts-for-chrome/maste
 </a>
 </p>
 
-This Chrome extension was inspired by this tweet:
+<br/>
 
 <p align="center">
-<img width="500" alt="screenshot" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/screenshot.png"/>
+<img alt="preview" width="500" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/preview.gif"/>
+</p>
+
+<br/>
+
+**You can set it to confirm before blocking or just allow it to block automatically.  You do not need to be viewing the profile for the extension to find these douches; above is for demo purposes only.**
+
+This Chrome extension was inspired by [this tweet](https://twitter.com/awilkinson/status/1357794228030509056):
+
+<p align="center">
+<img width="500" border="1" alt="screenshot" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/screenshot.png"/>
 </p>
 
 Thanks to [Pikaso.me](https://pikaso.me/) for screenshot! 
