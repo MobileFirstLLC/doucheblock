@@ -2,7 +2,7 @@
   "name": "__MSG_appName__",
   "short_name": "__MSG_appShortName__",
   "description": "__MSG_appDescription__",
-  "homepage_url": "https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi",
+  "homepage_url": "https://github.com/MobileFirstLLC/doucheblock",
   "version": "0.0.3",
   "version_name": "0.0.3",
   "manifest_version": 2,
