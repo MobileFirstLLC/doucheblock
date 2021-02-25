@@ -6,7 +6,7 @@ import Tabs from "./tabs";
 /**
  * Options page script. This translates the page, bind event
  * handlers, and load user preferences then handles any
- * changes to those references.
+ * changes to those preferences.
  *
  * @module
  * @name OptionsPage
