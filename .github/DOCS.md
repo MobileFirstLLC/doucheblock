@@ -28,7 +28,7 @@ needing to create a Twitter app and asking the user to authenticate. Further it 
 the need for a developer-owned server.
 
 <img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/diagram.png"
-alt="system diagram" style="width:auto;display:block; max-width:100%; margin:4rem auto"/>
+alt="system diagram" style="width:auto;display:block; max-width:95%; margin:4rem auto"/>
 
 Once the content script has the necessary credentials, it will proceed to make an API call to
 get bios for the discovered handles. Twitter API will return a list of bios.
