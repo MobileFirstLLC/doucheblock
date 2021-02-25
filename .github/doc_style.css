@@ -1,0 +1,81 @@
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 18px;
+}
+
+body,
+.symbol-title h1,
+.symbol-title h2,
+.symbol-title h3,
+.symbol-title h4,
+.symbol-title h5 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Ubuntu, "Helvetica Neue", sans-serif !important;
+}
+
+.page-header .summary * {
+    color: #fff;
+}
+
+.content p {
+    line-height: 1.8;
+    margin: 1rem 0;
+}
+
+.content p a {
+    font-weight: bold;
+}
+
+.content h1, .content h2, .content h3 {
+    margin-top: 3rem;
+    border-bottom: none;
+}
+
+.content section:not(.readme-section) h2.anchored {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+dl.symbol .h4,
+dl.symbol .h5,
+dl.symbol .h6,
+dl.symbol h4,
+dl.symbol h5,
+dl.symbol h6{
+    margin: 0;
+}
+
+.toc .nav > li > a,
+.toc .nav .nav > li > a,
+.back-to-top {
+    font-size: 1em;
+}
+
+.toc .signature-new,
+.page-header .kind,
+footer .generated-by,
+.toc .nav > li > a .name-signature,
+.toc .nav > li > a .signature-params {
+    display: none;
+}
+
+.symbol-details.collapsible-symbol.transition {
+    transition: none;
+}
+
+code {
+    font-weight: bold;
+    background: #eee;
+}
+
+code, .symbol-title .name-string, .symbol-title .signature-param, .symbol-title h4.event {
+    color: #be15dd;
+}
+
+pre code {
+    font-weight: normal;
+}
+.source-section code{
+    line-height: 2;
+}

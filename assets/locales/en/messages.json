@@ -6,7 +6,7 @@
     "message": "DoucheBlock for Twitter"
   },
   "appDescription": {
-    "message": "Block users with specific keywords in their profile"
+    "message": "Block anyone with specific keywords in their Twitter bio."
   },
   "blockedWords": {
     "message": "List of bio words that will activate blocking, separate by comma:"

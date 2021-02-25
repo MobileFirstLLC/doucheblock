@@ -1,6 +1,6 @@
 {
   "name": "doucheblock-for-twitter",
-  "description": "Automatically block anyone with specific keywords in their profile bio",
+  "description": "Block anyone with specific keywords in their Twitter bio.",
   "version": "0.0.3",
   "homepage": "https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi",
   "author": "Mobile First LLC",
@@ -27,6 +27,22 @@
     "cws-publish": "^2.0.2",
     "extension-cli": "latest"
   },
+  "xtbuild": {
+    "js_bundles": [
+      {
+        "name": "content",
+        "src": "./src/content.js"
+      },
+      {
+        "name": "options",
+        "src": "./src/options.js"
+      },
+      {
+        "name": "background",
+        "src": "./src/background.js"
+      }
+    ]
+  },
   "xtdocs": {
     "source": {
       "include": [
@@ -45,12 +61,11 @@
         "domain": "https://oss.mobilefirst.me/doucheblock"
       },
       "systemName": "DoucheBlock for Twitter",
-      "systemSummary": "Blocks anyone with specific keywords in their profile",
+      "systemSummary": "Block anyone with specific keywords in their Twitter bio.",
       "systemColor": "#1DA1F2",
       "methodHeadingReturns": false,
       "stylesheets": [
-        "data:text/css;base64,Zm9vdGVyewogICAgZGlzcGxheTpub25lIWltcG9ydGFudDsKfQ==",
-        "data:text/css;base64,Ym9keSB7CiAgICAtd2Via2l0LWZvbnQtc21vb3RoaW5nOiBhbnRpYWxpYXNlZDsKICAgIC1tb3otb3N4LWZvbnQtc21vb3RoaW5nOiBncmF5c2NhbGU7CiAgICBmb250LXNpemU6IDE2cHg7Cn0KCmJvZHksCi5zeW1ib2wtdGl0bGUgaDEsCi5zeW1ib2wtdGl0bGUgaDIsCi5zeW1ib2wtdGl0bGUgaDMsCi5zeW1ib2wtdGl0bGUgaDQsCi5zeW1ib2wtdGl0bGUgaDUgewogICAgZm9udC1mYW1pbHk6IHN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAiU2Vnb2UgVUkiLAogICAgUm9ib3RvLCBVYnVudHUsICJIZWx2ZXRpY2EgTmV1ZSIsIHNhbnMtc2VyaWYgIWltcG9ydGFudDsKfQoKLnJlYWRtZS1zZWN0aW9uIGgxIHsKICAgIGRpc3BsYXk6IG5vbmU7Cn0KCi5yZWFkbWUtc2VjdGlvbiAuZmVhdHVyZSB7CiAgICBkaXNwbGF5OiBibG9jazsKICAgIG1hcmdpbjogNHJlbSAwOwp9CgoudG9jIC5uYXYgPiBsaSA+IGEsCi50b2MgLm5hdiAubmF2ID4gbGkgPiBhLAouYmFjay10by10b3AgewogICAgZm9udC1zaXplOiAxZW07Cn0KCi5jb250ZW50IHAgewogICAgbGluZS1oZWlnaHQ6IDEuNTsKfQoKLnJlYWRtZS1zZWN0aW9uIGgyLAoucmVhZG1lLXNlY3Rpb24gaDMsCi50dXRvcmlhbC1zZWN0aW9uIGgyLAoudHV0b3JpYWwtc2VjdGlvbiBoMyB7CiAgICBtYXJnaW4tdG9wOiAzcmVtOwogICAgbWFyZ2luLWJvdHRvbTogMnJlbTsKfQoKLnRvYyAuc2lnbmF0dXJlLW5ldywKLnBhZ2UtaGVhZGVyIC5raW5kLAoudG9jIC5uYXYgPiBsaSA+IGEgLm5hbWUtc2lnbmF0dXJlLAoudG9jIC5uYXYgPiBsaSA+IGEgLnNpZ25hdHVyZS1wYXJhbXMgewogICAgZGlzcGxheTogbm9uZTsKfQoKLnN5bWJvbC1kZXRhaWxzLmNvbGxhcHNpYmxlLXN5bWJvbC50cmFuc2l0aW9uIHsKICAgIHRyYW5zaXRpb246IG5vbmU7Cn0KCmNvZGV7CiAgICBmb250LXdlaWdodDogYm9sZDsKICAgIGJhY2tncm91bmQ6ICNlZWU7CiAgICBjb2xvcjogI2ZmMTc0NDsKfQpwcmUgY29kZXsKICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7Cn0K"
+        "data:text/css;base64,Ym9keSB7CiAgICAtd2Via2l0LWZvbnQtc21vb3RoaW5nOiBhbnRpYWxpYXNlZDsKICAgIC1tb3otb3N4LWZvbnQtc21vb3RoaW5nOiBncmF5c2NhbGU7CiAgICBmb250LXNpemU6IDE4cHg7Cn0KCmJvZHksCi5zeW1ib2wtdGl0bGUgaDEsCi5zeW1ib2wtdGl0bGUgaDIsCi5zeW1ib2wtdGl0bGUgaDMsCi5zeW1ib2wtdGl0bGUgaDQsCi5zeW1ib2wtdGl0bGUgaDUgewogICAgZm9udC1mYW1pbHk6IHN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAiU2Vnb2UgVUkiLAogICAgUm9ib3RvLCBVYnVudHUsICJIZWx2ZXRpY2EgTmV1ZSIsIHNhbnMtc2VyaWYgIWltcG9ydGFudDsKfQoKLnBhZ2UtaGVhZGVyIC5zdW1tYXJ5ICogewogICAgY29sb3I6ICNmZmY7Cn0KCi5jb250ZW50IHAgewogICAgbGluZS1oZWlnaHQ6IDEuODsKICAgIG1hcmdpbjogMXJlbSAwOwp9CgouY29udGVudCBwIGEgewogICAgZm9udC13ZWlnaHQ6IGJvbGQ7Cn0KCi5jb250ZW50IGgxLCAuY29udGVudCBoMiwgLmNvbnRlbnQgaDMgewogICAgbWFyZ2luLXRvcDogM3JlbTsKICAgIGJvcmRlci1ib3R0b206IG5vbmU7Cn0KCi5jb250ZW50IHNlY3Rpb246bm90KC5yZWFkbWUtc2VjdGlvbikgaDIuYW5jaG9yZWQgewogICAgbWFyZ2luLXRvcDogNXJlbTsKICAgIG1hcmdpbi1ib3R0b206IDVyZW07Cn0KCmRsLnN5bWJvbCAuaDQsCmRsLnN5bWJvbCAuaDUsCmRsLnN5bWJvbCAuaDYsCmRsLnN5bWJvbCBoNCwKZGwuc3ltYm9sIGg1LApkbC5zeW1ib2wgaDZ7CiAgICBtYXJnaW46IDA7Cn0KCi50b2MgLm5hdiA+IGxpID4gYSwKLnRvYyAubmF2IC5uYXYgPiBsaSA+IGEsCi5iYWNrLXRvLXRvcCB7CiAgICBmb250LXNpemU6IDFlbTsKfQoKLnRvYyAuc2lnbmF0dXJlLW5ldywKLnBhZ2UtaGVhZGVyIC5raW5kLApmb290ZXIgLmdlbmVyYXRlZC1ieSwKLnRvYyAubmF2ID4gbGkgPiBhIC5uYW1lLXNpZ25hdHVyZSwKLnRvYyAubmF2ID4gbGkgPiBhIC5zaWduYXR1cmUtcGFyYW1zIHsKICAgIGRpc3BsYXk6IG5vbmU7Cn0KCi5zeW1ib2wtZGV0YWlscy5jb2xsYXBzaWJsZS1zeW1ib2wudHJhbnNpdGlvbiB7CiAgICB0cmFuc2l0aW9uOiBub25lOwp9Cgpjb2RlIHsKICAgIGZvbnQtd2VpZ2h0OiBib2xkOwogICAgYmFja2dyb3VuZDogI2VlZTsKfQoKY29kZSwgLnN5bWJvbC10aXRsZSAubmFtZS1zdHJpbmcsIC5zeW1ib2wtdGl0bGUgLnNpZ25hdHVyZS1wYXJhbSwgLnN5bWJvbC10aXRsZSBoNC5ldmVudCB7CiAgICBjb2xvcjogI2JlMTVkZDsKfQoKcHJlIGNvZGUgewogICAgZm9udC13ZWlnaHQ6IG5vcm1hbDsKfQouc291cmNlLXNlY3Rpb24gY29kZXsKICAgIGxpbmUtaGVpZ2h0OiAyOwp9Cg=="
       ],
       "navMembers": [
         {
@@ -59,21 +74,5 @@
         }
       ]
     }
-  },
-  "xtbuild": {
-    "js_bundles": [
-      {
-        "name": "content",
-        "src": "./src/content.js"
-      },
-      {
-        "name": "options",
-        "src": "./src/options.js"
-      },
-      {
-        "name": "background",
-        "src": "./src/background.js"
-      }
-    ]
   }
 }
