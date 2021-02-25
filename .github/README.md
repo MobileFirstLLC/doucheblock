@@ -9,7 +9,7 @@
 </h1>
 
 <p align="center">
-<a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img src="https://img.shields.io/chrome-web-store/v/eeledoologbepiegnccedjigjkblhmhi?label=latest%20release&color=1da1f2&style=flat-square" alt="version"/></a> <a href="https://travis-ci.com/github/MobileFirstLLC/doucheblock"><img alt="build status" src="https://img.shields.io/travis/MobileFirstLLC/doucheblock?style=flat-square"></a> <a href="https://coveralls.io/github/MobileFirstLLC/doucheblock"><img alt="Coveralls github" src="https://img.shields.io/coveralls/github/MobileFirstLLC/doucheblock?style=flat-square"></a> <a href="https://codeclimate.com/github/MobileFirstLLC/doucheblock/maintainability"><img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/MobileFirstLLC/doucheblock?style=flat-square"></a>
+<a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img src="https://img.shields.io/chrome-web-store/v/eeledoologbepiegnccedjigjkblhmhi?label=latest%20release&color=1da1f2" alt="version"/></a> <a href="https://travis-ci.com/github/MobileFirstLLC/doucheblock"><img alt="build status" src="https://travis-ci.com/MobileFirstLLC/doucheblock.svg?branch=master?style=flat-square"></a> <a href="https://coveralls.io/github/MobileFirstLLC/doucheblock"><img alt="Coveralls github" src="https://img.shields.io/coveralls/github/MobileFirstLLC/doucheblock"></a> <a href="https://codeclimate.com/github/MobileFirstLLC/doucheblock/maintainability"><img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/MobileFirstLLC/doucheblock"></a>
 
 <h3 align="center">
   Block anyone with specific keywords in their Twitter bio.<br/><br/>
