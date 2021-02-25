@@ -8,6 +8,9 @@
   <a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi">DoucheBlock for Twitter</a>
 </h1>
 
+<p align="center">
+<a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img src="https://img.shields.io/chrome-web-store/v/eeledoologbepiegnccedjigjkblhmhi?label=latest%20release&color=1da1f2&style=flat-square" alt="version"/></a> <a href="https://travis-ci.com/github/MobileFirstLLC/doucheblock"><img alt="build status" src="https://img.shields.io/travis/MobileFirstLLC/doucheblock?style=flat-square"></a> <a href="https://coveralls.io/github/MobileFirstLLC/doucheblock"><img alt="Coveralls github" src="https://img.shields.io/coveralls/github/MobileFirstLLC/doucheblock?style=flat-square"></a> <a href="https://codeclimate.com/github/MobileFirstLLC/doucheblock/maintainability"><img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/MobileFirstLLC/doucheblock?style=flat-square"></a>
+
 <h3 align="center">
   Block anyone with specific keywords in their Twitter bio.<br/><br/>
 </h3>
@@ -16,7 +19,7 @@
 <strong>Install at Chrome Web Store</strong><br/>
 <a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi">
 <img alt="install at chrome web store" width="250" 
-src="https://raw.githubusercontent.com/MobileFirstLLC/shortcuts-for-chrome/master/.github/badge.png"/>
+src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge.png"/>
 </a>
 </p>
 
