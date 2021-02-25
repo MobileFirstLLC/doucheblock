@@ -24,6 +24,7 @@
     "test/**/*"
   ],
   "devDependencies": {
+    "cws-publish": "^2.0.2",
     "extension-cli": "latest"
   },
   "xtdocs": {
