@@ -65,7 +65,7 @@ This extension was created with [Extension CLI](https://oss.mobilefirst.me/exten
 
 For CLI instructions see [User Guide &rarr;](https://oss.mobilefirst.me/extension-cli/)
 
-[Documentation for this source code &rarr;](http://oss.mobilefirst.me/doucheblock/)
+**[Documentation for this source code is available here &rarr;](http://oss.mobilefirst.me/doucheblock/)**
 
 ### About
 
