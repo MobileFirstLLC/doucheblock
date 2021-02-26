@@ -1,12 +1,18 @@
-DoucheBlock is like an ad blocker but for your Twitter timeline. It will automatically (or after confirmation) block people who use specific keywords in the Twitter bio. It does not contain any tracking and does not interact with any 3rd party servers. Developer never sees your personal data; does not have access to your credentials, and cannot know how you use it.
+DoucheBlock is like an ad blocker but for your Twitter timeline. It will automatically (or after confirmation) block people who use specific keywords in the Twitter bio. It does not contain any tracking and does not interact with any 3rd party servers. Developer never sees your personal data, does not have access to your credentials and cannot know how you use it. On this site you will find the source code documentation, which is primarily meant for software developers.
 
-* * *
+<br/>
 
-<p align="center">The source code is available on <a href="https://github.com/MobileFirstLLC/doucheblock" target="_blank" rel="noreferrer nofollow">Github ↗</a></p>
+<p align="center" style="font-weight: bold">
+<a href="https://github.com/MobileFirstLLC/doucheblock" target="_blank" rel="noreferrer nofollow">The source code is available on Github ↗</a>
+</p>
 
-* * *
-
-On this site you will find the source code documentation, which is primarily meant for software developers.
+<p align="center" style="margin-top:1rem;">
+<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" aria-label="Star MobileFirstLLC/doucheblock on GitHub">Star</a>
+<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock/fork" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-repo-forked" data-size="large" aria-label="Fork MobileFirstLLC/doucheblock on GitHub">Fork</a>
+<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock/subscription" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-eye" data-size="large" aria-label="Watch MobileFirstLLC/doucheblock on GitHub">Watch</a>
+<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock/archive/master.zip" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-download" data-size="large" aria-label="Download MobileFirstLLC/doucheblock on GitHub">Download</a>
+<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock/issues" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-issue-opened" data-size="large" aria-label="Issue MobileFirstLLC/doucheblock on GitHub">Issue</a>
+</p>
 
 ## How does it work?
 
@@ -37,6 +43,23 @@ Next the bios are checked for flagged keywords that user has set in user prefere
 If matching keyword is found, the content script will make a subsequent API call to block 
 such douchy user. The blocking can be automatic or require confirmation from user, 
 which is determined by user preference.
+
+## Modules
+
+The extension is built with modules, each performing their individual task.
+
+| Module | Description | 
+| --- | --- |
+| AutoBlocker | Looks for handles and initiates blocking |
+| BrowserAction | Handle extension icon click |
+| OnInstall | Handle extension install event |
+| OptionsPage | Edit user preferences |
+| Storage | Module for persisting data |
+| Tabs | Broadcast preference changes |
+| Tokens | Capture authentication credentials |
+| TwitterApi | Makes API calls |
+ 
+[Explore modules here](list_module.html) 
 
 ## Developer Guide
 
@@ -103,3 +126,4 @@ This extension was created with [Extension CLI](https://oss.mobilefirst.me/exten
 
 You can learn more about the available commands in this [User Guide &rarr;](https://oss.mobilefirst.me/extension-cli/)
 
+<br/>

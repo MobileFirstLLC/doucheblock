@@ -42,7 +42,7 @@ dl.symbol .h5,
 dl.symbol .h6,
 dl.symbol h4,
 dl.symbol h5,
-dl.symbol h6{
+dl.symbol h6 {
     margin: 0;
 }
 
@@ -76,6 +76,11 @@ code, .symbol-title .name-string, .symbol-title .signature-param, .symbol-title 
 pre code {
     font-weight: normal;
 }
-.source-section code{
+
+.source-section code {
     line-height: 2;
+}
+
+.navbar-brand.branding-logo {
+    background-size: 32px;
 }
