@@ -11,11 +11,11 @@ On this site you will find the source code documentation, which is primarily mea
 ## How does it work?
 
 <img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/preview.gif"
-alt="system diagram" style="background:#ddd; border:2px solid #555; box-shadow:6px 6px 0 #0004; border-radius:12px; width:500px; display:block; max-width:90%; margin:4rem auto"/>
+alt="system diagram" style="background:#ddd; border:2px solid #555; box-shadow:6px 6px 0 #0004; border-radius:12px; width:500px; display:block; max-width:90%; margin:4rem auto 6rem auto"/>
 
 After installation, the extension runs in the browser tab whenever user navigates to twitter.com.
 
-In-tab content script observes the timeline and looks for patterns matching
+In-tab content script (called AutoBlocker) observes the timeline and looks for patterns matching
 a twitter handle. When it has discovered a sufficient number of handles, it sends
 a message to Token module running in the background context.
 
@@ -28,13 +28,13 @@ needing to create a Twitter app and asking the user to authenticate. Further it 
 the need for a developer-owned server.
 
 <img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/diagram.png"
-alt="system diagram" style="width:auto;display:block; max-width:95%; margin:4rem auto"/>
+alt="system diagram" style="width:auto;width:600px; display:block; max-width:95%; margin:4rem auto"/>
 
 Once the content script has the necessary credentials, it will proceed to make an API call to
 get bios for the discovered handles. Twitter API will return a list of bios.
 
-Next the bios are checked for flagged keywords that user has set in the user preferences. 
-If keyword matches are found, the content script will make a subsequent API call to block 
+Next the bios are checked for flagged keywords that user has set in user preferences. 
+If matching keyword is found, the content script will make a subsequent API call to block 
 such douchy user. The blocking can be automatic or require confirmation from user, 
 which is determined by user preference.
 
