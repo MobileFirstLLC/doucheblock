@@ -16,10 +16,11 @@
 </h3>
 
 <p align="center">
-<strong>Install at Chrome Web Store</strong><br/>
 <a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi">
 <img alt="install at chrome web store" width="250" 
 src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge.png"/>
+</a> <a href="https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj"><img alt="Edge Add-Ons" width="250" 
+src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-edge.jpg"/>
 </a>
 </p>
 
