@@ -1,6 +1,6 @@
 // noinspection JSUnresolvedVariable,JSUnresolvedFunction
 
-import {defaultConfig} from "../config";
+import {defaultConfig, isOpera, isFirefox, browserVariant} from "../config";
 
 /**
  * Application storage for persisting data. This module can
@@ -23,6 +23,13 @@ export default class Storage {
         };
     };
 
+    static get storageImplementation() {
+        if (isOpera || isFirefox)
+            return chrome.storage.local;
+        else
+            return chrome.storage.sync;
+    }
+
     /**
      * Convert blocked keywords string into an array
      * @param input
@@ -40,13 +47,12 @@ export default class Storage {
      */
     static getSettings(callback) {
         Storage.get(null, res => {
-            let result = {
+            const {confirm: c, blockWords: bw} = Storage.keys
+            const result = {
                 ...defaultConfig, ...res,
-                [Storage.keys.confirm]:
-                    res[Storage.keys.confirm] === undefined ?
-                        defaultConfig.confirm : res[Storage.keys.confirm],
-                [Storage.keys.blockWords]:
-                    Storage.parseKeywords(res)
+                [c]: res[c] === undefined ?
+                    defaultConfig.confirm : res[c],
+                [bw]: Storage.parseKeywords(res)
             }
             callback(result);
         })
@@ -93,7 +99,7 @@ export default class Storage {
             Storage.save(Storage.keys.count, newCount);
             // do not assume background context!
             // broadcast this change to all interested listeners
-            window.chrome.runtime.sendMessage({increment: newCount});
+            browserVariant.runtime.sendMessage({increment: newCount});
         });
     }
 
@@ -105,7 +111,7 @@ export default class Storage {
      * @param {function} callback - function to call with result
      */
     static get(keys, callback) {
-        window.chrome.storage.sync.get(keys, callback);
+        Storage.storageImplementation.get(keys, callback);
     };
 
     /**
@@ -116,6 +122,6 @@ export default class Storage {
      * @param {function} callback - called after save operation has completed
      */
     static save(key, value, callback = undefined) {
-        window.chrome.storage.sync.set({[key]: value}, callback);
+        Storage.storageImplementation.set({[key]: value}, callback);
     };
 }

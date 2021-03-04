@@ -57,5 +57,16 @@ export const requestConfigs = {
     blockEndpoint: 'https://twitter.com/i/api/1.1/blocks/create.json',
 }
 
+// variables for different browser targets
+export const isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
+export const isEdge = window.navigator.userAgent.indexOf("Edg/") > -1;
+export const isOpera = !!window.opr;
+export const isChrome = !(isEdge || isOpera || isFirefox);
+export const browserVariant = isFirefox ? browser : window.chrome;
+
+
 // Define browser action badge color
-export const badgeColor = "#ff1744"
+// Browsers that default to black badge text color: Firefox
+// Browsers that default to white badge text color: Chrome, edge
+// For contrast, use yellow bg with dark text / red bg with white text
+export const badgeColor = isFirefox ? "#FDD835": "#ff1744"

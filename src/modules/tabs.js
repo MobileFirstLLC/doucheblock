@@ -1,5 +1,7 @@
 // noinspection JSUnresolvedVariable,JSCheckFunctionSignatures,JSUnresolvedFunction,JSIgnoredPromiseFromCall
 
+import {browserVariant} from "../config";
+
 /**
  * @description
  * Notify open tabs when user preferences have changed to
@@ -17,10 +19,10 @@ export default class Tabs {
      * subscribed tabs.
      */
     static notifyTabsOfUpdate() {
-        window.chrome.tabs.query({}, tabs => {
+        browserVariant.tabs.query({}, tabs => {
             for (let i = 0; i < tabs.length; ++i) {
                 // send message to update
-                window.chrome.tabs.sendMessage(tabs[i].id,
+                browserVariant.tabs.sendMessage(tabs[i].id,
                     {updateSettings: true}
                 );
             }

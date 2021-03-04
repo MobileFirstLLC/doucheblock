@@ -28,18 +28,24 @@ export default class TwitterApi {
      * Request user bios
      * @param {string[]} handles - user handles to check
      * @param {string} bearer - authentication Bearer token
+     * @param {string} csrf - csrf token
      * @param {function} callback
      */
-    static getTheBio(handles, bearer, callback) {
-        const xhr = new window.XMLHttpRequest();
+    static getTheBio(handles, bearer, csrf, callback) {
+        const xhr = new XMLHttpRequest();
         xhr.open('GET', requestConfigs.bioEndpoint(handles.join(',')), true);
         xhr.setRequestHeader('Authorization', bearer);
-        xhr.onload = _ => TwitterApi.tryParseBioData(xhr.response, callback);
+        xhr.setRequestHeader('x-csrf-token', csrf);
+        xhr.onload = _ => {
+            if (xhr.readyState === 4) {
+                TwitterApi.tryParseBioData(xhr.response, callback);
+            }
+        }
         xhr.send();
     }
 
     /**
-     * BLock a specific user
+     * Block a specific user
      * @param id - user id str
      * @param bearer - authentication bearer token
      * @param csrf - csrf token
