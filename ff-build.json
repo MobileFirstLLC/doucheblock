@@ -1,0 +1,17 @@
+{
+  "manifest": "./manifests/firefox/manifest.json",
+  "js_bundles": [
+    {
+      "name": "content",
+      "src": "./src/content.js"
+    },
+    {
+      "name": "options",
+      "src": "./src/options.js"
+    },
+    {
+      "name": "background",
+      "src": "./src/background.js"
+    }
+  ]
+}

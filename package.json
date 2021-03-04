@@ -10,7 +10,9 @@
   },
   "scripts": {
     "start": "xt-build -e dev -w",
+    "start:ff": "xt-build -e dev -w -c ff-build.json",
     "build": "xt-build -e prod",
+    "build:ff": "xt-build -e prod -c ff-build.json",
     "clean": "xt-clean",
     "docs": "xt-docs",
     "test": "xt-test"
@@ -25,9 +27,10 @@
   ],
   "devDependencies": {
     "cws-publish": "^2.0.2",
-    "extension-cli": "0.11.6"
+    "extension-cli": "0.11.7"
   },
   "xtbuild": {
+    "manifest": "./manifests/manifest.json",
     "js_bundles": [
       {
         "name": "content",
