@@ -1,6 +1,6 @@
 import Storage from "./storage";
 import TwitterApi from "./twitterApi";
-import {requestConfigs} from '../config'
+import {requestConfigs, browserVariant} from '../config'
 
 // noinspection JSUnresolvedVariable,JSDeprecatedSymbols,JSUnresolvedFunction
 /**
@@ -36,7 +36,7 @@ export default class AutoBlocker {
         // Load user preferences then start the
         // DOM tree mutation observer
         AutoBlocker.loadSettings(AutoBlocker.startWatch);
-        // Activate listener for user preferencs changes;
+        // Activate listener for user preferences changes;
         // background will broadcast these if changes occur
         // at which point (all) content script needs to
         // reload user preferences.
@@ -53,22 +53,6 @@ export default class AutoBlocker {
      */
     static get classFlag() {
         return 'dbt___seen-it-b4';
-    }
-
-    /**
-     * Get DOM observer reference
-     * @returns {Object} - the observer
-     */
-    static get observer() {
-        return this._observer;
-    }
-
-    /**
-     * set the DOM observer
-     * @param {Object} observer - observer
-     */
-    static set observer(observer) {
-        this._observer = observer;
     }
 
     /**
@@ -241,7 +225,7 @@ export default class AutoBlocker {
      * to know when to reload settings
      */
     static registerListener() {
-        window.chrome.runtime.onMessage.addListener(
+        browserVariant.runtime.onMessage.addListener(
             (request) => {
                 if (request.updateSettings) {
                     AutoBlocker.loadSettings();
@@ -253,7 +237,7 @@ export default class AutoBlocker {
     /**
      * Load user settings from storage;
      * these stay in memory until time to reload
-     * @param callback
+     * @param {function?} callback
      */
     static loadSettings(callback) {
         Storage.getSettings(settings => {
@@ -268,7 +252,7 @@ export default class AutoBlocker {
      * @param callback - will call if ready to proceed
      */
     static obtainTokens(callback) {
-        window.chrome.runtime.sendMessage(
+        browserVariant.runtime.sendMessage(
             {tokens: true}, ({bearer, csrf}) => {
                 AutoBlocker.bearerToken = bearer;
                 AutoBlocker.csrfToken = csrf;
@@ -284,7 +268,6 @@ export default class AutoBlocker {
     static startWatch() {
         const obs = new MutationObserver(AutoBlocker.onDomChange);
         obs.observe(document.body, {subtree: true, childList: true});
-        AutoBlocker.observer = obs;
         AutoBlocker.lookForDouches();
     }
 
@@ -301,14 +284,22 @@ export default class AutoBlocker {
     }
 
     /**
-     * Look for handles on the page
+     * Start douchy user lookup flow.
      */
     static lookForDouches() {
+        // Before lookup ensure we have necessary tokens to get bios
         if (!AutoBlocker.ready) {
-            AutoBlocker.obtainTokens(AutoBlocker.lookForDouches);
-            return;
+            AutoBlocker.obtainTokens(AutoBlocker.findHandles);
+        } else {
+            // next look for handles on the page
+            AutoBlocker.findHandles();
         }
+    }
 
+    /**
+     * Look for handles in the timeline
+     */
+    static findHandles() {
         const links = document.getElementsByTagName('a');
 
         for (let n = 0; n < links.length; n++) {
@@ -367,6 +358,7 @@ export default class AutoBlocker {
             AutoBlocker.addToHandledList(queue)
             TwitterApi.getTheBio(queue,
                 AutoBlocker.bearerToken,
+                AutoBlocker.csrfToken,
                 AutoBlocker.shouldBlock);
         }
     }
@@ -380,8 +372,8 @@ export default class AutoBlocker {
     static buildAlert(bio, name) {
         const sanitizedBio = `${name} : ${(bio || '')
             .replace(/\s\s+/g, ' ')}`;
-        const alert = window.chrome.i18n.getMessage('doucheAlert');
-        const confirm = window.chrome.i18n.getMessage('proceedToBlock', name);
+        const alert = browserVariant.i18n.getMessage('doucheAlert');
+        const confirm = browserVariant.i18n.getMessage('proceedToBlock', name);
         return `${alert}` +
             '\n==================================' +
             `\n${sanitizedBio}` +

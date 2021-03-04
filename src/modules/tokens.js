@@ -1,5 +1,7 @@
 // noinspection JSUnresolvedVariable,JSCheckFunctionSignatures,JSDeprecatedSymbols
 
+import {browserVariant} from "../config";
+
 /**
  * @description
  * Capture and provide necessary credentials.
@@ -14,12 +16,12 @@ export default class Tokens {
      * @ignore
      */
     constructor() {
-        window.chrome.webRequest.onBeforeSendHeaders.addListener(
+        browserVariant.webRequest.onBeforeSendHeaders.addListener(
             Tokens.getTheTokens,
             {urls: ["https://api.twitter.com/*"]},
             ["requestHeaders"]
         );
-        window.chrome.runtime.onMessage
+        browserVariant.runtime.onMessage
             .addListener(Tokens.messageListener);
     }
 

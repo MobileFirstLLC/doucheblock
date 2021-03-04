@@ -1,6 +1,6 @@
 // noinspection JSUnresolvedVariable,JSDeprecatedSymbols,JSUnresolvedFunction
 
-import {OptionsPageURL, badgeColor} from "../config";
+import {OptionsPageURL, badgeColor, browserVariant} from "../config";
 import Storage from "./storage";
 
 /**
@@ -17,12 +17,12 @@ export default class BrowserAction {
     constructor() {
 
         // clicking on browser action opens options page
-        window.chrome.browserAction.onClicked.addListener(_ => {
-            window.chrome.tabs.create({url: OptionsPageURL});
+        browserVariant.browserAction.onClicked.addListener(_ => {
+            browserVariant.tabs.create({url: OptionsPageURL});
         });
 
         // when count broadcast is received, change badge count
-        window.chrome.runtime.onMessage.addListener(
+        browserVariant.runtime.onMessage.addListener(
             (request) => {
                 if (request.increment) {
                     Storage.getBlockCount(BrowserAction.setBadge)
@@ -43,9 +43,9 @@ export default class BrowserAction {
         const displayValue = value < 10000 ?
             value.toString() :
             (value / 1000).toFixed(0) + "K"
-        window.chrome.browserAction
+        browserVariant.browserAction
             .setBadgeText({text: displayValue});
-        window.chrome.browserAction
+        browserVariant.browserAction
             .setBadgeBackgroundColor({color: badgeColor});
     }
 }
