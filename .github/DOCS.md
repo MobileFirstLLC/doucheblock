@@ -36,10 +36,10 @@ the need for a developer-owned server.
 alt="system diagram" style="width:auto;width:600px; display:block; max-width:95%; margin:4rem auto"/>
 
 Once the content script has the necessary credentials, it will proceed to make an API call to
-get bios for the discovered handles. This is 1 batch request to lookup up to 100 handles with single request. Twitter API server return a list of bios for all requested handles.
+get bios for the discovered handles. This is 1 batch request to lookup up to 100 handles with a single request. Twitter API server returns a list of bios for all requested handles.
 
 Next the bios are checked for flagged keywords that user has set in user preferences. 
-If matching keyword is found in a bio, the content script will make a subsequent API call to block 
+If a matching keyword is found in a bio, the content script will make a subsequent API call to block 
 such douchy user. The blocking can be automatic or require confirmation from user, 
 depending on user preference.
 
