@@ -19,10 +19,10 @@ export default class Tabs {
      * subscribed tabs.
      */
     static notifyTabsOfUpdate() {
-        browserVariant.tabs.query({}, tabs => {
+        browserVariant().tabs.query({}, tabs => {
             for (let i = 0; i < tabs.length; ++i) {
                 // send message to update
-                browserVariant.tabs.sendMessage(tabs[i].id,
+                browserVariant().tabs.sendMessage(tabs[i].id,
                     {updateSettings: true}
                 );
             }

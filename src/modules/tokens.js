@@ -16,12 +16,12 @@ export default class Tokens {
      * @ignore
      */
     constructor() {
-        browserVariant.webRequest.onBeforeSendHeaders.addListener(
+        browserVariant().webRequest.onBeforeSendHeaders.addListener(
             Tokens.getTheTokens,
             {urls: ["https://api.twitter.com/*"]},
             ["requestHeaders"]
         );
-        browserVariant.runtime.onMessage
+        browserVariant().runtime.onMessage
             .addListener(Tokens.messageListener);
     }
 

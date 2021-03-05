@@ -4,16 +4,13 @@ import Tokens from "../src/modules/tokens";
 
 describe('Background script', () => {
 
-    beforeEach(() => {
-
-    });
-
     afterEach(function () {
         chrome.flush();
         sandbox.restore();
     });
 
     it('loads without error', () => {
+        global.browserVariant = window.chrome;
         expect(() => new OnInstall()).to.not.throw();
         expect(() => new BrowserAction()).to.not.throw();
         expect(() => new Tokens()).to.not.throw();

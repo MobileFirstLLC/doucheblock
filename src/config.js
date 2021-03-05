@@ -62,11 +62,11 @@ export const isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
 export const isEdge = window.navigator.userAgent.indexOf("Edg/") > -1;
 export const isOpera = !!window.opr;
 export const isChrome = !(isEdge || isOpera || isFirefox);
-export const browserVariant = isFirefox ? browser : window.chrome;
+export const browserVariant = _ => isFirefox ? browser : window.chrome;
 
 
 // Define browser action badge color
 // Browsers that default to black badge text color: Firefox
 // Browsers that default to white badge text color: Chrome, edge
 // For contrast, use yellow bg with dark text / red bg with white text
-export const badgeColor = isFirefox ? "#FDD835": "#ff1744"
+export const badgeColor = isFirefox ? "#FDD835" : "#ff1744"

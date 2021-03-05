@@ -99,7 +99,7 @@ export default class Storage {
             Storage.save(Storage.keys.count, newCount);
             // do not assume background context!
             // broadcast this change to all interested listeners
-            browserVariant.runtime.sendMessage({increment: newCount});
+            browserVariant().runtime.sendMessage({increment: newCount});
         });
     }
 

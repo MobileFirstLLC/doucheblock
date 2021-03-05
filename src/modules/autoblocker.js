@@ -225,7 +225,7 @@ export default class AutoBlocker {
      * to know when to reload settings
      */
     static registerListener() {
-        browserVariant.runtime.onMessage.addListener(
+        browserVariant().runtime.onMessage.addListener(
             (request) => {
                 if (request.updateSettings) {
                     AutoBlocker.loadSettings();
@@ -252,7 +252,7 @@ export default class AutoBlocker {
      * @param callback - will call if ready to proceed
      */
     static obtainTokens(callback) {
-        browserVariant.runtime.sendMessage(
+        browserVariant().runtime.sendMessage(
             {tokens: true}, ({bearer, csrf}) => {
                 AutoBlocker.bearerToken = bearer;
                 AutoBlocker.csrfToken = csrf;
@@ -372,8 +372,8 @@ export default class AutoBlocker {
     static buildAlert(bio, name) {
         const sanitizedBio = `${name} : ${(bio || '')
             .replace(/\s\s+/g, ' ')}`;
-        const alert = browserVariant.i18n.getMessage('doucheAlert');
-        const confirm = browserVariant.i18n.getMessage('proceedToBlock', name);
+        const alert = browserVariant().i18n.getMessage('doucheAlert');
+        const confirm = browserVariant().i18n.getMessage('proceedToBlock', name);
         return `${alert}` +
             '\n==================================' +
             `\n${sanitizedBio}` +

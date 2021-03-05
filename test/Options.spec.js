@@ -20,7 +20,8 @@ describe('Options page', () => {
         // call on init
         sandbox.spy(OptionPage, 'loadSettings')
         const opt = new OptionPage();
-        expect(OptionPage.loadSettings.calledOnce, 'loads settings on init').to.be.true;
+        expect(OptionPage.loadSettings.calledOnce,
+            'loads settings on init').to.be.true;
     });
 
 });
