@@ -19,30 +19,29 @@ DoucheBlock is like an ad blocker but for your Twitter timeline. It will automat
 <img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/preview.gif"
 alt="system diagram" style="background:#ddd; border:2px solid #555; box-shadow:6px 6px 0 #0004; border-radius:12px; width:500px; display:block; max-width:90%; margin:4rem auto 6rem auto"/>
 
-After installation, the extension runs in the browser tab whenever user navigates to twitter.com.
+After installation the extension runs in the browser tab whenever user navigates to twitter.com. In-tab content script (called [AutoBlocker](/module-AutoBlocker.html)) observes the timeline and looks for patterns matching a Twitter handle. When it has discovered a sufficient number of handles, it requests bios for the discovered handles from Twitter API server.
 
-In-tab content script (called AutoBlocker) observes the timeline and looks for patterns matching
-a twitter handle. When it has discovered a sufficient number of handles, it sends
-a message to Token module running in the background context.
-
-Token module has two tasks. Firstly it listens to API call headers when browser sends requests to Twitter API.
-From there it captures the authentication headers for the current user. These are not
-persisted anywhere but kept in memory. Second, when it receives a message from content
-script requesting tokens, Token module sends these captured credentials back to content
-script. This exchange of tokens enables running the extension fully on client without 
-needing to create a Twitter app and asking the user to authenticate. Further it removes 
+The extension has to obtain sufficient credentials before any API requests can be made. This
+is achieved by [Tokens](/module-Tokens.html) module, which runs in the background context. Tokens module has two tasks:
+ 
+ 1. It listens to API call headers whenever browser sends requests to Twitter API. From there it captures the authentication headers for the current user. These are not persisted anywhere but kept in memory. 
+  Implementation for [listening headers](https://github.com/MobileFirstLLC/doucheblock/blob/0d83a2e77c44d8328ab01fde3a3cecf2d1fa16d8/src/modules/tokens.js#L19-L23) and [capturing credentials](https://github.com/MobileFirstLLC/doucheblock/blob/0d83a2e77c44d8328ab01fde3a3cecf2d1fa16d8/src/modules/tokens.js#L82-L95).
+ 
+  2. When Tokens module receives a message from content script requesting tokens, it sends these captured credentials back to content script, [implementation](https://github.com/MobileFirstLLC/doucheblock/blob/0d83a2e77c44d8328ab01fde3a3cecf2d1fa16d8/src/modules/tokens.js#L68-L76).
+  
+This exchange of tokens enables running the extension fully on client without needing to create a Twitter app and asking the user to authenticate. Further it removes 
 the need for a developer-owned server.
 
 <img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/diagram.png"
 alt="system diagram" style="width:auto;width:600px; display:block; max-width:95%; margin:4rem auto"/>
 
 Once the content script has the necessary credentials, it will proceed to make an API call to
-get bios for the discovered handles. Twitter API will return a list of bios.
+get bios for the discovered handles. This is 1 batch request to lookup up to 100 handles with single request. Twitter API server return a list of bios for all requested handles.
 
 Next the bios are checked for flagged keywords that user has set in user preferences. 
-If matching keyword is found, the content script will make a subsequent API call to block 
+If matching keyword is found in a bio, the content script will make a subsequent API call to block 
 such douchy user. The blocking can be automatic or require confirmation from user, 
-which is determined by user preference.
+depending on user preference.
 
 ## Modules
 
