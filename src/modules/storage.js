@@ -23,6 +23,11 @@ export default class Storage {
         };
     };
 
+    /**
+     * Determine which storage implementation
+     * to use based on current browser.
+     * @returns - storage implementation; either local or sync
+     */
     static get storageImplementation() {
         if (isOpera || isFirefox)
             return chrome.storage.local;
