@@ -19,10 +19,10 @@ DoucheBlock is like an ad blocker but for your Twitter timeline. It will automat
 <img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/preview.gif"
 alt="system diagram" style="background:#ddd; border:2px solid #555; box-shadow:6px 6px 0 #0004; border-radius:12px; width:500px; display:block; max-width:90%; margin:4rem auto 6rem auto"/>
 
-After installation the extension runs in the browser tab whenever user navigates to twitter.com. In-tab content script (called [AutoBlocker](/module-AutoBlocker.html)) observes the timeline and looks for patterns matching a Twitter handle. When it has discovered a sufficient number of handles, it requests bios for the discovered handles from Twitter API server.
+After installation the extension runs in the browser tab whenever user navigates to twitter.com. In-tab content script (called [AutoBlocker](/doucheblock/module-AutoBlocker.html)) observes the timeline and looks for patterns matching a Twitter handle. When it has discovered a sufficient number of handles, it requests bios for the discovered handles from Twitter API server.
 
 The extension has to obtain sufficient credentials before any API requests can be made. This
-is achieved by [Tokens](/module-Tokens.html) module, which runs in the background context. Tokens module has two tasks:
+is achieved by [Tokens](/doucheblock/module-Tokens.html) module, which runs in the background context. Tokens module has two tasks:
  
  1. It listens to API call headers whenever browser sends requests to Twitter API. From there it captures the authentication headers for the current user. These are not persisted anywhere but kept in memory. 
   Implementation for [listening headers](https://github.com/MobileFirstLLC/doucheblock/blob/0d83a2e77c44d8328ab01fde3a3cecf2d1fa16d8/src/modules/tokens.js#L19-L23) and [capturing credentials](https://github.com/MobileFirstLLC/doucheblock/blob/0d83a2e77c44d8328ab01fde3a3cecf2d1fa16d8/src/modules/tokens.js#L82-L95).
