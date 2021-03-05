@@ -20,13 +20,16 @@
 src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-edge.png"/></a>
 </p>
 
+> ### DoucheBlock is like an ad blocker but for your Twitter timeline. It will automatically (or after confirmation) block people who use specific keywords in the Twitter bio. It does not contain any tracking and does not interact with any 3rd party servers. Developer never sees your personal data, does not have access to your credentials and cannot know how you use it.
+> 
 <br/>
 
 <p align="center">
 <img alt="preview" width="500" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/preview.gif"/>
 </p>
-
 <br/>
+
+
 
 **You can set it to confirm before blocking or just allow it to block automatically.  You do not need to be viewing the profile for the extension to find these douches; above is for demo purposes only.**
 
