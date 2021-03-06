@@ -17,7 +17,8 @@
 
 <p align="center">
 <a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img alt="install at chrome web store" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge.png"/></a> <a href="https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj"><img alt="Edge Add-Ons" width="250" 
-src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-edge.png"/></a>
+src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-edge.png"/></a> <a href="https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter/"><img alt="Firefox Add-Ons" width="250" 
+ src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-firefox.png"/></a>
 </p>
 
 > ### DoucheBlock is like an ad blocker but for your Twitter timeline. It will automatically (or after confirmation) block people who use specific keywords in the Twitter bio. It does not contain any tracking and does not interact with any 3rd party servers. Developer never sees your personal data, does not have access to your credentials and cannot know how you use it.
