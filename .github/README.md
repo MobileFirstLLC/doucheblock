@@ -30,9 +30,12 @@ src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github
 </p>
 <br/>
 
-
-
 **You can set it to confirm before blocking or just allow it to block automatically.  You do not need to be viewing the profile for the extension to find these douches; above is for demo purposes only.**
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/user_comment.jpg" alt="user comment"   width="500" />
+</p>
+<br/>
 
 This Chrome extension was inspired by [this tweet](https://twitter.com/awilkinson/status/1357794228030509056):
 
