@@ -1,4 +1,4 @@
-import {requestConfigs} from '../config'
+import {isChrome, isEdge, requestConfigs} from '../config'
 import Storage from "./storage";
 
 /**
