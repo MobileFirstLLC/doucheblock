@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-import OptionPage from '../src/modules/optionsPage';
+import OptionPage from '../src/options-page/optionsPage';
 
 // read the page template
 const HTMLTemplate = fs.readFileSync(path.resolve(__dirname, '../src/options-page/index.html'), 'utf8');

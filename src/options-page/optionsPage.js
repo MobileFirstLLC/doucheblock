@@ -1,7 +1,7 @@
 // noinspection JSUnresolvedVariable,JSUnresolvedFunction
 
-import Storage from "./storage";
-import Tabs from "./tabs";
+import Storage from "../modules/storage";
+import Tabs from "../modules/tabs";
 
 /**
  * Options page script. This translates the page, bind event
@@ -23,6 +23,7 @@ export default class OptionsPage {
         OptionsPage.getElement('title').innerText = document.title = title;
         OptionsPage.getElement('block-label').innerText = OptionsPage.translate('blockedWords');
         OptionsPage.getElement('confirm-label').innerText = OptionsPage.translate('confirmBlock');
+        OptionsPage.getElement('source-label').innerText = OptionsPage.translate('source');
         OptionsPage.resetButtonText();
 
         // bind save button action
@@ -32,6 +33,7 @@ export default class OptionsPage {
 
         // load user settings
         OptionsPage.loadSettings();
+        OptionsPage.loadIntro();
     }
 
     /**
@@ -64,6 +66,15 @@ export default class OptionsPage {
      */
     static get BMC() {
         return OptionsPage.getElement('bmc');
+    }
+
+    /**
+     * New user intro block
+     * @returns {HTMLElement}
+     * @constructor
+     */
+    static get IntroBlock() {
+        return OptionsPage.getElement('intro');
     }
 
     /**
@@ -134,5 +145,14 @@ export default class OptionsPage {
                     'visible', 'visible');
             }
         });
+    }
+
+    static loadIntro() {
+        const isIntro = new URLSearchParams(window.location.search).get('i') === "";
+        if (isIntro) {
+            OptionsPage.IntroBlock.innerHTML = OptionsPage.translate('intro')
+            OptionsPage.IntroBlock.style.display = 'block';
+            OptionsPage.getElement('source').style.display = 'none';
+        }
     }
 }

@@ -20,6 +20,12 @@
   "saved": {
     "message": "Saved!"
   },
+  "intro": {
+    "message": "Hey you, welcome! <span>\uD83D\uDC4B</span><br/><br/>Thanks for installing this extension. It blocks people who use specific keywords in their Twitter bio. You can specify which words should result in blocking by entering them below."
+  },
+  "source": {
+    "message": "This extension is open source:"
+  },
   "blockCount": {
     "message": "This extension has blocked {N} douches for you."
   },

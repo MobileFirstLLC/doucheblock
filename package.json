@@ -2,19 +2,19 @@
   "name": "doucheblock-for-twitter",
   "description": "Block anyone with specific keywords in their Twitter bio.",
   "version": "0.0.3",
-  "homepage": "https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi",
+  "homepage": "https://github.com/MobileFirstLLC/doucheblock",
   "author": "Mobile First LLC",
   "repository": {
     "type": "git",
     "url": "https://github.com/MobileFirstLLC/doucheblock"
   },
   "scripts": {
-    "start": "xt-build -e dev -w",
-    "start:ff": "xt-build -e dev -w -c ff-build.json",
-    "build": "xt-build -e prod",
-    "build:ff": "xt-build -e prod -c ff-build.json",
+    "start": "xt-build -e dev -w -c ./build.chromium.json",
+    "start:ff": "xt-build -e dev -w -c ./build.firefox.json",
+    "build": "xt-build -e prod -c ./build.chromium.json",
+    "build:ff": "xt-build -e prod -c ./build.firefox.json",
     "clean": "xt-clean",
-    "docs": "xt-docs",
+    "docs": "xt-docs -c ./build.docs.json",
     "test": "xt-test"
   },
   "babel": {
@@ -27,64 +27,6 @@
   ],
   "devDependencies": {
     "cws-publish": "^2.0.2",
-    "extension-cli": "0.11.7"
-  },
-  "xtbuild": {
-    "manifest": "./manifests/manifest.json",
-    "js_bundles": [
-      {
-        "name": "content",
-        "src": "./src/content.js"
-      },
-      {
-        "name": "options",
-        "src": "./src/options.js"
-      },
-      {
-        "name": "background",
-        "src": "./src/background.js"
-      }
-    ]
-  },
-  "xtdocs": {
-    "source": {
-      "include": [
-        "./.github/DOCS.md",
-        "src"
-      ]
-    },
-    "opts": {
-      "destination": "./pages",
-      "tutorials": "./docs"
-    },
-    "templates": {
-      "inlineNav": true,
-      "search": false,
-      "analytics": {
-        "ua": "UA-129118591-7",
-        "domain": "https://oss.mobilefirst.me/doucheblock"
-      },
-      "scripts": [
-        "https://buttons.github.io/buttons.js"
-      ],
-      "systemLogo": "./assets/img/128x128.png",
-      "systemName": "DoucheBlock for Twitter",
-      "systemSummary": "Block anyone with specific keywords in their Twitter bio.",
-      "systemColor": "#1DA1F2",
-      "methodHeadingReturns": false,
-      "stylesheets": [
-        "data:text/css;base64,Ym9keSB7CiAgICAtd2Via2l0LWZvbnQtc21vb3RoaW5nOiBhbnRpYWxpYXNlZDsKICAgIC1tb3otb3N4LWZvbnQtc21vb3RoaW5nOiBncmF5c2NhbGU7CiAgICBmb250LXNpemU6IDE4cHg7Cn0KCmJvZHksCi5zeW1ib2wtdGl0bGUgaDEsCi5zeW1ib2wtdGl0bGUgaDIsCi5zeW1ib2wtdGl0bGUgaDMsCi5zeW1ib2wtdGl0bGUgaDQsCi5zeW1ib2wtdGl0bGUgaDUgewogICAgZm9udC1mYW1pbHk6IHN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAiU2Vnb2UgVUkiLAogICAgUm9ib3RvLCBVYnVudHUsICJIZWx2ZXRpY2EgTmV1ZSIsIHNhbnMtc2VyaWYgIWltcG9ydGFudDsKfQoKLnBhZ2UtaGVhZGVyIC5zdW1tYXJ5ICogewogICAgY29sb3I6ICNmZmY7Cn0KCi5jb250ZW50IHAgewogICAgbGluZS1oZWlnaHQ6IDEuODsKICAgIG1hcmdpbjogMXJlbSAwOwp9CgouY29udGVudCBwIGEgewogICAgZm9udC13ZWlnaHQ6IGJvbGQ7Cn0KCi5jb250ZW50IGgxLCAuY29udGVudCBoMiwgLmNvbnRlbnQgaDMgewogICAgbWFyZ2luLXRvcDogM3JlbTsKICAgIGJvcmRlci1ib3R0b206IG5vbmU7Cn0KCi5jb250ZW50IHNlY3Rpb246bm90KC5yZWFkbWUtc2VjdGlvbikgaDIuYW5jaG9yZWQgewogICAgbWFyZ2luLXRvcDogNXJlbTsKICAgIG1hcmdpbi1ib3R0b206IDVyZW07Cn0KCmRsLnN5bWJvbCAuaDQsCmRsLnN5bWJvbCAuaDUsCmRsLnN5bWJvbCAuaDYsCmRsLnN5bWJvbCBoNCwKZGwuc3ltYm9sIGg1LApkbC5zeW1ib2wgaDYgewogICAgbWFyZ2luOiAwOwp9CgoudG9jIC5uYXYgPiBsaSA+IGEsCi50b2MgLm5hdiAubmF2ID4gbGkgPiBhLAouYmFjay10by10b3AgewogICAgZm9udC1zaXplOiAxZW07Cn0KCi50b2MgLnNpZ25hdHVyZS1uZXcsCi5wYWdlLWhlYWRlciAua2luZCwKZm9vdGVyIC5nZW5lcmF0ZWQtYnksCi50b2MgLm5hdiA+IGxpID4gYSAubmFtZS1zaWduYXR1cmUsCi50b2MgLm5hdiA+IGxpID4gYSAuc2lnbmF0dXJlLXBhcmFtcyB7CiAgICBkaXNwbGF5OiBub25lOwp9Cgouc3ltYm9sLWRldGFpbHMuY29sbGFwc2libGUtc3ltYm9sLnRyYW5zaXRpb24gewogICAgdHJhbnNpdGlvbjogbm9uZTsKfQoKY29kZSB7CiAgICBmb250LXdlaWdodDogYm9sZDsKICAgIGJhY2tncm91bmQ6ICNlZWU7Cn0KCmNvZGUsIC5zeW1ib2wtdGl0bGUgLm5hbWUtc3RyaW5nLCAuc3ltYm9sLXRpdGxlIC5zaWduYXR1cmUtcGFyYW0sIC5zeW1ib2wtdGl0bGUgaDQuZXZlbnQgewogICAgY29sb3I6ICNiZTE1ZGQ7Cn0KCnByZSBjb2RlIHsKICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7Cn0KCi5zb3VyY2Utc2VjdGlvbiBjb2RlIHsKICAgIGxpbmUtaGVpZ2h0OiAyOwp9CgoubmF2YmFyLWJyYW5kLmJyYW5kaW5nLWxvZ28gewogICAgYmFja2dyb3VuZC1zaXplOiAzMnB4Owp9Cg=="
-      ],
-      "navMembers": [
-        {
-          "kind": "module",
-          "title": "Modules"
-        },
-        {
-          "kind": "tutorial",
-          "title": "Other Documents"
-        }
-      ]
-    }
+    "extension-cli": "0.11.9-alpha.0"
   }
 }

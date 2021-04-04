@@ -1,4 +1,5 @@
 {
+  "release_name": "firefox",
   "manifest": "./manifests/firefox/manifest.json",
   "js_bundles": [
     {

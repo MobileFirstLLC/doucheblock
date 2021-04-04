@@ -18,7 +18,7 @@ export default class OnInstall {
     constructor() {
         window.chrome.runtime.onInstalled.addListener(details => {
             if (details.reason === 'install') {
-                window.chrome.tabs.create({url: OptionsPageURL});
+                window.chrome.tabs.create({url: OptionsPageURL + '?i'});
             }
         });
     }

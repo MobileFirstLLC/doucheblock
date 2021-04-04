@@ -13,6 +13,7 @@ script:
 before_deploy:
   - npm run test -- --coverage || travis_terminate 1
   - npm run build
+  - npm run build:ff
 
 deploy:
   - provider: pages
@@ -25,7 +26,9 @@ deploy:
   - provider: releases
     skip_cleanup: true
     api_key: $github_token
-    file: $zip
+    file:
+      - firefox.zip
+      - chromium.zip
     on:
       tags: true
 
