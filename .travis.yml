@@ -28,11 +28,11 @@ deploy:
     api_key: $github_token
     file:
       - firefox.zip
-      - chromium.zip
+      - $zip
     on:
       tags: true
 
 after_deploy:
   - if [ ! -z  "$TRAVIS_TAG" ]; then
-    npx cws-upload $cid $sec $tkn $zip $eid;
+      npx cws-upload $cid $sec $tkn $zip $eid;
     fi

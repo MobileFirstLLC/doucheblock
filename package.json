@@ -1,7 +1,7 @@
 {
   "name": "doucheblock-for-twitter",
   "description": "Block anyone with specific keywords in their Twitter bio.",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "homepage": "https://github.com/MobileFirstLLC/doucheblock",
   "author": "Mobile First LLC",
   "repository": {
@@ -9,12 +9,12 @@
     "url": "https://github.com/MobileFirstLLC/doucheblock"
   },
   "scripts": {
-    "start": "xt-build -e dev -w -c ./build.chromium.json",
-    "start:ff": "xt-build -e dev -w -c ./build.firefox.json",
-    "build": "xt-build -e prod -c ./build.chromium.json",
-    "build:ff": "xt-build -e prod -c ./build.firefox.json",
+    "start": "xt-build -e dev -w -c config/chromium.json",
+    "start:ff": "xt-build -e dev -w -c config/firefox.json",
+    "build": "xt-build -e prod -c config/chromium.json",
+    "build:ff": "xt-build -e prod -c config/firefox.json",
     "clean": "xt-clean",
-    "docs": "xt-docs -c ./build.docs.json",
+    "docs": "xt-docs -c config/docs.json",
     "test": "xt-test"
   },
   "babel": {
@@ -27,6 +27,6 @@
   ],
   "devDependencies": {
     "cws-publish": "^2.0.2",
-    "extension-cli": "0.11.9-alpha.0"
+    "extension-cli": "0.11.9"
   }
 }
