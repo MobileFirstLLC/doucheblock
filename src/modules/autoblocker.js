@@ -197,13 +197,6 @@ export default class AutoBlocker {
     }
 
     /**
-     * Empty the queue
-     */
-    static resetQueue() {
-        this._pendingQueue = [];
-    }
-
-    /**
      * Add a handle to pending queue
      * @param {string} value
      */
@@ -325,7 +318,7 @@ export default class AutoBlocker {
                 if (!AutoBlocker.alreadyChecked(handle) &&
                     !AutoBlocker.currentlyInQueue(handle)) {
                     AutoBlocker.addToQueue(handle);
-                    if (AutoBlocker.pendingQueue.length >
+                    if (AutoBlocker.pendingQueue.length >=
                         requestConfigs.maxLookupCount) {
                         break;
                     }
@@ -342,24 +335,30 @@ export default class AutoBlocker {
     static shouldCheckBios() {
         const shouldRequest =
             // queue cannot be empty AND
-            AutoBlocker.pendingQueue.length > 0 && (
-                // EITHER: no previous request and at
-                // least some pending handles
-            (!AutoBlocker.lastBioTimestamp &&
-                AutoBlocker.pendingQueue.length > 3) ||
-            // - OR - it has been long enough since last request
-            (Math.abs(Date.now() - AutoBlocker.lastBioTimestamp) >
-                requestConfigs.maxInterval));
+            AutoBlocker.pendingQueue.length > 0 &&
+            // EITHER: no previous request and at
+            // least some pending handles
+            ((!AutoBlocker.lastBioTimestamp &&
+                AutoBlocker.pendingQueue.length > 0) ||
+                // - OR - it has been long enough since last request
+                (Math.abs(Date.now() - AutoBlocker.lastBioTimestamp) >
+                    requestConfigs.maxInterval));
 
         if (shouldRequest) {
             AutoBlocker.lastBioTimestamp = Date.now()
-            const queue = [...AutoBlocker.pendingQueue];
-            AutoBlocker.resetQueue();
-            AutoBlocker.addToHandledList(queue)
+            // take max names from the queue
+            const N = Math.min(AutoBlocker.pendingQueue.length, requestConfigs.maxLookupCount)
+            const queue = [...AutoBlocker.pendingQueue.splice(0, N)];
             TwitterApi.getTheBio(queue,
                 AutoBlocker.bearerToken,
                 AutoBlocker.csrfToken,
-                AutoBlocker.shouldBlock);
+                (bios) => {
+                    AutoBlocker.addToHandledList(queue);
+                    bios.map(o => AutoBlocker.shouldBlock(o));
+                },
+                () => {
+                    queue.map(name => AutoBlocker.addToQueue(name))
+                });
         }
     }
 
@@ -384,7 +383,7 @@ export default class AutoBlocker {
     /**
      * Check the bio for flagged words
      */
-    static shouldBlock(handle, bio, id, name) {
+    static shouldBlock({bio, id, name}) {
         if (!id || !bio) return;
         const lowercaseBio = bio.toLowerCase();
         const keywordMatch = AutoBlocker.keyList

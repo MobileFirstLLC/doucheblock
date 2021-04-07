@@ -1,4 +1,4 @@
-import {isChrome, isEdge, requestConfigs} from '../config'
+import {requestConfigs} from '../config'
 import Storage from "./storage";
 
 /**
@@ -11,36 +11,33 @@ import Storage from "./storage";
 export default class TwitterApi {
 
     /**
-     * Try to read JSON response of profile data
-     * @param {string} response - raw API response
-     * @param {function} callback
-     */
-    static tryParseBioData(response, callback) {
-        try {
-            JSON.parse(response).map((
-                {description, screen_name, id_str, name}
-            ) => (callback(screen_name, description, id_str, name)))
-        } catch (e) {
-        }
-    }
-
-    /**
      * Request user bios
      * @param {string[]} handles - user handles to check
      * @param {string} bearer - authentication Bearer token
      * @param {string} csrf - csrf token
-     * @param {function} callback
+     * @param {function} callback handler for successful bio request
+     * @param {function} errorCallback - handler when this request cannot be completed
      */
-    static getTheBio(handles, bearer, csrf, callback) {
+    static getTheBio(handles, bearer, csrf, callback, errorCallback) {
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', requestConfigs.bioEndpoint(handles.join(',')), true);
+        xhr.open('POST', requestConfigs.bioEndpoint(handles.join(',')), true);
         xhr.setRequestHeader('Authorization', bearer);
         xhr.setRequestHeader('x-csrf-token', csrf);
         xhr.onload = _ => {
             if (xhr.readyState === 4) {
-                TwitterApi.tryParseBioData(xhr.response, callback);
+                try {
+                    const bios = JSON
+                        .parse(xhr.response)
+                        .map(({description, id_str, name}) => {
+                            return {bio: description, id: id_str, name: name}
+                        })
+                    callback(bios);
+                } catch (e) {
+                    errorCallback()
+                }
             }
         }
+        xhr.onerror = _ => errorCallback();
         xhr.send();
     }
 
