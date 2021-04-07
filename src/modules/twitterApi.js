@@ -3,7 +3,13 @@ import Storage from "./storage";
 
 /**
  * @description
- * Twitter API methods; this module must run in the browser tab
+ * Twitter API methods. This module includes all available
+ * API endpoints that can be called from this extension to
+ * Twitter server.
+ *
+ * This module must run in the browser tab within the Twitter
+ * web app context (twitter.com), to populate the correct
+ * request headers.
  *
  * @module
  * @name TwitterApi

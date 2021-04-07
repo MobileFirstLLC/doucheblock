@@ -12,8 +12,10 @@ import {defaultConfig, isOpera, isFirefox, browserVariant} from "../config";
 export default class Storage {
 
     /**
-     * Use keys to avoid typing string literals.
-     * These keys are case sensitive
+     * @static
+     * @description
+     * Use keys to avoid typing string literals because
+     * storage keys are case sensitive.
      */
     static get keys() {
         return {
@@ -24,6 +26,9 @@ export default class Storage {
     };
 
     /**
+     * @static
+     * @private
+     * @description
      * Determine which storage implementation
      * to use based on current browser.
      * @returns - storage implementation; either local or sync
@@ -36,7 +41,9 @@ export default class Storage {
     }
 
     /**
-     * Convert blocked keywords string into an array
+     * @static
+     * @private
+     * @description Convert blocked keywords string into an array
      * @param input
      * @returns {string[]}
      */
@@ -47,7 +54,8 @@ export default class Storage {
     }
 
     /**
-     * Get all user settings
+     * @static
+     * @description Get all user settings
      * @param {function} callback
      */
     static getSettings(callback) {
@@ -64,6 +72,8 @@ export default class Storage {
     }
 
     /**
+     * @static
+     * @description
      * Get number of blocks performed by this extension
      * @param {function} callback
      */
@@ -73,6 +83,8 @@ export default class Storage {
     }
 
     /**
+     * @static
+     * @description
      * Update the list of trigger keywords; this function
      * will sanitize and strip the input
      *
@@ -87,6 +99,8 @@ export default class Storage {
     }
 
     /**
+     * @static
+     * @description
      * Update confirmation prompt user preference
      * @param {Boolean} value - set true to ask user before blocking
      * @param {function} done - callback
@@ -96,7 +110,9 @@ export default class Storage {
     }
 
     /**
-     * Update the count of block requests
+     * @static
+     * @description
+     * Update the count of completed block requests
      */
     static incrementCount() {
         Storage.get(Storage.keys.count, res => {
@@ -109,6 +125,8 @@ export default class Storage {
     }
 
     /**
+     * @static
+     * @private
      * @function
      * @description get some property from storage
      * @param {String|Array<String>} keys must be one of `storage.keys` or `null`.
@@ -120,6 +138,8 @@ export default class Storage {
     };
 
     /**
+     * @static
+     * @private
      * @function
      * @description save some property in storage
      * @param {String} key - one of `storage.keys`

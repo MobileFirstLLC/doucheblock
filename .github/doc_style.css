@@ -27,6 +27,10 @@ body,
     font-weight: bold;
 }
 
+.content table p {
+    margin: 0;
+}
+
 .content h1, .content h2, .content h3 {
     margin-top: 3rem;
     border-bottom: none;

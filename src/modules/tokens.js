@@ -4,8 +4,16 @@ import {browserVariant} from "../config";
 
 /**
  * @description
- * Capture and provide necessary credentials.
- * This module must run in background context.
+ * Dynamically capture necessary API credentials.
+ * This module will then provide the credentials
+ * to other modules that need to use them, through
+ * message passing.
+ *
+ * This module must run in background context because
+ * it is using webRequest chrome API. "webRequest"
+ * permission is required in extension manifest.
+ * Also permission to read the specified domain
+ * (twitter.com) is required in manifest.
  *
  * @module
  * @name Tokens
@@ -13,7 +21,11 @@ import {browserVariant} from "../config";
 export default class Tokens {
 
     /**
-     * @ignore
+     * @constructor
+     * @name Tokens
+     * @description
+     * Instantiate an object of this class to activate
+     * token capture and message listener.
      */
     constructor() {
         browserVariant().webRequest.onBeforeSendHeaders.addListener(
@@ -26,6 +38,8 @@ export default class Tokens {
     }
 
     /**
+     * @static
+     * @private
      * Bearer token getter
      * @returns {String|undefined}
      */
@@ -33,15 +47,13 @@ export default class Tokens {
         return this._token;
     }
 
-    /**
-     * Bearer token setter
-     * @param {string} value
-     */
     static set bearerToken(value) {
         this._token = value;
     }
 
     /**
+     * @static
+     * @private
      * CSRF token getter
      * @returns {String|undefined}
      */
@@ -49,21 +61,22 @@ export default class Tokens {
         return this._csrf;
     }
 
-    /**
-     * CSRF token setter
-     * @param {string} value
-     */
     static set csrfToken(value) {
         this._csrf = value;
     }
 
     /**
-     * Allow other modules to request this info
-     * @param {object} request - request body
-     * @param {string} request.tokens - request for authentication tokens
-     * @param {object} sender - message sender info
-     * @param {function} response - callback
-     * @returns {boolean}
+     * @static
+     * @private
+     * @description
+     * Handle incoming messages from other parts of the extension.
+     * This module will respond to requests whose body is `{tokens: true}`
+     * (any truthy value works).
+     *
+     * @param {object} request request body
+     * @param {*} request.tokens request authentication bearer and csrf tokens
+     * @param {object} sender message sender info; populated by browser
+     * @param {function} response callback function; response message will be returned over this callback
      */
     static messageListener(request, sender, response) {
         if (request.tokens) {
@@ -76,8 +89,10 @@ export default class Tokens {
     }
 
     /**
-     * Capture these things on the fly....
-     * @param details
+     * @static
+     * @private
+     * @description Capture the tokens on the fly
+     * @param {Object} details webRequest object
      */
     static getTheTokens(details) {
         if (!details || !details.requestHeaders) return;

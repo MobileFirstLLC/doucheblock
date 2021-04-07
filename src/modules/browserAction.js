@@ -4,7 +4,9 @@ import {OptionsPageURL, badgeColor, browserVariant} from "../config";
 import Storage from "./storage";
 
 /**
- * @description handle extension browser action button click
+ * @description Handle extension browser action button click.
+ * Clicking the icon opens options page. This module will also
+ * set the icon badge value and allow updating it.
  *
  * @module
  * @name BrowserAction
@@ -12,7 +14,11 @@ import Storage from "./storage";
 export default class BrowserAction {
 
     /**
-     * @ignore
+     * @constructor
+     * @name BrowserAction
+     * @description Instantiate `new BrowserAction()` to
+     * initialize badge count and register an icon click
+     * handler.
      */
     constructor() {
 

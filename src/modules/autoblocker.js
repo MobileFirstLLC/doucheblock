@@ -5,21 +5,26 @@ import {requestConfigs, browserVariant} from '../config'
 // noinspection JSUnresolvedVariable,JSDeprecatedSymbols,JSUnresolvedFunction
 /**
  * @description
- * AutoBlocker module runs in the browser tab context and watches DOM changes.
- * It then attempts to find twitter handles in the DOM tree. After finding handles
- * those handles are first placed in a temporary queue to limit API calls; once
- * the queue is "full enough" and API credentials are available, AutoBlocker module
- * will proceed to process the discovered handles by first requesting the bio for
- * each handle and then checking that bio for prohibited keywords. If keyword
- * is detected AutoBlocker will either prompt user to confirm the blocking
- * (user preference) or automatically block, which completes the work done by this
- * module.
+ * AutoBlocker is a content script responsible for discovering Twitter handles
+ * and checking them for banned keywords. It works as follows:
+ *
+ * It runs in the browser tab context and watches DOM changes. It then attempts
+ * to find twitter handles in the DOM tree when the tree changes.
+ *
+ * After finding handles those handles are first placed in a temporary queue
+ * to limit API calls. Once the queue is "full enough" and API credentials a
+ * re available, AutoBlocker module will proceed to process the discovered
+ * handles.
+ *
+ * First it will request the bio for each handle and then checking that bio
+ * for prohibited keywords. If keyword is detected AutoBlocker will either
+ * prompt user to confirm the blocking (user preference) or automatically block,
  *
  * Notes:
- * - The queue stage is used to limit number of API calls, failure to do so will
- * result in 429.
+ * - The queue stage is used to limit number of API calls, and is necessary
+ * to avoid exceeding Twitter rate limit
  * - Handle is only checked once per session; checked handled are kept in memory
- * and will not be checked again until full page reload occurs
+ * and will not be checked again until full page reload occurs.
  *
  * @module
  * @name AutoBlocker

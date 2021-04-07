@@ -4,9 +4,9 @@ import Storage from "../modules/storage";
 import Tabs from "../modules/tabs";
 
 /**
- * Options page script. This translates the page, bind event
- * handlers, and load user preferences then handles any
- * changes to those preferences.
+ * Options page script. This script loads user
+ * preferences then handles any changes to those
+ * preferences.
  *
  * @module
  * @name OptionsPage
@@ -71,7 +71,6 @@ export default class OptionsPage {
     /**
      * New user intro block
      * @returns {HTMLElement}
-     * @constructor
      */
     static get IntroBlock() {
         return OptionsPage.getElement('intro');

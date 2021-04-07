@@ -5,7 +5,7 @@ import {OptionsPageURL} from '../config'
 /**
  * @description Handler for when user installs extension.
  * This module will launch options page. Register listener
- * by calling the constructor of this module.
+ * by instantiating `new OnInstall()`.
  *
  * @module
  * @name OnInstall
@@ -13,7 +13,8 @@ import {OptionsPageURL} from '../config'
 export default class OnInstall {
 
     /**
-     * @ignore
+     * @constructor
+     * @name OnInstall
      */
     constructor() {
         window.chrome.runtime.onInstalled.addListener(details => {
