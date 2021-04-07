@@ -150,9 +150,14 @@ export default class OptionsPage {
     static loadIntro() {
         const isIntro = new URLSearchParams(window.location.search).get('i') === "";
         if (isIntro) {
+            const container = OptionsPage.getElement('intro-container')
+            const close = OptionsPage.getElement('close-intro')
+
             OptionsPage.IntroBlock.innerHTML = OptionsPage.translate('intro')
-            OptionsPage.IntroBlock.style.display = 'block';
+            OptionsPage.IntroBlock.parentNode.style.display = 'block';
             OptionsPage.getElement('source').style.display = 'none';
+            close.onclick = _ => container.parentNode.removeChild(container)
+            close.onkeypress = _ => container.parentNode.removeChild(container)
         }
     }
 }
