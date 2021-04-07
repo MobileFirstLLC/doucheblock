@@ -21,7 +21,7 @@
     "message": "Saved!"
   },
   "intro": {
-    "message": "<p>Hey you, welcome! <span>\uD83D\uDC4B</span></p>DoucheBlock blocks people who use specific keywords in their Twitter bio. You can specify the keywords below.<br/>If you enjoy DoucheBlock, tell your friends!"
+    "message": "<p>Hi there and welcome! <span>\uD83D\uDC4B</span></p>DoucheBlock blocks people who use specific keywords in their Twitter bio. You can specify the keywords below.<br/>If you enjoy DoucheBlock, share it with your friends."
   },
   "source": {
     "message": "This extension is open source:"
