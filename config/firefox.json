@@ -1,6 +1,7 @@
 {
   "release_name": "firefox",
   "manifest": "./manifests/firefox/manifest.json",
+  "assets": "./assets/img/*",
   "js_bundles": [
     {
       "name": "content",
