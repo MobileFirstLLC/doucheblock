@@ -9,11 +9,15 @@
 </h1>
 
 <p align="center">
-<a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img src="https://img.shields.io/chrome-web-store/v/eeledoologbepiegnccedjigjkblhmhi?label=chrome%20web%20store&color=1da1f2" alt="version"/></a> <a href="https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter/"><img src="https://img.shields.io/amo/v/doucheblock-for-twitter" alt="mozilla dd-ons"/></a> <a href="https://travis-ci.com/github/MobileFirstLLC/doucheblock"><img alt="build status" src="https://travis-ci.com/MobileFirstLLC/doucheblock.svg?branch=master"></a> <a href="https://coveralls.io/github/MobileFirstLLC/doucheblock"><img alt="Coveralls github" src="https://img.shields.io/coveralls/github/MobileFirstLLC/doucheblock"></a> <a href="https://codeclimate.com/github/MobileFirstLLC/doucheblock/maintainability"><img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/MobileFirstLLC/doucheblock"></a>
+<a href="https://travis-ci.com/github/MobileFirstLLC/doucheblock"><img alt="build status" src="https://travis-ci.com/MobileFirstLLC/doucheblock.svg?branch=master"></a> <a href="https://coveralls.io/github/MobileFirstLLC/doucheblock"><img alt="Coveralls github" src="https://img.shields.io/coveralls/github/MobileFirstLLC/doucheblock"></a> <a href="https://codeclimate.com/github/MobileFirstLLC/doucheblock/maintainability"><img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/MobileFirstLLC/doucheblock"></a>
 
 <h3 align="center">
   Block anyone with specific keywords in their Twitter bio.<br/><br/>
 </h3>
+
+<blockquote align="center"><h3>DoucheBlock is like an ad blocker but for your Twitter timeline. It will automatically (or after confirmation) block people who use specific keywords in the Twitter bio. It does not contain any tracking and does not interact with any 3rd party servers. Developer never sees your personal data, does not have access to your credentials and cannot know how you use it.</h3></blockquote>
+
+<br/>
 
 <p align="center">
 <a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img alt="install at chrome web store" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge.png"/></a> <a href="https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj"><img alt="Edge Add-Ons" width="250" 
@@ -21,9 +25,18 @@ src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github
  src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-firefox.png"/></a>
 </p>
 
-> ### DoucheBlock is like an ad blocker but for your Twitter timeline. It will automatically (or after confirmation) block people who use specific keywords in the Twitter bio. It does not contain any tracking and does not interact with any 3rd party servers. Developer never sees your personal data, does not have access to your credentials and cannot know how you use it.
-> 
-<br/>
+<table width="100%" align="center"><tr>
+  <td width="400px" align="center"><a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img alt="install at chrome web store" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge.png"/></a><br/><a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img src="https://img.shields.io/chrome-web-store/v/eeledoologbepiegnccedjigjkblhmhi?label=web%20store&color=1da1f2" alt="version"/></a> <a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img alt="Chrome Web Store" src="https://img.shields.io/chrome-web-store/users/eeledoologbepiegnccedjigjkblhmhi"></a>
+  </td>
+  <td width="400px" align="center"><a href="https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj"><img alt="Edge Add-Ons" width="250" 
+src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-edge.png"/></a></td>
+  <td width="400px" align="center"><a href="https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter/"><img alt="Firefox Add-Ons" width="250" 
+ src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-firefox.png"/></a><br/><a href="https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter/"><img src="https://img.shields.io/amo/v/doucheblock-for-twitter" alt="mozilla dd-ons"/></a> <a href="https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter/"><img alt="Mozilla Add-on" src="https://img.shields.io/amo/users/doucheblock-for-twitter"></a>
+</td>
+</tr></table>
+</p>
+
+
 
 <p align="center">
 <img alt="preview" width="500" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/preview.gif"/>
@@ -51,10 +64,10 @@ Support your fellow indie hackers and find more useful social media tools [here 
 
 ### Interesting features & facts
 
-- 🤯 **This extension impersonates the current user.** You do not have to sign in/grant access.
+- 🧬 **This extension impersonates the current user.** You do not have to sign in/grant access.
 Study the source to learn how.
 
-- 🙈 **This extension contains no tracking, analytics, or any such privacy violations.** What you see in  this repo is what you get.
+- 🛡️ **This extension contains no tracking, analytics, or any such privacy violations.** What you see in  this repo is what you get.
 
 - ⏱️ **It took 12 hours to build**, from start to finish, including how to hack the API, build automation, tests and docs 
    (use [extension-cli](https://github.com/MobileFirstLLC/extension-cli) for speed)
