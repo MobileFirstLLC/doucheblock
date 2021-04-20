@@ -138,3 +138,14 @@ export const browserVariant = _ => isFirefox ? browser : window.chrome;
  * @type {String}
  */
 export const badgeColor = isFirefox ? "#FDD835" : "#ff1744"
+
+/**
+ * Flag for marking checked DOM elements. This value can be anything,
+ * but it needs to be sufficiently unique so it doesn't clash with
+ * actual class names.
+ *
+ * @constant
+ * @type {String}
+ */
+
+export const classFlag = 'dbt___seen-it-b4'

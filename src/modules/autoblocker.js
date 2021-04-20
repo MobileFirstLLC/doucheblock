@@ -1,11 +1,12 @@
+import {requestConfigs, browserVariant, classFlag} from '../config'
 import Storage from "./storage";
 import TwitterApi from "./twitterApi";
-import {requestConfigs, browserVariant} from '../config'
+import BlockerState from "./blockerState";
 
 // noinspection JSUnresolvedVariable,JSDeprecatedSymbols,JSUnresolvedFunction
 /**
  * @description
- * AutoBlocker is a content script responsible for discovering Twitter handles
+ * BlockerState is a content script responsible for discovering Twitter handles
  * and checking them for banned keywords. It works as follows:
  *
  * It runs in the browser tab context and watches DOM changes. It then attempts
@@ -13,11 +14,11 @@ import {requestConfigs, browserVariant} from '../config'
  *
  * After finding handles those handles are first placed in a temporary queue
  * to limit API calls. Once the queue is "full enough" and API credentials a
- * re available, AutoBlocker module will proceed to process the discovered
+ * re available, BlockerState module will proceed to process the discovered
  * handles.
  *
  * First it will request the bio for each handle and then checking that bio
- * for prohibited keywords. If keyword is detected AutoBlocker will either
+ * for prohibited keywords. If keyword is detected BlockerState will either
  * prompt user to confirm the blocking (user preference) or automatically block,
  *
  * Notes:
@@ -35,9 +36,7 @@ export default class AutoBlocker {
      * @ignore
      */
     constructor() {
-        // initially this list is empty to say
-        // no handles have been checked yet
-        AutoBlocker.handleCheckList = [];
+        BlockerState.init()
         // Load user preferences then start the
         // DOM tree mutation observer
         AutoBlocker.loadSettings(AutoBlocker.startWatch);
@@ -49,208 +48,11 @@ export default class AutoBlocker {
     }
 
     /**
-     * Flag checked DOM elements with this class;
-     * it can be anything, but you'd want it to be
-     * sufficiently unique so it doesn't clash with
-     * actual class names by accident
-     * @returns {string} - special class name used by
-     * this extension
-     */
-    static get classFlag() {
-        return 'dbt___seen-it-b4';
-    }
-
-    /**
-     * Check if module is ready to make API
-     * calls; it needs API tokens from background
-     * first and this is an async process. Ignoring
-     * this check means API call will fail if not
-     * ready yet.
-     *
-     * @returns {boolean} - true when ready to call API
-     */
-    static get ready() {
-        return !!(AutoBlocker.csrfToken && AutoBlocker.bearerToken)
-    }
-
-    /**
-     * Get the timestamp of last API bio request
-     * @returns {number|undefined} - if undefined,
-     * request had never been made
-     */
-    static get lastBioTimestamp() {
-        return this._bioRequest;
-    }
-
-    /**
-     * Update the timestamp when last bio
-     * API request was made
-     * @param {number} value - UTC milliseconds
-     */
-    static set lastBioTimestamp(value) {
-        this._bioRequest = value;
-    }
-
-    /**
-     * Get bearer token
-     * @returns {string}
-     */
-    static get bearerToken() {
-        return this._token;
-    }
-
-    /**
-     * Set bearer token
-     * @param {string} value
-     */
-    static set bearerToken(value) {
-        this._token = value;
-    }
-
-    /**
-     * Get CSRF token
-     * @returns {string}
-     */
-    static get csrfToken() {
-        return this._csrf;
-    }
-
-    /**
-     * set CSRF token
-     * @param {string} value
-     */
-    static set csrfToken(value) {
-        this._csrf = value;
-    }
-
-    /**
-     * Get the list of flagged words that lead to blocking
-     * @returns {string[]}
-     */
-    static get keyList() {
-        return this._keyList;
-    }
-
-    /**
-     * Setter for list of flagged words
-     * @param {string[]} value
-     */
-    static set keyList(value) {
-        this._keyList = value;
-    }
-
-    /**
-     * Get the list of whitelisted handles
-     * @returns {Object<string,string>}
-     */
-    static get whiteList() {
-        return this._whiteList || {};
-    }
-
-    /**
-     * Setter for list of white listed handles
-     * @param {Object<string,string>} value
-     */
-    static set whiteList(value) {
-        this._whiteList = value;
-    }
-
-    /**
-     * Get confirmation setting
-     * @returns {Boolean}
-     */
-    static get confirmBlocks() {
-        return this._confirm;
-    }
-
-    /**
-     * Setter for confirming blocks manually
-     * @param {Boolean} value
-     */
-    static set confirmBlocks(value) {
-        this._confirm = value;
-    }
-
-    /**
-     * Get the handles checklist
-     * @returns {string[]}
-     */
-    static get handleCheckList() {
-        return this._handleCheckList || [];
-    }
-
-    /**
-     * Set/reset handles list
-     * @param value - new list value
-     */
-    static set handleCheckList(value) {
-        this._handleCheckList = value;
-    }
-
-    /**
-     * Determine if handle has already been checked
-     * for "compliance"
-     * @param {string} handle
-     * @returns {boolean} - true if already checked
-     */
-    static alreadyChecked(handle) {
-        return AutoBlocker
-            .handleCheckList
-            .indexOf(handle) >= 0;
-    }
-
-    /**
-     * Add (multiple) handles to list of "already
-     * processed". Once here that handle will not
-     * be checked again.
-     * @param values - array of handles
-     */
-    static addToHandledList(values) {
-        this._handleCheckList = (this._handleCheckList).concat(values);
-    }
-
-    /**
-     * Get the pending queue
-     * @returns {string[]}
-     */
-    static get pendingQueue() {
-        return this._pendingQueue || [];
-    }
-
-    /**
-     * Add a handle to pending queue
-     * @param {string} value
-     */
-    static addToQueue(value) {
-        this._pendingQueue = (AutoBlocker.pendingQueue).concat([value]);
-    }
-
-    /**
-     * Update client whitelist
-     * @param {string} id
-     * @param {string} handle
-     */
-    static addToWhiteList(id, handle) {
-        Storage.addWhiteList({[id]: handle}, newList => {
-            AutoBlocker.whiteList = newList
-        })
-    }
-
-    /**
-     * Whether given handle is currently in queue
-     * @param {string} handle
-     * @returns {boolean} - true for "yes, it is in queue"
-     */
-    static currentlyInQueue(handle) {
-        return AutoBlocker.pendingQueue.indexOf(handle) >= 0;
-    }
-
-    /**
      * Listen to incoming extension messages
      * to know when to reload settings
      */
     static registerListener() {
-        browserVariant().runtime.onMessage.addListener(
+        window.chrome.runtime.onMessage.addListener(
             (request) => {
                 if (request.updateSettings) {
                     AutoBlocker.loadSettings();
@@ -266,9 +68,9 @@ export default class AutoBlocker {
      */
     static loadSettings(callback) {
         Storage.getSettings(settings => {
-            AutoBlocker.keyList = settings[Storage.keys.blockWords]
-            AutoBlocker.confirmBlocks = settings[Storage.keys.confirm];
-            AutoBlocker.whiteList = settings[Storage.keys.whiteList];
+            BlockerState.keyList = settings[Storage.keys.blockWords]
+            BlockerState.confirmBlocks = settings[Storage.keys.confirm];
+            BlockerState.whiteList = settings[Storage.keys.whiteList];
             if (callback) callback();
         });
     }
@@ -280,9 +82,9 @@ export default class AutoBlocker {
     static obtainTokens(callback) {
         browserVariant().runtime.sendMessage(
             {tokens: true}, ({bearer, csrf}) => {
-                AutoBlocker.bearerToken = bearer;
-                AutoBlocker.csrfToken = csrf;
-                if (AutoBlocker.ready && callback) {
+                BlockerState.bearerToken = bearer;
+                BlockerState.csrfToken = csrf;
+                if (BlockerState.ready && callback) {
                     callback();
                 }
             });
@@ -314,7 +116,7 @@ export default class AutoBlocker {
      */
     static lookForDouches() {
         // Before lookup ensure we have necessary tokens to get bios
-        if (!AutoBlocker.ready) {
+        if (!BlockerState.ready) {
             AutoBlocker.obtainTokens(AutoBlocker.findHandles);
         } else {
             // next look for handles on the page
@@ -335,12 +137,12 @@ export default class AutoBlocker {
             // for example should be a link to a handle
             if (link.innerText &&
                 link.getAttribute('role') === 'link' &&
-                !link.classList.contains(AutoBlocker.classFlag) &&
+                !link.classList.contains(classFlag) &&
                 link.innerText.indexOf('@') >= 0) {
 
                 // found a handle
                 // first disable rechecking same handle DOM element
-                link.classList.add(AutoBlocker.classFlag);
+                link.classList.add(classFlag);
 
                 // extract the exact handle
                 const substr = link.innerText.substr(
@@ -348,10 +150,10 @@ export default class AutoBlocker {
                 const [handle] = (substr.split(/\s+/, 1));
 
                 // if this handle has already been seen, stop
-                if (!AutoBlocker.alreadyChecked(handle) &&
-                    !AutoBlocker.currentlyInQueue(handle)) {
-                    AutoBlocker.addToQueue(handle);
-                    if (AutoBlocker.pendingQueue.length >=
+                if (!BlockerState.alreadyChecked(handle) &&
+                    !BlockerState.currentlyInQueue(handle)) {
+                    BlockerState.addToQueue(handle);
+                    if (BlockerState.pendingQueue.length >=
                         requestConfigs.maxLookupCount) {
                         break;
                     }
@@ -368,29 +170,30 @@ export default class AutoBlocker {
     static shouldCheckBios() {
         const shouldRequest =
             // queue cannot be empty AND
-            AutoBlocker.pendingQueue.length > 0 &&
+            BlockerState.pendingQueue.length > 0 &&
             // EITHER: no previous request and at
             // least some pending handles
-            ((!AutoBlocker.lastBioTimestamp &&
-                AutoBlocker.pendingQueue.length > 0) ||
+            ((!BlockerState.lastBioTimestamp &&
+                BlockerState.pendingQueue.length > 0) ||
                 // - OR - it has been long enough since last request
-                (Math.abs(Date.now() - AutoBlocker.lastBioTimestamp) >
+                (Math.abs(Date.now() - BlockerState.lastBioTimestamp) >
                     requestConfigs.maxInterval));
 
         if (shouldRequest) {
-            AutoBlocker.lastBioTimestamp = Date.now()
+            BlockerState.lastBioTimestamp = Date.now()
             // take max names from the queue
-            const N = Math.min(AutoBlocker.pendingQueue.length, requestConfigs.maxLookupCount)
-            const queue = [...AutoBlocker.pendingQueue.splice(0, N)];
+            const N = Math.min(BlockerState.pendingQueue.length,
+                requestConfigs.maxLookupCount)
+            const queue = [...BlockerState.pendingQueue.splice(0, N)];
             TwitterApi.getTheBio(queue,
-                AutoBlocker.bearerToken,
-                AutoBlocker.csrfToken,
+                BlockerState.bearerToken,
+                BlockerState.csrfToken,
                 (bios) => {
-                    AutoBlocker.addToHandledList(queue);
+                    BlockerState.addToHandledList(queue);
                     AutoBlocker.processBios(bios);
                 },
                 () => {
-                    queue.map(name => AutoBlocker.addToQueue(name))
+                    queue.map(name => BlockerState.addToQueue(name))
                 });
         }
     }
@@ -431,12 +234,12 @@ export default class AutoBlocker {
      */
     static shouldBlock({bio, id, handle, name}) {
         return new Promise((resolve) => {
-            if (!id || !bio || AutoBlocker.whiteList[id]) {
+            if (!id || !bio || BlockerState.whiteList[id]) {
                 return resolve();
             }
 
             const lowercaseBio = bio.toLowerCase();
-            const keywordMatch = AutoBlocker.keyList
+            const keywordMatch = BlockerState.keyList
                 .filter(w => lowercaseBio.indexOf(w) >= 0)
                 .length;
 
@@ -445,15 +248,15 @@ export default class AutoBlocker {
             }
 
             // user picked cancel -> whitelist this handle
-            if (AutoBlocker.confirmBlocks &&
+            if (BlockerState.confirmBlocks &&
                 !window.confirm(AutoBlocker.buildAlert(bio, name))) {
-                AutoBlocker.addToWhiteList(id, handle);
+                BlockerState.addToWhiteList(id, handle);
             }
             // auto-block or use clicked OK to block
             else {
                 TwitterApi.doTheBlock(id,
-                    AutoBlocker.bearerToken,
-                    AutoBlocker.csrfToken);
+                    BlockerState.bearerToken,
+                    BlockerState.csrfToken);
             }
             return window.setTimeout(resolve, 500);
         })
