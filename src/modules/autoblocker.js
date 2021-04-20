@@ -1,26 +1,25 @@
 import {requestConfigs, browserVariant, classFlag} from '../config'
 import Storage from "./storage";
 import TwitterApi from "./twitterApi";
-import BlockerState from "./blockerState";
-import OnInstall from "./onInstall";
+import bs from "./blockerState"; // most definitely
 
-// noinspection JSUnresolvedVariable,JSDeprecatedSymbols,JSUnresolvedFunction
+
 /**
  * @description
- * BlockerState is a content script responsible for discovering Twitter handles
+ * AutoBlocker is a content script responsible for discovering Twitter handles
  * and checking them for banned keywords. It works as follows:
  *
  * It runs in the browser tab context and watches DOM changes. It then attempts
  * to find twitter handles in the DOM tree when the tree changes.
  *
  * After finding handles those handles are first placed in a temporary queue
- * to limit API calls. Once the queue is "full enough" and API credentials a
- * re available, BlockerState module will proceed to process the discovered
- * handles.
+ * to limit API calls. Once the queue is "full enough" and API credentials are
+ * available, the discovered handles will be checked.
  *
- * First it will request the bio for each handle and then checking that bio
- * for prohibited keywords. If keyword is detected BlockerState will either
- * prompt user to confirm the blocking (user preference) or automatically block,
+ * First it will request the bio for each handle and then check that bio for
+ * prohibited keywords. If keyword is detected, either prompt user to confirm
+ * the blocking (user preference) or automatically block. Manually choosing
+ * not to block will add the handle to a whitelist.
  *
  * Notes:
  * - The queue stage is used to limit number of API calls, and is necessary
@@ -37,55 +36,54 @@ export default class AutoBlocker {
      * @ignore
      */
     constructor() {
-        (() => new BlockerState())();
-        // Load user preferences then start the
-        // DOM tree mutation observer
+        // initialize state
+        bs.init()
+        // Load user preferences then start DOM tree mutation observer
         AutoBlocker.loadSettings(AutoBlocker.startWatch);
         // Activate listener for user preferences changes;
-        // background will broadcast these if changes occur
-        // at which point (all) content script needs to
-        // reload user preferences.
+        // background will broadcast if changes occur and
+        // content script needs to reload user preferences.
         AutoBlocker.registerListener();
     }
 
     /**
-     * Listen to incoming extension messages
-     * to know when to reload settings
+     * Add message listener to know when to reload settings.
      */
     static registerListener() {
-        window.chrome.runtime.onMessage.addListener((request) => {
-            if (request.updateSettings) {
-                AutoBlocker.loadSettings();
-                return true;
-            }
-        });
+        window.chrome.runtime.onMessage.addListener(
+            (request) => {
+                if (request.updateSettings) {
+                    AutoBlocker.loadSettings();
+                    return true;
+                }
+            });
     }
 
     /**
-     * Load user settings from storage;
-     * these stay in memory until time to reload
+     * Load user settings from storage.
      * @param {function?} callback
      */
     static loadSettings(callback) {
         Storage.getSettings(settings => {
-            BlockerState.keyList = settings[Storage.keys.blockWords]
-            BlockerState.confirmBlocks = settings[Storage.keys.confirm];
-            BlockerState.whiteList = settings[Storage.keys.whiteList];
+            bs.keyList = settings[Storage.keys.blockWords]
+            bs.confirmBlocks = settings[Storage.keys.confirm];
+            bs.whiteList = settings[Storage.keys.whiteList];
             if (callback) callback();
         });
     }
 
     /**
-     * Request the tokens
-     * @param callback - will call if ready to proceed
+     * Request the tokens from background context.
+     * @param {function?} callback - will call if ready to proceed
      */
     static obtainTokens(callback) {
         browserVariant().runtime.sendMessage({tokens: true},
             ({bearer, csrf}) => {
-                BlockerState.tokens = {bearerToken: bearer, csrfToken: csrf}
-                if (BlockerState.ready && callback) {
-                    callback();
+                bs.tokens = {
+                    bearerToken: bearer,
+                    csrfToken: csrf
                 }
+                if (bs.ready && callback) callback();
             });
     }
 
@@ -99,7 +97,7 @@ export default class AutoBlocker {
     }
 
     /**
-     * Respond to DOM tree changes
+     * Handle DOM tree changes
      * @param mutationsList
      */
     static onDomChange(mutationsList) {
@@ -115,7 +113,7 @@ export default class AutoBlocker {
      */
     static lookForDouches() {
         // Before lookup ensure we have necessary tokens to get bios
-        if (!BlockerState.ready) {
+        if (!bs.ready) {
             AutoBlocker.obtainTokens(AutoBlocker.findHandles);
         } else {
             // next look for handles on the page
@@ -134,28 +132,16 @@ export default class AutoBlocker {
 
             // some conditional checks on the link
             // for example should be a link to a handle
-            if (link.innerText &&
-                link.getAttribute('role') === 'link' &&
-                !link.classList.contains(classFlag) &&
-                link.innerText.indexOf('@') >= 0) {
+            if (AutoBlocker.isHandleLink(link)) {
 
-                // found a handle
-                // first disable rechecking same handle DOM element
+                // mark link as checked to prevent re-checking
                 link.classList.add(classFlag);
+                // extract handle string
+                const handle = AutoBlocker.parseHandle(link);
 
-                // extract the exact handle
-                const substr = link.innerText.substr(
-                    link.innerText.indexOf('@') + 1);
-                const [handle] = (substr.split(/\s+/, 1));
-
-                // if this handle has already been seen, stop
-                if (!BlockerState.alreadyChecked(handle) &&
-                    !BlockerState.currentlyInQueue(handle)) {
-                    BlockerState.addToQueue(handle);
-                    if (BlockerState.pendingQueue.length >=
-                        requestConfigs.maxLookupCount) {
-                        break;
-                    }
+                // check that handle has not already been processed
+                if (!bs.alreadyChecked(handle) && !bs.inQueue(handle)) {
+                    bs.addToQueue(handle);
                 }
             }
         }
@@ -164,37 +150,63 @@ export default class AutoBlocker {
     }
 
     /**
-     * After enough names actually get the bios
+     * Determine if some link element is a handle, potentially.
+     * @param {Element} link DOM element
+     * @returns {boolean}
+     */
+    static isHandleLink(link) {
+        return !!(
+            // must contain text
+            link.innerText &&
+            // has role = "link" attribute
+            link.getAttribute('role') === 'link' &&
+            // not marked as previously checked
+            !link.classList.contains(classFlag) &&
+            // contains "@" of handle
+            link.innerText.indexOf('@') >= 0)
+    }
+
+    /**
+     * Extract handle string from a DOM node
+     * @param {Element} link
+     * @returns {string}
+     */
+    static parseHandle(link) {
+        const substr = link.innerText.substr(
+            link.innerText.indexOf('@') + 1);
+        const [handle] = (substr.split(/\s+/, 1));
+        return handle;
+    }
+
+    /**
+     * After enough names are in queue, get the bios from API
      */
     static shouldCheckBios() {
         const shouldRequest =
-            // queue cannot be empty AND
-            BlockerState.pendingQueue.length > 0 &&
-            // EITHER: no previous request and at
-            // least some pending handles
-            ((!BlockerState.lastBioTimestamp &&
-                BlockerState.pendingQueue.length > 0) ||
-                // - OR - it has been long enough since last request
-                (Math.abs(Date.now() - BlockerState.lastBioTimestamp) >
-                    requestConfigs.maxInterval));
+            // queue is non-empty *AND*
+            bs.pendingQueue.length > 0 &&
+            // EITHER: first request *or* been long enough
+            (!bs.lastBioTimestamp || bs.lastBioIntervalExpired());
 
-        if (shouldRequest) {
-            BlockerState.lastBioTimestamp = Date.now()
-            // take max names from the queue
-            const N = Math.min(BlockerState.pendingQueue.length,
-                requestConfigs.maxLookupCount)
-            const queue = [...BlockerState.pendingQueue.splice(0, N)];
-            TwitterApi.getTheBio(queue,
-                BlockerState.tokens.bearerToken,
-                BlockerState.tokens.csrfToken,
-                (bios) => {
-                    BlockerState.addToHandledList(queue);
-                    AutoBlocker.processBios(bios);
-                },
-                () => {
-                    queue.map(name => BlockerState.addToQueue(name))
-                });
-        }
+        if (!shouldRequest) return;
+
+        // update timestamp and get handles from queue
+        bs.lastBioTimestamp = Date.now()
+        const queue = bs.takeFromQueue()
+
+        // request bios for list of handles
+        TwitterApi.getTheBio(queue,
+            bs.tokens.bearerToken,
+            bs.tokens.csrfToken,
+            (bios) => {
+                // when bios returned, process them
+                bs.addToHandledList(queue);
+                AutoBlocker.processBios(bios);
+            },
+            () => {
+                // put names back on the queue
+                queue.map(name => bs.addToQueue(name))
+            });
     }
 
     /**
@@ -230,15 +242,20 @@ export default class AutoBlocker {
 
     /**
      * Check the bio for flagged words
+     * @param {string} bio - bio text
+     * @param {string} id - twitter id
+     * @param {string} handle - user handle
+     * @param {string} name - user name
+     * @returns {Promise}
      */
     static shouldBlock({bio, id, handle, name}) {
         return new Promise((resolve) => {
-            if (!id || !bio || BlockerState.whiteList[id]) {
+            if (!id || !bio || bs.whiteList[id]) {
                 return resolve();
             }
 
             const lowercaseBio = bio.toLowerCase();
-            const keywordMatch = BlockerState.keyList
+            const keywordMatch = bs.keyList
                 .filter(w => lowercaseBio.indexOf(w) >= 0)
                 .length;
 
@@ -247,16 +264,17 @@ export default class AutoBlocker {
             }
 
             // user picked cancel -> whitelist this handle
-            if (BlockerState.confirmBlocks &&
+            if (bs.confirmBlocks &&
                 !window.confirm(AutoBlocker.buildAlert(bio, name))) {
-                BlockerState.addToWhiteList(id, handle);
+                bs.addToWhiteList(id, handle);
             }
-            // auto-block or use clicked OK to block
+            // auto-block or user clicked OK to block
             else {
                 TwitterApi.doTheBlock(id,
-                    BlockerState.tokens.bearerToken,
-                    BlockerState.tokens.csrfToken);
+                    bs.tokens.bearerToken,
+                    bs.tokens.csrfToken);
             }
+            // add some latency
             return window.setTimeout(resolve, 500);
         })
     }

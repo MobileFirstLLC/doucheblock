@@ -1,9 +1,9 @@
 import Storage from "./storage";
+import {requestConfigs} from "../config";
 
-// noinspection JSUnresolvedVariable,JSDeprecatedSymbols,JSUnresolvedFunction
 /**
  * @description
- * Manage autoBlocker state
+ * Manage blocker state
  *
  * @module
  * @name BlockerState
@@ -13,7 +13,7 @@ export default class BlockerState {
     /**
      * Initial state
      */
-    constructor() {
+    static init() {
         BlockerState.handleCheckList = [];
     }
 
@@ -43,6 +43,15 @@ export default class BlockerState {
 
     static set lastBioTimestamp(value) {
         this._bioRequest = value;
+    }
+
+    /**
+     * It has been "long enough" since last buio request
+     * @returns {boolean}
+     */
+    static lastBioIntervalExpired() {
+        return Math.abs(Date.now() - BlockerState.lastBioTimestamp)
+            > requestConfigs.maxInterval;
     }
 
     /**
@@ -157,8 +166,18 @@ export default class BlockerState {
      * @param {string} handle
      * @returns {boolean} - true for "yes, it is in queue"
      */
-    static currentlyInQueue(handle) {
+    static inQueue(handle) {
         return BlockerState.pendingQueue.indexOf(handle) >= 0;
+    }
+
+    /**
+     * Take allowed max number of names from the queue
+     * @returns {string[]}
+     */
+    static takeFromQueue() {
+        const N = Math.min(BlockerState.pendingQueue.length,
+            requestConfigs.maxLookupCount)
+        return [...BlockerState.pendingQueue.splice(0, N)];
     }
 }
 
