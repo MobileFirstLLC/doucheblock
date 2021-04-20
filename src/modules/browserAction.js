@@ -40,15 +40,25 @@ export default class BrowserAction {
         Storage.getBlockCount(BrowserAction.setBadge)
     }
 
+
+    /**
+     * Convert large numbers to shorter display format
+     * @param {number} value
+     * @returns {string}
+     */
+    static formatBadgeCount(value) {
+        return value < 10000 ?
+            value.toString() :
+            (value / 1000).toFixed(0) + "K"
+    }
+
     /**
      * Update extension icon badge counter value
      * @param {number} value - the numeric value to display
      */
     static setBadge(value) {
         if (!value) return;
-        const displayValue = value < 10000 ?
-            value.toString() :
-            (value / 1000).toFixed(0) + "K"
+        const displayValue = BrowserAction.formatBadgeCount(value)
         browserVariant().browserAction
             .setBadgeText({text: displayValue});
         browserVariant().browserAction

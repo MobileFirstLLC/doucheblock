@@ -1,13 +1,11 @@
 import AutoBlocker from "../src/modules/autoblocker";
 import {defaultConfig} from "../src/config";
+import MockMutationObserver from './_mocks'
 
 describe('Content script', () => {
 
     beforeEach(() => {
-        global.MutationObserver = class {
-            observe() {
-            }
-        }
+        global.MutationObserver = MockMutationObserver
         chrome.storage.sync.get.yields(defaultConfig);
     });
 
@@ -19,7 +17,10 @@ describe('Content script', () => {
     it('It loads user preferences', () => {
         sandbox.spy(AutoBlocker, 'loadSettings')
         const ab = new AutoBlocker(); // init
-        expect(AutoBlocker.loadSettings.calledOnce, 'loads settings on init').to.be.true;
+        expect(AutoBlocker.loadSettings.calledOnce,
+            'loads settings on init').to.be.true;
     });
 
 });
+
+

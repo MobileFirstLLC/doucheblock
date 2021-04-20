@@ -19,6 +19,8 @@
  */
 export const OptionsPageURL = "index.html"
 
+export const OnInstallURL = OptionsPageURL + '?i'
+
 /*
  * Default user settings
  *
@@ -44,7 +46,13 @@ export const defaultConfig = {
      * @constant
      * @type {number}
      */
-    count: 0
+    count: 0,
+    /**
+     * Whitelisted handles that are not subject to blocking
+     * @constant
+     * @type {Object<string, string>}
+     */
+    whiteList: {}
 }
 
 /*

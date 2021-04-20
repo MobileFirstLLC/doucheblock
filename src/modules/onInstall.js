@@ -1,6 +1,6 @@
 // noinspection JSUnresolvedVariable,JSDeprecatedSymbols
 
-import {OptionsPageURL} from '../config'
+import {OnInstallURL} from '../config'
 
 /**
  * @description Handler for when user installs extension.
@@ -19,7 +19,7 @@ export default class OnInstall {
     constructor() {
         window.chrome.runtime.onInstalled.addListener(details => {
             if (details.reason === 'install') {
-                window.chrome.tabs.create({url: OptionsPageURL + '?i'});
+                window.chrome.tabs.create({url: OnInstallURL});
             }
         });
     }
