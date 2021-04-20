@@ -34,8 +34,13 @@ export default class TwitterApi {
                 try {
                     const bios = JSON
                         .parse(xhr.response)
-                        .map(({description, id_str, name}) => {
-                            return {bio: description, id: id_str, name: name}
+                        .map(({description, screen_name, id_str, name}) => {
+                            return {
+                                bio: description,
+                                id: id_str,
+                                name: name,
+                                handle: screen_name
+                            }
                         })
                     callback(bios);
                 } catch (e) {

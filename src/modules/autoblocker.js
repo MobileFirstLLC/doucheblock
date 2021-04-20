@@ -140,6 +140,22 @@ export default class AutoBlocker {
     }
 
     /**
+     * Get the list of whitelisted handles
+     * @returns {Object<string,string>}
+     */
+    static get whiteList() {
+        return this._whiteList || {};
+    }
+
+    /**
+     * Setter for list of white listed handles
+     * @param {Object<string,string>} value
+     */
+    static set whiteList(value) {
+        this._whiteList = value;
+    }
+
+    /**
      * Get confirmation setting
      * @returns {Boolean}
      */
@@ -210,6 +226,17 @@ export default class AutoBlocker {
     }
 
     /**
+     * Update client whitelist
+     * @param {string} id
+     * @param {string} handle
+     */
+    static addToWhiteList(id, handle) {
+        Storage.addWhiteList({[id]: handle}, newList => {
+            AutoBlocker.whiteList = newList
+        })
+    }
+
+    /**
      * Whether given handle is currently in queue
      * @param {string} handle
      * @returns {boolean} - true for "yes, it is in queue"
@@ -241,6 +268,7 @@ export default class AutoBlocker {
         Storage.getSettings(settings => {
             AutoBlocker.keyList = settings[Storage.keys.blockWords]
             AutoBlocker.confirmBlocks = settings[Storage.keys.confirm];
+            AutoBlocker.whiteList = settings[Storage.keys.whiteList];
             if (callback) callback();
         });
     }
@@ -359,11 +387,24 @@ export default class AutoBlocker {
                 AutoBlocker.csrfToken,
                 (bios) => {
                     AutoBlocker.addToHandledList(queue);
-                    bios.map(o => AutoBlocker.shouldBlock(o));
+                    AutoBlocker.processBios(bios);
                 },
                 () => {
                     queue.map(name => AutoBlocker.addToQueue(name))
                 });
+        }
+    }
+
+    /**
+     * Check a list of bios for blocking
+     * @param {Object[]} bios
+     */
+    static processBios(bios) {
+        if (bios && bios.length) {
+            const first = bios.shift();
+            AutoBlocker.shouldBlock(first)
+                .then(_ => AutoBlocker.processBios(bios))
+                .catch();
         }
     }
 
@@ -388,19 +429,33 @@ export default class AutoBlocker {
     /**
      * Check the bio for flagged words
      */
-    static shouldBlock({bio, id, name}) {
-        if (!id || !bio) return;
-        const lowercaseBio = bio.toLowerCase();
-        const keywordMatch = AutoBlocker.keyList
-            .filter(w => lowercaseBio.indexOf(w) >= 0)
-            .length;
-        if (keywordMatch) {
-            if (!AutoBlocker.confirmBlocks ||
-                window.confirm(AutoBlocker.buildAlert(bio, name))) {
+    static shouldBlock({bio, id, handle, name}) {
+        return new Promise((resolve) => {
+            if (!id || !bio || AutoBlocker.whiteList[id]) {
+                return resolve();
+            }
+
+            const lowercaseBio = bio.toLowerCase();
+            const keywordMatch = AutoBlocker.keyList
+                .filter(w => lowercaseBio.indexOf(w) >= 0)
+                .length;
+
+            if (!keywordMatch) {
+                return resolve();
+            }
+
+            // user picked cancel -> whitelist this handle
+            if (AutoBlocker.confirmBlocks &&
+                !window.confirm(AutoBlocker.buildAlert(bio, name))) {
+                AutoBlocker.addToWhiteList(id, handle);
+            }
+            // auto-block or use clicked OK to block
+            else {
                 TwitterApi.doTheBlock(id,
                     AutoBlocker.bearerToken,
                     AutoBlocker.csrfToken);
             }
-        }
+            return window.setTimeout(resolve, 500);
+        })
     }
 }

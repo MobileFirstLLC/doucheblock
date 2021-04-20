@@ -24,7 +24,7 @@
     "message": "<p>Hi there and welcome! <span>\uD83D\uDC4B</span></p>DoucheBlock blocks people who use specific keywords in their Twitter bio. You can specify the keywords below.<br/>If you enjoy DoucheBlock, share it with your friends."
   },
   "source": {
-    "message": "This extension is open source:"
+    "message": "DoucheBlock is open source!"
   },
   "blockCount": {
     "message": "This extension has blocked {N} douches for you."
