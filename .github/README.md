@@ -15,10 +15,6 @@
   Block anyone with specific keywords in their Twitter bio.<br/><br/>
 </h3>
 
-<blockquote align="center"><h3>DoucheBlock is like an ad blocker but for your Twitter timeline. It will automatically (or after confirmation) block people who use specific keywords in the Twitter bio. It does not contain any tracking and does not interact with any 3rd party servers. Developer never sees your personal data, does not have access to your credentials and cannot know how you use it.</h3></blockquote>
-
-<br/>
-
 <table width="100%" align="center"><tr>
   <td width="400px" align="center"><a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img alt="install at chrome web store" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge.png"/></a><br/><a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img src="https://img.shields.io/chrome-web-store/v/eeledoologbepiegnccedjigjkblhmhi?label=web%20store&color=1da1f2" alt="version"/></a> <a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img alt="Chrome Web Store" src="https://img.shields.io/chrome-web-store/users/eeledoologbepiegnccedjigjkblhmhi"></a></td>
   <td width="400px" align="center"><a href="https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj"><img alt="Edge Add-Ons" width="250" 
@@ -29,7 +25,9 @@ src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github
 </tr></table>
 </p>
 
+<blockquote align="center"><h3>DoucheBlock is like an ad blocker but for your Twitter timeline. It will automatically (or after confirmation) block people who use specific keywords in the Twitter bio. It does not contain any tracking and does not interact with any 3rd party servers. Developer never sees your personal data, does not have access to your credentials and cannot know how you use it.</h3></blockquote>
 
+<br/>
 
 <p align="center">
 <img alt="preview" width="500" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/preview.gif"/>
