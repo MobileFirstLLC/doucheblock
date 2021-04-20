@@ -21,7 +21,8 @@ export default class Storage {
         return {
             blockWords: 'blockWords',
             confirm: 'confirm',
-            count: 'count'
+            count: 'count',
+            whiteList: 'whiteList'
         };
     };
 
@@ -60,12 +61,12 @@ export default class Storage {
      */
     static getSettings(callback) {
         Storage.get(null, res => {
-            const {confirm: c, blockWords: bw} = Storage.keys
+            const {confirm: c, blockWords: bw, whiteList: wl} = Storage.keys
             const result = {
                 ...defaultConfig, ...res,
-                [c]: res[c] === undefined ?
-                    defaultConfig.confirm : res[c],
-                [bw]: Storage.parseKeywords(res)
+                [c]: res[c] === undefined ? defaultConfig.confirm : res[c],
+                [bw]: Storage.parseKeywords(res),
+                [wl]: res[wl] || {},
             }
             callback(result);
         })
@@ -121,6 +122,20 @@ export default class Storage {
             // do not assume background context!
             // broadcast this change to all interested listeners
             browserVariant().runtime.sendMessage({increment: newCount});
+        });
+    }
+
+    /**
+     * @static
+     * @description
+     * Update the count of completed block requests
+     */
+    static addWhiteList(entry, callback) {
+        Storage.get(Storage.keys.whiteList, res => {
+            const initList = res[Storage.keys.whiteList] || {};
+            const newList = {...initList, ...entry}
+            Storage.save(Storage.keys.whiteList, newList);
+            callback(newList)
         });
     }
 
