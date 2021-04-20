@@ -61,7 +61,7 @@ export const requestConfigs = {
      * @constant
      * @type {number}
      */
-    maxInterval: 30 * 1000,
+    maxInterval: 20 * 1000,
     /**
      * Max number of handles to add to single bio request. This
      * is not a variable, this is a fixed number enforced by Twitter.
@@ -147,5 +147,4 @@ export const badgeColor = isFirefox ? "#FDD835" : "#ff1744"
  * @constant
  * @type {String}
  */
-
 export const classFlag = 'dbt___seen-it-b4'

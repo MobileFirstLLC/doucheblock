@@ -5,15 +5,14 @@ import {browserVariant} from "../config";
 /**
  * @description
  * Dynamically capture necessary API credentials.
- * This module will then provide the credentials
- * to other modules that need to use them, through
- * message passing.
  *
- * This module must run in background context because
- * it is using webRequest chrome API. "webRequest"
- * permission is required in extension manifest.
- * Also permission to read the specified domain
- * (twitter.com) is required in manifest.
+ * This module will then provide the credentials to other modules that
+ * need to use them, through message passing.
+ *
+ * This module must run in background context because it is using webRequest
+ * chrome API. "webRequest" permission is required in extension manifest.
+ * Also permission to read the specified domain (twitter.com) is required
+ * in manifest.
  *
  * @module
  * @name Tokens
@@ -73,7 +72,8 @@ export default class Tokens {
      * @param {object} request request body
      * @param {*} request.tokens request authentication bearer and csrf tokens
      * @param {object} sender message sender info; populated by browser
-     * @param {function} response callback function; response message will be returned over this callback
+     * @param {function} response callback function; response message will
+     *  be returned over this callback
      */
     static messageListener(request, sender, response) {
         if (request.tokens) {

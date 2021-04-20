@@ -17,6 +17,37 @@ import Storage from "./storage";
 export default class TwitterApi {
 
     /**
+     * Map Twitter API user object to local model
+     * @param description - bio text
+     * @param screen_name - handle
+     * @param id_str - unique id str
+     * @param name - user's display name
+     * @returns {{name: string, bio: string, handle: string, id: string}}
+     */
+    static mapUser({description, screen_name, id_str, name}) {
+        return {
+            bio: description,
+            id: id_str,
+            name: name,
+            handle: screen_name
+        }
+    }
+
+    /**
+     * Parse raw API response
+     * @param {string} response - response from API
+     * @param {function} callback - function to call on success
+     * @param {function} errorCallback - function to call on error
+     */
+    static tryParseBios(response, callback, errorCallback) {
+        try {
+            callback(JSON.parse(response).map(TwitterApi.mapUser));
+        } catch (e) {
+            errorCallback()
+        }
+    }
+
+    /**
      * Request user bios
      * @param {string[]} handles - user handles to check
      * @param {string} bearer - authentication Bearer token
@@ -31,21 +62,8 @@ export default class TwitterApi {
         xhr.setRequestHeader('x-csrf-token', csrf);
         xhr.onload = _ => {
             if (xhr.readyState === 4) {
-                try {
-                    const bios = JSON
-                        .parse(xhr.response)
-                        .map(({description, screen_name, id_str, name}) => {
-                            return {
-                                bio: description,
-                                id: id_str,
-                                name: name,
-                                handle: screen_name
-                            }
-                        })
-                    callback(bios);
-                } catch (e) {
-                    errorCallback()
-                }
+                TwitterApi.tryParseBios(xhr.response,
+                    callback, errorCallback)
             }
         }
         xhr.onerror = _ => errorCallback();
