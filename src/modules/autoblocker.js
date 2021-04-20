@@ -2,6 +2,7 @@ import {requestConfigs, browserVariant, classFlag} from '../config'
 import Storage from "./storage";
 import TwitterApi from "./twitterApi";
 import BlockerState from "./blockerState";
+import OnInstall from "./onInstall";
 
 // noinspection JSUnresolvedVariable,JSDeprecatedSymbols,JSUnresolvedFunction
 /**
@@ -36,7 +37,7 @@ export default class AutoBlocker {
      * @ignore
      */
     constructor() {
-        BlockerState.init()
+        (() => new BlockerState())();
         // Load user preferences then start the
         // DOM tree mutation observer
         AutoBlocker.loadSettings(AutoBlocker.startWatch);
@@ -52,13 +53,12 @@ export default class AutoBlocker {
      * to know when to reload settings
      */
     static registerListener() {
-        window.chrome.runtime.onMessage.addListener(
-            (request) => {
-                if (request.updateSettings) {
-                    AutoBlocker.loadSettings();
-                    return true;
-                }
-            });
+        window.chrome.runtime.onMessage.addListener((request) => {
+            if (request.updateSettings) {
+                AutoBlocker.loadSettings();
+                return true;
+            }
+        });
     }
 
     /**
@@ -80,10 +80,9 @@ export default class AutoBlocker {
      * @param callback - will call if ready to proceed
      */
     static obtainTokens(callback) {
-        browserVariant().runtime.sendMessage(
-            {tokens: true}, ({bearer, csrf}) => {
-                BlockerState.bearerToken = bearer;
-                BlockerState.csrfToken = csrf;
+        browserVariant().runtime.sendMessage({tokens: true},
+            ({bearer, csrf}) => {
+                BlockerState.tokens = {bearerToken: bearer, csrfToken: csrf}
                 if (BlockerState.ready && callback) {
                     callback();
                 }
@@ -186,8 +185,8 @@ export default class AutoBlocker {
                 requestConfigs.maxLookupCount)
             const queue = [...BlockerState.pendingQueue.splice(0, N)];
             TwitterApi.getTheBio(queue,
-                BlockerState.bearerToken,
-                BlockerState.csrfToken,
+                BlockerState.tokens.bearerToken,
+                BlockerState.tokens.csrfToken,
                 (bios) => {
                     BlockerState.addToHandledList(queue);
                     AutoBlocker.processBios(bios);
@@ -255,8 +254,8 @@ export default class AutoBlocker {
             // auto-block or use clicked OK to block
             else {
                 TwitterApi.doTheBlock(id,
-                    BlockerState.bearerToken,
-                    BlockerState.csrfToken);
+                    BlockerState.tokens.bearerToken,
+                    BlockerState.tokens.csrfToken);
             }
             return window.setTimeout(resolve, 500);
         })

@@ -3,7 +3,7 @@ import Storage from "./storage";
 // noinspection JSUnresolvedVariable,JSDeprecatedSymbols,JSUnresolvedFunction
 /**
  * @description
- * Basic object for managing state
+ * Manage autoBlocker state
  *
  * @module
  * @name BlockerState
@@ -13,7 +13,7 @@ export default class BlockerState {
     /**
      * Initial state
      */
-    static init() {
+    constructor() {
         BlockerState.handleCheckList = [];
     }
 
@@ -27,7 +27,9 @@ export default class BlockerState {
      * @returns {boolean} - true when ready to call API
      */
     static get ready() {
-        return !!(BlockerState.csrfToken && BlockerState.bearerToken)
+        return !!(BlockerState.tokens &&
+            BlockerState.tokens.csrfToken &&
+            BlockerState.tokens.bearerToken)
     }
 
     /**
@@ -39,45 +41,20 @@ export default class BlockerState {
         return this._bioRequest;
     }
 
-    /**
-     * Update the timestamp when last bio
-     * API request was made
-     * @param {number} value - UTC milliseconds
-     */
     static set lastBioTimestamp(value) {
         this._bioRequest = value;
     }
 
     /**
-     * Get bearer token
-     * @returns {string}
+     * API tokens
+     * @returns {Object}
      */
-    static get bearerToken() {
-        return this._token;
+    static get tokens() {
+        return this._tokens;
     }
 
-    /**
-     * Set bearer token
-     * @param {string} value
-     */
-    static set bearerToken(value) {
-        this._token = value;
-    }
-
-    /**
-     * Get CSRF token
-     * @returns {string}
-     */
-    static get csrfToken() {
-        return this._csrf;
-    }
-
-    /**
-     * set CSRF token
-     * @param {string} value
-     */
-    static set csrfToken(value) {
-        this._csrf = value;
+    static set tokens(value) {
+        this._tokens = value;
     }
 
     /**
@@ -88,10 +65,6 @@ export default class BlockerState {
         return this._keyList;
     }
 
-    /**
-     * Setter for list of flagged words
-     * @param {string[]} value
-     */
     static set keyList(value) {
         this._keyList = value;
     }
@@ -104,12 +77,19 @@ export default class BlockerState {
         return this._whiteList || {};
     }
 
-    /**
-     * Setter for list of white listed handles
-     * @param {Object<string,string>} value
-     */
     static set whiteList(value) {
         this._whiteList = value;
+    }
+
+    /**
+     * Update client whitelist
+     * @param {string} id
+     * @param {string} handle
+     */
+    static addToWhiteList(id, handle) {
+        Storage.addWhiteList({[id]: handle}, newList => {
+            BlockerState.whiteList = newList
+        })
     }
 
     /**
@@ -120,10 +100,6 @@ export default class BlockerState {
         return this._confirm;
     }
 
-    /**
-     * Setter for confirming blocks manually
-     * @param {Boolean} value
-     */
     static set confirmBlocks(value) {
         this._confirm = value;
     }
@@ -136,22 +112,8 @@ export default class BlockerState {
         return this._handleCheckList || [];
     }
 
-    /**
-     * Set/reset handles list
-     * @param value - new list value
-     */
     static set handleCheckList(value) {
         this._handleCheckList = value;
-    }
-
-    /**
-     * Determine if handle has already been checked
-     * for "compliance"
-     * @param {string} handle
-     * @returns {boolean} - true if already checked
-     */
-    static alreadyChecked(handle) {
-        return BlockerState.handleCheckList.indexOf(handle) >= 0;
     }
 
     /**
@@ -162,6 +124,16 @@ export default class BlockerState {
      */
     static addToHandledList(values) {
         this._handleCheckList = (this._handleCheckList).concat(values);
+    }
+
+    /**
+     * Determine if handle has already been checked
+     * for "compliance"
+     * @param {string} handle
+     * @returns {boolean} - true if already checked
+     */
+    static alreadyChecked(handle) {
+        return BlockerState.handleCheckList.indexOf(handle) >= 0;
     }
 
     /**
@@ -181,17 +153,6 @@ export default class BlockerState {
     }
 
     /**
-     * Update client whitelist
-     * @param {string} id
-     * @param {string} handle
-     */
-    static addToWhiteList(id, handle) {
-        Storage.addWhiteList({[id]: handle}, newList => {
-            BlockerState.whiteList = newList
-        })
-    }
-
-    /**
      * Whether given handle is currently in queue
      * @param {string} handle
      * @returns {boolean} - true for "yes, it is in queue"
@@ -200,3 +161,4 @@ export default class BlockerState {
         return BlockerState.pendingQueue.indexOf(handle) >= 0;
     }
 }
+
