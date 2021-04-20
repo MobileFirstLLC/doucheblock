@@ -2,7 +2,12 @@ import Storage from "./storage";
 import {requestConfigs} from "../config";
 
 /**
- * @ignore
+ * @description
+ * Queue contains discovered handles for which
+ * bios have not yet been requested.
+ *
+ * @module
+ * @name PendingQueue
  */
 class PendingQueue {
 
@@ -59,7 +64,11 @@ class PendingQueue {
 }
 
 /**
- * @ignore
+ * List of handles that have been checked during
+ * ongoing session and will not be rechecked.
+ *
+ * @module
+ * @name HandledList
  */
 class HandledList {
 
@@ -93,7 +102,11 @@ class HandledList {
 }
 
 /**
- * @ignore
+ * Whitelisted handles contain blocked words but
+ * user has manually selected to not block them.
+ *
+ * @module
+ * @name WhiteList
  */
 class WhiteList {
 
