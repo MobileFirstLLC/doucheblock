@@ -1,6 +1,4 @@
 import Storage from "./storage";
-import TwitterApi from "./twitterApi";
-import {requestConfigs, browserVariant, classFlag} from '../config'
 
 // noinspection JSUnresolvedVariable,JSDeprecatedSymbols,JSUnresolvedFunction
 /**
