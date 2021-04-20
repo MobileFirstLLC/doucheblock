@@ -6,7 +6,6 @@ import {requestConfigs} from "../config";
  * Queue contains discovered handles for which
  * bios have not yet been requested.
  *
- * @module
  * @name PendingQueue
  */
 class PendingQueue {
@@ -67,7 +66,6 @@ class PendingQueue {
  * List of handles that have been checked during
  * ongoing session and will not be rechecked.
  *
- * @module
  * @name HandledList
  */
 class HandledList {
@@ -105,7 +103,6 @@ class HandledList {
  * Whitelisted handles contain blocked words but
  * user has manually selected to not block them.
  *
- * @module
  * @name WhiteList
  */
 class WhiteList {
@@ -154,7 +151,7 @@ export default class BlockerState {
 
     /**
      * Get the handles checklist
-     * @returns {string[]}
+     * @returns {HandledList}
      */
     static get handledList() {
         return HandledList
@@ -162,7 +159,7 @@ export default class BlockerState {
 
     /**
      * Get the pending queue
-     * @returns {Object}
+     * @returns {PendingQueue}
      */
     static get pendingQueue() {
         return PendingQueue;
@@ -170,7 +167,7 @@ export default class BlockerState {
 
     /**
      * Get the list of whitelisted handles
-     * @returns {Object<string,string>}
+     * @returns {WhiteList}
      */
     static get whiteList() {
         return WhiteList;

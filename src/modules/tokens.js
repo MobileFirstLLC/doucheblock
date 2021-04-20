@@ -40,7 +40,6 @@ export default class Tokens {
     /**
      * @static
      * @private
-     * Bearer token getter
      * @returns {String|undefined}
      */
     static get bearerToken() {
@@ -53,7 +52,6 @@ export default class Tokens {
 
     /**
      * @static
-     * @private
      * CSRF token getter
      * @returns {String|undefined}
      */
@@ -67,7 +65,6 @@ export default class Tokens {
 
     /**
      * @static
-     * @private
      * @description
      * Handle incoming messages from other parts of the extension.
      * This module will respond to requests whose body is `{tokens: true}`
@@ -90,7 +87,6 @@ export default class Tokens {
 
     /**
      * @static
-     * @private
      * @description match request headers
      */
     static parseHeader(header) {
@@ -108,7 +104,6 @@ export default class Tokens {
 
     /**
      * @static
-     * @private
      * @description Capture the tokens on the fly
      * @param {Object} details webRequest object
      */

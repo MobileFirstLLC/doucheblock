@@ -126,26 +126,32 @@ export default class AutoBlocker {
         const links = document.getElementsByTagName('a');
 
         for (let n = 0; n < links.length; n++) {
-            const link = links[n];
-
-            // some conditional checks on the link
-            // for example should be a link to a handle
-            if (AutoBlocker.isHandleLink(link)) {
-
-                // mark link as checked to prevent re-checking
-                link.classList.add(classFlag);
-                // extract handle string
-                const handle = AutoBlocker.parseHandle(link);
-
-                // check that handle has not already been processed
-                if (!bs.handledList.isChecked(handle) &&
-                    !bs.pendingQueue.inQueue(handle)) {
-                    bs.pendingQueue.add(handle);
-                }
-            }
+            AutoBlocker.checkLink(links[n]);
         }
 
         AutoBlocker.shouldCheckBios();
+    }
+
+    /**
+     * Conditionally queue a handle
+     * @param {Element} link
+     */
+    static checkLink(link) {
+        // some conditional checks on the link
+        // for example should be a link to a handle
+        if (AutoBlocker.isHandleLink(link)) {
+
+            // mark link as checked to prevent re-checking
+            link.classList.add(classFlag);
+            // extract handle string
+            const handle = AutoBlocker.parseHandle(link);
+
+            // check that handle has not already been processed
+            if (!bs.handledList.isChecked(handle) &&
+                !bs.pendingQueue.inQueue(handle)) {
+                bs.pendingQueue.add(handle);
+            }
+        }
     }
 
     /**
