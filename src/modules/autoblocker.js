@@ -36,8 +36,6 @@ export default class AutoBlocker {
      * @ignore
      */
     constructor() {
-        // initialize state
-        bs.init()
         // Load user preferences then start DOM tree mutation observer
         AutoBlocker.loadSettings(AutoBlocker.startWatch);
         // Activate listener for user preferences changes;
@@ -67,7 +65,7 @@ export default class AutoBlocker {
         Storage.getSettings(settings => {
             bs.keyList = settings[Storage.keys.blockWords]
             bs.confirmBlocks = settings[Storage.keys.confirm];
-            bs.whiteList = settings[Storage.keys.whiteList];
+            bs.whiteList.whiteList = settings[Storage.keys.whiteList];
             if (callback) callback();
         });
     }
@@ -140,8 +138,9 @@ export default class AutoBlocker {
                 const handle = AutoBlocker.parseHandle(link);
 
                 // check that handle has not already been processed
-                if (!bs.alreadyChecked(handle) && !bs.inQueue(handle)) {
-                    bs.addToQueue(handle);
+                if (!bs.handledList.isChecked(handle) &&
+                    !bs.pendingQueue.inQueue(handle)) {
+                    bs.pendingQueue.add(handle);
                 }
             }
         }
@@ -184,7 +183,7 @@ export default class AutoBlocker {
     static shouldCheckBios() {
         const shouldRequest =
             // queue is non-empty *AND*
-            bs.pendingQueue.length > 0 &&
+            !bs.pendingQueue.isEmpty &&
             // EITHER: first request *or* been long enough
             (!bs.lastBioTimestamp || bs.lastBioIntervalExpired());
 
@@ -192,7 +191,7 @@ export default class AutoBlocker {
 
         // update timestamp and get handles from queue
         bs.lastBioTimestamp = Date.now()
-        const queue = bs.takeFromQueue()
+        const queue = bs.pendingQueue.takeNext()
 
         // request bios for list of handles
         TwitterApi.getTheBio(queue,
@@ -200,12 +199,12 @@ export default class AutoBlocker {
             bs.tokens.csrfToken,
             (bios) => {
                 // when bios returned, process them
-                bs.addToHandledList(queue);
+                bs.handledList.add(queue);
                 AutoBlocker.processBios(bios);
             },
             () => {
                 // put names back on the queue
-                queue.map(name => bs.addToQueue(name))
+                bs.pendingQueue.addAll(queue)
             });
     }
 
@@ -250,7 +249,7 @@ export default class AutoBlocker {
      */
     static shouldBlock({bio, id, handle, name}) {
         return new Promise((resolve) => {
-            if (!id || !bio || bs.whiteList[id]) {
+            if (!id || !bio || bs.whiteList.contains(id)) {
                 return resolve();
             }
 
@@ -266,7 +265,7 @@ export default class AutoBlocker {
             // user picked cancel -> whitelist this handle
             if (bs.confirmBlocks &&
                 !window.confirm(AutoBlocker.buildAlert(bio, name))) {
-                bs.addToWhiteList(id, handle);
+                bs.whiteList.add(id, handle);
             }
             // auto-block or user clicked OK to block
             else {
