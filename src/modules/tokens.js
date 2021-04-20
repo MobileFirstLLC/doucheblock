@@ -91,6 +91,24 @@ export default class Tokens {
     /**
      * @static
      * @private
+     * @description match request headers
+     */
+    static parseHeader(header) {
+        switch (header.name.toLowerCase()) {
+            case 'authorization':
+                Tokens.bearerToken = header.value
+                return 1;
+            case 'x-csrf-token':
+                Tokens.csrfToken = header.value
+                return 1;
+            default:
+                return 0;
+        }
+    }
+
+    /**
+     * @static
+     * @private
      * @description Capture the tokens on the fly
      * @param {Object} details webRequest object
      */
@@ -98,13 +116,7 @@ export default class Tokens {
         if (!details || !details.requestHeaders) return;
         let count = 0;
         for (let header of details.requestHeaders) {
-            if (header.name.toLowerCase() === 'authorization') {
-                Tokens.bearerToken = header.value
-                count++;
-            } else if (header.name.toLowerCase() === 'x-csrf-token') {
-                Tokens.csrfToken = header.value
-                count++;
-            }
+            count += Tokens.parseHeader(header);
             if (count === 2) break;
         }
     }
