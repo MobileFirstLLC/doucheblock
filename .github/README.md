@@ -25,7 +25,9 @@ src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github
 </tr></table>
 </p>
 
-<blockquote align="center"><h3>DoucheBlock is like an ad blocker but for your Twitter timeline. It will automatically (or after confirmation) block people who use specific keywords in the Twitter bio. It does not contain any tracking and does not interact with any 3rd party servers. Developer never sees your personal data, does not have access to your credentials and cannot know how you use it.</h3></blockquote>
+<br/>
+
+<h4 align="center">DoucheBlock is like an ad blocker but for your Twitter timeline. It will automatically (or after confirmation) block people who use specific keywords in the Twitter bio. It does not contain any tracking and does not interact with any 3rd party servers. Developer never sees your personal data, does not have access to your credentials and cannot know how you use it.</h4>
 
 <br/>
 
