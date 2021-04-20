@@ -19,15 +19,8 @@
 
 <br/>
 
-<p align="center">
-<a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img alt="install at chrome web store" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge.png"/></a> <a href="https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj"><img alt="Edge Add-Ons" width="250" 
-src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-edge.png"/></a> <a href="https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter/"><img alt="Firefox Add-Ons" width="250" 
- src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-firefox.png"/></a>
-</p>
-
 <table width="100%" align="center"><tr>
-  <td width="400px" align="center"><a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img alt="install at chrome web store" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge.png"/></a><br/><a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img src="https://img.shields.io/chrome-web-store/v/eeledoologbepiegnccedjigjkblhmhi?label=web%20store&color=1da1f2" alt="version"/></a> <a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img alt="Chrome Web Store" src="https://img.shields.io/chrome-web-store/users/eeledoologbepiegnccedjigjkblhmhi"></a>
-  </td>
+  <td width="400px" align="center"><a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img alt="install at chrome web store" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge.png"/></a><br/><a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img src="https://img.shields.io/chrome-web-store/v/eeledoologbepiegnccedjigjkblhmhi?label=web%20store&color=1da1f2" alt="version"/></a> <a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img alt="Chrome Web Store" src="https://img.shields.io/chrome-web-store/users/eeledoologbepiegnccedjigjkblhmhi"></a></td>
   <td width="400px" align="center"><a href="https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj"><img alt="Edge Add-Ons" width="250" 
 src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-edge.png"/></a></td>
   <td width="400px" align="center"><a href="https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter/"><img alt="Firefox Add-Ons" width="250" 
