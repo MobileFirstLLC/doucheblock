@@ -93,11 +93,12 @@ export default class OptionsPage {
 
     /**
      * Get localized text value
-     * @param key - localization dictionary key
+     * @param {string} key - localization dictionary key
+     * @param {string|undefined} args - placeholder
      * @returns {string}
      */
-    static translate(key) {
-        return window.chrome.i18n.getMessage(key);
+    static translate(key, args = undefined) {
+        return window.chrome.i18n.getMessage(key, args);
     }
 
     /**
@@ -138,8 +139,7 @@ export default class OptionsPage {
             // if enough blocks -> reveal additional content
             if (count > 1) {
                 OptionsPage.blockCount.innerText =
-                    (OptionsPage.translate('blockCount'))
-                        .replace('{N}', count.toString())
+                    (OptionsPage.translate('blockCount', count.toString()))
                 OptionsPage.BMC.setAttribute(
                     'visible', 'visible');
             }

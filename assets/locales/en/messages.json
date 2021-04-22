@@ -27,7 +27,13 @@
     "message": "DoucheBlock is open source!"
   },
   "blockCount": {
-    "message": "This extension has blocked {N} douches for you."
+    "message": "This extension has blocked $count$ douches for you.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "0"
+      }
+    }
   },
   "doucheAlert": {
     "message": "⚠️ MAJOR DOUCHE ALERT ⚠️"
