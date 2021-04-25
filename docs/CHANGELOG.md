@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.2.1](https://github.com/MobileFirstLLC/doucheblock/compare/v0.2.0...v0.2.1) (2021-04-25)
 
+- fix chrome version numbering
+
 ## 0.2.0 (2021-04-25)
 
 - add whitelist: if user chooses to cancel on alert, handle will be added to persistent whitelist [PR #7](https://github.com/MobileFirstLLC/doucheblock/pull/7)
