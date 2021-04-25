@@ -89,6 +89,16 @@ class HandledList {
     }
 
     /**
+     * Remove (multiple) handles from list of "already
+     * processed".
+     * @param {string[]} values - array of handles
+     */
+    static remove(values) {
+        this._handleCheckList = HandledList.list
+            .filter(value => values.indexOf(value) < 0)
+    }
+
+    /**
      * Determine if handle has already been checked
      * for "compliance"
      * @param {string} handle

@@ -19,6 +19,12 @@
  */
 export const OptionsPageURL = "index.html"
 
+/*
+ * URL to options page on install
+ *
+ * @constant
+ * @type {string}
+ */
 export const OnInstallURL = OptionsPageURL + '?i'
 
 /*
@@ -156,3 +162,11 @@ export const badgeColor = isFirefox ? "#FDD835" : "#ff1744"
  * @type {String}
  */
 export const classFlag = 'dbt___seen-it-b4'
+
+/**
+ * Maximum number of alerts to show sequentially
+ *
+ * @constant
+ * @type {number}
+ */
+export const alertCap = 3;

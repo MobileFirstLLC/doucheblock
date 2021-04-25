@@ -1,4 +1,4 @@
-import {requestConfigs, browserVariant, classFlag} from '../config'
+import {alertCap, browserVariant, classFlag} from '../config'
 import Storage from "./storage";
 import TwitterApi from "./twitterApi";
 import bs from "./blockerState"; // most definitely
@@ -215,14 +215,61 @@ export default class AutoBlocker {
     }
 
     /**
-     * Check a list of bios for blocking
+     * Check a list of bios to find bios matching
+     * blocking criteria
      * @param {Object[]} bios
      */
     static processBios(bios) {
+        if (!bios || !bios.length) return;
+        const blockableBios = bios.filter(AutoBlocker.isBlockMatch);
+        const limitList = AutoBlocker.limitAlertCount(blockableBios);
+        AutoBlocker.sequentiallyBlock(limitList);
+    }
+
+    /**
+     * Check if bio should block
+     * @param {Object} user
+     * @returns {boolean}
+     */
+    static isBlockMatch(user) {
+        const {bio, id} = user;
+        return id && bio &&
+            !bs.whiteList.contains(id) &&
+            bs.keyList.filter(w => bio.toLowerCase()
+                .indexOf(w) >= 0)
+                .length > 0;
+    }
+
+    /**
+     * Limit the number of bio matches to limit how many
+     * alerts are shown in sequence. If input exceed limit,
+     * input will be resized with excess re-queued. The method
+     * will return at most max allowed matches.
+     *
+     * @param {Object[]} bios
+     * @returns {Object[]} bios
+     */
+    static limitAlertCount(bios) {
+        if (!bios || !bs.confirmBlocks || bios.length <= alertCap) {
+            return bios;
+        }
+        const keep = bios.slice(0, alertCap)
+        const excessHandles = bios.slice(alertCap)
+            .map(({handle}) => handle);
+        bs.handledList.remove(excessHandles);
+        bs.pendingQueue.addAll(excessHandles)
+        return keep;
+    }
+
+    /**
+     * Check a list of bios for blocking
+     * @param {Object[]} bios
+     */
+    static sequentiallyBlock(bios) {
         if (bios && bios.length) {
             const first = bios.shift();
             AutoBlocker.shouldBlock(first)
-                .then(_ => AutoBlocker.processBios(bios))
+                .then(_ => AutoBlocker.sequentiallyBlock(bios))
                 .catch();
         }
     }
@@ -255,19 +302,6 @@ export default class AutoBlocker {
      */
     static shouldBlock({bio, id, handle, name}) {
         return new Promise((resolve) => {
-            if (!id || !bio || bs.whiteList.contains(id)) {
-                return resolve();
-            }
-
-            const lowercaseBio = bio.toLowerCase();
-            const keywordMatch = bs.keyList
-                .filter(w => lowercaseBio.indexOf(w) >= 0)
-                .length;
-
-            if (!keywordMatch) {
-                return resolve();
-            }
-
             // user picked cancel -> whitelist this handle
             if (bs.confirmBlocks &&
                 !window.confirm(AutoBlocker.buildAlert(bio, name))) {
