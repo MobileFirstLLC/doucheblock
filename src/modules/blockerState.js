@@ -160,7 +160,10 @@ class WhiteList {
 export default class BlockerState {
 
     /**
-     * Get the handles checklist
+     * Get list of handles that have already been checked
+     * during this session, meaning bio was requested and
+     * checked for blocking.
+     *
      * @returns {HandledList}
      */
     static get handledList() {
@@ -168,7 +171,10 @@ export default class BlockerState {
     }
 
     /**
-     * Get the pending queue
+     * Get the queue that holds discovered handles waiting
+     * to be processed. When handle is in queue, the handle
+     * has been found, but bio has not been checked yet.
+     *
      * @returns {PendingQueue}
      */
     static get pendingQueue() {
@@ -176,7 +182,10 @@ export default class BlockerState {
     }
 
     /**
-     * Get the list of whitelisted handles
+     * Get the list of whitelisted handles. Whitelisted handles
+     * may contain block words, but user has explicitly bypassed
+     * the block on this user.
+     *
      * @returns {WhiteList}
      */
     static get whiteList() {
@@ -184,7 +193,8 @@ export default class BlockerState {
     }
 
     /**
-     * Get the timestamp of last API bio request
+     * Get/set the timestamp of last API bio request.
+     *
      * @returns {number|undefined} - if undefined,
      * request had never been made
      */
@@ -197,8 +207,10 @@ export default class BlockerState {
     }
 
     /**
-     * It has been "long enough" since last bio request
-     * @returns {boolean}
+     * Whether it has been "long enough" since last bio request.
+     *
+     * @readonly
+     * @returns {boolean} - true when it has been long enough.
      */
     static get lastBioIntervalExpired() {
         const diff = Date.now() - BlockerState.lastBioTimestamp;
@@ -206,7 +218,7 @@ export default class BlockerState {
     }
 
     /**
-     * API tokens
+     * Get/set API tokens
      * @returns {Object}
      */
     static get tokens() {
@@ -224,6 +236,7 @@ export default class BlockerState {
      * this check means API call will fail if not
      * ready yet.
      *
+     * @readonly
      * @returns {boolean} - true when ready to call API
      */
     static get ready() {
@@ -233,7 +246,7 @@ export default class BlockerState {
     }
 
     /**
-     * Get the list of flagged words that lead to blocking
+     * Get/set the list of flagged words that lead to blocking
      * @returns {string[]}
      */
     static get keyList() {
@@ -245,7 +258,7 @@ export default class BlockerState {
     }
 
     /**
-     * Get confirmation setting
+     * Get/set confirmation setting
      * @returns {Boolean}
      */
     static get confirmBlocks() {
