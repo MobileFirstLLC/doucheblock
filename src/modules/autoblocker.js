@@ -126,24 +126,25 @@ export default class AutoBlocker {
         const links = document.getElementsByTagName('a');
 
         for (let n = 0; n < links.length; n++) {
-            AutoBlocker.checkLink(links[n]);
+            AutoBlocker.processLinks(links[n]);
         }
 
-        AutoBlocker.shouldCheckBios();
+        AutoBlocker.conditionallyCheckBios();
     }
 
     /**
-     * Conditionally queue a handle
-     * @param {Element} link
+     * Check DOM links and queue newly discovered handles.
+     *
+     * @param {Element} link DOM node
      */
-    static checkLink(link) {
-        // some conditional checks on the link
-        // for example should be a link to a handle
+    static processLinks(link) {
+        // first check that the element is a link to a user
         if (AutoBlocker.isHandleLink(link)) {
 
             // mark link as checked to prevent re-checking
             link.classList.add(classFlag);
-            // extract handle string
+
+            // extract handle
             const handle = AutoBlocker.parseHandle(link);
 
             // check that handle has not already been processed
@@ -155,7 +156,8 @@ export default class AutoBlocker {
     }
 
     /**
-     * Determine if some link element is a handle, potentially.
+     * Determine if some link element is a handle.
+     *
      * @param {Element} link DOM element
      * @returns {boolean}
      */
@@ -172,9 +174,10 @@ export default class AutoBlocker {
     }
 
     /**
-     * Extract handle string from a DOM node
-     * @param {Element} link
-     * @returns {string}
+     * Extract handle string from a DOM element.
+     *
+     * @param {Element} link element
+     * @returns {string} twitter user handle
      */
     static parseHandle(link) {
         const substr = link.innerText.substr(
@@ -184,9 +187,9 @@ export default class AutoBlocker {
     }
 
     /**
-     * After enough names are in queue, get the bios from API
+     * If there are enough names are in queue, request bios from API.
      */
-    static shouldCheckBios() {
+    static conditionallyCheckBios() {
         const shouldRequest =
             // queue is non-empty *AND*
             !bs.pendingQueue.isEmpty &&
@@ -197,37 +200,41 @@ export default class AutoBlocker {
 
         // update timestamp and get handles from queue
         bs.lastBioTimestamp = Date.now()
-        const queue = bs.pendingQueue.takeNext()
+        const handles = bs.pendingQueue.takeNext()
 
         // request bios for list of handles
-        TwitterApi.getTheBio(queue,
+        TwitterApi.getTheBio(handles,
             bs.tokens.bearerToken,
             bs.tokens.csrfToken,
-            (bios) => {
-                // when bios returned, process them
-                bs.handledList.add(queue);
-                AutoBlocker.processBios(bios);
+            (userData) => {
+                // mark handles as checked
+                bs.handledList.add(handles);
+                AutoBlocker.processBios(userData);
             },
             () => {
-                // put names back on the queue
-                bs.pendingQueue.addAll(queue)
+                // put names back in the queue
+                bs.pendingQueue.addAll(handles)
             });
     }
 
     /**
-     * Check a list of bios to find bios matching
-     * blocking criteria
-     * @param {Object[]} bios
+     * Check users to find bios matching blocking criteria.
+     *
+     * @param {Object[]} users
      */
-    static processBios(bios) {
-        if (!bios || !bios.length) return;
-        const blockableBios = bios.filter(AutoBlocker.isBlockMatch);
-        const limitList = AutoBlocker.limitAlertCount(blockableBios);
-        AutoBlocker.sequentiallyBlock(limitList);
+    static processBios(users) {
+        if (!users || !users.length) return;
+        // all users that match block criteria
+        const blockable = users.filter(AutoBlocker.isBlockMatch);
+        // remaining users after applying max cap
+        const limited = AutoBlocker.limitAlertCount(blockable);
+        // proceed to block
+        AutoBlocker.sequentiallyBlock(limited);
     }
 
     /**
-     * Check if bio should block
+     * Check if user should be blocked
+     *
      * @param {Object} user
      * @returns {boolean}
      */
@@ -241,46 +248,53 @@ export default class AutoBlocker {
     }
 
     /**
-     * Limit the number of bio matches to limit how many
-     * alerts are shown in sequence. If input exceed limit,
-     * input will be resized with excess re-queued. The method
-     * will return at most max allowed matches.
+     * This method ensures te number of alerts shown to user
+     * does not exceed a configurable upper limit. If input
+     * exceeds the limit, excess items will be re-queued.
+     * Method will return at most max allowed matches.
      *
-     * @param {Object[]} bios
-     * @returns {Object[]} bios
+     * @param {Object[]} users
+     * @returns {Object[]} limited count of users
      */
-    static limitAlertCount(bios) {
-        // if user doesn't see confirmation alerts
-        // 0 alerts will show -> return all handles
-        if (!bios || !bs.confirmBlocks || bios.length <= alertCap) {
-            return bios;
+    static limitAlertCount(users) {
+        // if user has disabled confirmation alerts they will see
+        // 0 alerts -> return all handles
+        if (!bs.confirmBlocks || !users || users.length <= alertCap) {
+            return users;
         }
-        const keep = bios.slice(0, alertCap)
-        const excessHandles = bios.slice(alertCap)
+
+        // take max items from the beginning
+        const keep = users.slice(0, alertCap)
+
+        // get the excess handles and requeue
+        const excessHandles = users.slice(alertCap)
             .map(({handle}) => handle);
         bs.handledList.remove(excessHandles);
         bs.pendingQueue.addAll(excessHandles);
+
         return keep;
     }
 
     /**
-     * Check a list of bios for blocking
-     * @param {Object[]} bios
+     * Recursively block a list of users
+     *
+     * @param {Object[]} users
      */
-    static sequentiallyBlock(bios) {
-        if (bios && bios.length) {
-            const first = bios.shift();
+    static sequentiallyBlock(users) {
+        if (users && users.length) {
+            const first = users.shift();
             AutoBlocker.executeBlock(first)
-                .then(_ => AutoBlocker.sequentiallyBlock(bios))
+                .then(_ => AutoBlocker.sequentiallyBlock(users))
                 .catch();
         }
     }
 
     /**
-     * Construct window alert
-     * @param {string} bio
-     * @param {string} name
-     * @returns {string}
+     * Construct a window alert
+     *
+     * @param {string} bio - user's bio text
+     * @param {string} name - user's display name
+     * @returns {string} alert text
      */
     static buildAlert(bio, name) {
         const sanitizedBio = `${name} : ${(bio || '')
@@ -295,11 +309,12 @@ export default class AutoBlocker {
     }
 
     /**
-     * Check the bio for flagged words
-     * @param {string} bio - bio text
-     * @param {string} id - twitter id
-     * @param {string} handle - user handle
-     * @param {string} name - user name
+     * Block a user
+     *
+     * @param {string} bio - user's bio text
+     * @param {string} id - user's twitter id
+     * @param {string} handle - handle
+     * @param {string} name - display name
      * @returns {Promise}
      */
     static executeBlock({bio, id, handle, name}) {
