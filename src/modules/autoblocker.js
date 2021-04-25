@@ -250,6 +250,8 @@ export default class AutoBlocker {
      * @returns {Object[]} bios
      */
     static limitAlertCount(bios) {
+        // if user doesn't see confirmation alerts
+        // 0 alerts will show -> return all handles
         if (!bios || !bs.confirmBlocks || bios.length <= alertCap) {
             return bios;
         }
@@ -257,7 +259,7 @@ export default class AutoBlocker {
         const excessHandles = bios.slice(alertCap)
             .map(({handle}) => handle);
         bs.handledList.remove(excessHandles);
-        bs.pendingQueue.addAll(excessHandles)
+        bs.pendingQueue.addAll(excessHandles);
         return keep;
     }
 
