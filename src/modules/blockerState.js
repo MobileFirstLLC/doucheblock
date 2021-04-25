@@ -197,12 +197,12 @@ export default class BlockerState {
     }
 
     /**
-     * It has been "long enough" since last buio request
+     * It has been "long enough" since last bio request
      * @returns {boolean}
      */
-    static lastBioIntervalExpired() {
-        return Math.abs(Date.now() - BlockerState.lastBioTimestamp)
-            > requestConfigs.maxInterval;
+    static get lastBioIntervalExpired() {
+        const diff = Date.now() - BlockerState.lastBioTimestamp;
+        return Math.abs(diff) > requestConfigs.maxInterval;
     }
 
     /**
