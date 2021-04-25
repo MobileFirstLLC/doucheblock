@@ -129,7 +129,7 @@ export default class AutoBlocker {
             AutoBlocker.processLinks(links[n]);
         }
 
-        AutoBlocker.conditionallyCheckBios();
+        AutoBlocker.requestBios();
     }
 
     /**
@@ -189,7 +189,7 @@ export default class AutoBlocker {
     /**
      * If there are enough names are in queue, request bios from API.
      */
-    static conditionallyCheckBios() {
+    static requestBios() {
         const shouldRequest =
             // queue is non-empty *AND*
             !bs.pendingQueue.isEmpty &&
