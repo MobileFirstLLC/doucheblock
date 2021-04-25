@@ -270,7 +270,7 @@ export default class AutoBlocker {
     static sequentiallyBlock(bios) {
         if (bios && bios.length) {
             const first = bios.shift();
-            AutoBlocker.shouldBlock(first)
+            AutoBlocker.executeBlock(first)
                 .then(_ => AutoBlocker.sequentiallyBlock(bios))
                 .catch();
         }
@@ -302,7 +302,7 @@ export default class AutoBlocker {
      * @param {string} name - user name
      * @returns {Promise}
      */
-    static shouldBlock({bio, id, handle, name}) {
+    static executeBlock({bio, id, handle, name}) {
         return new Promise((resolve) => {
             // user picked cancel -> whitelist this handle
             if (bs.confirmBlocks &&
