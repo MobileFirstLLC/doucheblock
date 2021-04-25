@@ -2,5 +2,9 @@
   "privacy": {
     "title": "Privacy Policy",
     "summary": ""
+  },
+  "CHANGELOG": {
+    "title": "Version History",
+    "summary": "Changelog and release notes"
   }
 }

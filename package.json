@@ -18,7 +18,7 @@
     "test": "xt-test"
   },
   "standard-version": {
-    "infile": ".github/CHANGELOG.md"
+    "infile": "docs/CHANGELOG.md"
   },
   "babel": {
     "presets": [
