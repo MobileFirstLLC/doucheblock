@@ -258,7 +258,6 @@ export default class AutoBlocker {
             .map(({handle}) => handle);
         bs.handledList.remove(excessHandles);
         bs.pendingQueue.addAll(excessHandles)
-        console.log(`put ${excessHandles} back in queue!`)
         return keep;
     }
 
