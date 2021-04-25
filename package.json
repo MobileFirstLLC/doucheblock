@@ -1,7 +1,7 @@
 {
   "name": "doucheblock-for-twitter",
   "description": "Block anyone with specific keywords in their Twitter bio.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/MobileFirstLLC/doucheblock",
   "author": "Mobile First LLC",
   "repository": {
