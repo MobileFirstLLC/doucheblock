@@ -17,6 +17,9 @@
     "docs": "xt-docs -c config/docs.json",
     "test": "xt-test"
   },
+  "standard-version": {
+    "infile": ".github/CHANGELOG.md"
+  },
   "babel": {
     "presets": [
       "@babel/preset-env"
