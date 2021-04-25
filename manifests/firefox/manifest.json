@@ -27,6 +27,9 @@
       "matches": [
         "https://*.twitter.com/*"
       ],
+      "exclude_matches": [
+        "https://twitter.com/settings/blocked/*"
+      ],
       "js": [
         "content.js"
       ]
