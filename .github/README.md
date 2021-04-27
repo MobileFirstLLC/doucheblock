@@ -15,17 +15,12 @@
   Block anyone with specific keywords in their Twitter bio.<br/><br/>
 </h3>
 
-<table align="center"><tr>
-  <td width="250"><a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img alt="install at chrome web store" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge.png"/></a></td><td width="600"><a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img src="https://img.shields.io/chrome-web-store/v/eeledoologbepiegnccedjigjkblhmhi?label=web%20store&color=1da1f2" alt="version"/></a></td>
-  </tr><tr>
-  <td><a href="https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter/"><img alt="Firefox Add-Ons" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-firefox.png"/></a></td><td><a href="https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter/"><img src="https://img.shields.io/amo/v/doucheblock-for-twitter" alt="mozilla dd-ons"/></a></td>
- </tr><tr>
-  <td><a href="https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj"><img alt="Edge Add-Ons" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-edge.png"/></a></td><td><a href="https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj"><img src='https://img.shields.io/badge/edge%20add--ons-v0.1.0-3277bc' alt='' /></a></td>
- </tr><tr>
-  <td><a href="https://addons.opera.com/en/extensions/details/doucheblock-for-twitter/"><img alt="Opera addons" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-opera.png" width="250" /></a></td><td><a href="https://addons.opera.com/en/extensions/details/doucheblock-for-twitter/"><img src='https://img.shields.io/badge/opera%20add--ons-v0.1.0-ff1b2d' alt='' /></a></td>
-</tr>
-</table>
-
+<p align="center">    
+<a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img alt="install at chrome web store" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge.png"/></a>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter/"><img alt="Firefox Add-Ons" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-firefox.png"/></a>
+<a href="https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj"><img alt="Edge Add-Ons" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-edge.png"/></a>  
+<a href="https://addons.opera.com/en/extensions/details/doucheblock-for-twitter/"><img alt="Opera addons" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-opera.png" width="250" /></a>
+</p>
 
 <br/>
 
