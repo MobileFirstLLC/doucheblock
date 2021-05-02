@@ -69,8 +69,8 @@ export const defaultConfig = {
  */
 export const requestConfigs = {
     /**
-     * Do not make bio requests more frequently than this limit.
-     * Need to stay moderate here...or else you get 429
+     * Do not make bio requests more frequently than this limit (in milliseconds).
+     * Need to stay moderate here...or else you get 429.
      *
      * @constant
      * @type {number}
@@ -145,7 +145,7 @@ export const browserVariant = _ => isFirefox ? browser : window.chrome;
 /*
  * Define browser action badge color
  * Browsers that default to black badge text color: Firefox
- * Browsers that default to white badge text color: Chrome, edge
+ * Browsers that default to white badge text color: Chrome, Edge, Opera
  * For contrast, use yellow bg with dark text / red bg with white text
  *
  * @constant
