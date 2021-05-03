@@ -1,10 +1,10 @@
 {
-  "privacy": {
-    "title": "Privacy Policy",
-    "summary": ""
-  },
   "CHANGELOG": {
     "title": "Version History",
     "summary": "Changelog and release notes"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "summary": "TL;DR DoucheBlock does not compromise your privacy."
   }
 }

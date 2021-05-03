@@ -7,11 +7,11 @@ DoucheBlock is like an ad blocker but for your Twitter timeline. It will automat
 </p>
 
 <p align="center" style="margin-top:1rem;">
-<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" aria-label="Star MobileFirstLLC/doucheblock on GitHub">Star</a>
-<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock/fork" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-repo-forked" data-size="large" aria-label="Fork MobileFirstLLC/doucheblock on GitHub">Fork</a>
-<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock/subscription" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-eye" data-size="large" aria-label="Watch MobileFirstLLC/doucheblock on GitHub">Watch</a>
-<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock/archive/master.zip" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-download" data-size="large" aria-label="Download MobileFirstLLC/doucheblock on GitHub">Download</a>
-<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock/issues" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-issue-opened" data-size="large" aria-label="Issue MobileFirstLLC/doucheblock on GitHub">Issue</a>
+<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock" data-color-scheme="no-preference: light; light: light; dark: light;" data-icon="octicon-star" data-size="large" aria-label="Star MobileFirstLLC/doucheblock on GitHub">Star</a>
+<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock/fork" data-color-scheme="no-preference: light; light: light; dark: light;" data-icon="octicon-repo-forked" data-size="large" aria-label="Fork MobileFirstLLC/doucheblock on GitHub">Fork</a>
+<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock/subscription" data-color-scheme="no-preference: light; light: light; dark: light;" data-icon="octicon-eye" data-size="large" aria-label="Watch MobileFirstLLC/doucheblock on GitHub">Watch</a>
+<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock/archive/master.zip" data-color-scheme="no-preference: light; light: light; dark: light;" data-icon="octicon-download" data-size="large" aria-label="Download MobileFirstLLC/doucheblock on GitHub">Download</a>
+<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock/issues" data-color-scheme="no-preference: light; light: light; dark: light;" data-icon="octicon-issue-opened" data-size="large" aria-label="Issue MobileFirstLLC/doucheblock on GitHub">Issue</a>
 </p>
 
 ## How does it work?
@@ -76,7 +76,7 @@ Clone the repository with git:
 git clone https://github.com/MobileFirstLLC/doucheblock.git
 ```
 
-If you do not have git [download the source from here](https://github.com/MobileFirstLLC/doucheblock/archive/master.zip).
+If you do not have git [download the latest source from here](https://github.com/MobileFirstLLC/doucheblock/archive/master.zip).
 
 <br/>
 
@@ -121,8 +121,6 @@ npm run build
 
 <br/>
 
-This extension was created with [Extension CLI](https://oss.mobilefirst.me/extension-cli/)
-
-You can learn more about the available commands in this [User Guide &rarr;](https://oss.mobilefirst.me/extension-cli/)
+This extension was created with [Extension CLI](https://oss.mobilefirst.me/extension-cli/). Learn more about the available commands [here &rarr;](https://oss.mobilefirst.me/extension-cli/)
 
 <br/>
