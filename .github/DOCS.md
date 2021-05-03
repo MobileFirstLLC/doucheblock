@@ -2,7 +2,22 @@ DoucheBlock is like an ad blocker but for your Twitter timeline. It will automat
 
 <br/>
 
-<p align="center" style="font-weight: bold">
+## Where to get it
+
+DoucheBlock for Twitter is available for the following browsers:
+
+<p align="center" style="margin-top: 40px">    
+<a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img alt="install at chrome web store" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge.png"/></a>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter/"><img alt="Firefox Add-Ons" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-firefox.png"/></a>
+<br/><br/><a href="https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj"><img alt="Edge Add-Ons" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-edge.png"/></a>
+<a href="https://addons.opera.com/en/extensions/details/doucheblock-for-twitter/"><img alt="Opera addons" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-opera.png" width="250" /></a>
+</p>
+
+<br/>
+
+## Source Code
+
+<p align="center" style="font-weight: bold; margin-bottom: 30px;">
 <a href="https://github.com/MobileFirstLLC/doucheblock" target="_blank" rel="noreferrer nofollow">The source code is available on Github ↗</a>
 </p>
 
