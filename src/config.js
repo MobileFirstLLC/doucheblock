@@ -87,7 +87,7 @@ export const requestConfigs = {
     maxLookupCount: 100,
     /**
      * Endpoint for obtaining bios
-     * @param handles - specify comma separated list of handles
+     * @param handles - comma-separated list of handles
      * @returns {string} - formatted URL
      */
     bioEndpoint: handles => 'https://api.twitter.com/1.1/users/lookup.json?skip_status=1&screen_name=' + handles,
@@ -98,6 +98,12 @@ export const requestConfigs = {
      * @type {string}
      */
     blockEndpoint: 'https://twitter.com/i/api/1.1/blocks/create.json',
+    /**
+     * Get friendship data on specified ids
+     * @param {string} handles - comma-separated list of ids
+     * @returns {string} formatted URL
+     */
+    friendshipEndpoint: handles => 'https://api.twitter.com/1.1/friendships/lookup.json?screen_name=' + handles
 }
 
 /*
@@ -169,4 +175,4 @@ export const classFlag = 'dbt___seen-it-b4'
  * @constant
  * @type {number}
  */
-export const alertCap = 3;
+export const alertCap = 1;

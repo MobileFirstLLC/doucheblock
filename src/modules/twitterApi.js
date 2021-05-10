@@ -48,6 +48,31 @@ export default class TwitterApi {
     }
 
     /**
+     * Check if user is being blocked
+     * @param friendship - current friendship state
+     * @returns {boolean} - true if blocked
+     */
+    static isBlockingFriendship(friendship) {
+        return !!(friendship && friendship.connections
+            .indexOf('blocking') >= 0);
+    }
+
+    static filterPreBlockedIds(response, users, callback) {
+        try {
+            const result = JSON.parse(response);
+            const nonBlocked = users.map(u => {
+                const [friendship] = result.filter(f => f.id_str === u.id)
+                const isBlocking = TwitterApi.isBlockingFriendship(friendship)
+                console.log('isBlocking:', isBlocking, u, friendship);
+                return !isBlocking;
+            });
+            callback(nonBlocked);
+        } catch (e) {
+            callback(users)
+        }
+    }
+
+    /**
      * Request user bios
      * @param {string[]} handles - user handles to check
      * @param {string} bearer - authentication Bearer token
@@ -90,5 +115,30 @@ export default class TwitterApi {
             }
         }
         xhr.send('user_id=' + id);
+    }
+
+    /**
+     * Check in real-time if handle is already being blocked.
+     * Sometimes handles show up even when they've been blocked.
+     * @param {Object[]} users - list of user ids to check
+     * @param {string} bearer - authentication Bearer token
+     * @param {string} csrf - csrf token
+     * @param {function} callback
+     * @returns {boolean}
+     */
+    static isBlocking(users, bearer, csrf, callback) {
+        const xhr = new window.XMLHttpRequest();
+        xhr.open('GET', requestConfigs.friendshipEndpoint(
+            users.map(u => u.handle).join(',')), true);
+        xhr.setRequestHeader('Authorization', bearer);
+        xhr.setRequestHeader('x-csrf-token', csrf);
+        xhr.onload = _ => {
+            if (xhr.readyState === 4) {
+                TwitterApi.filterPreBlockedIds(
+                    xhr.response, users, callback);
+            }
+        }
+        xhr.onerror = () => callback(users);
+        xhr.send();
     }
 }

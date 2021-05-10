@@ -227,9 +227,10 @@ export default class AutoBlocker {
         // all users that match block criteria
         const blockable = users.filter(AutoBlocker.isBlockMatch);
         // remaining users after applying max cap
-        const limited = AutoBlocker.limitAlertCount(blockable);
-        // proceed to block
-        AutoBlocker.sequentiallyBlock(limited);
+        AutoBlocker.limitAlertCount(blockable, limited => {
+            // proceed to block
+            AutoBlocker.sequentiallyBlock(limited);
+        });
     }
 
     /**
@@ -254,25 +255,35 @@ export default class AutoBlocker {
      * Method will return at most max allowed matches.
      *
      * @param {Object[]} users
+     * @param {function} callback - handler for returning filtered users
      * @returns {Object[]} limited count of users
      */
-    static limitAlertCount(users) {
+    static limitAlertCount(users, callback) {
         // if user has disabled confirmation alerts they will see
         // 0 alerts -> return all handles
-        if (!bs.confirmBlocks || !users || users.length <= alertCap) {
-            return users;
+        if (!bs.confirmBlocks || !users.length) {
+            return callback(users);
         }
+        // filter out users that are already blocked
+        TwitterApi.isBlocking(users,
+            bs.tokens.bearerToken,
+            bs.tokens.csrfToken,
+            nonBlocked => {
+                if (nonBlocked.length <= alertCap) {
+                    return callback(nonBlocked);
+                }
 
-        // take max items from the beginning
-        const keep = users.slice(0, alertCap)
+                // take max items from the beginning
+                const keep = nonBlocked.slice(0, alertCap)
 
-        // get the excess handles and requeue
-        const excessHandles = users.slice(alertCap)
-            .map(({handle}) => handle);
-        bs.handledList.remove(excessHandles);
-        bs.pendingQueue.addAll(excessHandles);
+                // get the excess handles and requeue
+                const excessHandles = nonBlocked.slice(alertCap)
+                    .map(({handle}) => handle);
 
-        return keep;
+                bs.handledList.remove(excessHandles);
+                bs.pendingQueue.addAll(excessHandles);
+                return callback(keep);
+            });
     }
 
     /**
