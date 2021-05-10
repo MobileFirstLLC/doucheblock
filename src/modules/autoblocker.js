@@ -265,14 +265,11 @@ export default class AutoBlocker {
             return callback(users);
         }
         // filter out users that are already blocked
-        TwitterApi.isBlocking(users,
-            bs.tokens.bearerToken,
-            bs.tokens.csrfToken,
-            nonBlocked => {
+        TwitterApi.isBlocking(users, bs.tokens.bearerToken,
+            bs.tokens.csrfToken, nonBlocked => {
                 if (nonBlocked.length <= alertCap) {
                     return callback(nonBlocked);
                 }
-
                 // take max items from the beginning
                 const keep = nonBlocked.slice(0, alertCap)
 
