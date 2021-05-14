@@ -25,10 +25,6 @@ workflows:
   sample:
     jobs:
     - build
-        filters:
-          branches:
-            only:
-              - master
 
 # steps TODO:
 # npm run docs
