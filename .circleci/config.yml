@@ -32,7 +32,7 @@ jobs:
             - pages
             - firefox.zip
             - chromium.zip
-  docs-deploy:
+  docs-deploy:  # TODO: deploy pages
     docker:
       - image: cimg/node:14.16.1
     steps:
@@ -42,6 +42,22 @@ jobs:
       - run:
           name: Deploy docs to gh-pages
           command: npx gh-pages --message "Deploy pages" --dist pages
+      - add_ssh_keys:
+          fingerprints:
+            9b:b7:f8:6a:9c:31:0c:c1:f7:8b:86:79:bc:05:3a:7d
+  app-deploy:
+    docker:
+      - image: cimg/node:14.16.1
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: deploy release
+          command: echo "release"
+      - run:
+          name: deploy to cws
+          command: echo "web store"
       - add_ssh_keys:
           fingerprints:
             9b:b7:f8:6a:9c:31:0c:c1:f7:8b:86:79:bc:05:3a:7d
@@ -57,7 +73,12 @@ workflows:
         filters:
           branches:
             only: master
+    - app-deploy:
+        requires:
+          - build
+        filters:
+          tags:
+            only: /^v.*/
 
-# deploy pages
-# publish release at Github (tags only)
-# push release to store (tags only)
+
+
