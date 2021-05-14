@@ -40,13 +40,8 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-          name: Install gh-pages dependencies
-          command: |
-            npm install -g --silent gh-pages
-      - add_ssh_keys
-      - run:
           name: Deploy docs to gh-pages
-          command: gh-pages --message "Deploy pages" --dist pages
+          command: npx gh-pages --message "Deploy pages" --dist pages
 
 
 workflows:
@@ -57,6 +52,7 @@ workflows:
     - docs-deploy:
         requires:
         - build
+        ssh-fingerprints: 39:64:96:8b:6a:a2:68:db:c3:71:fe:d2:c1:d1:41:8f
         filters:
           branches:
             only: master
