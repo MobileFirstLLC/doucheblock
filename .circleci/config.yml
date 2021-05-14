@@ -18,20 +18,41 @@ jobs:
       - run:
           name: Unit test
           command: npm run test -- --coverage
-      - run: |
-          npm run docs
-          npm run build
-          npm run build:ff
+      - run:
+          name: Build docs
+          command: npm run docs
+      - run:
+          name: Build release
+          command: |
+            npm run build
+            npm run build:ff
       - persist_to_workspace:
           root: .
           paths:
             - pages
             - firefox.zip
             - chromium.zip
+  docs-deploy:
+    docker:
+      - image: cimg/node:14.16.1
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Install and configure dependencies
+          command: |
+            npm install -g --silent gh-pages@2.0.1
+            git config user.email "ci-build@klukas.net"
+            git config user.name "ci-build"
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: gh-pages --dist pages
+
 
 workflows:
   # docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
-  sample:
+  build-app:
     jobs:
     - build
 
