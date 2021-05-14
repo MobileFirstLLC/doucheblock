@@ -18,11 +18,11 @@ jobs:
       - node/install-packages
       - run:
           name: Run tests
-          command:
-            - npm run test -- --coverage
-            - npm run build
-            - npm run build:ff
+          command: npm run test -- --coverage
 
+#  npm run docs
+#  npm run build
+#  npm run build:ff
 # TODO: deploy pages
 # TODO: publish release at Github (tags only)
 # TODO: push release to store (tags only)
