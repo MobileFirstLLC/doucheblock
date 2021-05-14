@@ -55,6 +55,12 @@ workflows:
   build-app:
     jobs:
     - build
+    - docs-deploy:
+      requires:
+        - build
+      filters:
+        branches:
+          only: master
 
 # deploy pages
 # publish release at Github (tags only)
