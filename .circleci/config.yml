@@ -1,34 +1,33 @@
-# See: https://circleci.com/docs/2.0/configuration-reference
+# docs: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
 orbs:
-  # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/node
+  # docs: https://circleci.com/developer/orbs/orb/circleci/node
   node: circleci/node@4.1
 
 jobs:
   build:
-    # A list of available images: https://circleci.com/developer/images/image/cimg/node
     docker:
+      # images: https://circleci.com/developer/images/image/cimg/node
       - image: cimg/node:15.1
     steps:
-      # Checkout the code as the first step.
       - checkout
-      # Next, the node orb's install-packages step will install the dependencies from a package.json.
-      # The orb install-packages step will also automatically cache them for faster future runs.
+      # install and auto-cache packages
       - node/install-packages
       - run:
           name: Run tests
           command: npm run test -- --coverage
 
-#  npm run docs
-#  npm run build
-#  npm run build:ff
-# TODO: deploy pages
-# TODO: publish release at Github (tags only)
-# TODO: push release to store (tags only)
+# steps TODO:
+# npm run docs
+# npm run build
+# npm run build:ff
+# deploy pages
+# publish release at Github (tags only)
+# push release to store (tags only)
 
 workflows:
-  # configuration docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
+  # docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
   sample:
     jobs:
       - build
