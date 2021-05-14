@@ -44,7 +44,7 @@ jobs:
           command: npx gh-pages --message "Deploy pages" --dist pages
       - add_ssh_keys:
           fingerprints:
-            4e:26:54:fb:9e:ac:fd:31:69:36:f3:b3:cb:11:0b:89
+            9b:b7:f8:6a:9c:31:0c:c1:f7:8b:86:79:bc:05:3a:7d
 
 workflows:
   # docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
