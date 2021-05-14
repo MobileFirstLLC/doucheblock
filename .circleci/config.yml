@@ -15,10 +15,11 @@ jobs:
       - run:
           name: install
           command: npm install
-      # - node/install-packages
       - run: |
           npm run test -- --coverage
-
+          npm run docs
+          npm run build
+          npm run build:ff
 
 workflows:
   # docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
