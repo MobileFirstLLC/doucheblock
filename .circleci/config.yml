@@ -40,13 +40,13 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-          name: Install and configure dependencies
+          name: Install gh-pages dependencies
           command: |
-            npm install -g --silent gh-pages@2.0.1
+            npm install -g --silent gh-pages
             git config user.email "ci-build@klukas.net"
             git config user.name "ci-build"
       - run:
-          name: Deploy docs to gh-pages branch
+          name: Deploy docs to gh-pages
           command: gh-pages --dist pages
 
 
