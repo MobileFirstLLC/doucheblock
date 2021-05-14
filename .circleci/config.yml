@@ -56,11 +56,11 @@ workflows:
     jobs:
     - build
     - docs-deploy:
-      requires:
+        requires:
         - build
-      filters:
-        branches:
-          only: master
+        filters:
+          branches:
+            only: master
 
 # deploy pages
 # publish release at Github (tags only)
