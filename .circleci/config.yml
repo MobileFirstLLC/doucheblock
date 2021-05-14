@@ -42,7 +42,9 @@ jobs:
       - run:
           name: Deploy docs to gh-pages
           command: npx gh-pages --message "Deploy pages" --dist pages
-
+      - add_ssh_keys:
+          fingerprints:
+            39:64:96:8b:6a:a2:68:db:c3:71:fe:d2:c1:d1:41:8f
 
 workflows:
   # docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -52,7 +54,6 @@ workflows:
     - docs-deploy:
         requires:
         - build
-        ssh-fingerprints: 39:64:96:8b:6a:a2:68:db:c3:71:fe:d2:c1:d1:41:8f
         filters:
           branches:
             only: master
