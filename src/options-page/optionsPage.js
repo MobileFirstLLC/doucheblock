@@ -2,6 +2,7 @@
 
 import Storage from "../modules/storage";
 import Tabs from "../modules/tabs";
+import {shareLinks, rateLink} from "../config";
 
 /**
  * Options page script. This script loads user
@@ -34,6 +35,7 @@ export default class OptionsPage {
         // load user settings
         OptionsPage.loadSettings();
         OptionsPage.loadIntro();
+        OptionsPage.setupShare();
     }
 
     /**
@@ -66,6 +68,14 @@ export default class OptionsPage {
      */
     static get BMC() {
         return OptionsPage.getElement('bmc');
+    }
+
+    /**
+     * Check if user has just installed.
+     * @returns {boolean}
+     */
+    static get isIntro(){
+        return new URLSearchParams(window.location.search).get('i') === "";
     }
 
     /**
@@ -137,7 +147,7 @@ export default class OptionsPage {
                 settings[Storage.keys.confirm];
 
             // if enough blocks -> reveal additional content
-            if (count > 1) {
+            if (count > 1 && !OptionsPage.isIntro) {
                 OptionsPage.blockCount.innerText =
                     (OptionsPage.translate('blockCount', count.toString()))
                 OptionsPage.BMC.setAttribute(
@@ -146,17 +156,46 @@ export default class OptionsPage {
         });
     }
 
+    /**
+     * Generate an intro message to new user. When showing
+     * intro, hide the "other" distractions around the screen.
+     */
     static loadIntro() {
-        const isIntro = new URLSearchParams(window.location.search).get('i') === "";
-        if (isIntro) {
-            const container = OptionsPage.getElement('intro-container')
-            const close = OptionsPage.getElement('close-intro')
+        if (OptionsPage.isIntro) {
+            const container = OptionsPage.getElement('intro-container');
+            const close = OptionsPage.getElement('close-intro');
 
-            OptionsPage.IntroBlock.innerHTML = OptionsPage.translate('intro')
+            OptionsPage.getElement('intro-greeting').innerHTML = OptionsPage.translate('intro_greeting');
+            OptionsPage.getElement('intro-text').innerHTML = OptionsPage.translate('intro_text');
             OptionsPage.IntroBlock.parentNode.style.display = 'block';
-            OptionsPage.getElement('source').style.display = 'none';
+            OptionsPage.getElement('source').style.display =
+                OptionsPage.getElement('share').style.display = 'none';
             close.onclick = _ => container.parentNode.removeChild(container)
             close.onkeypress = _ => container.parentNode.removeChild(container)
         }
+    }
+
+    /**
+     * Generate share links
+     */
+    static setupShare() {
+        const links = Object.values(shareLinks).map(OptionsPage.makeShareLink).join('');
+        const label = document.createElement('p');
+
+        label.innerHTML = OptionsPage.translate('share_and_rate');
+        OptionsPage.getElement('share').innerHTML = links;
+        OptionsPage.getElement('share').prepend(label);
+    }
+
+    /**
+     * Generate a share link
+     * @param {string} label - i18n dictionary key
+     * @param {string} url - the URL to share
+     * @param {string} svgPath - icon path
+     * @returns {string} generated HTML
+     */
+    static makeShareLink({label, url, svgPath}) {
+        const icon = `<svg viewBox="0 0 24 24"><path d="${svgPath}" /></svg>`
+        return `<a href="${url}" title="${OptionsPage.translate(label)}">${icon}</a>`;
     }
 }
