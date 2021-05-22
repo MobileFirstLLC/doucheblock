@@ -4,7 +4,7 @@ DoucheBlock is like an ad blocker but for your Twitter timeline. It will automat
 
 ## Where to get it
 
-DoucheBlock for Twitter is available for the following browsers:
+DoucheBlock for Twitter is available in the following marketplaces:
 
 <p align="center" style="margin-top: 40px">    
 <a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img alt="install at chrome web store" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge.png"/></a>
@@ -65,6 +65,7 @@ The extension is built with modules, each performing their individual task.
 | Module | Description | 
 | --- | --- |
 | AutoBlocker | Looks for handles and initiates blocking |
+| BlockerState | Manages blocker state while browsing |
 | BrowserAction | Handle extension icon click |
 | OnInstall | Handle extension install event |
 | OptionsPage | Edit user preferences |
