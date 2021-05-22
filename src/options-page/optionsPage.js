@@ -63,35 +63,11 @@ export default class OptionsPage {
     }
 
     /**
-     * Get bmc DOM element
-     * @returns {HTMLElement}
-     */
-    static get BMC() {
-        return OptionsPage.getElement('bmc');
-    }
-
-    /**
      * Check if user has just installed.
      * @returns {boolean}
      */
     static get isIntro(){
         return new URLSearchParams(window.location.search).get('i') === "";
-    }
-
-    /**
-     * New user intro block
-     * @returns {HTMLElement}
-     */
-    static get IntroBlock() {
-        return OptionsPage.getElement('intro');
-    }
-
-    /**
-     * Get DOM element that displays number of blocks
-     * @returns {HTMLElement}
-     */
-    static get blockCount() {
-        return OptionsPage.getElement('block-count');
     }
 
     /**
@@ -148,9 +124,9 @@ export default class OptionsPage {
 
             // if enough blocks -> reveal additional content
             if (count > 1 && !OptionsPage.isIntro) {
-                OptionsPage.blockCount.innerText =
+                OptionsPage.getElement('block-count').innerText =
                     (OptionsPage.translate('blockCount', count.toString()))
-                OptionsPage.BMC.setAttribute(
+                OptionsPage.getElement('bmc').setAttribute(
                     'visible', 'visible');
             }
         });
@@ -167,7 +143,7 @@ export default class OptionsPage {
 
             OptionsPage.getElement('intro-greeting').innerHTML = OptionsPage.translate('intro_greeting');
             OptionsPage.getElement('intro-text').innerHTML = OptionsPage.translate('intro_text');
-            OptionsPage.IntroBlock.parentNode.style.display = 'block';
+            OptionsPage.getElement('intro').parentNode.style.display = 'block';
             OptionsPage.getElement('source').style.display =
                 OptionsPage.getElement('share').style.display = 'none';
             close.onclick = _ => container.parentNode.removeChild(container)
