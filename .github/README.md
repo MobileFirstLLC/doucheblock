@@ -15,7 +15,7 @@
   Block anyone with specific keywords in their Twitter bio.<br/><br/>
 </h3>
 
-<p>Available for Chrome, Firefox, Brave, Edge, and Opera</p>
+<p align="center">Available for Chrome, Firefox, Brave, Edge, and Opera</p>
 
 <p align="center">    
 <a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img alt="install at chrome web store" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge.png"/></a>
