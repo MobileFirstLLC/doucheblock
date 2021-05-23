@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [0.3.0](https://github.com/MobileFirstLLC/doucheblock/compare/v0.2.1...v0.3.0) (2021-05-23)
 
+- add real-time check for blocking status, and check before prompting [PR #14](https://github.com/MobileFirstLLC/doucheblock/pull/14)
+- use `exclude_globs` in the manifest to exclude specific pages [ref](https://stackoverflow.com/questions/9687322/exclude-matches-in-manifest-json-does-nothing)
+- add share and rate links to options page
+
 ## [0.2.1](https://github.com/MobileFirstLLC/doucheblock/compare/v0.2.0...v0.2.1) (2021-04-25)
 
 - fix chrome version numbering
