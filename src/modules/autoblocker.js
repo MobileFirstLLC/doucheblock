@@ -259,7 +259,7 @@ export default class AutoBlocker {
     static limitAlertCount(users) {
         // if user has disabled confirmation alerts they will see
         // 0 alerts -> return all handles
-        if (!bs.confirmBlocks || !users.length || users.length <= alertCap) {
+        if (!bs.confirmBlocks || !users || users.length <= alertCap) {
             return users;
         }
 
