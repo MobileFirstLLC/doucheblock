@@ -48,31 +48,6 @@ export default class TwitterApi {
     }
 
     /**
-     * Check if user is being blocked
-     * @param friendship - current friendship state
-     * @returns {boolean} - true if blocked
-     */
-    static isBlockingFriendship(friendship) {
-        return !!(friendship && friendship.connections
-            .indexOf('blocking') >= 0);
-    }
-
-    static filterPreBlockedIds(response, users, callback) {
-        try {
-            const result = JSON.parse(response);
-            const nonBlocked = users.map(u => {
-                const [friendship] = result.filter(f => f.id_str === u.id)
-                const isBlocking = TwitterApi.isBlockingFriendship(friendship)
-                console.log('isBlocking:', isBlocking, u, friendship);
-                return !isBlocking;
-            });
-            callback(nonBlocked);
-        } catch (e) {
-            callback(users)
-        }
-    }
-
-    /**
      * Request user bios
      * @param {string[]} handles - user handles to check
      * @param {string} bearer - authentication Bearer token
@@ -118,27 +93,34 @@ export default class TwitterApi {
     }
 
     /**
-     * Check in real-time if handle is already being blocked.
-     * Sometimes handles show up even when they've been blocked.
-     * @param {Object[]} users - list of user ids to check
+     * Check in real-time if user is already being blocked.
+     *
+     * @param {String} handle - screen name to check
      * @param {string} bearer - authentication Bearer token
      * @param {string} csrf - csrf token
      * @param {function} callback
-     * @returns {boolean}
+     * @returns {boolean} True if already blocking and False otherwise
      */
-    static isBlocking(users, bearer, csrf, callback) {
+    static isBlocking(handle, bearer, csrf, callback) {
+
         const xhr = new window.XMLHttpRequest();
-        xhr.open('GET', requestConfigs.friendshipEndpoint(
-            users.map(u => u.handle).join(',')), true);
+        const onError = () => callback(false);
+
+        xhr.open('GET', requestConfigs.friendshipEndpoint(handle), true);
         xhr.setRequestHeader('Authorization', bearer);
         xhr.setRequestHeader('x-csrf-token', csrf);
         xhr.onload = _ => {
             if (xhr.readyState === 4) {
-                TwitterApi.filterPreBlockedIds(
-                    xhr.response, users, callback);
+                try {
+                    const alreadyBlocking = JSON.parse(xhr.response)
+                        .data.user.legacy.blocking;
+                    callback(alreadyBlocking);
+                } catch (e) {
+                    onError()
+                }
             }
         }
-        xhr.onerror = () => callback(users);
+        xhr.onerror = onError;
         xhr.send();
     }
 }

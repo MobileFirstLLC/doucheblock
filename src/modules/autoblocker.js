@@ -227,10 +227,9 @@ export default class AutoBlocker {
         // all users that match block criteria
         const blockable = users.filter(AutoBlocker.isBlockMatch);
         // remaining users after applying max cap
-        AutoBlocker.limitAlertCount(blockable, limited => {
-            // proceed to block
-            AutoBlocker.sequentiallyBlock(limited);
-        });
+        const limited = AutoBlocker.limitAlertCount(blockable);
+        // proceed to block
+        AutoBlocker.sequentiallyBlock(limited);
     }
 
     /**
@@ -255,32 +254,25 @@ export default class AutoBlocker {
      * Method will return at most max allowed matches.
      *
      * @param {Object[]} users
-     * @param {function} callback - handler for returning filtered users
      * @returns {Object[]} limited count of users
      */
-    static limitAlertCount(users, callback) {
+    static limitAlertCount(users) {
         // if user has disabled confirmation alerts they will see
         // 0 alerts -> return all handles
-        if (!bs.confirmBlocks || !users.length) {
-            return callback(users);
+        if (!bs.confirmBlocks || !users.length || users.length <= alertCap) {
+            return users;
         }
-        // filter out users that are already blocked
-        TwitterApi.isBlocking(users, bs.tokens.bearerToken,
-            bs.tokens.csrfToken, nonBlocked => {
-                if (nonBlocked.length <= alertCap) {
-                    return callback(nonBlocked);
-                }
-                // take max items from the beginning
-                const keep = nonBlocked.slice(0, alertCap)
 
-                // get the excess handles and requeue
-                const excessHandles = nonBlocked.slice(alertCap)
-                    .map(({handle}) => handle);
+        // take max items from the beginning
+        const keep = users.slice(0, alertCap)
 
-                bs.handledList.remove(excessHandles);
-                bs.pendingQueue.addAll(excessHandles);
-                return callback(keep);
-            });
+        // get the excess handles and requeue
+        const excessHandles = users.slice(alertCap)
+            .map(({handle}) => handle);
+
+        bs.handledList.remove(excessHandles);
+        bs.pendingQueue.addAll(excessHandles);
+        return keep;
     }
 
     /**
@@ -291,9 +283,17 @@ export default class AutoBlocker {
     static sequentiallyBlock(users) {
         if (users && users.length) {
             const first = users.shift();
-            AutoBlocker.executeBlock(first)
-                .then(_ => AutoBlocker.sequentiallyBlock(users))
-                .catch();
+            // filter out users that are already blocked
+            TwitterApi.isBlocking(first.handle, bs.tokens.bearerToken,
+                bs.tokens.csrfToken, isBlocking => {
+                    if (isBlocking) {
+                        AutoBlocker.sequentiallyBlock(users);
+                    } else {
+                        AutoBlocker.executeBlock(first)
+                            .then(_ => AutoBlocker.sequentiallyBlock(users))
+                            .catch();
+                    }
+                });
         }
     }
 
