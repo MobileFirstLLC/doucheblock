@@ -102,10 +102,8 @@ export default class TwitterApi {
      * @returns {boolean} True if already blocking and False otherwise
      */
     static isBlocking(handle, bearer, csrf, callback) {
-
         const xhr = new window.XMLHttpRequest();
         const onError = () => callback(false);
-
         xhr.open('GET', requestConfigs.friendshipEndpoint(handle), true);
         xhr.setRequestHeader('Authorization', bearer);
         xhr.setRequestHeader('x-csrf-token', csrf);
