@@ -34,7 +34,7 @@
     "placeholders": {
       "count": {
         "content": "$1",
-        "example": "0"
+        "example": "100"
       }
     }
   },
