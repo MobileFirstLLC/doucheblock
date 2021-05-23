@@ -9,7 +9,7 @@
     "message": "Block anyone with specific keywords in their Twitter bio."
   },
   "blockedWords": {
-    "message": "List of bio words that will activate blocking, separate by comma:"
+    "message": "List all your trigger words (separate by comma):"
   },
   "confirmBlock": {
     "message": "Ask me to confirm before blocking"
