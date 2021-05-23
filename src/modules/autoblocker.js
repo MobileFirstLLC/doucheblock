@@ -259,7 +259,7 @@ export default class AutoBlocker {
     static limitAlertCount(users) {
         // if user has disabled confirmation alerts they will see
         // 0 alerts -> return all handles
-        if (!bs.confirmBlocks || !users || users.length <= alertCap) {
+        if (!bs.confirmBlocks || !users.length || users.length <= alertCap) {
             return users;
         }
 
@@ -269,9 +269,9 @@ export default class AutoBlocker {
         // get the excess handles and requeue
         const excessHandles = users.slice(alertCap)
             .map(({handle}) => handle);
+
         bs.handledList.remove(excessHandles);
         bs.pendingQueue.addAll(excessHandles);
-
         return keep;
     }
 
@@ -283,9 +283,17 @@ export default class AutoBlocker {
     static sequentiallyBlock(users) {
         if (users && users.length) {
             const first = users.shift();
-            AutoBlocker.executeBlock(first)
-                .then(_ => AutoBlocker.sequentiallyBlock(users))
-                .catch();
+            // filter out users that are already blocked
+            TwitterApi.isBlocking(first.handle, bs.tokens.bearerToken,
+                bs.tokens.csrfToken, isBlocking => {
+                    if (isBlocking) {
+                        AutoBlocker.sequentiallyBlock(users);
+                    } else {
+                        AutoBlocker.executeBlock(first)
+                            .then(_ => AutoBlocker.sequentiallyBlock(users))
+                            .catch();
+                    }
+                });
         }
     }
 

@@ -98,6 +98,12 @@ export const requestConfigs = {
      * @type {string}
      */
     blockEndpoint: 'https://twitter.com/i/api/1.1/blocks/create.json',
+    /**
+     * Endpoint for checking current friendship status
+     * @param handle - specify one username
+     * @returns {string} - formatted URL
+     */
+    friendshipEndpoint : handle => `https://twitter.com/i/api/graphql/Vf8si2dfZ1zmah8ePYPjDQ/UserByScreenNameWithoutResults?variables=%7B%22screen_name%22%3A%22${handle}%22%2C%22withHighlightedLabel%22%3Atrue%7D`
 }
 
 /*
@@ -175,7 +181,7 @@ export const alertCap = 3;
  * Link where to rate the extension.
  * Depends on the current browser.
  *
- * @returns {String|undefined}
+ * @returns {Object|undefined}
  */
 export const rateLink = () => {
     if (isFirefox) {
