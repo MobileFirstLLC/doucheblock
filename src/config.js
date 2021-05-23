@@ -120,7 +120,7 @@ export const isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
  * @constant
  * @type {Boolean}
  */
-export const isEdge = window.navigator.userAgent.indexOf("Edg/") > -1;
+export const isEdge = navigator.userAgent.indexOf("Edg/") > -1;
 
 /*
  * Determine if current browser is Opera
