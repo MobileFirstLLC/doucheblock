@@ -30,7 +30,6 @@
   ],
   "devDependencies": {
     "cws-publish": "^2.0.2",
-    "extension-cli": "1.0.3",
-    "node-sass": "^6.0.0"
+    "extension-cli": "1.1.0"
   }
 }

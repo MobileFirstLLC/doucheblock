@@ -4,7 +4,7 @@ DoucheBlock is like an ad blocker but for your Twitter timeline. It will automat
 
 ## Where to get it
 
-DoucheBlock for Twitter is available in the following marketplaces:
+DoucheBlock for Twitter is available for **Chrome, Firefox, Edge, Brave, and Opera** browsers. You can install it from the following stores:
 
 <p align="center" style="margin-top: 40px">    
 <a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img alt="install at chrome web store" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge.png"/></a>
@@ -88,7 +88,7 @@ You will need [Node.js](https://nodejs.org/en/download/) to build this extension
 
 Clone the repository with git:
 
-```
+```bash
 git clone https://github.com/MobileFirstLLC/doucheblock.git
 ```
 
@@ -100,7 +100,7 @@ If you do not have git [download the latest source from here](https://github.com
 
 Open the source code in your favorite web editor. Then in the terminal, run:
 
-```
+```bash
 npm install
 ```
 
@@ -112,7 +112,7 @@ this will install all dependencies needed to build the application.
 
 To debug the extension run:
 
-```
+```bash
 npm run start
 ```
 
@@ -131,7 +131,7 @@ npm run start
 
 When ready to build a release, run:
 
-```
+```bash
 npm run build
 ```
 
