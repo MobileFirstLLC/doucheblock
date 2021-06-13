@@ -18,13 +18,13 @@
     "message": "Save"
   },
   "saved": {
-    "message": "Saved!"
+    "message": "Saved \uD83D\uDDF8"
   },
   "intro_greeting":{
     "message": "Hi there and welcome!"
   },
   "intro_text": {
-    "message": "DoucheBlock blocks people who use specific keywords in their Twitter bio. You can specify your choice of keywords below. If you enjoy DoucheBlock, share it with your friends."
+    "message": "DoucheBlock blocks people who use specific keywords in their Twitter bio. You can specify your choice of keywords below. After that you are all set and ready to use DoucheBlock."
   },
   "source": {
     "message": "DoucheBlock is open source!"
@@ -51,7 +51,7 @@
     }
   },
   "share_and_rate": {
-    "message": "Share & Rate"
+    "message": "Share or Rate: "
   },
   "rate_extension": {
     "message": "Rate extension"

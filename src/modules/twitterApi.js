@@ -1,5 +1,5 @@
-import {requestConfigs} from '../config'
-import Storage from "./storage";
+import {requestConfigs} from '../config';
+import Storage from './storage';
 
 /**
  * @description
@@ -30,20 +30,21 @@ export default class TwitterApi {
             id: id_str,
             name: name,
             handle: screen_name
-        }
+        };
     }
 
     /**
-     * Parse raw API response
+     * Try Parse API response
      * @param {string} response - response from API
-     * @param {function} callback - function to call on success
+     * @param {function} onParse - function to process parse result
+     * @param {function} callback - function on call on success
      * @param {function} errorCallback - function to call on error
      */
-    static tryParseBios(response, callback, errorCallback) {
+    static parseResponse(response, onParse, callback, errorCallback) {
         try {
-            callback(JSON.parse(response).map(TwitterApi.mapUser));
+            callback(onParse(JSON.parse(response)));
         } catch (e) {
-            errorCallback()
+            errorCallback();
         }
     }
 
@@ -62,10 +63,11 @@ export default class TwitterApi {
         xhr.setRequestHeader('x-csrf-token', csrf);
         xhr.onload = _ => {
             if (xhr.readyState === 4) {
-                TwitterApi.tryParseBios(xhr.response,
-                    callback, errorCallback)
+                TwitterApi.parseResponse(xhr.response,
+                    resp => resp.map(TwitterApi.mapUser),
+                    callback, errorCallback);
             }
-        }
+        };
         xhr.onerror = _ => errorCallback();
         xhr.send();
     }
@@ -88,7 +90,7 @@ export default class TwitterApi {
             if (xhr.status === 200) {
                 Storage.incrementCount();
             }
-        }
+        };
         xhr.send('user_id=' + id);
     }
 
@@ -109,15 +111,11 @@ export default class TwitterApi {
         xhr.setRequestHeader('x-csrf-token', csrf);
         xhr.onload = _ => {
             if (xhr.readyState === 4) {
-                try {
-                    const alreadyBlocking = JSON.parse(xhr.response)
-                        .data.user.legacy.blocking;
-                    callback(alreadyBlocking);
-                } catch (e) {
-                    onError()
-                }
+                TwitterApi.parseResponse(xhr.response,
+                resp=>resp.data.user.legacy.blocking,
+                    callback, onError);
             }
-        }
+        };
         xhr.onerror = onError;
         xhr.send();
     }

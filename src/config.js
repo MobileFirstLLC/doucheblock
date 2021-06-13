@@ -146,7 +146,7 @@ export const isChrome = !(isEdge || isOpera || isFirefox);
  *
  * @type {Function}
  */
-export const browserVariant = _ => isFirefox ? browser : window.chrome;
+export const browserVariant = _ => isFirefox ? browser : chrome;
 
 /*
  * Define browser action badge color

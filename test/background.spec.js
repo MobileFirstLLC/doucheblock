@@ -1,7 +1,8 @@
-import OnInstall from "../src/modules/onInstall";
-import BrowserAction from "../src/modules/browserAction";
-import Tokens from "../src/modules/tokens";
-import {OnInstallURL, OptionsPageURL} from '../src/config'
+import OnInstall from '../src/modules/onInstall';
+import BrowserAction from '../src/modules/browserAction';
+import Tokens from '../src/modules/tokens';
+import Tabs from '../src/modules/tabs';
+import {OnInstallURL, OptionsPageURL} from '../src/config';
 
 describe('Background script', () => {
 
@@ -51,19 +52,25 @@ describe('Background script', () => {
     it('Requesting increment updates badge to stored count', done => {
         chrome.storage.sync.get.yields({count: 10});
         chrome.runtime.onMessage.dispatch({increment: true});
-        expect(chrome.browserAction.setBadgeText.withArgs({text: "10"}).called).to.be.true;
+        expect(chrome.browserAction.setBadgeText.withArgs({text: '10'}).called).to.be.true;
         done();
     });
 
     it('Converts long numbers to more compact form', done => {
-        expect(BrowserAction.formatBadgeCount(1)).to.equal("1")
-        expect(BrowserAction.formatBadgeCount(10)).to.equal("10")
-        expect(BrowserAction.formatBadgeCount(100)).to.equal("100")
-        expect(BrowserAction.formatBadgeCount(9999)).to.equal("9999")
-        expect(BrowserAction.formatBadgeCount(1000)).to.equal("1000")
-        expect(BrowserAction.formatBadgeCount(10000)).to.equal("10K")
-        expect(BrowserAction.formatBadgeCount(100000)).to.equal("100K")
+        expect(BrowserAction.formatBadgeCount(1)).to.equal('1');
+        expect(BrowserAction.formatBadgeCount(10)).to.equal('10');
+        expect(BrowserAction.formatBadgeCount(100)).to.equal('100');
+        expect(BrowserAction.formatBadgeCount(9999)).to.equal('9999');
+        expect(BrowserAction.formatBadgeCount(1000)).to.equal('1000');
+        expect(BrowserAction.formatBadgeCount(10000)).to.equal('10K');
+        expect(BrowserAction.formatBadgeCount(100000)).to.equal('100K');
         done();
+    });
+
+    it('Notifies tabs of settings update', () => {
+        chrome.tabs.query.yields([{id: 1}, {id: 2}]);
+        Tabs.notifyTabsOfUpdate();
+        expect(chrome.tabs.sendMessage.calledTwice, 'sends message').to.be.true;
     });
 
 });
