@@ -1,6 +1,6 @@
 // noinspection JSUnresolvedVariable,JSCheckFunctionSignatures,JSDeprecatedSymbols
 
-import {browserVariant} from "../config";
+import {browserVariant} from '../config';
 
 /**
  * @description
@@ -29,8 +29,8 @@ export default class Tokens {
     constructor() {
         browserVariant().webRequest.onBeforeSendHeaders.addListener(
             Tokens.getTheTokens,
-            {urls: ["https://api.twitter.com/*"]},
-            ["requestHeaders"]
+            {urls: ['https://api.twitter.com/*']},
+            ['requestHeaders']
         );
         browserVariant().runtime.onMessage
             .addListener(Tokens.messageListener);
@@ -92,10 +92,10 @@ export default class Tokens {
     static parseHeader(header) {
         switch (header.name.toLowerCase()) {
             case 'authorization':
-                Tokens.bearerToken = header.value
+                Tokens.bearerToken = header.value;
                 return 1;
             case 'x-csrf-token':
-                Tokens.csrfToken = header.value
+                Tokens.csrfToken = header.value;
                 return 1;
             default:
                 return 0;

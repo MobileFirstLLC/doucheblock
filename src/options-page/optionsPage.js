@@ -2,7 +2,7 @@
 
 import Storage from "../modules/storage";
 import Tabs from "../modules/tabs";
-import {shareLinks, rateLink} from "../config";
+import {shareLinks} from "../config";
 
 /**
  * Options page script. This script loads user
