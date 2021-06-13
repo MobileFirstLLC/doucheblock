@@ -1,5 +1,5 @@
-import Storage from "./storage";
-import {requestConfigs} from "../config";
+import Storage from './storage';
+import {requestConfigs} from '../config';
 
 /**
  * @description
@@ -57,8 +57,13 @@ class PendingQueue {
      */
     static takeNext() {
         const N = Math.min(PendingQueue.queue.length,
-            requestConfigs.maxLookupCount)
-        return [...PendingQueue.queue.splice(0, N)];
+            requestConfigs.maxLookupCount);
+        return PendingQueue.queue.splice(0, N);
+    }
+
+    /* @private */
+    static clear() {
+        this._pendingQueue = [];
     }
 }
 
@@ -95,7 +100,7 @@ class HandledList {
      */
     static remove(values) {
         this._handleCheckList = HandledList.list
-            .filter(value => values.indexOf(value) < 0)
+            .filter(value => values.indexOf(value) < 0);
     }
 
     /**
@@ -106,6 +111,11 @@ class HandledList {
      */
     static isChecked(handle) {
         return HandledList.list.indexOf(handle) >= 0;
+    }
+
+    /* @private */
+    static clear() {
+        this._handleCheckList = [];
     }
 }
 
@@ -136,8 +146,8 @@ class WhiteList {
      */
     static add(id, handle) {
         Storage.addWhiteList({[id]: handle}, newList => {
-            WhiteList.whiteList = newList
-        })
+            WhiteList.whiteList = newList;
+        });
     }
 
     /**
@@ -146,7 +156,7 @@ class WhiteList {
      * @returns {boolean}
      */
     static contains(id) {
-        return !!WhiteList.whiteList[id]
+        return !!WhiteList.whiteList[id];
     }
 }
 
@@ -167,7 +177,7 @@ export default class BlockerState {
      * @returns {HandledList}
      */
     static get handledList() {
-        return HandledList
+        return HandledList;
     }
 
     /**
@@ -242,7 +252,7 @@ export default class BlockerState {
     static get ready() {
         return !!(BlockerState.tokens &&
             BlockerState.tokens.csrfToken &&
-            BlockerState.tokens.bearerToken)
+            BlockerState.tokens.bearerToken);
     }
 
     /**

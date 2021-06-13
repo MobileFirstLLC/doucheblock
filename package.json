@@ -15,6 +15,7 @@
     "build:ff": "xt-build -e prod -c config/firefox.json",
     "clean": "xt-clean",
     "docs": "xt-docs -c config/docs.json",
+    "sync": "xt-sync",
     "test": "xt-test"
   },
   "standard-version": {
