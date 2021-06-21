@@ -208,7 +208,6 @@ export const rateLink = () => {
             url: 'https://addons.opera.com/en/extensions/details/doucheblock-for-twitter/'
         };
     }
-    return undefined;
 }
 
 /**
