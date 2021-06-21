@@ -1,8 +1,8 @@
 // noinspection JSUnresolvedVariable,JSUnresolvedFunction
 
-import Storage from "../modules/storage";
-import Tabs from "../modules/tabs";
-import {shareLinks} from "../config";
+import Storage from '../modules/storage';
+import Tabs from '../modules/tabs';
+import Page from './page';
 
 /**
  * Options page script. This script loads user
@@ -12,19 +12,18 @@ import {shareLinks} from "../config";
  * @module
  * @name OptionsPage
  */
-export default class OptionsPage {
+export default class OptionsPage extends Page {
 
     /**
      * @ignore
      */
     constructor() {
+        super('appName');
 
         // translate text elements
-        const title = OptionsPage.translate('appName');
-        OptionsPage.getElement('title').innerText = document.title = title;
         OptionsPage.getElement('block-label').innerText = OptionsPage.translate('blockedWords');
         OptionsPage.getElement('confirm-label').innerText = OptionsPage.translate('confirmBlock');
-        OptionsPage.getElement('source-label').innerText = OptionsPage.translate('source');
+        OptionsPage.getElement('help').innerText = OptionsPage.translate('help');
         OptionsPage.resetButtonText();
 
         // bind save button action
@@ -35,7 +34,6 @@ export default class OptionsPage {
         // load user settings
         OptionsPage.loadSettings();
         OptionsPage.loadIntro();
-        OptionsPage.setupShare();
     }
 
     /**
@@ -59,15 +57,15 @@ export default class OptionsPage {
      * @returns {HTMLElement}
      */
     static get confirmInput() {
-        return OptionsPage.getElement('confirm')
+        return OptionsPage.getElement('confirm');
     }
 
     /**
      * Check if user has just installed.
      * @returns {boolean}
      */
-    static get isIntro(){
-        return new URLSearchParams(window.location.search).get('i') === "";
+    static get isIntro() {
+        return new URLSearchParams(window.location.search).get('i') === '';
     }
 
     /**
@@ -77,24 +75,6 @@ export default class OptionsPage {
         OptionsPage.saveButton.innerText = OptionsPage.translate('saveChanges');
     }
 
-    /**
-     * Get localized text value
-     * @param {string} key - localization dictionary key
-     * @param {string|undefined} args - placeholder
-     * @returns {string}
-     */
-    static translate(key, args = undefined) {
-        return window.chrome.i18n.getMessage(key, args);
-    }
-
-    /**
-     * Get some DOM element by its ID
-     * @param id - DOM element id
-     * @returns {HTMLElement}
-     */
-    static getElement(id) {
-        return document.getElementById(id);
-    }
 
     /**
      * Update user preferences
@@ -104,7 +84,7 @@ export default class OptionsPage {
             Storage.setConfirmationSetting(OptionsPage.confirmInput.checked, () => {
                 OptionsPage.saveButton.innerText = OptionsPage.translate('saved');
                 Tabs.notifyTabsOfUpdate();
-                window.setTimeout(OptionsPage.resetButtonText, 1000)
+                window.setTimeout(OptionsPage.resetButtonText, 1000);
             });
         });
     }
@@ -125,7 +105,7 @@ export default class OptionsPage {
             // if enough blocks -> reveal additional content
             if (count > 1 && !OptionsPage.isIntro) {
                 OptionsPage.getElement('block-count').innerText =
-                    (OptionsPage.translate('blockCount', count.toString()))
+                    (OptionsPage.translate('blockCount', count.toString()));
                 OptionsPage.getElement('bmc').setAttribute(
                     'visible', 'visible');
             }
@@ -146,32 +126,8 @@ export default class OptionsPage {
             OptionsPage.getElement('intro').parentNode.style.display = 'block';
             OptionsPage.getElement('source').style.display =
                 OptionsPage.getElement('share').style.display = 'none';
-            close.onclick = _ => container.parentNode.removeChild(container)
-            close.onkeypress = _ => container.parentNode.removeChild(container)
+            close.onclick = _ => container.parentNode.removeChild(container);
+            close.onkeypress = _ => container.parentNode.removeChild(container);
         }
-    }
-
-    /**
-     * Generate share links
-     */
-    static setupShare() {
-        const links = Object.values(shareLinks).map(OptionsPage.makeShareLink).join('');
-        const label = document.createElement('p');
-
-        label.innerHTML = OptionsPage.translate('share_and_rate');
-        OptionsPage.getElement('share').innerHTML = links;
-        OptionsPage.getElement('share').prepend(label);
-    }
-
-    /**
-     * Generate a share link
-     * @param {string} label - i18n dictionary key
-     * @param {string} url - the URL to share
-     * @param {string} svgPath - icon path
-     * @returns {string} generated HTML
-     */
-    static makeShareLink({label, url, svgPath}) {
-        const icon = `<svg viewBox="0 0 24 24"><path d="${svgPath}" /></svg>`
-        return `<a href="${url}" title="${OptionsPage.translate(label)}">${icon}</a>`;
     }
 }
