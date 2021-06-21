@@ -239,18 +239,16 @@ export default class AutoBlocker {
      */
     static isBlockMatch(user) {
         const {bio, id} = user;
-        let match = false;
         if (id && bio && !bs.whiteList.contains(id)) {
             const lineBio = bio.replace(/\r?\n|\r/g, ' ');
             for (let i = 0; i < bs.keyList.length; i++) {
                 const expression = new RegExp(bs.keyList[i], 'gi');
                 if (expression.test(lineBio)) {
-                    match = bs.keyList[i];
-                    break;
+                    return true;
                 }
             }
         }
-        return !!match;
+        return false;
     }
 
     /**
