@@ -12,6 +12,10 @@
       "src": "./src/options.js"
     },
     {
+      "name": "help",
+      "src": "./src/help.js"
+    },
+    {
       "name": "background",
       "src": "./src/background.js"
     }

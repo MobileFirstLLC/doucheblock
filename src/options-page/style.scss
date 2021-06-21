@@ -34,8 +34,14 @@ button {
   font-weight: 900;
   font-size: 19px;
   cursor: pointer;
+  min-width: 120px;
   transition: background-color .2s ease;
   outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin: 0 auto;
 
   &:hover, &:focus {
     background: #34383c;
@@ -44,12 +50,25 @@ button {
 
 h1 {
   font-size: 3rem;
+  text-align: center;
+}
+
+h2{
+  margin-top: 3rem;
+  text-align: left;
 }
 
 label {
   font-weight: 700;
   display: block;
   text-align: left;
+}
+
+.link {
+  text-decoration: none;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  font-weight: 900;
 }
 
 .checkbox-container {
@@ -92,6 +111,11 @@ label {
   margin: 0 auto;
   padding: 5rem 0;
   text-align: center;
+  position: relative;
+
+  &.left{
+    text-align: left;
+  }
 }
 
 .block {
@@ -125,19 +149,6 @@ label {
   display: none;
   position: relative;
   box-shadow: -2px 4px 12px rgba(0, 0, 0, 0.12), -1px 1px 3px rgba(0, 0, 0, 0.3);
-
-  & svg {
-    cursor: pointer;
-    position: absolute;
-    top: -12px;
-    right: -12px;
-    width: 32px;
-    height: 32px;
-    padding: 4px;
-    background: #222;
-    border-radius: 50%;
-    border: 6px solid #1DA1F2;
-  }
 
   & p {
     margin: 0 auto 20px auto;
@@ -179,8 +190,38 @@ label {
     position: absolute;
     bottom: 50px;
   }
+
   font-size: 80%;
   font-weight: bold;
+}
+
+#help {
+  float: right;
+}
+
+#back, #intro-container svg {
+  cursor: pointer;
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  background: #222;
+  border-radius: 50%;
+  border: 6px solid #1DA1F2;
+}
+
+#back {
+  top: 2rem;
+}
+
+ul {
+  text-align: left;
+
+  li {
+    margin: 1em 0;
+  }
 }
 
 #source {
@@ -196,13 +237,15 @@ label {
     justify-content: flex-start;
     color: #fff;
     text-decoration: none;
+
     & svg {
       flex: 0 0 40px;
       width: 34px;
       height: 34px;
       margin-right: 6px;
     }
-    & div{
+
+    & div {
       white-space: nowrap;
     }
   }
@@ -255,11 +298,11 @@ label {
       position: relative;
       display: flex;
       align-items: center;
-      justify-content: center!important;
-      bottom: 0!important;
-      left: 0!important;
-      right: 0!important;
-      margin: 1.5rem auto!important;
+      justify-content: center !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      margin: 1.5rem auto !important;
     }
   }
 

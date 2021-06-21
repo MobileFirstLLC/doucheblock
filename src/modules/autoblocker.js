@@ -1,8 +1,7 @@
-import {alertCap, browserVariant, classFlag} from '../config'
-import Storage from "./storage";
-import TwitterApi from "./twitterApi";
-import bs from "./blockerState"; // most definitely
-
+import {alertCap, browserVariant, classFlag} from '../config';
+import Storage from './storage';
+import TwitterApi from './twitterApi';
+import bs from './blockerState'; // most definitely
 
 /**
  * @description
@@ -63,7 +62,7 @@ export default class AutoBlocker {
      */
     static loadSettings(callback) {
         Storage.getSettings(settings => {
-            bs.keyList = settings[Storage.keys.blockWords]
+            bs.keyList = settings[Storage.keys.blockWords];
             bs.confirmBlocks = settings[Storage.keys.confirm];
             bs.whiteList.whiteList = settings[Storage.keys.whiteList];
             if (callback) callback();
@@ -80,7 +79,7 @@ export default class AutoBlocker {
                 bs.tokens = {
                     bearerToken: bearer,
                     csrfToken: csrf
-                }
+                };
                 if (bs.ready && callback) callback();
             });
     }
@@ -170,7 +169,7 @@ export default class AutoBlocker {
             // not marked as previously checked
             !link.classList.contains(classFlag) &&
             // contains "@" of handle
-            link.innerText.indexOf('@') >= 0)
+            link.innerText.indexOf('@') >= 0);
     }
 
     /**
@@ -199,8 +198,8 @@ export default class AutoBlocker {
         if (!shouldRequest) return;
 
         // update timestamp and get handles from queue
-        bs.lastBioTimestamp = Date.now()
-        const handles = bs.pendingQueue.takeNext()
+        bs.lastBioTimestamp = Date.now();
+        const handles = bs.pendingQueue.takeNext();
 
         // request bios for list of handles
         TwitterApi.getTheBio(handles,
@@ -213,7 +212,7 @@ export default class AutoBlocker {
             },
             () => {
                 // put names back in the queue
-                bs.pendingQueue.addAll(handles)
+                bs.pendingQueue.addAll(handles);
             });
     }
 
@@ -240,11 +239,18 @@ export default class AutoBlocker {
      */
     static isBlockMatch(user) {
         const {bio, id} = user;
-        return id && bio &&
-            !bs.whiteList.contains(id) &&
-            bs.keyList.filter(w => bio.toLowerCase()
-                .indexOf(w) >= 0)
-                .length > 0;
+        let match = false;
+        if (id && bio && !bs.whiteList.contains(id)) {
+            const lineBio = bio.replace(/\r?\n|\r/g, ' ');
+            for (let i = 0; i < bs.keyList.length; i++) {
+                const expression = new RegExp(bs.keyList[i], 'gi');
+                if (expression.test(lineBio)) {
+                    match = bs.keyList[i];
+                    break;
+                }
+            }
+        }
+        return !!match;
     }
 
     /**
@@ -264,7 +270,7 @@ export default class AutoBlocker {
         }
 
         // take max items from the beginning
-        const keep = users.slice(0, alertCap)
+        const keep = users.slice(0, alertCap);
 
         // get the excess handles and requeue
         const excessHandles = users.slice(alertCap)
@@ -340,6 +346,6 @@ export default class AutoBlocker {
             }
             // add some latency
             return window.setTimeout(resolve, 500);
-        })
+        });
     }
 }
