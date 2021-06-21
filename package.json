@@ -30,7 +30,7 @@
     "test/**/*"
   ],
   "devDependencies": {
-    "cws-publish": "^2.0.2",
+    "cws-publish": "^2.0.3",
     "extension-cli": "1.1.0"
   }
 }
