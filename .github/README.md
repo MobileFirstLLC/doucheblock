@@ -10,6 +10,7 @@
 
 <p align="center">
 <a href="https://travis-ci.com/github/MobileFirstLLC/doucheblock"><img alt="build status" src="https://travis-ci.com/MobileFirstLLC/doucheblock.svg?branch=master"></a> <a href="https://coveralls.io/github/MobileFirstLLC/doucheblock"><img alt="Coveralls github" src="https://img.shields.io/coveralls/github/MobileFirstLLC/doucheblock"></a> <a href="https://codeclimate.com/github/MobileFirstLLC/doucheblock/maintainability"><img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/MobileFirstLLC/doucheblock"></a>
+</P>  
 
 <h3 align="center">
   Block anyone with specific keywords in their Twitter bio.<br/><br/>
@@ -35,14 +36,24 @@
 </p>
 <br/>
 
-**You can set it to confirm before blocking or just allow it to block automatically.  You do not need to be viewing the profile for the extension to find these douches; above is for demo purposes only.**
+You can set it to confirm before blocking or just allow it to block automatically.  You do not need to be viewing the profile for the extension to find these douches; above is for demo purposes only.
+
+<br/><br/>
+
+<h2 align="center">What real users think about DoucheBlock? &nbsp; &nbsp; 🤔 💬 </h2>
+
+<br/>
 
 <p align="center">
+<a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img src="https://img.shields.io/chrome-web-store/stars/eeledoologbepiegnccedjigjkblhmhi?label=chrome&style=for-the-badge" alt="chrome"></a> &nbsp; &nbsp; <a href="https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter/"><img src="https://img.shields.io/amo/stars/doucheblock-for-twitter?label=firefox&style=for-the-badge" alt="firefox"></a>
+<br/><br/>  
 <img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/user_comment.jpg" alt="user comment"   width="500" />
 </p>
 <br/>
 
-This Chrome extension was inspired by [this tweet](https://twitter.com/awilkinson/status/1357794228030509056):
+<p align="center">
+  Originally inspired by <a href="https://twitter.com/awilkinson/status/1357794228030509056">this tweet</a>:
+</p>  
 
 <p align="center">
 <img width="500" border="1" alt="screenshot" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/screenshot.png"/>
