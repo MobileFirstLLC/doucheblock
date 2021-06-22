@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/MobileFirstLLC/doucheblock/compare/v0.3.0...v1.0.0) (2021-06-22)
+
+
+### Features
+
+* **regex:** add  regex keyword support and help page to explain use ([58e49cb](https://github.com/MobileFirstLLC/doucheblock/commit/58e49cba5d82bcf50383baf5d7096e4de5901f5c))
+
 ## [0.3.0](https://github.com/MobileFirstLLC/doucheblock/compare/v0.2.1...v0.3.0) (2021-05-23)
 
 - add real-time check for blocking status, and check before prompting [PR #14](https://github.com/MobileFirstLLC/doucheblock/pull/14)
