@@ -1,15 +1,18 @@
 import BlockerState from '../src/modules/blockerState';
-import {defaultConfig} from '../src/config';
+import {defaultConfig, requestConfigs} from '../src/config';
 
 describe('BlockerState', () => {
 
     beforeEach(() => {
+        global.now = Date.now();
+        global.clock = sinon.useFakeTimers(global.now);
         chrome.storage.sync.get.yields(defaultConfig);
     });
 
     afterEach(function () {
         chrome.flush();
         sandbox.restore();
+        global.clock.restore();
         BlockerState.pendingQueue.clear();
         BlockerState.handledList.clear();
     });
@@ -53,6 +56,12 @@ describe('BlockerState', () => {
         expect(BlockerState.whiteList.contains(1), 'id 1').to.be.true;
         expect(BlockerState.whiteList.contains(2), 'id 2').to.be.true;
         expect(BlockerState.whiteList.contains(3), 'id 3').to.be.true;
+    });
+
+    it('Interval expired after enough time has elapsed', () => {
+        BlockerState.lastBioTimestamp =
+            global.now - requestConfigs.maxInterval - 100;
+        expect(BlockerState.lastBioIntervalExpired).to.be.true;
     });
 
 });

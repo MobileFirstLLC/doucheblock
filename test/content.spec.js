@@ -1,13 +1,13 @@
 import AutoBlocker from '../src/modules/autoblocker';
-import {defaultConfig} from '../src/config';
 import MockMutationObserver from './_mocks';
-import BlockerState from '../src/modules/blockerState';
+import {defaultConfig} from '../src/config';
 
 describe('Content script', () => {
 
     beforeEach(() => {
         global.MutationObserver = MockMutationObserver;
         chrome.storage.sync.get.yields(defaultConfig);
+        new AutoBlocker();
     });
 
     afterEach(function () {
@@ -15,29 +15,33 @@ describe('Content script', () => {
         sandbox.restore();
     });
 
-    it('It loads user preferences', () => {
+    it('It loads user preferences on init', () => {
         sandbox.spy(AutoBlocker, 'loadSettings');
-        new AutoBlocker(); // init
+        new AutoBlocker();
+        expect(AutoBlocker.loadSettings.calledOnce,
+            'loads settings on init').to.be.true;
+    });
+
+    it('It reloads preferences on update', () => {
+        sandbox.spy(AutoBlocker, 'loadSettings');
+        chrome.runtime.onMessage.dispatch({updateSettings: true});
         expect(AutoBlocker.loadSettings.calledOnce,
             'loads settings on init').to.be.true;
     });
 
     it('Matches keywords', () => {
-        chrome.storage.sync.get.yields({
-            ...defaultConfig,
-            blockWords: 'Serial Entrepreneur,micros*,\\bvision'
-        });
-        new AutoBlocker();
-
         expect(AutoBlocker.checkWords(
+            ['Serial Entrepreneur'],
             'CEO Keynote Speaker, GoogleDevExpert, MSFT MVP, Serial Entrepreneur, Investor'),
-            'Serial Entrepreneur (plain)').to.be.true;
+            'plaintext').to.be.true;
         expect(AutoBlocker.checkWords(
+            ['micros*'],
             '@Microsoft by day Aspiring to bloom where planted.'),
             '*icros* (wildcard)').to.be.true;
         expect(AutoBlocker.checkWords(
+            ['\\bvision'],
             'Entrepreneur | Innovator with a ViSiOn to eliminate diagnostic errors using Artificial Intelligence'),
-            '\\bvision/gmi (case)').to.be.true;
+            '\\bvision (case)').to.be.true;
     });
 });
 

@@ -241,17 +241,18 @@ export default class AutoBlocker {
         const {bio, id} = user;
         return id && bio &&
             !bs.whiteList.contains(id) &&
-            AutoBlocker.checkWords(bio);
+            AutoBlocker.checkWords(bs.keyList, bio);
     }
 
     /**
      * Match bio against keywords
-     * @param {String} bio
+     * @param {String[]} words - keywords to check
+     * @param {String} bio - twitter bio
      * @returns {boolean} true if a douche
      */
-    static checkWords(bio) {
-        for (let i = 0; i < bs.keyList.length; i++) {
-            if (new RegExp(bs.keyList[i], 'gmi')
+    static checkWords(words, bio) {
+        for (let i = 0; i < words.length; i++) {
+            if (new RegExp(words[i], 'gmi')
                 .test(bio)) {
                 return true;
             }
