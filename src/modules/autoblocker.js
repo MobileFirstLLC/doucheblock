@@ -252,8 +252,7 @@ export default class AutoBlocker {
      */
     static checkWords(words, bio) {
         for (let i = 0; i < words.length; i++) {
-            if (new RegExp(words[i], 'gmi')
-                .test(bio)) {
+            if (new RegExp(words[i], 'gmi').test(bio)) {
                 return true;
             }
         }

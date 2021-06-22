@@ -75,7 +75,7 @@ export const requestConfigs = {
      * @constant
      * @type {number}
      */
-    maxInterval: 20 * 1000,
+    maxInterval: 15 * 1000,
     /**
      * Max number of handles to add to single bio request. This
      * is not a variable, this is a fixed number enforced by Twitter.
@@ -146,7 +146,7 @@ export const isChrome = !(isEdge || isOpera || isFirefox);
  *
  * @type {Function}
  */
-export const browserVariant = _ => isFirefox ? browser : chrome;
+export const browserVariant = _ => isFirefox ? browser : window.chrome;
 
 /*
  * Define browser action badge color

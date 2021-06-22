@@ -5,7 +5,7 @@ import {shareLinks} from '../config';
  * across the extension pages
  *
  * @module
- * @name AbstractPage
+ * @name Page
  */
 export default class Page {
 

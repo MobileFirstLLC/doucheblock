@@ -37,11 +37,20 @@ describe('Content script', () => {
         expect(AutoBlocker.checkWords(
             ['micros*'],
             '@Microsoft by day Aspiring to bloom where planted.'),
-            '*icros* (wildcard)').to.be.true;
+            'micros* (wildcard)').to.be.true;
+        expect(AutoBlocker.checkWords(
+            ['\\bmicrosoft*'],
+            'Microsoft for Startups provides #cloud services and #software to help #startups grow faster.'),
+            '\\bmicrosoft* (wildcard)').to.be.true;
         expect(AutoBlocker.checkWords(
             ['\\bvision'],
             'Entrepreneur | Innovator with a ViSiOn to eliminate diagnostic errors using Artificial Intelligence'),
             '\\bvision (case)').to.be.true;
+        expect(AutoBlocker.checkWords(
+            ['micros*'],
+            'Choose the browser that puts you first. Microsoft Edge is the fast and secure browser that helps you save time and money.'),
+            'micros* (wildcard)').to.be.true;
+
     });
 });
 

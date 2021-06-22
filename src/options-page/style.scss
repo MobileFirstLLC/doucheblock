@@ -44,7 +44,7 @@ button {
   margin: 0 auto;
 
   &:hover, &:focus {
-    background: #34383c;
+    background: #3f4648;
   }
 }
 
@@ -64,11 +64,18 @@ label {
   text-align: left;
 }
 
+code{
+  font-size: 110%;
+  background: #222a;
+  padding: 3px 5px;
+  border-radius: 5px;
+}
+
 .link {
   text-decoration: none;
-  border-bottom: 2px solid #fff;
   color: #fff;
-  font-weight: 900;
+  font-weight: 500;
+  border-bottom: 2px solid #fff;
 }
 
 .checkbox-container {
@@ -109,7 +116,7 @@ label {
   width: 680px;
   max-width: 95%;
   margin: 0 auto;
-  padding: 5rem 0;
+  padding: 5rem 0 150px 0;
   text-align: center;
   position: relative;
 
@@ -210,6 +217,10 @@ label {
   background: #222;
   border-radius: 50%;
   border: 6px solid #1DA1F2;
+  outline: none;
+  &:hover, &:focus {
+    background: #3f4648;
+  }
 }
 
 #back {
@@ -241,10 +252,10 @@ ul {
     text-decoration: none;
 
     & svg {
-      flex: 0 0 40px;
+      flex: 0 0 auto;
       width: 34px;
       height: 34px;
-      margin-right: 6px;
+      margin-right: 10px;
     }
 
     & div {
@@ -266,10 +277,10 @@ ul {
 
   & svg {
     cursor: pointer;
-    flex: 0 0 40px;
+    flex: 0 0 auto;
     width: 28px;
     height: 28px;
-    margin-left: 12px;
+    margin: 0 8px;
 
     path {
       fill: #fff;
