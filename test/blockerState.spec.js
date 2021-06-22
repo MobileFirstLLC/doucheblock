@@ -12,7 +12,6 @@ describe('BlockerState', () => {
         sandbox.restore();
         BlockerState.pendingQueue.clear();
         BlockerState.handledList.clear();
-
     });
 
     it('PendingQueue contains added values', () => {

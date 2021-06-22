@@ -69,7 +69,7 @@
     "message": "Back"
   },
   "configuring_words": {
-    "message": "<h2>Configuring keyword list</h2><ul><li>Separate each word, word pair, or expression by a comma; they will be evaluated individually against bio text</li><li>Keyword match is case-insensitive &mdash; \"abc\" matches \"AbC\", \"aBC\", etc.</li><li>regex patterns are supported: <a href='https://cheatography.com/davechild/cheat-sheets/regular-expressions/' target='_blank' rel='noreferrer noopener' class='link'>here is a cheat sheet</a></li><li>occurrence of a keyword anywhere in the bio counts as match (substring match) - specify regex word boundary to match by whole words.</li></ul>"
+    "message": "<h2>Configuring keyword list</h2><ul><li>Separate each word, word pair, or expression by a comma; they will be evaluated individually against bio text</li><li>Keyword match is case-insensitive &mdash; \"abc\" matches \"AbC\", \"aBC\", etc.</li><li>regex patterns are supported: <a href='https://cheatography.com/davechild/cheat-sheets/regular-expressions/' target='_blank' rel='noreferrer noopener' class='link'>here is a cheat sheet</a></li><li>IMPORTANT: when regex contains backslashes, you must escape them - example: <code>\\b  -->  \\\\b</code></li><li>occurrence of a keyword anywhere in the bio counts as match (substring match) - specify regex word boundary to match by whole words.</li></ul>"
   },
   "whitelist_help": {
     "message": "<h2>Whitelisting</h2><p>When using \"confirm before blocking\" mode, if you choose not to block someone when alerted, that handle will be added to a whitelist. You will not receive further alerts. You can still always block that user later on twitter.<br/><br/>When using automatic blocking mode, whitelist does not apply.</p>"
