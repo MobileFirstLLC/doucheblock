@@ -50,7 +50,7 @@ describe('BlockerState', () => {
         const initial = {1: 'a', 2: 'b'};
         chrome.storage.sync.get.yields({...defaultConfig, whiteList: initial});
         expect(Object.keys(BlockerState.whiteList.whiteList).length, 'list is empty').to.equal(0);
-        BlockerState.whiteList.whiteList = {1: 'a', 2: 'b'};
+        BlockerState.whiteList.whiteList = {...initial};
         expect(Object.keys(BlockerState.whiteList.whiteList).length, 'initialized correctly').to.equal(2);
         BlockerState.whiteList.add(3, 'c');
         expect(BlockerState.whiteList.contains(1), 'id 1').to.be.true;
@@ -59,8 +59,7 @@ describe('BlockerState', () => {
     });
 
     it('Interval expired after enough time has elapsed', () => {
-        BlockerState.lastBioTimestamp =
-            global.now - requestConfigs.maxInterval - 100;
+        BlockerState.lastBioTimestamp = global.now - requestConfigs.maxInterval - 1;
         expect(BlockerState.lastBioIntervalExpired).to.be.true;
     });
 
