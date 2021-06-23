@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.0.0](https://github.com/MobileFirstLLC/doucheblock/compare/v0.3.0...v1.0.0) (2021-06-22)
 
-- **regex:** add  regex keyword support and help page to explain use [PR #16](https://github.com/MobileFirstLLC/doucheblock/pull/16)
+- add  regex keyword support and help page to explain use [PR #16](https://github.com/MobileFirstLLC/doucheblock/pull/16)
 - maxRequest interval is now configured from 20 sec to 15 sec [ref](https://github.com/MobileFirstLLC/doucheblock/blob/d9c9659bdefc0e45d08f075b7d45636704598484/src/config.js#L78)
 
 ## [0.3.0](https://github.com/MobileFirstLLC/doucheblock/compare/v0.2.1...v0.3.0) (2021-05-23)
