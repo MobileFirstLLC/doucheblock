@@ -18,12 +18,14 @@ export default class HelpPage extends Page {
 
         HelpPage.getElement('keywords').innerHTML = HelpPage.translate('configuring_words');
         HelpPage.getElement('whitelist').innerHTML = HelpPage.translate('whitelist_help');
-        HelpPage.backButton.onclick = HelpPage.backButton.onkeypress = HelpPage.onBackClick;
+
+        HelpPage.backButton.onclick =
+            HelpPage.backButton.onkeypress =
+                HelpPage.onBackClick;
     }
 
     /**
      * @private
-     * @returns {HTMLElement}
      */
     static get backButton() {
         return HelpPage.getElement('back');
@@ -31,9 +33,8 @@ export default class HelpPage extends Page {
 
     /**
      * @private
-     * Handle back button click
      */
     static onBackClick() {
-        window.location.href = 'index.html';
+        window.history.back()
     }
 }
