@@ -10,7 +10,7 @@ import Page from './page';
  * preferences.
  *
  * @module
- * @name Index
+ * @name OptionsPage
  */
 export default class Index extends Page {
 

@@ -6,7 +6,7 @@ import Page from './page';
  * User help page
  *
  * @module
- * @name Help
+ * @name HelpPage
  */
 export default class Help extends Page {
 
