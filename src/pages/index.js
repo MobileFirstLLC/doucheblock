@@ -10,9 +10,9 @@ import Page from './page';
  * preferences.
  *
  * @module
- * @name OptionsPage
+ * @name Index
  */
-export default class OptionsPage extends Page {
+export default class Index extends Page {
 
     /**
      * @ignore
@@ -21,19 +21,19 @@ export default class OptionsPage extends Page {
         super('appName');
 
         // translate text elements
-        OptionsPage.getElement('block-label').innerText = OptionsPage.translate('blockedWords');
-        OptionsPage.getElement('confirm-label').innerText = OptionsPage.translate('confirmBlock');
-        OptionsPage.getElement('help').innerText = OptionsPage.translate('help');
-        OptionsPage.resetButtonText();
+        Index.getElement('block-label').innerText = Index.translate('blockedWords');
+        Index.getElement('confirm-label').innerText = Index.translate('confirmBlock');
+        Index.getElement('help').innerText = Index.translate('help');
+        Index.resetButtonText();
 
         // bind save button action
-        OptionsPage.saveButton.onclick =
-            OptionsPage.saveButton.onkeypress =
-                OptionsPage.saveSettings;
+        Index.saveButton.onclick =
+            Index.saveButton.onkeypress =
+                Index.saveSettings;
 
         // load user settings
-        OptionsPage.loadSettings();
-        OptionsPage.loadIntro();
+        Index.loadSettings();
+        Index.loadIntro();
     }
 
     /**
@@ -41,7 +41,7 @@ export default class OptionsPage extends Page {
      * @returns {HTMLElement}
      */
     static get saveButton() {
-        return OptionsPage.getElement('save');
+        return Index.getElement('save');
     }
 
     /**
@@ -49,7 +49,7 @@ export default class OptionsPage extends Page {
      * @returns {HTMLElement}
      */
     static get blockInput() {
-        return OptionsPage.getElement('block-words');
+        return Index.getElement('block-words');
     }
 
     /**
@@ -57,7 +57,7 @@ export default class OptionsPage extends Page {
      * @returns {HTMLElement}
      */
     static get confirmInput() {
-        return OptionsPage.getElement('confirm');
+        return Index.getElement('confirm');
     }
 
     /**
@@ -72,19 +72,18 @@ export default class OptionsPage extends Page {
      * Reset save button text
      */
     static resetButtonText() {
-        OptionsPage.saveButton.innerText = OptionsPage.translate('saveChanges');
+        Index.saveButton.innerText = Index.translate('saveChanges');
     }
-
 
     /**
      * Update user preferences
      */
     static saveSettings() {
-        Storage.setBlockedWords(OptionsPage.blockInput.value, () => {
-            Storage.setConfirmationSetting(OptionsPage.confirmInput.checked, () => {
-                OptionsPage.saveButton.innerText = OptionsPage.translate('saved');
+        Storage.setBlockedWords(Index.blockInput.value, () => {
+            Storage.setConfirmationSetting(Index.confirmInput.checked, () => {
+                Index.saveButton.innerText = Index.translate('saved');
                 Tabs.notifyTabsOfUpdate();
-                window.setTimeout(OptionsPage.resetButtonText, 1000);
+                window.setTimeout(Index.resetButtonText, 1000);
             });
         });
     }
@@ -97,16 +96,16 @@ export default class OptionsPage extends Page {
             const count = parseInt(settings[Storage.keys.count]);
 
             // set the inputs
-            OptionsPage.blockInput.value =
+            Index.blockInput.value =
                 (settings[Storage.keys.blockWords] || []).join(', ');
-            OptionsPage.confirmInput.checked =
+            Index.confirmInput.checked =
                 settings[Storage.keys.confirm];
 
             // if enough blocks -> reveal additional content
-            if (count > 1 && !OptionsPage.isIntro) {
-                OptionsPage.getElement('block-count').innerText =
-                    (OptionsPage.translate('blockCount', count.toString()));
-                OptionsPage.getElement('bmc').setAttribute(
+            if (count > 1 && !Index.isIntro) {
+                Index.getElement('block-count').innerText =
+                    (Index.translate('blockCount', count.toString()));
+                Index.getElement('bmc').setAttribute(
                     'visible', 'visible');
             }
         });
@@ -117,15 +116,15 @@ export default class OptionsPage extends Page {
      * intro, hide the "other" distractions around the screen.
      */
     static loadIntro() {
-        if (OptionsPage.isIntro) {
-            const container = OptionsPage.getElement('intro-container');
-            const close = OptionsPage.getElement('close-intro');
+        if (Index.isIntro) {
+            const container = Index.getElement('intro-container');
+            const close = Index.getElement('close-intro');
 
-            OptionsPage.getElement('intro-greeting').innerHTML = OptionsPage.translate('intro_greeting');
-            OptionsPage.getElement('intro-text').innerHTML = OptionsPage.translate('intro_text');
-            OptionsPage.getElement('intro').parentNode.style.display = 'block';
-            OptionsPage.getElement('source').style.display =
-                OptionsPage.getElement('share').style.display = 'none';
+            Index.getElement('intro-greeting').innerHTML = Index.translate('intro_greeting');
+            Index.getElement('intro-text').innerHTML = Index.translate('intro_text');
+            Index.getElement('intro').parentNode.style.display = 'block';
+            Index.getElement('source').style.display =
+                Index.getElement('share').style.display = 'none';
             close.onclick = _ => container.parentNode.removeChild(container);
             close.onkeypress = _ => container.parentNode.removeChild(container);
         }

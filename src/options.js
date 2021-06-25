@@ -11,6 +11,6 @@
  *
  * * * * * * * * * * * * * * * * * * * * */
 
-import OptionPage from './options-page/optionsPage';
+import OptionPage from './pages/index';
 
 (() => new OptionPage())();

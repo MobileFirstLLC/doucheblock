@@ -11,6 +11,6 @@
  *
  * * * * * * * * * * * * * * * * * * * * */
 
-import HelpPage from './options-page/helpPage';
+import Help from './pages/help';
 
-(() => new HelpPage())();
+(() => new Help())();
