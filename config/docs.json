@@ -7,9 +7,22 @@
   },
   "opts": {
     "destination": "./pages",
-    "tutorials": "./docs"
+    "tutorials": "./docs",
+    "template": "./node_modules/foodoc/template"
   },
   "templates": {
+    "footer": "",
+    "copyright": "",
+    "includeDate": "true",
+    "dateFormat": "MMM YYYY",
+    "inverseNav": "false",
+    "linenums": "true",
+    "showTableOfContents": "true",
+    "showAccessFilter": "true",
+    "collapseSymbols": "true",
+    "outputSourceFiles": "true",
+    "outputSourcePath": "true",
+    "favicon": "./assets/img/128x128.png",
     "inlineNav": true,
     "search": false,
     "analytics": {
