@@ -75,17 +75,15 @@ Study the source to learn how.
 - ⏱️ **It took 12 hours to build**, from start to finish, including how to hack the API, build automation, tests and docs 
    (use [extension-cli](https://github.com/MobileFirstLLC/extension-cli) for speed)
 
-- 🎉 **This extension runs 100% on client** there is no backend server, which means it scales beautifully.
+- 🎉 **This extension runs 100% on the client** there is no backend server &rarr; infinite scale &rarr; privacy for user.
 
 * * *
 
 ### Developer Notes 
 
-This extension was created with [Extension CLI](https://oss.mobilefirst.me/extension-cli/)!
-
-For CLI instructions see [User Guide &rarr;](https://oss.mobilefirst.me/extension-cli/)
-
 **[Documentation for this source code is available here &rarr;](http://oss.mobilefirst.me/doucheblock/)**
+
+Built with [Extension CLI](https://oss.mobilefirst.me/extension-cli/) - for instructions see [User Guide &rarr;](https://oss.mobilefirst.me/extension-cli/)
 
 ### About
 
