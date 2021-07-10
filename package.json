@@ -19,7 +19,7 @@
     "test": "xt-test"
   },
   "standard-version": {
-    "infile": "docs/CHANGELOG.md"
+    "infile": "docs/changelog.md"
   },
   "babel": {
     "presets": [

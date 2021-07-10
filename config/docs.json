@@ -1,7 +1,7 @@
 {
   "source": {
     "include": [
-      "./.github/DOCS.md",
+      "./.github/docs.md",
       "src"
     ]
   },
