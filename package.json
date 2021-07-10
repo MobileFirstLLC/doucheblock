@@ -14,7 +14,7 @@
     "build": "xt-build -e prod -c .chromium.json",
     "build:ff": "xt-build -e prod -c .firefox.json",
     "clean": "xt-clean",
-    "docs": "xt-docs",
+    "docs": "xt-docs -c docs/config.json",
     "sync": "xt-sync",
     "test": "xt-test"
   },
@@ -33,59 +33,5 @@
     "cws-publish": "^2.0.3",
     "extension-cli": "1.1.0",
     "foodoc": "^0.0.9"
-  },
-  "xtdocs": {
-    "source": {
-      "include": [
-        "./docs/index.md",
-        "src"
-      ]
-    },
-    "opts": {
-      "destination": "./pages",
-      "tutorials": "./docs/pages",
-      "template": "./node_modules/foodoc/template"
-    },
-    "templates": {
-      "footer": "",
-      "copyright": "",
-      "includeDate": "true",
-      "dateFormat": "MMM YYYY",
-      "inverseNav": "false",
-      "linenums": "true",
-      "showTableOfContents": "true",
-      "showAccessFilter": "true",
-      "collapseSymbols": "true",
-      "outputSourceFiles": "true",
-      "outputSourcePath": "true",
-      "favicon": "./assets/img/128x128.png",
-      "inlineNav": true,
-      "search": false,
-      "analytics": {
-        "ua": "UA-129118591-7",
-        "domain": "https://oss.mobilefirst.me/doucheblock"
-      },
-      "scripts": [
-        "https://buttons.github.io/buttons.js"
-      ],
-      "systemLogo": "./assets/img/128x128.png",
-      "systemName": "DoucheBlock for Twitter",
-      "systemSummary": "Block anyone with specific keywords in their Twitter bio.",
-      "systemColor": "#1DA1F2",
-      "methodHeadingReturns": false,
-      "stylesheets": [
-        "data:text/css;base64,Ym9keSB7CiAgICAtd2Via2l0LWZvbnQtc21vb3RoaW5nOiBhbnRpYWxpYXNlZDsKICAgIC1tb3otb3N4LWZvbnQtc21vb3RoaW5nOiBncmF5c2NhbGU7CiAgICBmb250LXNpemU6IDE4cHg7Cn0KCmJvZHksCi5zeW1ib2wtdGl0bGUgaDEsCi5zeW1ib2wtdGl0bGUgaDIsCi5zeW1ib2wtdGl0bGUgaDMsCi5zeW1ib2wtdGl0bGUgaDQsCi5zeW1ib2wtdGl0bGUgaDUgewogICAgZm9udC1mYW1pbHk6IHN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAiU2Vnb2UgVUkiLAogICAgUm9ib3RvLCBVYnVudHUsICJIZWx2ZXRpY2EgTmV1ZSIsIHNhbnMtc2VyaWYgIWltcG9ydGFudDsKfQoKLnBhZ2UtaGVhZGVyIC5zdW1tYXJ5ICogewogICAgY29sb3I6ICNmZmY7Cn0KCi5jb250ZW50IHAgewogICAgbGluZS1oZWlnaHQ6IDEuODsKICAgIG1hcmdpbjogMXJlbSAwOwp9CgouY29udGVudCBwIGEgewogICAgZm9udC13ZWlnaHQ6IGJvbGQ7Cn0KCi5jb250ZW50IHRhYmxlIHAgewogICAgbWFyZ2luOiAwOwp9CgouY29udGVudCBoMSwgLmNvbnRlbnQgaDIsIC5jb250ZW50IGgzIHsKICAgIG1hcmdpbi10b3A6IDNyZW07CiAgICBib3JkZXItYm90dG9tOiBub25lOwp9CgouY29udGVudCBzZWN0aW9uOm5vdCgucmVhZG1lLXNlY3Rpb24pIGgyLmFuY2hvcmVkIHsKICAgIG1hcmdpbi10b3A6IDVyZW07CiAgICBtYXJnaW4tYm90dG9tOiA1cmVtOwp9CgpkbC5zeW1ib2wgLmg0LApkbC5zeW1ib2wgLmg1LApkbC5zeW1ib2wgLmg2LApkbC5zeW1ib2wgaDQsCmRsLnN5bWJvbCBoNSwKZGwuc3ltYm9sIGg2IHsKICAgIG1hcmdpbjogMDsKfQoKLnRvYyAubmF2ID4gbGkgPiBhLAoudG9jIC5uYXYgLm5hdiA+IGxpID4gYSwKLmJhY2stdG8tdG9wIHsKICAgIGZvbnQtc2l6ZTogMWVtOwp9CgoudG9jIC5zaWduYXR1cmUtbmV3LAoucGFnZS1oZWFkZXIgLmtpbmQsCmZvb3RlciAuZ2VuZXJhdGVkLWJ5LAoudG9jIC5uYXYgPiBsaSA+IGEgLm5hbWUtc2lnbmF0dXJlLAoudG9jIC5uYXYgPiBsaSA+IGEgLnNpZ25hdHVyZS1wYXJhbXMgewogICAgZGlzcGxheTogbm9uZTsKfQoKLnN5bWJvbC1kZXRhaWxzLmNvbGxhcHNpYmxlLXN5bWJvbC50cmFuc2l0aW9uIHsKICAgIHRyYW5zaXRpb246IG5vbmU7Cn0KCmNvZGUgewogICAgZm9udC13ZWlnaHQ6IGJvbGQ7CiAgICBiYWNrZ3JvdW5kOiAjZWVlOwp9Cgpjb2RlLCAuc3ltYm9sLXRpdGxlIC5uYW1lLXN0cmluZywgLnN5bWJvbC10aXRsZSAuc2lnbmF0dXJlLXBhcmFtLCAuc3ltYm9sLXRpdGxlIGg0LmV2ZW50IHsKICAgIGNvbG9yOiAjYmUxNWRkOwp9CgpwcmUgY29kZSB7CiAgICBmb250LXdlaWdodDogbm9ybWFsOwp9Cgouc291cmNlLXNlY3Rpb24gY29kZSB7CiAgICBsaW5lLWhlaWdodDogMjsKfQoKLm5hdmJhci1icmFuZC5icmFuZGluZy1sb2dvIHsKICAgIGJhY2tncm91bmQtc2l6ZTogMzJweDsKfQo="
-      ],
-      "navMembers": [
-        {
-          "kind": "module",
-          "title": "Modules"
-        },
-        {
-          "kind": "tutorial",
-          "title": "Other Documents"
-        }
-      ]
-    }
   }
 }

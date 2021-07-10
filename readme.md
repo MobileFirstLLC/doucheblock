@@ -83,7 +83,7 @@ Study the source to learn how.
 
 **[Documentation for this source code is available here &rarr;](http://oss.mobilefirst.me/doucheblock/)**
 
-Built with [Extension CLI](https://oss.mobilefirst.me/extension-cli/) - for instructions see [User Guide &rarr;](https://oss.mobilefirst.me/extension-cli/)
+Built with [Extension CLI](https://github.com/MobileFirstLLC/extension-cli/). For instructions see [User Guide &rarr;](https://oss.mobilefirst.me/extension-cli/)
 
 ### About
 

@@ -193,7 +193,7 @@ export default class AutoBlocker {
             // queue is non-empty *AND*
             !bs.pendingQueue.isEmpty &&
             // EITHER: first request *or* been long enough
-            (!bs.lastBioTimestamp || bs.lastBioIntervalExpired);
+            (!bs.lastBioTimestamp || bs.lastBioExpired);
 
         if (!shouldRequest) return;
 

@@ -60,7 +60,7 @@ describe('BlockerState', () => {
 
     it('Interval expired after enough time has elapsed', () => {
         BlockerState.lastBioTimestamp = global.now - requestConfigs.maxInterval - 1;
-        expect(BlockerState.lastBioIntervalExpired).to.be.true;
+        expect(BlockerState.lastBioExpired).to.be.true;
     });
 
 });
