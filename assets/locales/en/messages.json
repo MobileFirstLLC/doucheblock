@@ -12,7 +12,7 @@
     "message": "List all your trigger words (separate by comma):"
   },
   "confirmBlock": {
-    "message": "Ask me to confirm before blocking"
+    "message": "Confirm before blocking"
   },
   "saveChanges": {
     "message": "Save"
@@ -24,10 +24,7 @@
     "message": "Hi there and welcome!"
   },
   "intro_text": {
-    "message": "DoucheBlock blocks people who use specific keywords in their Twitter bio. You can specify your choice of keywords below. After that you are all set and ready to use DoucheBlock."
-  },
-  "source": {
-    "message": "DoucheBlock is open source!"
+    "message": "DoucheBlock blocks people who use specific keywords in their Twitter bio. Specify your choice of keywords below, then you are ready to use DoucheBlock."
   },
   "blockCount": {
     "message": "This extension has blocked $count$ douches for you.",
@@ -67,6 +64,9 @@
   },
   "back": {
     "message": "Back"
+  },
+  "links": {
+    "message": "Source code, rate & share"
   },
   "configuring_words": {
     "message": "<h2>Configuring trigger keywords</h2><ul><li>Separate each word, word pair, or expression by a comma; they will be evaluated individually against bios</li><li>Keyword match is case-insensitive &mdash; <code>abc</code> matches <code>AbC</code> <code>aBC</code> ...etc.</li><li>regex patterns are supported: <a href='https://cheatography.com/davechild/cheat-sheets/regular-expressions/' target='_blank' rel='noreferrer noopener' class='link'>here is a cheat sheet</a></li><li>IMPORTANT: when regex contains backslashes, you must escape them - example: <code>\\b</code> should be written as <code>\\\\b</code></li><li>occurrence of a keyword anywhere in the bio counts as match (substring match) - specify regex word boundary to match by whole words.</li></ul>"

@@ -24,12 +24,10 @@ export default class Index extends Page {
         Index.getElement('block-label').innerText = Index.translate('blockedWords');
         Index.getElement('confirm-label').innerText = Index.translate('confirmBlock');
         Index.getElement('help').innerText = Index.translate('help');
-        Index.resetButtonText();
 
-        // bind save button action
-        Index.saveButton.onclick =
-            Index.saveButton.onkeypress =
-                Index.saveSettings;
+        // setup save button
+        Index.saveButton.onclick = Index.saveButton.onkeypress = Index.saveSettings;
+        Index.resetButtonText();
 
         // load user settings
         Index.loadSettings();
@@ -123,8 +121,6 @@ export default class Index extends Page {
             Index.getElement('intro-greeting').innerHTML = Index.translate('intro_greeting');
             Index.getElement('intro-text').innerHTML = Index.translate('intro_text');
             Index.getElement('intro').parentNode.style.display = 'block';
-            Index.getElement('source').style.display =
-                Index.getElement('share').style.display = 'none';
             close.onclick = _ => container.parentNode.removeChild(container);
             close.onkeypress = _ => container.parentNode.removeChild(container);
         }

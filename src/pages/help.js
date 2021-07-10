@@ -18,10 +18,7 @@ export default class Help extends Page {
 
         Help.getElement('keywords').innerHTML = Help.translate('configuring_words');
         Help.getElement('whitelist').innerHTML = Help.translate('whitelist_help');
-
-        Help.backButton.onclick =
-            Help.backButton.onkeypress =
-                Help.onBackClick;
+        Help.backButton.onclick = Help.backButton.onkeypress = Help.onBackClick;
     }
 
     /**
@@ -35,6 +32,6 @@ export default class Help extends Page {
      * @private
      */
     static onBackClick() {
-        window.history.back()
+        window.history.back();
     }
 }

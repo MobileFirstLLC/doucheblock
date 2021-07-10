@@ -11,7 +11,6 @@ export default class Page {
 
     constructor(title) {
         Page.setTitle(title);
-        Page.getElement('source-label').innerText = Page.translate('source');
         Page.setupShare();
     }
 
@@ -49,7 +48,7 @@ export default class Page {
         const links = Object.values(shareLinks).map(Page.makeShareLink).join('');
         const label = document.createElement('p');
 
-        label.innerHTML = Page.translate('share_and_rate');
+        label.innerHTML = Page.translate('links');
         Page.getElement('share').innerHTML = links;
         Page.getElement('share').prepend(label);
     }

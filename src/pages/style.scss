@@ -6,8 +6,7 @@ body {
 }
 
 body, input, textarea {
-  font-family: -apple-system, system-ui, "Segoe UI",
-  Roboto, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 120%;
 }
 
@@ -141,6 +140,16 @@ code{
   margin-bottom: 3rem;
 }
 
+.bottom-links {
+  & > * {
+    position: absolute;
+    bottom: 50px;
+  }
+
+  font-size: 80%;
+  font-weight: bold;
+}
+
 #intro-container {
   opacity: 0;
   border-radius: 12px;
@@ -151,7 +160,8 @@ code{
   animation-delay: 1s;
   background: #34383c;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 200;
+  letter-spacing: 1px;
   margin: -2.5rem auto 3rem auto;
   display: none;
   position: relative;
@@ -161,6 +171,11 @@ code{
     margin: 0 auto 20px auto;
     position: relative;
     display: table;
+  }
+
+  #intro-greeting{
+    letter-spacing: 0.5px;
+    font-weight: 600;
   }
 
   #wave {
@@ -178,28 +193,6 @@ code{
     opacity: 0;
     animation-fill-mode: forwards;
   }
-}
-
-#block-count {
-  margin-bottom: 3rem;
-  font-weight: 800;
-  color: #111;
-  padding: .5rem;
-  opacity: 0;
-  animation-name: entranceAnim;
-  animation-fill-mode: both;
-  animation-duration: 1s;
-  animation-delay: 1000ms;
-}
-
-.bottom-links {
-  & > * {
-    position: absolute;
-    bottom: 50px;
-  }
-
-  font-size: 80%;
-  font-weight: bold;
 }
 
 #help {
@@ -237,49 +230,40 @@ ul {
   }
 }
 
-#source {
-  bottom: 90px;
-  left: 30px;
-
-  a {
-    margin-top: 6px;
-    padding: 4px 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    color: #fff;
-    text-decoration: none;
-
-    & svg {
-      flex: 0 0 auto;
-      width: 34px;
-      height: 34px;
-      margin-right: 10px;
-    }
-
-    & div {
-      white-space: nowrap;
-    }
-  }
+#block-count {
+  margin-bottom: 3rem;
+  font-weight: 800;
+  color: #111;
+  padding: .5rem;
+  opacity: 0;
+  animation-name: entranceAnim;
+  animation-fill-mode: both;
+  animation-duration: 1s;
+  animation-delay: 1000ms;
 }
 
 #share {
   left: 30px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: fit-content;
+  max-width: 200px;
 
   & p {
-    margin: 8px;
-    display: inline-block;
+    text-align: center;
+    margin-bottom: 1em;
+    display: block;
+    flex: 1 1 100%;
   }
 
   & svg {
     cursor: pointer;
     flex: 0 0 auto;
-    width: 28px;
-    height: 28px;
+    width: 34px;
+    height: 34px;
     margin: 0 8px;
 
     path {
