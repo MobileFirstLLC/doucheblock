@@ -17,7 +17,7 @@
  * @constant
  * @type {string}
  */
-export const OptionsPageURL = "index.html"
+export const OptionsPageURL = 'index.html';
 
 /*
  * URL to options page on install
@@ -25,7 +25,7 @@ export const OptionsPageURL = "index.html"
  * @constant
  * @type {string}
  */
-export const OnInstallURL = OptionsPageURL + '?i'
+export const OnInstallURL = OptionsPageURL + '?i';
 
 /*
  * Default user settings
@@ -40,7 +40,7 @@ export const defaultConfig = {
      * @constant
      * @type {string}
      */
-    blockWords: "catalyst,innovator,futurist,serial entrepreneur,midas list",
+    blockWords: 'catalyst,innovator,futurist,serial entrepreneur,midas list',
     /**
      * Ask user to manually confirm all blocks
      * @constant
@@ -59,7 +59,7 @@ export const defaultConfig = {
      * @type {Object<string, string>}
      */
     whiteList: {}
-}
+};
 
 /*
  * Twitter API configuration
@@ -103,8 +103,8 @@ export const requestConfigs = {
      * @param handle - specify one username
      * @returns {string} - formatted URL
      */
-    friendshipEndpoint : handle => `https://twitter.com/i/api/graphql/Vf8si2dfZ1zmah8ePYPjDQ/UserByScreenNameWithoutResults?variables=%7B%22screen_name%22%3A%22${handle}%22%2C%22withHighlightedLabel%22%3Atrue%7D`
-}
+    friendshipEndpoint: handle => `https://twitter.com/i/api/graphql/Vf8si2dfZ1zmah8ePYPjDQ/UserByScreenNameWithoutResults?variables=%7B%22screen_name%22%3A%22${handle}%22%2C%22withHighlightedLabel%22%3Atrue%7D`
+};
 
 /*
  * Determine if current browser is Firefox
@@ -120,7 +120,7 @@ export const isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
  * @constant
  * @type {Boolean}
  */
-export const isEdge = navigator.userAgent.indexOf("Edg/") > -1;
+export const isEdge = navigator.userAgent.indexOf('Edg/') > -1;
 
 /*
  * Determine if current browser is Opera
@@ -157,7 +157,7 @@ export const browserVariant = _ => isFirefox ? browser : window.chrome;
  * @constant
  * @type {String}
  */
-export const badgeColor = isFirefox ? "#FDD835" : "#ff1744"
+export const badgeColor = isFirefox ? '#FDD835' : '#ff1744';
 
 /**
  * Flag for marking checked DOM elements. This value can be anything,
@@ -167,7 +167,7 @@ export const badgeColor = isFirefox ? "#FDD835" : "#ff1744"
  * @constant
  * @type {String}
  */
-export const classFlag = 'dbt___seen-it-b4'
+export const classFlag = 'dbt___seen-it-b4';
 
 /**
  * Maximum number of alerts to show sequentially
@@ -208,7 +208,7 @@ export const rateLink = () => {
             url: 'https://addons.opera.com/en/extensions/details/doucheblock-for-twitter/'
         };
     }
-}
+};
 
 /**
  * List of social share options with associated icon and label.
@@ -217,6 +217,23 @@ export const rateLink = () => {
  * @type {Object}
  */
 export const shareLinks = {
+    github: {
+        label: 'source',
+        url: 'https://github.com/MobileFirstLLC/doucheblock',
+        svgPath: 'M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14' +
+            ' 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,' +
+            '15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,' +
+            '16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 ' +
+            '7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 ' +
+            '17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,' +
+            '16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,' +
+            '21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z'
+    },
+    rate: {
+        ...rateLink(),
+        svgPath: 'M12,15.39L8.24,17.66L9.23,13.38L5.91,10.5L10.29,10.13L12,6.09L13.71,10.13L18.09,10.5L14.77,13.38L15.76,' +
+            '17.66M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z'
+    },
     twitter: {
         label: 'share_twitter',
         url: 'https://twitter.com/intent/tweet?text=%23DoucheBlock%20',
@@ -227,10 +244,5 @@ export const shareLinks = {
             '14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,' +
             '19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,' +
             '8.23C21.16,7.63 21.88,6.87 22.46,6Z'
-    },
-    rate: {
-        ...rateLink(),
-        svgPath: 'M12,15.39L8.24,17.66L9.23,13.38L5.91,10.5L10.29,10.13L12,6.09L13.71,10.13L18.09,10.5L14.77,13.38L15.76,' +
-            '17.66M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z'
     }
-}
+};
