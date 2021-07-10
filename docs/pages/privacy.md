@@ -22,4 +22,4 @@ By using the app the user accepts this policy.
 
 Last updated: May 3, 2021
 
-[Privacy policy revision history ↗](https://github.com/MobileFirstLLC/doucheblock/commits/master/docs/privacy.md)
+[Privacy policy revision history ↗](https://github.com/MobileFirstLLC/doucheblock/commits/master/docs/pages/privacy.md)

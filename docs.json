@@ -1,13 +1,13 @@
 {
   "source": {
     "include": [
-      "./.github/docs.md",
+      "./docs/index.md",
       "src"
     ]
   },
   "opts": {
     "destination": "./pages",
-    "tutorials": "./docs",
+    "tutorials": "./docs/pages",
     "template": "./node_modules/foodoc/template"
   },
   "templates": {

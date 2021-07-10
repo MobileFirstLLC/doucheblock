@@ -9,17 +9,17 @@
     "url": "https://github.com/MobileFirstLLC/doucheblock"
   },
   "scripts": {
-    "start": "xt-build -e dev -w -c config/chromium.json",
-    "start:ff": "xt-build -e dev -w -c config/firefox.json",
-    "build": "xt-build -e prod -c config/chromium.json",
-    "build:ff": "xt-build -e prod -c config/firefox.json",
+    "start": "xt-build -e dev -w -c chromium.json",
+    "start:ff": "xt-build -e dev -w -c firefox.json",
+    "build": "xt-build -e prod -c chromium.json",
+    "build:ff": "xt-build -e prod -c firefox.json",
     "clean": "xt-clean",
-    "docs": "xt-docs -c config/docs.json",
+    "docs": "xt-docs -c docs.json",
     "sync": "xt-sync",
     "test": "xt-test"
   },
   "standard-version": {
-    "infile": "docs/changelog.md"
+    "infile": "docs/pages/changelog.md"
   },
   "babel": {
     "presets": [
