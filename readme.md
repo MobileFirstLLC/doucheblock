@@ -45,9 +45,7 @@ You can set it to confirm before blocking or just allow it to block automaticall
 <br/>
 
 <p align="center">
-<a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img src="https://img.shields.io/chrome-web-store/stars/eeledoologbepiegnccedjigjkblhmhi?label=chrome&style=for-the-badge" alt="chrome"></a> &nbsp; &nbsp; <a href="https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter/"><img src="https://img.shields.io/amo/stars/doucheblock-for-twitter?label=firefox&style=for-the-badge" alt="firefox"></a>
-
-<a href="https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj"><img src="https://img.shields.io/badge/dynamic/json?label=edge&query=averageRating&suffix=%20×%20★&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fjjamkfoaemeiacomhpidlhkjinmpmkpj&style=for-the-badge" alt="" /></a>
+<a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img src="https://img.shields.io/chrome-web-store/stars/eeledoologbepiegnccedjigjkblhmhi?label=chrome&style=for-the-badge" alt="chrome"></a> &nbsp; &nbsp; <a href="https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter/"><img src="https://img.shields.io/amo/stars/doucheblock-for-twitter?label=firefox&style=for-the-badge" alt="firefox"></a> &nbsp; &nbsp; <a href="https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj"><img src="https://img.shields.io/badge/dynamic/json?label=edge&query=averageRating&suffix=%20/%205&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fjjamkfoaemeiacomhpidlhkjinmpmkpj&style=for-the-badge" alt="" /></a>
 <br/><br/>  
 <img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/user_comment.jpg" alt="user comment"   width="500" />
 </p>
