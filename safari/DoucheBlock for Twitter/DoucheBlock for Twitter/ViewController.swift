@@ -3,7 +3,7 @@ import SafariServices.SFSafariApplication
 import SafariServices.SFSafariExtensionManager
 
 let appName = "DoucheBlock for Twitter"
-let extensionBundleIdentifier = "com.github.DoucheBlock-for-Twitter.Extension"
+let extensionBundleIdentifier = "me.mobilefirst.DoucheBlock-for-Twitter.Extension"
 
 class ViewController: NSViewController {
 
