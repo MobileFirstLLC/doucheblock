@@ -1,0 +1,356 @@
+body {
+    background: #1da1f2;
+    color: #fff;
+    position: relative;
+    min-height: 100vh
+}
+
+body, input, textarea {
+    font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 120%
+}
+
+textarea {
+    min-height: 80px;
+    resize: vertical;
+    border-radius: 9px;
+    padding: 1rem;
+    width: 100%;
+    margin: .5rem auto 0 auto;
+    outline: 0;
+    box-sizing: border-box;
+    border: 2px solid #444
+}
+
+button {
+    background: #14171a;
+    color: #fff;
+    border-radius: 9999px;
+    border: none;
+    height: 46px;
+    padding: 0 22px;
+    text-transform: capitalize;
+    font-weight: 900;
+    font-size: 19px;
+    cursor: pointer;
+    min-width: 120px;
+    transition: background-color .2s ease;
+    outline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin: 0 auto
+}
+
+button:focus, button:hover {
+    background: #3f4648
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center
+}
+
+h2 {
+    margin-top: 3rem;
+    text-align: left
+}
+
+label {
+    font-weight: 700;
+    display: block;
+    text-align: left
+}
+
+code {
+    font-size: 110%;
+    background: #222a;
+    padding: 3px 5px;
+    border-radius: 5px
+}
+
+.link {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    border-bottom: 2px solid #fff
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 6px;
+    margin: 0 1rem 0 0;
+    border: 2px solid #444
+}
+
+.checkbox-container input[type=checkbox] {
+    margin: 2px;
+    width: 26px;
+    height: 26px
+}
+
+@media not all and (min-resolution: 0.001dpcm) {
+    .checkbox-container input[type=checkbox] {
+        margin: 2px 3px 2px 2px;
+        width: auto;
+        height: auto
+    }
+}
+
+@-moz-document url-prefix() {
+    .checkbox-container {
+        border-radius: 8px
+    }
+    .checkbox-container input[type=checkbox] {
+        margin: -6px;
+        width: 42px;
+        height: 42px
+    }
+}
+
+.checkbox-container:focus, .checkbox-container:hover, textarea:focus, textarea:hover {
+    box-shadow: 0 0 4px #657786
+}
+
+.content {
+    box-sizing: border-box;
+    width: 680px;
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 5rem 0 150px 0;
+    text-align: center;
+    position: relative
+}
+
+.content.left {
+    text-align: left
+}
+
+.block {
+    margin-bottom: 1rem
+}
+
+.block.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start
+}
+
+.buttons {
+    margin-top: 3rem;
+    margin-bottom: 3rem
+}
+
+.bottom-links {
+    font-size: 80%;
+    font-weight: 700
+}
+
+.bottom-links > * {
+    position: absolute;
+    bottom: 50px
+}
+
+#intro-container {
+    opacity: 0;
+    border-radius: 12px;
+    padding: 1.5rem 3rem 2rem 3rem;
+    animation-name: entranceAnim;
+    animation-fill-mode: both;
+    animation-duration: .5s;
+    animation-delay: 1s;
+    background: #34383c;
+    line-height: 1.5;
+    font-weight: 200;
+    letter-spacing: 1px;
+    margin: -2.5rem auto 3rem auto;
+    display: none;
+    position: relative;
+    box-shadow: -2px 4px 12px rgba(0, 0, 0, .12), -1px 1px 3px rgba(0, 0, 0, .3)
+}
+
+#intro-container p {
+    margin: 0 auto 20px auto;
+    position: relative;
+    display: table
+}
+
+#intro-container #intro-greeting {
+    letter-spacing: .5px;
+    font-weight: 600
+}
+
+#intro-container #wave {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 32px;
+    margin-top: -10px;
+    margin-right: -50px;
+    display: inline-block;
+    animation-delay: 2.5s;
+    animation-name: shake;
+    animation-iteration-count: 1;
+    animation-duration: 1.5s;
+    opacity: 0;
+    animation-fill-mode: forwards
+}
+
+#help {
+    float: right
+}
+
+#back, #intro-container svg {
+    cursor: pointer;
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    background: #222;
+    border-radius: 50%;
+    border: 6px solid #1da1f2;
+    outline: 0
+}
+
+#back:focus, #back:hover, #intro-container svg:focus, #intro-container svg:hover {
+    background: #3f4648
+}
+
+#back {
+    top: 2rem
+}
+
+ul {
+    text-align: left;
+    margin: 0 1rem;
+    padding: 0
+}
+
+ul li {
+    margin: 1em 0
+}
+
+#block-count {
+    margin-bottom: 3rem;
+    font-weight: 800;
+    color: #111;
+    padding: .5rem;
+    opacity: 0;
+    animation-name: entranceAnim;
+    animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-delay: 1s
+}
+
+#share {
+    left: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: fit-content;
+    max-width: 200px
+}
+
+#share p {
+    text-align: center;
+    margin-bottom: 1em;
+    display: block;
+    flex: 1 1 100%
+}
+
+#share svg {
+    cursor: pointer;
+    flex: 0 0 auto;
+    width: 34px;
+    height: 34px;
+    margin: 0 8px
+}
+
+#share svg path {
+    fill: #fff
+}
+
+#bmc {
+    right: 50px;
+    opacity: 0
+}
+
+#bmc[visible] {
+    animation-name: enterBottomAnim;
+    animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-delay: 2s;
+    opacity: 1
+}
+
+#bmc img {
+    width: 158px
+}
+
+@media (max-width: 678px) {
+    .bottom-links > * {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: 1.5rem auto !important
+    }
+}
+
+@keyframes shake {
+    from, to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0)
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translate3d(-10px, 0, 0)
+    }
+    20%, 40%, 60%, 80% {
+        transform: translate3d(10px, 0, 0)
+    }
+}
+
+@keyframes entranceAnim {
+    from {
+        transform: translate3d(0, -100%, 0);
+        visibility: visible
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1
+    }
+}
+
+@keyframes enterBottomAnim {
+    60%, 75%, 90%, from, to {
+        animation-timing-function: cubic-bezier(.215, .61, .355, 1)
+    }
+    from {
+        opacity: 0;
+        transform: translate3d(0, 3000px, 0) scaleY(5)
+    }
+    60% {
+        opacity: 1;
+        transform: translate3d(0, -20px, 0) scaleY(.9)
+    }
+    75% {
+        transform: translate3d(0, 10px, 0) scaleY(.95)
+    }
+    90% {
+        transform: translate3d(0, -5px, 0) scaleY(.985)
+    }
+    to {
+        transform: translate3d(0, 0, 0)
+    }
+}
