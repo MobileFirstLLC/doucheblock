@@ -18,7 +18,7 @@
     "message": "Save"
   },
   "saved": {
-    "message": "Saved \uD83D\uDDF8"
+    "message": "Saved ✓"
   },
   "intro_greeting":{
     "message": "Hi there and welcome!"

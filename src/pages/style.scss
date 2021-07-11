@@ -23,7 +23,7 @@ textarea {
 }
 
 button {
-  background: #14171A;
+  background: #34383c;
   color: #fff;
   border-radius: 9999px;
   border: none;
@@ -77,43 +77,7 @@ code {
   border-bottom: 2px solid #fff;
 }
 
-.checkbox-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-  border-radius: 6px;
-  margin: 0 1rem 0 0;
-  border: 2px solid #444;
-
-  input[type=checkbox] {
-    margin: 2px;
-    width: 26px;
-    height: 26px;
-  }
-
-  @media not all and (min-resolution: .001dpcm) {
-    input[type=checkbox] {
-      margin: 2px 4px 2px 2px;
-      width: auto;
-      height: auto;
-    }
-  }
-
-
-  @-moz-document url-prefix() {
-    & {
-      border-radius: 8px
-    }
-    input[type=checkbox] {
-      margin: -6px;
-      width: 42px;
-      height: 42px;
-    }
-  }
-}
-
-.checkbox-container, textarea {
+.switch, textarea {
   &:hover, &:focus {
     box-shadow: 0 0 4px #657786;
   }
@@ -216,7 +180,7 @@ code {
   width: 32px;
   height: 32px;
   padding: 4px;
-  background: #222;
+  background: #34383c;
   border-radius: 50%;
   border: 6px solid #1DA1F2;
   outline: none;
@@ -297,6 +261,59 @@ ul {
   & img {
     width: 158px;
   }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  background: #fff;
+  border-radius: 6px;
+  margin: 0 1rem 0 0;
+  border: 2px solid #444;
+
+  & input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 4px;
+  background-color: #fff;
+
+  &:before {
+    position: absolute;
+    content: " ";
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: calc(100% - 8px);
+    padding: 0;
+    height: calc(100% - 4px);
+    width: calc(100% - 4px);
+    left: 2px;
+    bottom: 2px;
+    background-color: #fff;
+  }
+}
+
+input:checked + .slider:before {
+  border-radius: 3px;
+  background-color: #34383c;
+  color: #fff;
+  content: "✓";
+  font-size: 22px;
+  font-weight: bold;
 }
 
 @media(max-width: 678px) {
