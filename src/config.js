@@ -194,12 +194,14 @@ export const alertCap = 3;
  * @returns {Object|undefined}
  */
 export const rateLink = () => {
-    let link = {label: isFirefox || isEdge ? 'rate_addon' : 'rate_extension'};
+    let link = {label: 'rate_extension'};
     if (isFirefox) {
+        link.label = 'rate_addon';
         link.url = 'https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter';
     } else if (isChrome) {
         link.url = 'https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi/reviews';
     } else if (isEdge) {
+        link.label = 'rate_addon';
         link.url = 'https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj';
     } else if (isOpera) {
         link.url = 'https://addons.opera.com/en/extensions/details/doucheblock-for-twitter/';
