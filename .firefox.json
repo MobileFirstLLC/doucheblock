@@ -1,5 +1,6 @@
 {
   "release_name": "firefox",
+  "dist": "./dist-ff",
   "manifest": "./manifests/firefox/manifest.json",
   "assets": "./assets/img/*",
   "js_bundles": [

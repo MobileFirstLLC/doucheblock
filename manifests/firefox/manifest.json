@@ -4,6 +4,12 @@
   "description": "__MSG_appDescription__",
   "homepage_url": "https://github.com/MobileFirstLLC/doucheblock",
   "version": "0.0.0",
+  "applications": {
+    "gecko": {
+      "id": "{ff553cf8-6edd-4a73-8541-d5b42ed657dd}",
+      "strict_min_version": "42.0"
+    }
+  },
   "manifest_version": 2,
   "default_locale": "en",
   "minimum_chrome_version": "31",
