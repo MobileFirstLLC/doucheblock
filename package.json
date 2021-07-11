@@ -11,8 +11,10 @@
   "scripts": {
     "start": "xt-build -e dev -w -c .chromium.json",
     "start:ff": "xt-build -e dev -w -c .firefox.json",
+    "start:safari": "npm run build:safari -- -w",
     "build": "xt-build -e prod -c .chromium.json",
     "build:ff": "xt-build -e prod -c .firefox.json",
+    "build:safari": "xt-build -e prod -c .chromium.json",
     "clean": "xt-clean",
     "docs": "xt-docs -c docs/config.json",
     "sync": "xt-sync",

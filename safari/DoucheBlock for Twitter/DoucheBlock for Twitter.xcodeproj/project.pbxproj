@@ -1,0 +1,538 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		584F667A269AD7A8008B1E31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584F6679269AD7A8008B1E31 /* AppDelegate.swift */; };
+		584F667D269AD7A8008B1E31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 584F667B269AD7A8008B1E31 /* Main.storyboard */; };
+		584F667F269AD7A8008B1E31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584F667E269AD7A8008B1E31 /* ViewController.swift */; };
+		584F6681269AD7A8008B1E31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 584F6680269AD7A8008B1E31 /* Assets.xcassets */; };
+		584F6688269AD7A9008B1E31 /* DoucheBlock for Twitter Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 584F6687269AD7A9008B1E31 /* DoucheBlock for Twitter Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		584F668D269AD7A9008B1E31 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 584F668C269AD7A9008B1E31 /* Cocoa.framework */; };
+		584F6690269AD7A9008B1E31 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584F668F269AD7A9008B1E31 /* SafariWebExtensionHandler.swift */; };
+		584F66A7269AD7A9008B1E31 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 584F669D269AD7A9008B1E31 /* help.html */; };
+		584F66A8269AD7A9008B1E31 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 584F669E269AD7A9008B1E31 /* index.html */; };
+		584F66A9269AD7A9008B1E31 /* styles.css in Resources */ = {isa = PBXBuildFile; fileRef = 584F669F269AD7A9008B1E31 /* styles.css */; };
+		584F66AA269AD7A9008B1E31 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 584F66A0269AD7A9008B1E31 /* background.js */; };
+		584F66AB269AD7A9008B1E31 /* options.js in Resources */ = {isa = PBXBuildFile; fileRef = 584F66A1269AD7A9008B1E31 /* options.js */; };
+		584F66AC269AD7A9008B1E31 /* help.js in Resources */ = {isa = PBXBuildFile; fileRef = 584F66A2269AD7A9008B1E31 /* help.js */; };
+		584F66AD269AD7A9008B1E31 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 584F66A3269AD7A9008B1E31 /* manifest.json */; };
+		584F66AE269AD7A9008B1E31 /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = 584F66A4269AD7A9008B1E31 /* _locales */; };
+		584F66AF269AD7A9008B1E31 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 584F66A5269AD7A9008B1E31 /* content.js */; };
+		584F66B0269AD7A9008B1E31 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 584F66A6269AD7A9008B1E31 /* assets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		584F6689269AD7A9008B1E31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 584F666D269AD7A8008B1E31 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 584F6686269AD7A9008B1E31;
+			remoteInfo = "DoucheBlock for Twitter Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		584F6698269AD7A9008B1E31 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				584F6688269AD7A9008B1E31 /* DoucheBlock for Twitter Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		584F6675269AD7A8008B1E31 /* DoucheBlock for Twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DoucheBlock for Twitter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		584F6678269AD7A8008B1E31 /* DoucheBlock_for_Twitter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoucheBlock_for_Twitter.entitlements; sourceTree = "<group>"; };
+		584F6679269AD7A8008B1E31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		584F667C269AD7A8008B1E31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		584F667E269AD7A8008B1E31 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		584F6680269AD7A8008B1E31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		584F6682269AD7A8008B1E31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		584F6687269AD7A9008B1E31 /* DoucheBlock for Twitter Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DoucheBlock for Twitter Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		584F668C269AD7A9008B1E31 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		584F668F269AD7A9008B1E31 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		584F6691269AD7A9008B1E31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		584F6692269AD7A9008B1E31 /* DoucheBlock_for_Twitter_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoucheBlock_for_Twitter_Extension.entitlements; sourceTree = "<group>"; };
+		584F669D269AD7A9008B1E31 /* help.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = help.html; path = ../../../dist/help.html; sourceTree = "<group>"; };
+		584F669E269AD7A9008B1E31 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = index.html; path = ../../../dist/index.html; sourceTree = "<group>"; };
+		584F669F269AD7A9008B1E31 /* styles.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = styles.css; path = ../../../dist/styles.css; sourceTree = "<group>"; };
+		584F66A0269AD7A9008B1E31 /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = background.js; path = ../../../dist/background.js; sourceTree = "<group>"; };
+		584F66A1269AD7A9008B1E31 /* options.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = options.js; path = ../../../dist/options.js; sourceTree = "<group>"; };
+		584F66A2269AD7A9008B1E31 /* help.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = help.js; path = ../../../dist/help.js; sourceTree = "<group>"; };
+		584F66A3269AD7A9008B1E31 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = ../../../dist/manifest.json; sourceTree = "<group>"; };
+		584F66A4269AD7A9008B1E31 /* _locales */ = {isa = PBXFileReference; lastKnownFileType = folder; name = _locales; path = ../../../dist/_locales; sourceTree = "<group>"; };
+		584F66A5269AD7A9008B1E31 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = content.js; path = ../../../dist/content.js; sourceTree = "<group>"; };
+		584F66A6269AD7A9008B1E31 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../../../dist/assets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		584F6672269AD7A8008B1E31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		584F6684269AD7A9008B1E31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				584F668D269AD7A9008B1E31 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		584F666C269AD7A8008B1E31 = {
+			isa = PBXGroup;
+			children = (
+				584F6677269AD7A8008B1E31 /* DoucheBlock for Twitter */,
+				584F668E269AD7A9008B1E31 /* DoucheBlock for Twitter Extension */,
+				584F668B269AD7A9008B1E31 /* Frameworks */,
+				584F6676269AD7A8008B1E31 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		584F6676269AD7A8008B1E31 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				584F6675269AD7A8008B1E31 /* DoucheBlock for Twitter.app */,
+				584F6687269AD7A9008B1E31 /* DoucheBlock for Twitter Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		584F6677269AD7A8008B1E31 /* DoucheBlock for Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				584F6678269AD7A8008B1E31 /* DoucheBlock_for_Twitter.entitlements */,
+				584F6679269AD7A8008B1E31 /* AppDelegate.swift */,
+				584F667B269AD7A8008B1E31 /* Main.storyboard */,
+				584F667E269AD7A8008B1E31 /* ViewController.swift */,
+				584F6680269AD7A8008B1E31 /* Assets.xcassets */,
+				584F6682269AD7A8008B1E31 /* Info.plist */,
+			);
+			path = "DoucheBlock for Twitter";
+			sourceTree = "<group>";
+		};
+		584F668B269AD7A9008B1E31 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				584F668C269AD7A9008B1E31 /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		584F668E269AD7A9008B1E31 /* DoucheBlock for Twitter Extension */ = {
+			isa = PBXGroup;
+			children = (
+				584F669C269AD7A9008B1E31 /* Resources */,
+				584F668F269AD7A9008B1E31 /* SafariWebExtensionHandler.swift */,
+				584F6691269AD7A9008B1E31 /* Info.plist */,
+				584F6692269AD7A9008B1E31 /* DoucheBlock_for_Twitter_Extension.entitlements */,
+			);
+			path = "DoucheBlock for Twitter Extension";
+			sourceTree = "<group>";
+		};
+		584F669C269AD7A9008B1E31 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				584F669D269AD7A9008B1E31 /* help.html */,
+				584F669E269AD7A9008B1E31 /* index.html */,
+				584F669F269AD7A9008B1E31 /* styles.css */,
+				584F66A0269AD7A9008B1E31 /* background.js */,
+				584F66A1269AD7A9008B1E31 /* options.js */,
+				584F66A2269AD7A9008B1E31 /* help.js */,
+				584F66A3269AD7A9008B1E31 /* manifest.json */,
+				584F66A4269AD7A9008B1E31 /* _locales */,
+				584F66A5269AD7A9008B1E31 /* content.js */,
+				584F66A6269AD7A9008B1E31 /* assets */,
+			);
+			name = Resources;
+			path = "DoucheBlock for Twitter Extension";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		584F6674269AD7A8008B1E31 /* DoucheBlock for Twitter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 584F6699269AD7A9008B1E31 /* Build configuration list for PBXNativeTarget "DoucheBlock for Twitter" */;
+			buildPhases = (
+				584F6671269AD7A8008B1E31 /* Sources */,
+				584F6672269AD7A8008B1E31 /* Frameworks */,
+				584F6673269AD7A8008B1E31 /* Resources */,
+				584F6698269AD7A9008B1E31 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				584F668A269AD7A9008B1E31 /* PBXTargetDependency */,
+			);
+			name = "DoucheBlock for Twitter";
+			productName = "DoucheBlock for Twitter";
+			productReference = 584F6675269AD7A8008B1E31 /* DoucheBlock for Twitter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		584F6686269AD7A9008B1E31 /* DoucheBlock for Twitter Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 584F6695269AD7A9008B1E31 /* Build configuration list for PBXNativeTarget "DoucheBlock for Twitter Extension" */;
+			buildPhases = (
+				584F6683269AD7A9008B1E31 /* Sources */,
+				584F6684269AD7A9008B1E31 /* Frameworks */,
+				584F6685269AD7A9008B1E31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DoucheBlock for Twitter Extension";
+			productName = "DoucheBlock for Twitter Extension";
+			productReference = 584F6687269AD7A9008B1E31 /* DoucheBlock for Twitter Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		584F666D269AD7A8008B1E31 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					584F6674269AD7A8008B1E31 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					584F6686269AD7A9008B1E31 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+				};
+			};
+			buildConfigurationList = 584F6670269AD7A8008B1E31 /* Build configuration list for PBXProject "DoucheBlock for Twitter" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 584F666C269AD7A8008B1E31;
+			productRefGroup = 584F6676269AD7A8008B1E31 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				584F6674269AD7A8008B1E31 /* DoucheBlock for Twitter */,
+				584F6686269AD7A9008B1E31 /* DoucheBlock for Twitter Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		584F6673269AD7A8008B1E31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				584F6681269AD7A8008B1E31 /* Assets.xcassets in Resources */,
+				584F667D269AD7A8008B1E31 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		584F6685269AD7A9008B1E31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				584F66AA269AD7A9008B1E31 /* background.js in Resources */,
+				584F66AD269AD7A9008B1E31 /* manifest.json in Resources */,
+				584F66AE269AD7A9008B1E31 /* _locales in Resources */,
+				584F66A9269AD7A9008B1E31 /* styles.css in Resources */,
+				584F66A7269AD7A9008B1E31 /* help.html in Resources */,
+				584F66B0269AD7A9008B1E31 /* assets in Resources */,
+				584F66AC269AD7A9008B1E31 /* help.js in Resources */,
+				584F66AF269AD7A9008B1E31 /* content.js in Resources */,
+				584F66A8269AD7A9008B1E31 /* index.html in Resources */,
+				584F66AB269AD7A9008B1E31 /* options.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		584F6671269AD7A8008B1E31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				584F667F269AD7A8008B1E31 /* ViewController.swift in Sources */,
+				584F667A269AD7A8008B1E31 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		584F6683269AD7A9008B1E31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				584F6690269AD7A9008B1E31 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		584F668A269AD7A9008B1E31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 584F6686269AD7A9008B1E31 /* DoucheBlock for Twitter Extension */;
+			targetProxy = 584F6689269AD7A9008B1E31 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		584F667B269AD7A8008B1E31 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				584F667C269AD7A8008B1E31 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		584F6693269AD7A9008B1E31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		584F6694269AD7A9008B1E31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		584F6696269AD7A9008B1E31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "DoucheBlock for Twitter Extension/DoucheBlock_for_Twitter_Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "DoucheBlock for Twitter Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.DoucheBlock-for-Twitter.Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		584F6697269AD7A9008B1E31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "DoucheBlock for Twitter Extension/DoucheBlock_for_Twitter_Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "DoucheBlock for Twitter Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.DoucheBlock-for-Twitter.Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		584F669A269AD7A9008B1E31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "DoucheBlock for Twitter/DoucheBlock_for_Twitter.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "DoucheBlock for Twitter/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.DoucheBlock-for-Twitter";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		584F669B269AD7A9008B1E31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "DoucheBlock for Twitter/DoucheBlock_for_Twitter.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "DoucheBlock for Twitter/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.DoucheBlock-for-Twitter";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		584F6670269AD7A8008B1E31 /* Build configuration list for PBXProject "DoucheBlock for Twitter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				584F6693269AD7A9008B1E31 /* Debug */,
+				584F6694269AD7A9008B1E31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		584F6695269AD7A9008B1E31 /* Build configuration list for PBXNativeTarget "DoucheBlock for Twitter Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				584F6696269AD7A9008B1E31 /* Debug */,
+				584F6697269AD7A9008B1E31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		584F6699269AD7A9008B1E31 /* Build configuration list for PBXNativeTarget "DoucheBlock for Twitter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				584F669A269AD7A9008B1E31 /* Debug */,
+				584F669B269AD7A9008B1E31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 584F666D269AD7A8008B1E31 /* Project object */;
+}

@@ -131,12 +131,22 @@ export const isEdge = navigator.userAgent.indexOf('Edg/') > -1;
 export const isOpera = !!window.opr;
 
 /*
+ * Determine if current browser is Safari
+ *
+ * @constant
+ * @type {Boolean}
+ */
+export const isSafari = navigator.vendor.match(/apple/i) &&
+    !navigator.userAgent.match(/crios/i) &&
+    !navigator.userAgent.match(/fxios/i);
+
+/*
  * Determine if current browser is Chrome (might also be Brave)
  *
  * @constant
  * @type {Boolean}
  */
-export const isChrome = !(isEdge || isOpera || isFirefox);
+export const isChrome = !(isEdge || isOpera || isFirefox || isSafari);
 
 /*
  * Extension/addon APIs reference
@@ -206,6 +216,12 @@ export const rateLink = () => {
         return {
             label: 'rate_extension',
             url: 'https://addons.opera.com/en/extensions/details/doucheblock-for-twitter/'
+        };
+    }
+    if (isSafari) {
+        return {
+            label: 'rate_extension',
+            url: 'about:blank'
         };
     }
 };

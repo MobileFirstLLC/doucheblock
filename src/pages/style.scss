@@ -52,7 +52,7 @@ h1 {
   text-align: center;
 }
 
-h2{
+h2 {
   margin-top: 3rem;
   text-align: left;
 }
@@ -63,7 +63,7 @@ label {
   text-align: left;
 }
 
-code{
+code {
   font-size: 110%;
   background: #222a;
   padding: 3px 5px;
@@ -92,6 +92,15 @@ code{
     height: 26px;
   }
 
+  @media not all and (min-resolution: .001dpcm) {
+    input[type=checkbox] {
+      margin: 2px 4px 2px 2px;
+      width: auto;
+      height: auto;
+    }
+  }
+
+
   @-moz-document url-prefix() {
     & {
       border-radius: 8px
@@ -119,7 +128,7 @@ code{
   text-align: center;
   position: relative;
 
-  &.left{
+  &.left {
     text-align: left;
   }
 }
@@ -173,7 +182,7 @@ code{
     display: table;
   }
 
-  #intro-greeting{
+  #intro-greeting {
     letter-spacing: 0.5px;
     font-weight: 600;
   }
@@ -211,6 +220,7 @@ code{
   border-radius: 50%;
   border: 6px solid #1DA1F2;
   outline: none;
+
   &:hover, &:focus {
     background: #3f4648;
   }
