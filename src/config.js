@@ -194,36 +194,34 @@ export const alertCap = 3;
  * @returns {Object|undefined}
  */
 export const rateLink = () => {
+    let link = undefined;
     if (isFirefox) {
-        return {
+        link = {
             label: 'rate_addon',
             url: 'https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter'
         };
-    }
-    if (isChrome) {
-        return {
+    } else if (isChrome) {
+        link = {
             label: 'rate_extension',
             url: 'https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi/reviews'
         };
-    }
-    if (isEdge) {
-        return {
+    } else if (isEdge) {
+        link = {
             label: 'rate_addon',
             url: 'https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj'
         };
-    }
-    if (isOpera) {
-        return {
+    } else if (isOpera) {
+        link = {
             label: 'rate_extension',
             url: 'https://addons.opera.com/en/extensions/details/doucheblock-for-twitter/'
         };
-    }
-    if (isSafari) {
-        return {
+    } else if (isSafari) {
+        link = {
             label: 'rate_extension',
             url: 'about:blank'
         };
     }
+    return link;
 };
 
 /**
