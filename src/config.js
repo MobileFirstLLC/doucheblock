@@ -194,32 +194,17 @@ export const alertCap = 3;
  * @returns {Object|undefined}
  */
 export const rateLink = () => {
-    let link = undefined;
+    let link = {label: isFirefox || isEdge ? 'rate_addon' : 'rate_extension'};
     if (isFirefox) {
-        link = {
-            label: 'rate_addon',
-            url: 'https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter'
-        };
+        link.url = 'https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter';
     } else if (isChrome) {
-        link = {
-            label: 'rate_extension',
-            url: 'https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi/reviews'
-        };
+        link.url = 'https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi/reviews';
     } else if (isEdge) {
-        link = {
-            label: 'rate_addon',
-            url: 'https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj'
-        };
+        link.url = 'https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj';
     } else if (isOpera) {
-        link = {
-            label: 'rate_extension',
-            url: 'https://addons.opera.com/en/extensions/details/doucheblock-for-twitter/'
-        };
+        link.url = 'https://addons.opera.com/en/extensions/details/doucheblock-for-twitter/';
     } else if (isSafari) {
-        link = {
-            label: 'rate_extension',
-            url: 'about:blank'
-        };
+        link.url = 'about:blank';
     }
     return link;
 };
