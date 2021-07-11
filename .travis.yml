@@ -37,5 +37,5 @@ after_deploy:
       # chrome web store upload
       npx cws-upload $cid $sec $tkn $zip $eid;
       # firefox store upload
-      cd dist-ff && web-ext-submit --api-key=$ff_key --api-secret=$ff_secret
+      cd dist-ff && web-ext-submit --api-key=$ff_key --api-secret=$ff_secret;
     fi
