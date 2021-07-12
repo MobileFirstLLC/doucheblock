@@ -13,7 +13,7 @@
 </P>  
 
 <h3 align="center">
-  automatically block anyone with specific keywords in their Twitter bio.<br/><br/>
+  Automatically block anyone with specific keywords in their Twitter bio.<br/><br/>
 </h3>
 
 <p align="center">Available for Chrome, Firefox, Brave, Edge, and Opera</p>
