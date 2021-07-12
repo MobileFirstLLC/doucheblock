@@ -72,8 +72,8 @@ Study the source to learn how.
 
 - 🛡️ **This extension contains no tracking, analytics, or any such privacy violations.** What you see in  this repo is what you get.
 
-- ⏱️ **It took 12 hours to build**, from start to finish, including how to hack the API, build automation, tests and docs 
-   (use [extension-cli](https://github.com/MobileFirstLLC/extension-cli) for speed)
+- ⏱️ **[DoucheBlock MVP](https://github.com/MobileFirstLLC/doucheblock/tree/7955d77315eab0f7fae0e76d46480657c0f78fc8) took 12 hours to build**, from start to finish, including how to hack the API, build automation, tests and docs 
+   (use [extension-cli](https://github.com/MobileFirstLLC/extension-cli) for speed). Much more effort has gone into this project since.
 
 - 🎉 **This extension runs 100% on the client** there is no backend server &rarr; infinite scale &rarr; privacy for user.
 
