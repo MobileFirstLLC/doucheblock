@@ -49,7 +49,7 @@ You can set it to confirm before blocking or just allow it to block automaticall
 <br/><br/>  
 <img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/user_comment.jpg" alt="user comment" width="500" />
 <br/><br/>  
-<img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/user_comment2.jpg" alt="user comment" width="500" />
+<img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/user_comment2.png" alt="user comment" width="500" />
 </p>
 <br/>
 
