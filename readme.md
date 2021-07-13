@@ -47,9 +47,13 @@ You can set it to confirm before blocking or just allow it to block automaticall
 <p align="center">
 <a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img src="https://img.shields.io/chrome-web-store/stars/eeledoologbepiegnccedjigjkblhmhi?label=chrome&style=for-the-badge" alt="chrome"></a> &nbsp; &nbsp; <a href="https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter/"><img src="https://img.shields.io/amo/stars/doucheblock-for-twitter?label=firefox&style=for-the-badge" alt="firefox"></a> &nbsp; &nbsp; <a href="https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj"><img src="https://img.shields.io/badge/dynamic/json?label=edge&query=averageRating&suffix=%20/%205&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fjjamkfoaemeiacomhpidlhkjinmpmkpj&style=for-the-badge" alt="" /></a>
 <br/><br/>  
-<img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/user_comment.jpg" alt="user comment"   width="500" />
+<img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/user_comment.jpg" alt="user comment" width="500" />
+<br/><br/>  
+<img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/user_comment2.jpg" alt="user comment" width="500" />
 </p>
 <br/>
+
+<h4 align="center">See even more comments at <a href="https://testimonial.to/doucheblock-for-twitter/all">Wall of Love</a>!</h4> 
 
 <p align="center">
   Originally inspired by <a href="https://twitter.com/awilkinson/status/1357794228030509056">this tweet</a>:
@@ -59,7 +63,7 @@ You can set it to confirm before blocking or just allow it to block automaticall
 <img width="500" border="1" alt="screenshot" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/screenshot.png"/>
 </p>
 
-**Thanks to [Pikaso.me](https://pikaso.me/) for screenshot!** 
+**Thanks to [Pikaso.me](https://pikaso.me/) for the screenshots!** 
 
 Support your fellow indie hackers and find more useful social media tools [here &rarr;](https://github.com/MobileFirstLLC/social-media-hacker-list)
 
