@@ -206,7 +206,7 @@ export const rateLink = () => {
     } else if (isOpera) {
         link.url = 'https://addons.opera.com/en/extensions/details/doucheblock-for-twitter/';
     } else if (isSafari) {
-        link.url = 'about:blank';
+        link.url = 'https://apps.apple.com/us/app/doucheblock-for-twitter/id1576147372';
     }
     return link;
 };
