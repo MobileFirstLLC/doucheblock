@@ -24,6 +24,7 @@
 		584F66AE269AD7A9008B1E31 /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = 584F66A4269AD7A9008B1E31 /* _locales */; };
 		584F66AF269AD7A9008B1E31 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 584F66A5269AD7A9008B1E31 /* content.js */; };
 		584F66B0269AD7A9008B1E31 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 584F66A6269AD7A9008B1E31 /* assets */; };
+		58F10FE6269F8BB500642C6E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58F10FE5269F8BB500642C6E /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		584F66A4269AD7A9008B1E31 /* _locales */ = {isa = PBXFileReference; lastKnownFileType = folder; name = _locales; path = ../../../dist/_locales; sourceTree = "<group>"; };
 		584F66A5269AD7A9008B1E31 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = content.js; path = ../../../dist/content.js; sourceTree = "<group>"; };
 		584F66A6269AD7A9008B1E31 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../../../dist/assets; sourceTree = "<group>"; };
+		58F10FE5269F8BB500642C6E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				584F668F269AD7A9008B1E31 /* SafariWebExtensionHandler.swift */,
 				584F6691269AD7A9008B1E31 /* Info.plist */,
 				584F6692269AD7A9008B1E31 /* DoucheBlock_for_Twitter_Extension.entitlements */,
+				58F10FE5269F8BB500642C6E /* Images.xcassets */,
 			);
 			path = "DoucheBlock for Twitter Extension";
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				584F66AD269AD7A9008B1E31 /* manifest.json in Resources */,
 				584F66AE269AD7A9008B1E31 /* _locales in Resources */,
 				584F66A9269AD7A9008B1E31 /* styles.css in Resources */,
+				58F10FE6269F8BB500642C6E /* Images.xcassets in Resources */,
 				584F66A7269AD7A9008B1E31 /* help.html in Resources */,
 				584F66B0269AD7A9008B1E31 /* assets in Resources */,
 				584F66AC269AD7A9008B1E31 /* help.js in Resources */,
@@ -425,6 +429,7 @@
 		584F6696269AD7A9008B1E31 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "DoucheBlock for Twitter Extension/DoucheBlock_for_Twitter_Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UVSQ82N632;
@@ -435,6 +440,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.mobilefirst.DoucheBlock.Extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -445,6 +451,7 @@
 		584F6697269AD7A9008B1E31 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "DoucheBlock for Twitter Extension/DoucheBlock_for_Twitter_Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UVSQ82N632;
@@ -455,6 +462,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.mobilefirst.DoucheBlock.Extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -479,7 +487,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.mobilefirst.DoucheBlock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -503,7 +511,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.mobilefirst.DoucheBlock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
