@@ -432,6 +432,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "DoucheBlock for Twitter Extension/DoucheBlock_for_Twitter_Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = UVSQ82N632;
 				INFOPLIST_FILE = "DoucheBlock for Twitter Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -454,6 +455,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "DoucheBlock for Twitter Extension/DoucheBlock_for_Twitter_Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = UVSQ82N632;
 				INFOPLIST_FILE = "DoucheBlock for Twitter Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -480,6 +482,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = UVSQ82N632;
 				INFOPLIST_FILE = "DoucheBlock for Twitter/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -504,6 +507,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = UVSQ82N632;
 				INFOPLIST_FILE = "DoucheBlock for Twitter/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
