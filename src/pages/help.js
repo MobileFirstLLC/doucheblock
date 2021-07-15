@@ -32,6 +32,6 @@ export default class Help extends Page {
      * @private
      */
     static onBackClick() {
-        window.location.href = 'index.html'
+        window.location.assign('index.html');
     }
 }
