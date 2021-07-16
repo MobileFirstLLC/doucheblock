@@ -35,7 +35,7 @@ describe('Background script', () => {
         done();
     });
 
-    it('Browser actions open options page', done => {
+    it('Browser action opens options page', done => {
         expect(chrome.tabs.create.notCalled).to.be.true;
         chrome.browserAction.onClicked.dispatch();
         expect(chrome.tabs.create.withArgs({url: OptionsPageURL}).calledOnce).to.be.true;

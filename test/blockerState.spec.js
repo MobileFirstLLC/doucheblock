@@ -32,6 +32,7 @@ describe('BlockerState', () => {
         const result = BlockerState.pendingQueue.takeNext();
         const remaining = BlockerState.pendingQueue.queue;
         expect(result.length + remaining.length).to.be.equal(initial.length);
+        expect(remaining.length).to.be.below(initial.length);
     });
 
     it('HandledList contains expected values', () => {

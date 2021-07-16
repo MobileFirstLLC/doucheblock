@@ -12,8 +12,7 @@
 
     <div id="intro-container">
         <svg viewBox="0 0 24 24" id="close-intro" tabindex="0">
-            <path fill="currentColor"
-                  d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+            <path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
         </svg>
         <div id="intro">
             <p><span id="intro-greeting"></span> <span id="wave">👋</span></p>
@@ -25,13 +24,13 @@
 
     <div class="block">
         <a href="help.html" class="link" id="help"></a>
-        <label id="block-label">&nbsp;</label>
+        <label for="block-words" id="block-label">&nbsp;</label>
         <textarea id="block-words"></textarea>
     </div>
     <div class="block checkbox">
         <label class="switch">
-            <input type="checkbox" id="confirm">
-            <span class="slider round" id="confirm_slider"></span>
+            <input type="checkbox" id="confirm" tabindex="-1">
+            <span class="slider round" id="confirm_slider" tabindex="0"></span>
         </label>
         <label id="confirm-label">&nbsp;</label>
     </div>

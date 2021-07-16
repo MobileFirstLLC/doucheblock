@@ -24,10 +24,11 @@ export default class Index extends Page {
         Index.getElement('block-label').innerText = Index.translate('blockedWords');
         Index.getElement('confirm-label').innerText = Index.translate('confirmBlock');
         Index.getElement('help').innerText = Index.translate('help');
-
-        // setup save button
-        Index.saveButton.onclick = Index.saveButton.onkeypress = Index.saveSettings;
         Index.resetButtonText();
+
+        // bind actions
+        Index.saveButton.onclick = Index.saveButton.onkeypress = Index.saveSettings;
+        Index.getElement('confirm_slider').onkeypress = Index.toggleConfirm;
 
         // load user settings
         Index.loadSettings();
@@ -71,6 +72,16 @@ export default class Index extends Page {
      */
     static resetButtonText() {
         Index.saveButton.innerText = Index.translate('saveChanges');
+    }
+
+    /**
+     * Toggle checkbox on enter click
+     * @param e
+     */
+    static toggleConfirm(e) {
+        if (e && e.key === 'Enter') {
+            Index.confirmInput.checked = !Index.confirmInput.checked;
+        }
     }
 
     /**
@@ -118,8 +129,10 @@ export default class Index extends Page {
             const container = Index.getElement('intro-container');
             const close = Index.getElement('close-intro');
 
-            Index.getElement('intro-greeting').innerHTML = Index.translate('intro_greeting');
-            Index.getElement('intro-text').innerHTML = Index.translate('intro_text');
+            Index.getElement('intro-greeting').innerHTML =
+                Index.translate('intro_greeting');
+            Index.getElement('intro-text').innerHTML =
+                Index.translate('intro_text');
             Index.getElement('intro').parentNode.style.display = 'block';
             close.onclick = _ => container.parentNode.removeChild(container);
             close.onkeypress = _ => container.parentNode.removeChild(container);

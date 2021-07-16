@@ -79,7 +79,7 @@ export default class TwitterApi {
      * @param csrf - csrf token
      */
     static doTheBlock(id, bearer, csrf) {
-        const xhr = new window.XMLHttpRequest();
+        const xhr = new XMLHttpRequest();
         xhr.open('POST', requestConfigs.blockEndpoint, true);
         xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
         xhr.setRequestHeader('Authorization', bearer);
@@ -104,7 +104,7 @@ export default class TwitterApi {
      * @returns {boolean} True if already blocking and False otherwise
      */
     static isBlocking(handle, bearer, csrf, callback) {
-        const xhr = new window.XMLHttpRequest();
+        const xhr = new XMLHttpRequest();
         const onError = () => callback(false);
         xhr.open('GET', requestConfigs.friendshipEndpoint(handle), true);
         xhr.setRequestHeader('Authorization', bearer);
@@ -112,7 +112,7 @@ export default class TwitterApi {
         xhr.onload = _ => {
             if (xhr.readyState === 4) {
                 TwitterApi.parseResponse(xhr.response,
-                resp=>resp.data.user.legacy.blocking,
+                    resp => resp.data.user.legacy.blocking,
                     callback, onError);
             }
         };

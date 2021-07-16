@@ -2,7 +2,7 @@ import Help from '../src/pages/help';
 
 const fs = require('fs');
 const path = require('path');
-const { location } = window;
+const {location} = window;
 
 const HTMLTemplate = fs.readFileSync(path.resolve(__dirname,
     '../src/pages/help.html'), 'utf8');
@@ -12,7 +12,7 @@ describe('Help page', () => {
     beforeEach(() => {
         document.documentElement.innerHTML = HTMLTemplate;
         delete window.location;
-        window.location = { assign: sinon.spy() };
+        window.location = {assign: sinon.spy()};
         new Help();
     });
 
