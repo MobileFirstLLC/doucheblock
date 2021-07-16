@@ -114,8 +114,6 @@ export default class Index extends Page {
             if (count > 1 && !Index.isIntro) {
                 Index.getElement('block-count').innerText =
                     (Index.translate('blockCount', count.toString()));
-                Index.getElement('bmc').setAttribute(
-                    'visible', 'visible');
             }
         });
     }

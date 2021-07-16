@@ -246,23 +246,6 @@ ul {
   }
 }
 
-#bmc {
-  right: 50px;
-  opacity: 0;
-
-  &[visible] {
-    animation-name: enterBottomAnim;
-    animation-fill-mode: both;
-    animation-duration: 1s;
-    animation-delay: 2000ms;
-    opacity: 1;
-  }
-
-  & img {
-    width: 158px;
-  }
-}
-
 .switch {
   position: relative;
   display: inline-block;
