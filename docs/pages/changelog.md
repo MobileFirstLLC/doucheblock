@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/MobileFirstLLC/doucheblock/compare/v1.0.0...v1.2.0) (2021-07-16)
+
+
+### Bug Fixes
+
+* **cc:** Avoid too many return statements within this function. ([e9c8c83](https://github.com/MobileFirstLLC/doucheblock/commit/e9c8c83f2b033e71d6cba3dab2c71fe38a1fb2c5))
+* **cc:** Cognitive Complexity ([131e2bc](https://github.com/MobileFirstLLC/doucheblock/commit/131e2bc53647d552c21fe9cba512ca5e8ac18d6b))
+* **cc:** Function rateLink has 28 lines of code ([9a315ad](https://github.com/MobileFirstLLC/doucheblock/commit/9a315ad6ceb9258b52ace5ca7d44f4e3edd8c3de))
+* settings update should notify active tabs (firefox) ([1ec99cf](https://github.com/MobileFirstLLC/doucheblock/commit/1ec99cf48bb51eb2b4c39a1cda324e2f37fe42a6))
+
 ## 1.0.1 (un-tagged)
 
 - Added CI config to upload to Firefox
