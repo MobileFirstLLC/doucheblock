@@ -1,4 +1,4 @@
-import {alertCap, browserVariant, classFlag} from '../config';
+import {alertCap, browserVariant, classFlag, isFirefox} from '../config';
 import Storage from './storage';
 import TwitterApi from './twitterApi';
 import bs from './blockerState'; // most definitely
@@ -47,13 +47,22 @@ export default class AutoBlocker {
      * Add message listener to know when to reload settings.
      */
     static registerListener() {
-        window.chrome.runtime.onMessage.addListener(
-            (request) => {
+        if (isFirefox) {
+            browser.runtime.onMessage.addListener(request => {
                 if (request.updateSettings) {
                     AutoBlocker.loadSettings();
-                    return true;
                 }
             });
+            return Promise.resolve();
+        } else {
+            window.chrome.runtime.onMessage.addListener(
+                (request) => {
+                    if (request.updateSettings) {
+                        AutoBlocker.loadSettings();
+                        return true;
+                    }
+                });
+        }
     }
 
     /**
