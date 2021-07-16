@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.0.1 (un-tagged)
+
+- Added CI config to upload to Firefox
+- Release for safari
+
 ## [1.0.0](https://github.com/MobileFirstLLC/doucheblock/compare/v0.3.0...v1.0.0) (2021-06-22)
 
 - add  regex keyword support and help page to explain use [PR #16](https://github.com/MobileFirstLLC/doucheblock/pull/16)
