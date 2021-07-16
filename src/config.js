@@ -235,7 +235,7 @@ export const shareLinks = {
     },
     twitter: {
         label: 'share_twitter',
-        url: 'https://twitter.com/intent/tweet?text=%23DoucheBlock%20',
+        url: 'https://twitter.com/intent/tweet?text=@DoucheBlock%20',
         svgPath: 'M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 ' +
             '19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,' +
             '9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 ' +
