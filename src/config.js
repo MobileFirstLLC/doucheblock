@@ -188,25 +188,22 @@ export const classFlag = 'dbt___seen-it-b4';
 export const alertCap = 3;
 
 /**
- * Link where to rate the extension.
- * Depends on the current browser.
+ * URLs for rating extension, depends on the current browser.
  *
- * @returns {Object|undefined}
+ * @returns {String|undefined}
  */
-export const rateLink = () => {
-    let link = {label: 'rate_extension'};
+const rateURL = () => {
+    let link;
     if (isFirefox) {
-        link.label = 'rate_addon';
-        link.url = 'https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter';
+        link = 'https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter';
     } else if (isChrome) {
-        link.url = 'https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi/reviews';
+        link = 'https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi/reviews';
     } else if (isEdge) {
-        link.label = 'rate_addon';
-        link.url = 'https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj';
+        link = 'https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj';
     } else if (isOpera) {
-        link.url = 'https://addons.opera.com/en/extensions/details/doucheblock-for-twitter/';
+        link = 'https://addons.opera.com/en/extensions/details/doucheblock-for-twitter/';
     } else if (isSafari) {
-        link.url = 'https://apps.apple.com/us/app/doucheblock-for-twitter/id1576147372';
+        link = 'https://apps.apple.com/us/app/doucheblock-for-twitter/id1576147372';
     }
     return link;
 };
@@ -231,7 +228,8 @@ export const shareLinks = {
             '21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z'
     },
     rate: {
-        ...rateLink(),
+        url: rateURL(),
+        label: isFirefox || isEdge ? 'rate_addon' : 'rate_extension',
         svgPath: 'M12,15.39L8.24,17.66L9.23,13.38L5.91,10.5L10.29,10.13L12,6.09L13.71,10.13L18.09,10.5L14.77,13.38L15.76,' +
             '17.66M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z'
     },

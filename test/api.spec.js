@@ -28,8 +28,8 @@ describe('Twitter API', () => {
     });
 
     it('Handles errors without crash', done => {
-        TwitterApi.getTheBio(['error'], bearer, csrf,
-            _ => false, _ => {
+        TwitterApi.getTheBio(['error'], bearer, csrf, undefined,
+            function () {
                 expect(true, 'error callback was called').to.be.true;
                 done();
             });
