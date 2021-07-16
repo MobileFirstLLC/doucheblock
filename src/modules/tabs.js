@@ -1,6 +1,6 @@
 // noinspection JSUnresolvedVariable,JSCheckFunctionSignatures,JSUnresolvedFunction,JSIgnoredPromiseFromCall
 
-import {browserVariant} from "../config";
+import {browserVariant, isFirefox} from '../config';
 
 /**
  * @description
@@ -26,13 +26,24 @@ export default class Tabs {
      * subscribed tabs.
      */
     static notifyTabsOfUpdate() {
-        browserVariant().tabs.query({}, tabs => {
-            for (let i = 0; i < tabs.length; ++i) {
-                // send message to update
-                browserVariant().tabs.sendMessage(tabs[i].id,
-                    {updateSettings: true}
-                );
-            }
-        });
+        if (isFirefox) {
+            browserVariant().tabs.query(
+                {url: 'https://*.twitter.com/*'})
+                .then(tabs => {
+                    for (let tab of tabs) {
+                        browser.tabs.sendMessage(
+                            tab.id, {updateSettings: true})
+                            .then().catch();
+                    }
+                }).catch();
+        } else {
+            browserVariant().tabs.query({}, tabs => {
+                for (let i = 0; i < tabs.length; ++i) {
+                    browserVariant().tabs.sendMessage(tabs[i].id,
+                        {updateSettings: true}
+                    );
+                }
+            });
+        }
     }
 }
