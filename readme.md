@@ -10,6 +10,7 @@
 
 <p align="center">
 <a href="https://travis-ci.com/github/MobileFirstLLC/doucheblock"><img alt="build status" src="https://travis-ci.com/MobileFirstLLC/doucheblock.svg?branch=master"></a> <a href="https://coveralls.io/github/MobileFirstLLC/doucheblock"><img alt="Coveralls github" src="https://img.shields.io/coveralls/github/MobileFirstLLC/doucheblock"></a> <a href="https://codeclimate.com/github/MobileFirstLLC/doucheblock/maintainability"><img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/MobileFirstLLC/doucheblock"></a>
+<br/><a href="https://twitter.com/intent/follow?screen_name=doucheblock&tw_p=followbutton"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/doucheblock?style=social"></a>
 </P>  
 
 <h3 align="center">
