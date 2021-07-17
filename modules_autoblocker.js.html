@@ -1,0 +1,477 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>modules/autoblocker.js</title>
+		<link rel="icon" type="image/png" href="favicon.png"/>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<link type="text/css" rel="stylesheet" href="data:text/css;base64,Ym9keSB7CiAgICAtd2Via2l0LWZvbnQtc21vb3RoaW5nOiBhbnRpYWxpYXNlZDsKICAgIC1tb3otb3N4LWZvbnQtc21vb3RoaW5nOiBncmF5c2NhbGU7CiAgICBmb250LXNpemU6IDE4cHg7Cn0KCmJvZHksCi5zeW1ib2wtdGl0bGUgaDEsCi5zeW1ib2wtdGl0bGUgaDIsCi5zeW1ib2wtdGl0bGUgaDMsCi5zeW1ib2wtdGl0bGUgaDQsCi5zeW1ib2wtdGl0bGUgaDUgewogICAgZm9udC1mYW1pbHk6IHN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAiU2Vnb2UgVUkiLAogICAgUm9ib3RvLCBVYnVudHUsICJIZWx2ZXRpY2EgTmV1ZSIsIHNhbnMtc2VyaWYgIWltcG9ydGFudDsKfQoKLnBhZ2UtaGVhZGVyIC5zdW1tYXJ5ICogewogICAgY29sb3I6ICNmZmY7Cn0KCi5jb250ZW50IHAgewogICAgbGluZS1oZWlnaHQ6IDEuODsKICAgIG1hcmdpbjogMXJlbSAwOwp9CgouY29udGVudCBwIGEgewogICAgZm9udC13ZWlnaHQ6IGJvbGQ7Cn0KCi5jb250ZW50IHRhYmxlIHAgewogICAgbWFyZ2luOiAwOwp9CgouY29udGVudCBoMSwgLmNvbnRlbnQgaDIsIC5jb250ZW50IGgzIHsKICAgIG1hcmdpbi10b3A6IDNyZW07CiAgICBib3JkZXItYm90dG9tOiBub25lOwp9CgouY29udGVudCBzZWN0aW9uOm5vdCgucmVhZG1lLXNlY3Rpb24pIGgyLmFuY2hvcmVkIHsKICAgIG1hcmdpbi10b3A6IDVyZW07CiAgICBtYXJnaW4tYm90dG9tOiA1cmVtOwp9CgpkbC5zeW1ib2wgLmg0LApkbC5zeW1ib2wgLmg1LApkbC5zeW1ib2wgLmg2LApkbC5zeW1ib2wgaDQsCmRsLnN5bWJvbCBoNSwKZGwuc3ltYm9sIGg2IHsKICAgIG1hcmdpbjogMDsKfQoKLnRvYyAubmF2ID4gbGkgPiBhLAoudG9jIC5uYXYgLm5hdiA+IGxpID4gYSwKLmJhY2stdG8tdG9wIHsKICAgIGZvbnQtc2l6ZTogMWVtOwp9CgoudG9jIC5zaWduYXR1cmUtbmV3LAoucGFnZS1oZWFkZXIgLmtpbmQsCmZvb3RlciAuZ2VuZXJhdGVkLWJ5LAoudG9jIC5uYXYgPiBsaSA+IGEgLm5hbWUtc2lnbmF0dXJlLAoudG9jIC5uYXYgPiBsaSA+IGEgLnNpZ25hdHVyZS1wYXJhbXMgewogICAgZGlzcGxheTogbm9uZTsKfQoKLnN5bWJvbC1kZXRhaWxzLmNvbGxhcHNpYmxlLXN5bWJvbC50cmFuc2l0aW9uIHsKICAgIHRyYW5zaXRpb246IG5vbmU7Cn0KCmNvZGUgewogICAgZm9udC13ZWlnaHQ6IGJvbGQ7CiAgICBiYWNrZ3JvdW5kOiAjZWVlOwp9Cgpjb2RlLCAuc3ltYm9sLXRpdGxlIC5uYW1lLXN0cmluZywgLnN5bWJvbC10aXRsZSAuc2lnbmF0dXJlLXBhcmFtLCAuc3ltYm9sLXRpdGxlIGg0LmV2ZW50IHsKICAgIGNvbG9yOiAjYmUxNWRkOwp9CgpwcmUgY29kZSB7CiAgICBmb250LXdlaWdodDogbm9ybWFsOwp9Cgouc291cmNlLXNlY3Rpb24gY29kZSB7CiAgICBsaW5lLWhlaWdodDogMjsKfQoKLm5hdmJhci1icmFuZC5icmFuZGluZy1sb2dvIHsKICAgIGJhY2tncm91bmQtc2l6ZTogMzJweDsKfQo&#x3D;">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #1DA1F2;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #1DA1F2;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #1DA1F2;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #1DA1F2;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":"true","dateFormat":"MMM YYYY","systemName":"DoucheBlock for Twitter","systemSummary":"Block anyone with specific keywords in their Twitter bio.","systemLogo":"img/128x128.png","systemColor":"#1DA1F2","navMembers":[{"kind":"module","title":"Modules"},{"kind":"tutorial","title":"Other Documents"}],"footer":"","copyright":"","linenums":"true","collapseSymbols":"true","inverseNav":"false","inlineNav":true,"outputSourceFiles":"true","sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":"true","showTableOfContents":"true","showAccessFilter":"true","analytics":{"ua":"UA-129118591-7","domain":"https://oss.mobilefirst.me/doucheblock"},"methodHeadingReturns":false,"sort":"linenum, longname, version, since","search":false,"favicon":"favicon.png","stylesheets":["data:text/css;base64,Ym9keSB7CiAgICAtd2Via2l0LWZvbnQtc21vb3RoaW5nOiBhbnRpYWxpYXNlZDsKICAgIC1tb3otb3N4LWZvbnQtc21vb3RoaW5nOiBncmF5c2NhbGU7CiAgICBmb250LXNpemU6IDE4cHg7Cn0KCmJvZHksCi5zeW1ib2wtdGl0bGUgaDEsCi5zeW1ib2wtdGl0bGUgaDIsCi5zeW1ib2wtdGl0bGUgaDMsCi5zeW1ib2wtdGl0bGUgaDQsCi5zeW1ib2wtdGl0bGUgaDUgewogICAgZm9udC1mYW1pbHk6IHN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAiU2Vnb2UgVUkiLAogICAgUm9ib3RvLCBVYnVudHUsICJIZWx2ZXRpY2EgTmV1ZSIsIHNhbnMtc2VyaWYgIWltcG9ydGFudDsKfQoKLnBhZ2UtaGVhZGVyIC5zdW1tYXJ5ICogewogICAgY29sb3I6ICNmZmY7Cn0KCi5jb250ZW50IHAgewogICAgbGluZS1oZWlnaHQ6IDEuODsKICAgIG1hcmdpbjogMXJlbSAwOwp9CgouY29udGVudCBwIGEgewogICAgZm9udC13ZWlnaHQ6IGJvbGQ7Cn0KCi5jb250ZW50IHRhYmxlIHAgewogICAgbWFyZ2luOiAwOwp9CgouY29udGVudCBoMSwgLmNvbnRlbnQgaDIsIC5jb250ZW50IGgzIHsKICAgIG1hcmdpbi10b3A6IDNyZW07CiAgICBib3JkZXItYm90dG9tOiBub25lOwp9CgouY29udGVudCBzZWN0aW9uOm5vdCgucmVhZG1lLXNlY3Rpb24pIGgyLmFuY2hvcmVkIHsKICAgIG1hcmdpbi10b3A6IDVyZW07CiAgICBtYXJnaW4tYm90dG9tOiA1cmVtOwp9CgpkbC5zeW1ib2wgLmg0LApkbC5zeW1ib2wgLmg1LApkbC5zeW1ib2wgLmg2LApkbC5zeW1ib2wgaDQsCmRsLnN5bWJvbCBoNSwKZGwuc3ltYm9sIGg2IHsKICAgIG1hcmdpbjogMDsKfQoKLnRvYyAubmF2ID4gbGkgPiBhLAoudG9jIC5uYXYgLm5hdiA+IGxpID4gYSwKLmJhY2stdG8tdG9wIHsKICAgIGZvbnQtc2l6ZTogMWVtOwp9CgoudG9jIC5zaWduYXR1cmUtbmV3LAoucGFnZS1oZWFkZXIgLmtpbmQsCmZvb3RlciAuZ2VuZXJhdGVkLWJ5LAoudG9jIC5uYXYgPiBsaSA+IGEgLm5hbWUtc2lnbmF0dXJlLAoudG9jIC5uYXYgPiBsaSA+IGEgLnNpZ25hdHVyZS1wYXJhbXMgewogICAgZGlzcGxheTogbm9uZTsKfQoKLnN5bWJvbC1kZXRhaWxzLmNvbGxhcHNpYmxlLXN5bWJvbC50cmFuc2l0aW9uIHsKICAgIHRyYW5zaXRpb246IG5vbmU7Cn0KCmNvZGUgewogICAgZm9udC13ZWlnaHQ6IGJvbGQ7CiAgICBiYWNrZ3JvdW5kOiAjZWVlOwp9Cgpjb2RlLCAuc3ltYm9sLXRpdGxlIC5uYW1lLXN0cmluZywgLnN5bWJvbC10aXRsZSAuc2lnbmF0dXJlLXBhcmFtLCAuc3ltYm9sLXRpdGxlIGg0LmV2ZW50IHsKICAgIGNvbG9yOiAjYmUxNWRkOwp9CgpwcmUgY29kZSB7CiAgICBmb250LXdlaWdodDogbm9ybWFsOwp9Cgouc291cmNlLXNlY3Rpb24gY29kZSB7CiAgICBsaW5lLWhlaWdodDogMjsKfQoKLm5hdmJhci1icmFuZC5icmFuZGluZy1sb2dvIHsKICAgIGJhY2tncm91bmQtc2l6ZTogMzJweDsKfQo="],"scripts":["https://buttons.github.io/buttons.js"],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand branding-logo" href="index.html" style="background-image: url(img/128x128.png);">
+					DoucheBlock for Twitter
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_module.html">Modules</a></li>
+							<li><a href="list_tutorial.html">Other Documents</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">modules/autoblocker.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">import {alertCap, browserVariant, classFlag, isFirefox} from '../config';
+import Storage from './storage';
+import TwitterApi from './twitterApi';
+import bs from './blockerState'; // most definitely
+
+/**
+ * @description
+ * AutoBlocker is a content script responsible for discovering Twitter handles
+ * and checking them for banned keywords. It works as follows:
+ *
+ * It runs in the browser tab context and watches DOM changes. It then attempts
+ * to find twitter handles in the DOM tree when the tree changes.
+ *
+ * After finding handles those handles are first placed in a temporary queue
+ * to limit API calls. Once the queue is "full enough" and API credentials are
+ * available, the discovered handles will be checked.
+ *
+ * First it will request the bio for each handle and then check that bio for
+ * prohibited keywords. If keyword is detected, either prompt user to confirm
+ * the blocking (user preference) or automatically block. Manually choosing
+ * not to block will add the handle to a whitelist.
+ *
+ * Notes:
+ * - The queue stage is used to limit number of API calls, and is necessary
+ * to avoid exceeding Twitter rate limit
+ * - Handle is only checked once per session; checked handled are kept in memory
+ * and will not be checked again until full page reload occurs.
+ *
+ * @module
+ * @name AutoBlocker
+ */
+export default class AutoBlocker {
+
+    /**
+     * @ignore
+     */
+    constructor() {
+        // Load user preferences then start DOM tree mutation observer
+        AutoBlocker.loadSettings(AutoBlocker.startWatch);
+        // Activate listener for user preferences changes;
+        // background will broadcast if changes occur and
+        // content script needs to reload user preferences.
+        AutoBlocker.registerListener();
+    }
+
+    /**
+     * Add message listener to know when to reload settings.
+     */
+    static registerListener() {
+        if (isFirefox) {
+            browser.runtime.onMessage.addListener(request => {
+                if (request.updateSettings) {
+                    AutoBlocker.loadSettings();
+                }
+            });
+            return Promise.resolve();
+        } else {
+            window.chrome.runtime.onMessage.addListener(
+                (request) => {
+                    if (request.updateSettings) {
+                        AutoBlocker.loadSettings();
+                        return true;
+                    }
+                });
+        }
+    }
+
+    /**
+     * Load user settings from storage.
+     * @param {function?} callback
+     */
+    static loadSettings(callback) {
+        Storage.getSettings(settings => {
+            bs.keyList = settings[Storage.keys.blockWords];
+            bs.confirmBlocks = settings[Storage.keys.confirm];
+            bs.whiteList.whiteList = settings[Storage.keys.whiteList];
+            if (callback) callback();
+        });
+    }
+
+    /**
+     * Request the tokens from background context.
+     * @param {function?} callback - will call if ready to proceed
+     */
+    static obtainTokens(callback) {
+        browserVariant().runtime.sendMessage({tokens: true},
+            ({bearer, csrf}) => {
+                bs.tokens = {
+                    bearerToken: bearer,
+                    csrfToken: csrf
+                };
+                if (bs.ready &amp;&amp; callback) callback();
+            });
+    }
+
+    /**
+     * Watch DOM tree changes
+     */
+    static startWatch() {
+        const obs = new MutationObserver(AutoBlocker.onDomChange);
+        obs.observe(document.body, {subtree: true, childList: true});
+        AutoBlocker.lookForDouches();
+    }
+
+    /**
+     * Handle DOM tree changes
+     * @param mutationsList
+     */
+    static onDomChange(mutationsList) {
+        for (const mutation of mutationsList) {
+            if (mutation.type === 'childList') {
+                AutoBlocker.lookForDouches();
+            }
+        }
+    }
+
+    /**
+     * Start douchy user lookup flow.
+     */
+    static lookForDouches() {
+        // Before lookup ensure we have necessary tokens to get bios
+        if (!bs.ready) {
+            AutoBlocker.obtainTokens(AutoBlocker.findHandles);
+        } else {
+            // next look for handles on the page
+            AutoBlocker.findHandles();
+        }
+    }
+
+    /**
+     * Look for handles in the timeline
+     */
+    static findHandles() {
+        const links = document.getElementsByTagName('a');
+
+        for (let n = 0; n &lt; links.length; n++) {
+            AutoBlocker.processLinks(links[n]);
+        }
+
+        AutoBlocker.requestBios();
+    }
+
+    /**
+     * Check DOM links and queue newly discovered handles.
+     *
+     * @param {Element} link DOM node
+     */
+    static processLinks(link) {
+        // first check that the element is a link to a user
+        if (AutoBlocker.isHandleLink(link)) {
+
+            // mark link as checked to prevent re-checking
+            link.classList.add(classFlag);
+
+            // extract handle
+            const handle = AutoBlocker.parseHandle(link);
+
+            // check that handle has not already been processed
+            if (!bs.handledList.isChecked(handle) &amp;&amp;
+                !bs.pendingQueue.inQueue(handle)) {
+                bs.pendingQueue.add(handle);
+            }
+        }
+    }
+
+    /**
+     * Determine if some link element is a handle.
+     *
+     * @param {Element} link DOM element
+     * @returns {boolean}
+     */
+    static isHandleLink(link) {
+        return !!(
+            // must contain text
+            link.innerText &amp;&amp;
+            // has role = "link" attribute
+            link.getAttribute('role') === 'link' &amp;&amp;
+            // not marked as previously checked
+            !link.classList.contains(classFlag) &amp;&amp;
+            // contains "@" of handle
+            link.innerText.indexOf('@') >= 0);
+    }
+
+    /**
+     * Extract handle string from a DOM element.
+     *
+     * @param {Element} link element
+     * @returns {string} twitter user handle
+     */
+    static parseHandle(link) {
+        const substr = link.innerText.substr(
+            link.innerText.indexOf('@') + 1);
+        const [handle] = (substr.split(/\s+/, 1));
+        return handle;
+    }
+
+    /**
+     * If there are enough names are in queue, request bios from API.
+     */
+    static requestBios() {
+        const shouldRequest =
+            // queue is non-empty *AND*
+            !bs.pendingQueue.isEmpty &amp;&amp;
+            // EITHER: first request *or* been long enough
+            (!bs.lastBioTimestamp || bs.lastBioExpired);
+
+        if (!shouldRequest) return;
+
+        // update timestamp and get handles from queue
+        bs.lastBioTimestamp = Date.now();
+        const handles = bs.pendingQueue.takeNext();
+
+        // request bios for list of handles
+        TwitterApi.getTheBio(handles,
+            bs.tokens.bearerToken,
+            bs.tokens.csrfToken,
+            (userData) => {
+                // mark handles as checked
+                bs.handledList.add(handles);
+                AutoBlocker.processBios(userData);
+            },
+            () => {
+                // put names back in the queue
+                bs.pendingQueue.addAll(handles);
+            });
+    }
+
+    /**
+     * Check users to find bios matching blocking criteria.
+     *
+     * @param {Object[]} users
+     */
+    static processBios(users) {
+        if (!users || !users.length) return;
+        // all users that match block criteria
+        const blockable = users.filter(AutoBlocker.isBlockMatch);
+        // remaining users after applying max cap
+        const limited = AutoBlocker.limitAlertCount(blockable);
+        // proceed to block
+        AutoBlocker.sequentiallyBlock(limited);
+    }
+
+    /**
+     * Check if user should be blocked
+     *
+     * @param {Object} user
+     * @returns {boolean}
+     */
+    static isBlockMatch(user) {
+        const {bio, id} = user;
+        return id &amp;&amp; bio &amp;&amp;
+            !bs.whiteList.contains(id) &amp;&amp;
+            AutoBlocker.checkWords(bs.keyList, bio);
+    }
+
+    /**
+     * Match bio against keywords
+     * @param {String[]} words - keywords to check
+     * @param {String} bio - twitter bio
+     * @returns {boolean} true if a douche
+     */
+    static checkWords(words, bio) {
+        for (let i = 0; i &lt; words.length; i++) {
+            if (new RegExp(words[i], 'gmi').test(bio)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * This method ensures te number of alerts shown to user
+     * does not exceed a configurable upper limit. If input
+     * exceeds the limit, excess items will be re-queued.
+     * Method will return at most max allowed matches.
+     *
+     * @param {Object[]} users
+     * @returns {Object[]} limited count of users
+     */
+    static limitAlertCount(users) {
+        // if user has disabled confirmation alerts they will see
+        // 0 alerts -> return all handles
+        if (!bs.confirmBlocks || !users || users.length &lt;= alertCap) {
+            return users;
+        }
+
+        // take max items from the beginning
+        const keep = users.slice(0, alertCap);
+
+        // get the excess handles and requeue
+        const excessHandles = users.slice(alertCap)
+            .map(({handle}) => handle);
+
+        bs.handledList.remove(excessHandles);
+        bs.pendingQueue.addAll(excessHandles);
+        return keep;
+    }
+
+    /**
+     * Recursively block a list of users
+     *
+     * @param {Object[]} users
+     */
+    static sequentiallyBlock(users) {
+        if (users &amp;&amp; users.length) {
+            const first = users.shift();
+            // filter out users that are already blocked
+            TwitterApi.isBlocking(first.handle, bs.tokens.bearerToken,
+                bs.tokens.csrfToken, isBlocking => {
+                    if (isBlocking) {
+                        AutoBlocker.sequentiallyBlock(users);
+                    } else {
+                        AutoBlocker.executeBlock(first)
+                            .then(_ => AutoBlocker.sequentiallyBlock(users))
+                            .catch();
+                    }
+                });
+        }
+    }
+
+    /**
+     * Construct a window alert
+     *
+     * @param {string} bio - user's bio text
+     * @param {string} name - user's display name
+     * @returns {string} alert text
+     */
+    static buildAlert(bio, name) {
+        const sanitizedBio = `${name} : ${(bio || '')
+            .replace(/\s\s+/g, ' ')}`;
+        const alert = browserVariant().i18n.getMessage('doucheAlert');
+        const confirm = browserVariant().i18n.getMessage('proceedToBlock', name);
+        return `${alert}` +
+            '\n==================================' +
+            `\n${sanitizedBio}` +
+            '\n==================================' +
+            `\n\n${confirm}`;
+    }
+
+    /**
+     * Block a user
+     *
+     * @param {string} bio - user's bio text
+     * @param {string} id - user's twitter id
+     * @param {string} handle - handle
+     * @param {string} name - display name
+     * @returns {Promise}
+     */
+    static executeBlock({bio, id, handle, name}) {
+        return new Promise((resolve) => {
+            // user picked cancel -> whitelist this handle
+            if (bs.confirmBlocks &amp;&amp;
+                !window.confirm(AutoBlocker.buildAlert(bio, name))) {
+                bs.whiteList.add(id, handle);
+            }
+            // auto-block or user clicked OK to block
+            else {
+                TwitterApi.doTheBlock(id,
+                    bs.tokens.bearerToken,
+                    bs.tokens.csrfToken);
+            }
+            // add some latency
+            return window.setTimeout(resolve, 500);
+        });
+    }
+}
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Jul 2021 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<script src="https://buttons.github.io/buttons.js"></script>
+	
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-129118591-7', 'https://oss.mobilefirst.me/doucheblock');
+			ga('send', 'pageview');
+		</script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

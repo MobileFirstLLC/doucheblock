@@ -1,0 +1,247 @@
+<!-- start:readme.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>DoucheBlock for Twitter</title>
+		<link rel="icon" type="image/png" href="favicon.png"/>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<link type="text/css" rel="stylesheet" href="data:text/css;base64,Ym9keSB7CiAgICAtd2Via2l0LWZvbnQtc21vb3RoaW5nOiBhbnRpYWxpYXNlZDsKICAgIC1tb3otb3N4LWZvbnQtc21vb3RoaW5nOiBncmF5c2NhbGU7CiAgICBmb250LXNpemU6IDE4cHg7Cn0KCmJvZHksCi5zeW1ib2wtdGl0bGUgaDEsCi5zeW1ib2wtdGl0bGUgaDIsCi5zeW1ib2wtdGl0bGUgaDMsCi5zeW1ib2wtdGl0bGUgaDQsCi5zeW1ib2wtdGl0bGUgaDUgewogICAgZm9udC1mYW1pbHk6IHN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAiU2Vnb2UgVUkiLAogICAgUm9ib3RvLCBVYnVudHUsICJIZWx2ZXRpY2EgTmV1ZSIsIHNhbnMtc2VyaWYgIWltcG9ydGFudDsKfQoKLnBhZ2UtaGVhZGVyIC5zdW1tYXJ5ICogewogICAgY29sb3I6ICNmZmY7Cn0KCi5jb250ZW50IHAgewogICAgbGluZS1oZWlnaHQ6IDEuODsKICAgIG1hcmdpbjogMXJlbSAwOwp9CgouY29udGVudCBwIGEgewogICAgZm9udC13ZWlnaHQ6IGJvbGQ7Cn0KCi5jb250ZW50IHRhYmxlIHAgewogICAgbWFyZ2luOiAwOwp9CgouY29udGVudCBoMSwgLmNvbnRlbnQgaDIsIC5jb250ZW50IGgzIHsKICAgIG1hcmdpbi10b3A6IDNyZW07CiAgICBib3JkZXItYm90dG9tOiBub25lOwp9CgouY29udGVudCBzZWN0aW9uOm5vdCgucmVhZG1lLXNlY3Rpb24pIGgyLmFuY2hvcmVkIHsKICAgIG1hcmdpbi10b3A6IDVyZW07CiAgICBtYXJnaW4tYm90dG9tOiA1cmVtOwp9CgpkbC5zeW1ib2wgLmg0LApkbC5zeW1ib2wgLmg1LApkbC5zeW1ib2wgLmg2LApkbC5zeW1ib2wgaDQsCmRsLnN5bWJvbCBoNSwKZGwuc3ltYm9sIGg2IHsKICAgIG1hcmdpbjogMDsKfQoKLnRvYyAubmF2ID4gbGkgPiBhLAoudG9jIC5uYXYgLm5hdiA+IGxpID4gYSwKLmJhY2stdG8tdG9wIHsKICAgIGZvbnQtc2l6ZTogMWVtOwp9CgoudG9jIC5zaWduYXR1cmUtbmV3LAoucGFnZS1oZWFkZXIgLmtpbmQsCmZvb3RlciAuZ2VuZXJhdGVkLWJ5LAoudG9jIC5uYXYgPiBsaSA+IGEgLm5hbWUtc2lnbmF0dXJlLAoudG9jIC5uYXYgPiBsaSA+IGEgLnNpZ25hdHVyZS1wYXJhbXMgewogICAgZGlzcGxheTogbm9uZTsKfQoKLnN5bWJvbC1kZXRhaWxzLmNvbGxhcHNpYmxlLXN5bWJvbC50cmFuc2l0aW9uIHsKICAgIHRyYW5zaXRpb246IG5vbmU7Cn0KCmNvZGUgewogICAgZm9udC13ZWlnaHQ6IGJvbGQ7CiAgICBiYWNrZ3JvdW5kOiAjZWVlOwp9Cgpjb2RlLCAuc3ltYm9sLXRpdGxlIC5uYW1lLXN0cmluZywgLnN5bWJvbC10aXRsZSAuc2lnbmF0dXJlLXBhcmFtLCAuc3ltYm9sLXRpdGxlIGg0LmV2ZW50IHsKICAgIGNvbG9yOiAjYmUxNWRkOwp9CgpwcmUgY29kZSB7CiAgICBmb250LXdlaWdodDogbm9ybWFsOwp9Cgouc291cmNlLXNlY3Rpb24gY29kZSB7CiAgICBsaW5lLWhlaWdodDogMjsKfQoKLm5hdmJhci1icmFuZC5icmFuZGluZy1sb2dvIHsKICAgIGJhY2tncm91bmQtc2l6ZTogMzJweDsKfQo&#x3D;">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #1DA1F2;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #1DA1F2;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #1DA1F2;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #1DA1F2;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":"true","dateFormat":"MMM YYYY","systemName":"DoucheBlock for Twitter","systemSummary":"Block anyone with specific keywords in their Twitter bio.","systemLogo":"img/128x128.png","systemColor":"#1DA1F2","navMembers":[{"kind":"module","title":"Modules"},{"kind":"tutorial","title":"Other Documents"}],"footer":"","copyright":"","linenums":"true","collapseSymbols":"true","inverseNav":"false","inlineNav":true,"outputSourceFiles":"true","sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":"true","showTableOfContents":"true","showAccessFilter":"true","analytics":{"ua":"UA-129118591-7","domain":"https://oss.mobilefirst.me/doucheblock"},"methodHeadingReturns":false,"sort":"linenum, longname, version, since","search":false,"favicon":"favicon.png","stylesheets":["data:text/css;base64,Ym9keSB7CiAgICAtd2Via2l0LWZvbnQtc21vb3RoaW5nOiBhbnRpYWxpYXNlZDsKICAgIC1tb3otb3N4LWZvbnQtc21vb3RoaW5nOiBncmF5c2NhbGU7CiAgICBmb250LXNpemU6IDE4cHg7Cn0KCmJvZHksCi5zeW1ib2wtdGl0bGUgaDEsCi5zeW1ib2wtdGl0bGUgaDIsCi5zeW1ib2wtdGl0bGUgaDMsCi5zeW1ib2wtdGl0bGUgaDQsCi5zeW1ib2wtdGl0bGUgaDUgewogICAgZm9udC1mYW1pbHk6IHN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAiU2Vnb2UgVUkiLAogICAgUm9ib3RvLCBVYnVudHUsICJIZWx2ZXRpY2EgTmV1ZSIsIHNhbnMtc2VyaWYgIWltcG9ydGFudDsKfQoKLnBhZ2UtaGVhZGVyIC5zdW1tYXJ5ICogewogICAgY29sb3I6ICNmZmY7Cn0KCi5jb250ZW50IHAgewogICAgbGluZS1oZWlnaHQ6IDEuODsKICAgIG1hcmdpbjogMXJlbSAwOwp9CgouY29udGVudCBwIGEgewogICAgZm9udC13ZWlnaHQ6IGJvbGQ7Cn0KCi5jb250ZW50IHRhYmxlIHAgewogICAgbWFyZ2luOiAwOwp9CgouY29udGVudCBoMSwgLmNvbnRlbnQgaDIsIC5jb250ZW50IGgzIHsKICAgIG1hcmdpbi10b3A6IDNyZW07CiAgICBib3JkZXItYm90dG9tOiBub25lOwp9CgouY29udGVudCBzZWN0aW9uOm5vdCgucmVhZG1lLXNlY3Rpb24pIGgyLmFuY2hvcmVkIHsKICAgIG1hcmdpbi10b3A6IDVyZW07CiAgICBtYXJnaW4tYm90dG9tOiA1cmVtOwp9CgpkbC5zeW1ib2wgLmg0LApkbC5zeW1ib2wgLmg1LApkbC5zeW1ib2wgLmg2LApkbC5zeW1ib2wgaDQsCmRsLnN5bWJvbCBoNSwKZGwuc3ltYm9sIGg2IHsKICAgIG1hcmdpbjogMDsKfQoKLnRvYyAubmF2ID4gbGkgPiBhLAoudG9jIC5uYXYgLm5hdiA+IGxpID4gYSwKLmJhY2stdG8tdG9wIHsKICAgIGZvbnQtc2l6ZTogMWVtOwp9CgoudG9jIC5zaWduYXR1cmUtbmV3LAoucGFnZS1oZWFkZXIgLmtpbmQsCmZvb3RlciAuZ2VuZXJhdGVkLWJ5LAoudG9jIC5uYXYgPiBsaSA+IGEgLm5hbWUtc2lnbmF0dXJlLAoudG9jIC5uYXYgPiBsaSA+IGEgLnNpZ25hdHVyZS1wYXJhbXMgewogICAgZGlzcGxheTogbm9uZTsKfQoKLnN5bWJvbC1kZXRhaWxzLmNvbGxhcHNpYmxlLXN5bWJvbC50cmFuc2l0aW9uIHsKICAgIHRyYW5zaXRpb246IG5vbmU7Cn0KCmNvZGUgewogICAgZm9udC13ZWlnaHQ6IGJvbGQ7CiAgICBiYWNrZ3JvdW5kOiAjZWVlOwp9Cgpjb2RlLCAuc3ltYm9sLXRpdGxlIC5uYW1lLXN0cmluZywgLnN5bWJvbC10aXRsZSAuc2lnbmF0dXJlLXBhcmFtLCAuc3ltYm9sLXRpdGxlIGg0LmV2ZW50IHsKICAgIGNvbG9yOiAjYmUxNWRkOwp9CgpwcmUgY29kZSB7CiAgICBmb250LXdlaWdodDogbm9ybWFsOwp9Cgouc291cmNlLXNlY3Rpb24gY29kZSB7CiAgICBsaW5lLWhlaWdodDogMjsKfQoKLm5hdmJhci1icmFuZC5icmFuZGluZy1sb2dvIHsKICAgIGJhY2tncm91bmQtc2l6ZTogMzJweDsKfQo="],"scripts":["https://buttons.github.io/buttons.js"],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = "true";
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand branding-logo" href="index.html" style="background-image: url(img/128x128.png);">
+					DoucheBlock for Twitter
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_module.html">Modules</a></li>
+							<li><a href="list_tutorial.html">Other Documents</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">readme</span>
+				<h1><span class="name">DoucheBlock for Twitter</span></h1>
+				<div class="summary"><p>Block anyone with specific keywords in their Twitter bio.</p></div>			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-9 main-content">
+		<section class="readme-section">
+			<article><p>DoucheBlock is like an ad blocker but for your Twitter timeline. It will automatically (or after confirmation) block people who use specific keywords in the Twitter bio. It does not contain any tracking and does not interact with any 3rd party servers. Developer never sees your personal data, does not have access to your credentials and cannot know how you use it. On this site you will find the source code documentation, which is primarily meant for software developers.</p>
+<br/>
+<h2>Where to get it</h2>
+<p>DoucheBlock for Twitter is available for <strong>Chrome, Firefox, Edge, Brave, Opera and Safari</strong> browsers. You can install it from the following stores:</p>
+<p align="center" style="margin-top: 40px">    
+<a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi"><img alt="install at chrome web store" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge.png"/></a>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/doucheblock-for-twitter/"><img alt="Firefox Add-Ons" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-firefox.png"/></a>
+<br/><br/><a href="https://microsoftedge.microsoft.com/addons/detail/jjamkfoaemeiacomhpidlhkjinmpmkpj"><img alt="Edge Add-Ons" width="250" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-edge.png"/></a>
+<a href="https://addons.opera.com/en/extensions/details/doucheblock-for-twitter/"><img alt="Opera addons" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-opera.png" width="250" /></a>
+<a href="https://apps.apple.com/us/app/doucheblock-for-twitter/id1576147372"><img alt="Safari extension" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/badge-safari.png" width="250" /></a>
+</p>
+<br/>
+<img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/user_comment.jpg" style="margin:2rem auto 4rem auto; background:#ddd; border:2px solid #555; box-shadow:6px 6px 0 #0004; border-radius:12px; width:500px; display:block; max-width:90%;" />
+<h2>Source Code</h2>
+<p align="center" style="font-weight: bold; margin-bottom: 30px;">
+<a href="https://github.com/MobileFirstLLC/doucheblock" target="_blank" rel="noreferrer nofollow">The source code is available on Github ↗</a>
+</p>
+<p align="center" style="margin-top:1rem;">
+<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock" data-color-scheme="no-preference: light; light: light; dark: light;" data-icon="octicon-star" data-size="large" aria-label="Star MobileFirstLLC/doucheblock on GitHub">Star</a>
+<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock/fork" data-color-scheme="no-preference: light; light: light; dark: light;" data-icon="octicon-repo-forked" data-size="large" aria-label="Fork MobileFirstLLC/doucheblock on GitHub">Fork</a>
+<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock/subscription" data-color-scheme="no-preference: light; light: light; dark: light;" data-icon="octicon-eye" data-size="large" aria-label="Watch MobileFirstLLC/doucheblock on GitHub">Watch</a>
+<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock/archive/master.zip" data-color-scheme="no-preference: light; light: light; dark: light;" data-icon="octicon-download" data-size="large" aria-label="Download MobileFirstLLC/doucheblock on GitHub">Download</a>
+<a class="github-button" href="https://github.com/MobileFirstLLC/doucheblock/issues" data-color-scheme="no-preference: light; light: light; dark: light;" data-icon="octicon-issue-opened" data-size="large" aria-label="Issue MobileFirstLLC/doucheblock on GitHub">Issue</a>
+</p>
+<h2>How does it work?</h2>
+<p>Configure DoucheBlock to watch for your top trigger words. After that, whenever you browse Twitter, it will look for handles with bios containing any of your trigger words, and block those handles for you.</p>
+<p><img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/preview.gif"
+alt="system diagram" style="background:#ddd; border:2px solid #555; box-shadow:6px 6px 0 #0004; border-radius:12px; width:500px; display:block; max-width:90%; margin:4rem auto 6rem auto"/></p>
+<h3>Technical description</h3>
+<p>After installation the extension runs in the browser tab whenever user navigates to twitter.com. In-tab content script, <a href="/doucheblock/module-AutoBlocker.html">AutoBlocker</a>, observes the timeline and looks for patterns matching a Twitter handle. When it has discovered a sufficient number of handles, it requests bios for the discovered handles from Twitter API server.</p>
+<p>The extension has to obtain sufficient credentials before any API requests can be made. This
+is achieved by <a href="/doucheblock/module-Tokens.html">Tokens</a> module, which runs in the background context. Tokens module has two tasks:</p>
+<ol>
+<li>
+<p>It listens to API call headers whenever browser sends requests to Twitter API. From there it captures the authentication headers for the current user. These are not persisted anywhere but kept in memory (see <a href="https://github.com/MobileFirstLLC/doucheblock/blob/0d83a2e77c44d8328ab01fde3a3cecf2d1fa16d8/src/modules/tokens.js#L19-L23">listening headers</a>, <a href="https://github.com/MobileFirstLLC/doucheblock/blob/0d83a2e77c44d8328ab01fde3a3cecf2d1fa16d8/src/modules/tokens.js#L82-L95">capturing credentials</a>).</p>
+</li>
+<li>
+<p>When Tokens module receives a message from content script requesting tokens, it sends these captured credentials back to content script (see <a href="https://github.com/MobileFirstLLC/doucheblock/blob/0d83a2e77c44d8328ab01fde3a3cecf2d1fa16d8/src/modules/tokens.js#L68-L76">implementation</a>).</p>
+</li>
+</ol>
+<p>This exchange of tokens enables running the extension fully on client without needing to create a Twitter app and asking the user to authenticate. Further it removes
+the need for a developer-owned server.</p>
+<p><img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/diagram.png"
+alt="system diagram" style="width:auto;width:600px; display:block; max-width:95%; margin:4rem auto"/></p>
+<p>Once the content script has the necessary credentials, it will proceed to make an API call to
+get bios for the discovered handles. This is 1 batch request to lookup up to 100 handles with a single request. Twitter API server returns a list of bios for all requested handles.</p>
+<p>Next the bios are checked for flagged keywords that user has set in user preferences.
+If a matching keyword is found in a bio, the content script will make a subsequent API call to block
+such douchy user. The blocking can be automatic or require confirmation from user,
+depending on user preference.</p>
+<h2>Modules</h2>
+<p>The extension is built with modules, each performing their individual task.</p>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AutoBlocker</td>
+<td>Looks for handles and initiates blocking</td>
+</tr>
+<tr>
+<td>BlockerState</td>
+<td>Manages blocker state while browsing</td>
+</tr>
+<tr>
+<td>BrowserAction</td>
+<td>Handle extension icon click</td>
+</tr>
+<tr>
+<td>OnInstall</td>
+<td>Handle extension install event</td>
+</tr>
+<tr>
+<td>Options</td>
+<td>Edit user preferences</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>Module for persisting data</td>
+</tr>
+<tr>
+<td>Tabs</td>
+<td>Broadcast preference changes</td>
+</tr>
+<tr>
+<td>Tokens</td>
+<td>Capture authentication credentials</td>
+</tr>
+<tr>
+<td>TwitterApi</td>
+<td>Makes API calls</td>
+</tr>
+</tbody>
+</table>
+<p><a href="list_module.html">Explore modules here</a></p>
+<h2>Developer Guide</h2>
+<p>This guide will explain how to build this extension from source.</p>
+<p>You will need <a href="https://nodejs.org/en/download/">Node.js</a> to build this extension. Next do the following:</p>
+<br/>
+<p><strong>Step 1</strong>. Get the source code</p>
+<p>Clone the repository with git:</p>
+<pre class="prettyprint source lang-bash"><code>git clone https://github.com/MobileFirstLLC/doucheblock.git
+</code></pre>
+<p>If you do not have git <a href="https://github.com/MobileFirstLLC/doucheblock/archive/master.zip">download the latest source from here</a>.</p>
+<br/>
+<p><strong>Step 2</strong>. Install dependencies</p>
+<p>Open the source code in your favorite web editor. Then in the terminal, run:</p>
+<pre class="prettyprint source lang-bash"><code>npm install
+</code></pre>
+<p>this will install all dependencies needed to build the application.</p>
+<br/>
+<p><strong>Step 3</strong>. Debug</p>
+<p>To debug the extension run:</p>
+<pre class="prettyprint source lang-bash"><code>npm run start
+</code></pre>
+<br/>
+<p><strong>How to debug Chrome extensions</strong></p>
+<ol>
+<li>Go to <code>chrome://extensions</code></li>
+<li>Enable developer mode</li>
+<li>Click <code>load unpacked</code></li>
+<li>Navigate to the extension source and choose <code>dist</code> directory</li>
+</ol>
+<br/>
+<p><strong>Step 4</strong>. Build release</p>
+<p>When ready to build a release, run:</p>
+<pre class="prettyprint source lang-bash"><code>npm run build
+</code></pre>
+<br/>
+<p>This extension was created with <a href="https://oss.mobilefirst.me/extension-cli/">Extension CLI</a>. Learn more about the available commands <a href="https://oss.mobilefirst.me/extension-cli/">here →</a></p>
+<br/></article>
+		</section>
+			</div>
+				<div class="col-md-3 side-content">
+					<nav class="toc hidden-print hidden-sm hidden-xs"></nav>
+				</div>
+		</div>
+	</div>
+	<footer>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Jul 2021 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<script src="https://buttons.github.io/buttons.js"></script>
+	
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-129118591-7', 'https://oss.mobilefirst.me/doucheblock');
+			ga('send', 'pageview');
+		</script>
+	
+</body>
+</html>
+<!-- end:readme.hbs -->
