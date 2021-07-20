@@ -3,10 +3,10 @@
     "message": "DoucheBlock for Twitter"
   },
   "appShortName": {
-    "message": "DoucheBlock for Twitter"
+    "message": "DoucheBlock"
   },
   "appDescription": {
-    "message": "Block anyone with specific keywords in their Twitter bio."
+    "message": "Automatically block anyone with specific keywords in their Twitter bio."
   },
   "blockedWords": {
     "message": "List all your trigger words (separate by comma):"

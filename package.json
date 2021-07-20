@@ -1,6 +1,6 @@
 {
   "name": "doucheblock-for-twitter",
-  "description": "Block anyone with specific keywords in their Twitter bio.",
+  "description": "Automatically block anyone with specific keywords in their Twitter bio.",
   "version": "1.2.0",
   "homepage": "https://github.com/MobileFirstLLC/doucheblock",
   "author": "Mobile First LLC",
@@ -32,8 +32,8 @@
     "test/**/*"
   ],
   "devDependencies": {
-    "cws-publish": "^2.0.3",
-    "extension-cli": "1.1.0",
+    "cws-publish": "^2.0.4",
+    "extension-cli": "^1.2.0-alpha.1",
     "foodoc": "^0.0.9",
     "web-ext-submit": "^6.2.0"
   }
