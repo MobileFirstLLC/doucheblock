@@ -3,6 +3,10 @@
     "title": "Version History",
     "summary": "Changelog and release notes"
   },
+  "dev_guide": {
+    "title": "Developer Guide",
+    "summary": "How to build and extend DoucheBlock locally."
+  },
   "privacy": {
     "title": "Privacy Policy",
     "summary": "TL;DR DoucheBlock respects your privacy."

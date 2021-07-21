@@ -19,8 +19,11 @@ body,
 }
 
 .content p {
-    line-height: 1.8;
     margin: 1rem 0;
+}
+.content p,
+.content li {
+    line-height: 1.8;
 }
 
 .content p a {

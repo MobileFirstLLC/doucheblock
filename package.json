@@ -32,7 +32,7 @@
     "test/**/*"
   ],
   "devDependencies": {
-    "cws-publish": "^2.0.4",
+    "cws-publish": "^2.0.5-alpha.0",
     "extension-cli": "^1.2.0-alpha.1",
     "foodoc": "^0.0.9",
     "web-ext-submit": "^6.2.0"
