@@ -7,7 +7,7 @@
   },
   "opts": {
     "destination": "./pages",
-    "tutorials": "./docs/pages",
+    "tutorials": "./docs/files",
     "template": "./node_modules/foodoc/template"
   },
   "templates": {
