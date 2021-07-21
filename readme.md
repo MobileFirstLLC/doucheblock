@@ -90,8 +90,4 @@ Study the source to learn how.
 
 Built with [Extension CLI](https://github.com/MobileFirstLLC/extension-cli/). For instructions see [User Guide &rarr;](https://oss.mobilefirst.me/extension-cli/)
 
-### About
-
 **Issues & Feature Requests:** [Submit on Github](https://github.com/MobileFirstLLC/doucheblock/issues/new/choose)
-
-**License:** [CC0-1.0 License](https://github.com/MobileFirstLLC/doucheblock/blob/master/LICENSE)
