@@ -35,5 +35,5 @@ deploy:
 after_deploy:
   - if [ ! -z  "$TRAVIS_TAG" ]; then
       npx cws-upload $cid $sec $tkn $zip $eid;
-      cd dist-ff && npx web-ext-submit --api-key=$ff_key --api-secret=$ff_secret;
+      cd dist-ff && npx web-ext-submit --api-key=$ff_key --api-secret=$ff_secret && cd ..;
     fi
