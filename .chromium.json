@@ -1,6 +1,6 @@
 {
   "release_name": "chromium",
-  "manifest": "./manifests/chrome/manifest.json",
+  "manifest": "./src/manifest.json",
   "assets": "./assets/img/*",
   "js_bundles": [
     {
