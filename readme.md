@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="DoucheBlock for Twitter" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/assets/img/128x128.png" width="64" />
+    <a href="http://oss.mobilefirst.me/doucheblock/" target="_blank"><img alt="DoucheBlock for Twitter" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/assets/img/128x128.png" width="64" /></a>
 </p>
 <h1 align="center">DoucheBlock for Twitter</h1>
 
