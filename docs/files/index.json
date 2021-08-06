@@ -7,6 +7,10 @@
     "title": "Developer Guide",
     "summary": "How to build and extend DoucheBlock locally."
   },
+  "presskit": {
+    "title": "Press Kit",
+    "summary": "Images of DoucheBlock for Twitter."
+  },
   "privacy": {
     "title": "Privacy Policy",
     "summary": "TL;DR DoucheBlock respects your privacy."
