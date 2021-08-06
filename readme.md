@@ -1,12 +1,7 @@
 <p align="center">
-  <a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi">
-    <img alt="DoucheBlock for Twitter" 
-    src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/assets/img/128x128.png" width="64" />
-  </a>
+    <img alt="DoucheBlock for Twitter" src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/assets/img/128x128.png" width="64" />
 </p>
-<h1 align="center">
-  <a href="https://chrome.google.com/webstore/detail/eeledoologbepiegnccedjigjkblhmhi">DoucheBlock for Twitter</a>
-</h1>
+<h1 align="center">DoucheBlock for Twitter</h1>
 
 <p align="center">
 <a href="https://travis-ci.com/github/MobileFirstLLC/doucheblock"><img alt="build status" src="https://travis-ci.com/MobileFirstLLC/doucheblock.svg?branch=master"></a> <a href="https://coveralls.io/github/MobileFirstLLC/doucheblock"><img alt="Coveralls github" src="https://img.shields.io/coveralls/github/MobileFirstLLC/doucheblock"></a> <a href="https://codeclimate.com/github/MobileFirstLLC/doucheblock/maintainability"><img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/MobileFirstLLC/doucheblock"></a>
