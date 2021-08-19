@@ -3,8 +3,9 @@
 import {defaultConfig, isOpera, isFirefox, browserVariant} from "../config";
 
 /**
- * Application storage for persisting data. This module can
- * be used from content script and background context.
+ * @description
+ * Application storage for persisting data. This module is shared and can be used
+ * anywhere inside the extension (content script, background context, etc).
  *
  * @module
  * @name Storage
@@ -30,8 +31,7 @@ export default class Storage {
      * @static
      * @private
      * @description
-     * Determine which storage implementation
-     * to use based on current browser.
+     * Determine which storage implementation to use based on current browser.
      * @returns - storage implementation; either local or sync
      */
     static get storageImplementation() {

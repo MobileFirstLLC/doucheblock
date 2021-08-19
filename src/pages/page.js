@@ -2,7 +2,7 @@ import {shareLinks} from '../config';
 
 /**
  * Base class for page scripts to setup shared functionality
- * across the extension pages
+ * across all extension pages.
  *
  * @module
  * @name Page

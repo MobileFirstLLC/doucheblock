@@ -38,7 +38,7 @@ export default class Tokens {
 
     /**
      * @static
-     * @private
+     * Bearer token getter
      * @returns {String|undefined}
      */
     static get bearerToken() {
@@ -69,11 +69,11 @@ export default class Tokens {
      * This module will respond to requests whose body is `{tokens: true}`
      * (any truthy value works).
      *
-     * @param {object} request request body
-     * @param {*} request.tokens request authentication bearer and csrf tokens
-     * @param {object} sender message sender info; populated by browser
-     * @param {function} response callback function; response message will
-     *  be returned over this callback
+     * @param {object} request - message request body
+     * @param {*} request.tokens - request authentication bearer and csrf tokens
+     * @param {object} sender - message sender info; populated by browser
+     * @param {function} response - callback function; response message will
+     * be returned over this callback
      */
     static messageListener(request, sender, response) {
         if (request.tokens) {

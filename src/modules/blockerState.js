@@ -3,8 +3,8 @@ import {requestConfigs} from '../config';
 
 /**
  * @description
- * Queue contains discovered handles for which
- * bios have not yet been requested.
+ * Queue contains discovered handles for which bios have not yet
+ * been requested.
  *
  * @name PendingQueue
  */
@@ -68,8 +68,9 @@ class PendingQueue {
 }
 
 /**
- * List of handles that have been checked during
- * ongoing session and will not be rechecked.
+ * @description
+ * List of handles that have been checked during ongoing session
+ * and will not be rechecked.
  *
  * @name HandledList
  */
@@ -120,8 +121,9 @@ class HandledList {
 }
 
 /**
- * Whitelisted handles contain blocked words but
- * user has manually selected to not block them.
+ * @description
+ * Whitelisted handles contain blocked words but user has manually
+ * selected to not block them.
  *
  * @name WhiteList
  */
@@ -170,9 +172,9 @@ class WhiteList {
 export default class BlockerState {
 
     /**
-     * Get list of handles that have already been checked
-     * during this session, meaning bio was requested and
-     * checked for blocking.
+     * @description
+     * Get list of handles that have already been checked during current
+     * session, meaning bio was requested and checked for blocking.
      *
      * @returns {HandledList}
      */
@@ -181,9 +183,9 @@ export default class BlockerState {
     }
 
     /**
-     * Get the queue that holds discovered handles waiting
-     * to be processed. When handle is in queue, the handle
-     * has been found, but bio has not been checked yet.
+     * Get the queue that holds discovered handles waiting to be processed.
+     * When handle is in queue, the handle has been found, but bio has not
+     * been checked yet.
      *
      * @returns {PendingQueue}
      */
@@ -192,9 +194,8 @@ export default class BlockerState {
     }
 
     /**
-     * Get the list of whitelisted handles. Whitelisted handles
-     * may contain block words, but user has explicitly bypassed
-     * the block on this user.
+     * Get the list of whitelisted handles. Whitelisted handles may contain
+     * block words, but user has explicitly bypassed the block on this user.
      *
      * @returns {WhiteList}
      */
@@ -240,11 +241,12 @@ export default class BlockerState {
     }
 
     /**
-     * Check if module is ready to make API
-     * calls; it needs API tokens from background
-     * first and this is an async process. Ignoring
-     * this check means API call will fail if not
-     * ready yet.
+     * @description
+     * Check if module is ready to make API calls (true/false).
+     *
+     * It needs API tokens from background first and getting them is an
+     * async process. Once the API tokens have been gathered, this method
+     * will return true, and subsequent API calls should succeed.
      *
      * @readonly
      * @returns {boolean} - true when ready to call API

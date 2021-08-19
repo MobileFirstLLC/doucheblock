@@ -12,7 +12,7 @@
  * * * * * * * * * * * * * * * * * * * * */
 
 /*
- * URL to options page
+ * Options page URL
  *
  * @constant
  * @type {string}
@@ -20,7 +20,8 @@
 export const OptionsPageURL = 'index.html';
 
 /*
- * URL to options page on install
+ * Options page URL when user has just installed.
+ * (Add a flag to the URL distinguish this event)
  *
  * @constant
  * @type {string}
@@ -87,7 +88,7 @@ export const requestConfigs = {
     maxLookupCount: 100,
     /**
      * Endpoint for obtaining bios
-     * @param handles - specify comma separated list of handles
+     * @param {string} handles - comma separated list of handles
      * @returns {string} - formatted URL
      */
     bioEndpoint: handles => 'https://api.twitter.com/1.1/users/lookup.json?skip_status=1&screen_name=' + handles,
@@ -99,8 +100,8 @@ export const requestConfigs = {
      */
     blockEndpoint: 'https://twitter.com/i/api/1.1/blocks/create.json',
     /**
-     * Endpoint for checking current friendship status
-     * @param handle - specify one username
+     * Endpoint for checking current friendship status between self and some other user.
+     * @param {string} handle - specify only 1 username
      * @returns {string} - formatted URL
      */
     friendshipEndpoint: handle => `https://twitter.com/i/api/graphql/Vf8si2dfZ1zmah8ePYPjDQ/UserByScreenNameWithoutResults?variables=%7B%22screen_name%22%3A%22${handle}%22%2C%22withHighlightedLabel%22%3Atrue%7D`

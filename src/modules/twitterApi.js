@@ -3,13 +3,13 @@ import Storage from './storage';
 
 /**
  * @description
- * Twitter API methods. This module includes all available
- * API endpoints that can be called from this extension to
- * Twitter server.
+ * Twitter API methods.
  *
- * This module must run in the browser tab within the Twitter
- * web app context (twitter.com), to populate the correct
- * request headers.
+ * This module includes all available API endpoints that can be called from
+ * this extension <-> Twitter server.
+ *
+ * This module must run in the browser tab within the Twitter web app context
+ * (twitter.com), to populate the correct request headers.
  *
  * @module
  * @name TwitterApi
@@ -74,9 +74,9 @@ export default class TwitterApi {
 
     /**
      * Block a specific user
-     * @param id - user id str
-     * @param bearer - authentication bearer token
-     * @param csrf - csrf token
+     * @param {string} id - user id str
+     * @param {string} bearer - authentication bearer token
+     * @param {string} csrf - csrf token
      */
     static doTheBlock(id, bearer, csrf) {
         const xhr = new XMLHttpRequest();

@@ -3,7 +3,7 @@
 import Page from './page';
 
 /**
- * User help page
+ * User help page with FAQ/instructions type stuff.
  *
  * @module
  * @name HelpPage

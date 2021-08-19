@@ -1,7 +1,7 @@
 import {alertCap, browserVariant, classFlag, isFirefox} from '../config';
 import Storage from './storage';
 import TwitterApi from './twitterApi';
-import bs from './blockerState'; // most definitely
+import bs from './blockerState';
 
 /**
  * @description
@@ -11,7 +11,7 @@ import bs from './blockerState'; // most definitely
  * It runs in the browser tab context and watches DOM changes. It then attempts
  * to find twitter handles in the DOM tree when the tree changes.
  *
- * After finding handles those handles are first placed in a temporary queue
+ * After finding handles, those handles are first placed in a temporary queue
  * to limit API calls. Once the queue is "full enough" and API credentials are
  * available, the discovered handles will be checked.
  *
@@ -22,9 +22,11 @@ import bs from './blockerState'; // most definitely
  *
  * Notes:
  * - The queue stage is used to limit number of API calls, and is necessary
- * to avoid exceeding Twitter rate limit
+ *   to avoid exceeding Twitter rate limit
  * - Handle is only checked once per session; checked handled are kept in memory
- * and will not be checked again until full page reload occurs.
+ *   and will not be checked again until full page reload occurs.
+ * - Content script is specific to a single tab; if user is browsing twitter in
+ *   multiple tabs, each tab maintains its own state.
  *
  * @module
  * @name AutoBlocker
@@ -80,7 +82,7 @@ export default class AutoBlocker {
 
     /**
      * Request the tokens from background context.
-     * @param {function?} callback - will call if ready to proceed
+     * @param {function?} callback - will call iff ready to proceed
      */
     static obtainTokens(callback) {
         browserVariant().runtime.sendMessage({tokens: true},
@@ -94,7 +96,7 @@ export default class AutoBlocker {
     }
 
     /**
-     * Watch DOM tree changes
+     * Initiate watch for DOM tree changes
      */
     static startWatch() {
         const obs = new MutationObserver(AutoBlocker.onDomChange);
@@ -118,11 +120,11 @@ export default class AutoBlocker {
      * Start douchy user lookup flow.
      */
     static lookForDouches() {
-        // Before lookup ensure we have necessary tokens to get bios
+        // Before lookup, ensure we have necessary tokens to get bios
         if (!bs.ready) {
             AutoBlocker.obtainTokens(AutoBlocker.findHandles);
         } else {
-            // next look for handles on the page
+            // already ready -> proceed to look for handles on the page
             AutoBlocker.findHandles();
         }
     }
@@ -131,12 +133,13 @@ export default class AutoBlocker {
      * Look for handles in the timeline
      */
     static findHandles() {
+        // find links on the page
         const links = document.getElementsByTagName('a');
-
+        // check if those links contain new handles
         for (let n = 0; n < links.length; n++) {
             AutoBlocker.processLinks(links[n]);
         }
-
+        // request bios from API
         AutoBlocker.requestBios();
     }
 
@@ -217,6 +220,7 @@ export default class AutoBlocker {
             (userData) => {
                 // mark handles as checked
                 bs.handledList.add(handles);
+                // proceed to check bio text
                 AutoBlocker.processBios(userData);
             },
             () => {
@@ -234,7 +238,7 @@ export default class AutoBlocker {
         if (!users || !users.length) return;
         // all users that match block criteria
         const blockable = users.filter(AutoBlocker.isBlockMatch);
-        // remaining users after applying max cap
+        // remaining users after applying max alerts cap
         const limited = AutoBlocker.limitAlertCount(blockable);
         // proceed to block
         AutoBlocker.sequentiallyBlock(limited);
@@ -269,10 +273,9 @@ export default class AutoBlocker {
     }
 
     /**
-     * This method ensures te number of alerts shown to user
-     * does not exceed a configurable upper limit. If input
-     * exceeds the limit, excess items will be re-queued.
-     * Method will return at most max allowed matches.
+     * This method ensures the number of alerts shown to user does not exceed
+     * a configurable upper limit. If input exceeds the limit, excess items
+     * will be re-queued. Method will return at most max allowed matches.
      *
      * @param {Object[]} users
      * @returns {Object[]} limited count of users

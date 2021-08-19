@@ -1,14 +1,10 @@
 /** * * * * * * * * * * * * * * * * * * * *
- *
  * Automatically block users with specific
  * keywords in bio
  *
- * Author: Mobile First LLC
- * Website: https://mobilefirst.me
- *
  * @description
- * Background script
- *
+ * Background script - setup everything
+ * needed to happen in browser background.
  * * * * * * * * * * * * * * * * * * * * */
 
 import OnInstall from "./modules/onInstall";

@@ -1,14 +1,10 @@
 /** * * * * * * * * * * * * * * * * * * * *
- *
  * Automatically block users with specific
  * keywords in bio
  *
- * Author: Mobile First LLC
- * Website: https://mobilefirst.me
- *
  * @description
- * Content script
- *
+ * Content script - this runs when user
+ * browses twitter.com
  * * * * * * * * * * * * * * * * * * * * */
 
 import AutoBlocker from './modules/autoblocker';

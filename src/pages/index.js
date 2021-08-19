@@ -5,9 +5,8 @@ import Tabs from '../modules/tabs';
 import Page from './page';
 
 /**
- * Options page script. This script loads user
- * preferences then handles any changes to those
- * preferences.
+ * Options page script. This script loads user preferences then handles
+ * any changes to those preferences.
  *
  * @module
  * @name OptionsPage
