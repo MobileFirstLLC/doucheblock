@@ -252,7 +252,7 @@ export default class AutoBlocker {
      */
     static isBlockMatch(user) {
         const {bio, id, name} = user;
-        return id && bio &&
+        return id &&
             !bs.whiteList.contains(id) &&
             AutoBlocker.checkWords(bs.keyList, bio, name);
     }
