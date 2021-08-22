@@ -251,21 +251,23 @@ export default class AutoBlocker {
      * @returns {boolean}
      */
     static isBlockMatch(user) {
-        const {bio, id} = user;
+        const {bio, id, name} = user;
         return id && bio &&
             !bs.whiteList.contains(id) &&
-            AutoBlocker.checkWords(bs.keyList, bio);
+            AutoBlocker.checkWords(bs.keyList, bio, name);
     }
 
     /**
      * Match bio against keywords
      * @param {String[]} words - keywords to check
-     * @param {String} bio - twitter bio
+     * @param {string} bio - twitter bio
+     * @param {string} name - twitter display name
      * @returns {boolean} true if a douche
      */
-    static checkWords(words, bio) {
+    static checkWords(words, bio, name) {
         for (let i = 0; i < words.length; i++) {
-            if (new RegExp(words[i], 'gmi').test(bio)) {
+            const exp = new RegExp(words[i], 'gmi');
+            if (exp.test(bio) || exp.test(name)) {
                 return true;
             }
         }
