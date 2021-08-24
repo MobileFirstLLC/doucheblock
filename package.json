@@ -1,7 +1,7 @@
 {
   "name": "doucheblock-for-twitter",
   "description": "Automatically block anyone with specific keywords in their Twitter bio.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "homepage": "https://github.com/MobileFirstLLC/doucheblock",
   "author": "Mobile First LLC",
   "repository": {
@@ -21,7 +21,7 @@
     "clean": "xt-clean"
   },
   "standard-version": {
-    "infile": "docs/pages/changelog.md"
+    "infile": "./docs/files/changelog.md"
   },
   "babel": {
     "presets": [
