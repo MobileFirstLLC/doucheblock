@@ -2,6 +2,8 @@ If you would like to mention DoucheBlock for Twitter on your website,
 feed, video, etc. and need some reference images, you have full
 permission to use the following images in your presentation.
 
+- [App Icon (.svg)](https://github.com/MobileFirstLLC/doucheblock/blob/master/assets/icon.svg)
+
 <table style="margin:3rem 0">
 <tr style="text-align:center;"><td>Settings</td><td>Prompt</td><td>Blocked</td></tr>
 <tr style="font-weight:bold;"><td colspan="3">Chrome</td></tr>
