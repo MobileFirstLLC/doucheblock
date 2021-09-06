@@ -65,7 +65,8 @@ label {
 
 code {
   font-size: 110%;
-  background: #222a;
+  color: #fff;
+  background: #284D67;
   padding: 3px 5px;
   border-radius: 5px;
 }
@@ -115,7 +116,7 @@ code {
 
 .bottom-links {
   & > * {
-    position: absolute;
+    position: fixed;
     bottom: 50px;
   }
 
@@ -168,8 +169,9 @@ code {
   }
 }
 
-#help {
+#help, #log-link {
   float: right;
+  margin-left: 10px;
 }
 
 #back, #intro-container svg {
@@ -191,7 +193,11 @@ code {
 }
 
 #back {
+  left: 50%;
+  margin-left: 350px;
+  right: auto;
   top: 2rem;
+  position: fixed;
 }
 
 ul {
@@ -208,12 +214,15 @@ ul {
   margin-bottom: 3rem;
   font-weight: 800;
   color: #111;
-  padding: .5rem;
+  padding: 0;
   opacity: 0;
   animation-name: entranceAnim;
   animation-fill-mode: both;
   animation-duration: 1s;
   animation-delay: 1000ms;
+  border-bottom: 2px solid #111;
+  text-decoration: none;
+  line-height: 1;
 }
 
 #share {
@@ -299,7 +308,7 @@ input:checked + .slider:before {
   font-weight: bold;
 }
 
-@media(max-width: 678px) {
+@media(max-width: 1190px) {
   .bottom-links {
     & > * {
       position: relative;
@@ -312,7 +321,12 @@ input:checked + .slider:before {
       margin: 1.5rem auto !important;
     }
   }
-
+  #back {
+    left: auto;
+    margin-left: auto;
+    right: 1rem;
+    top: 2rem;
+  }
 }
 
 @keyframes shake {

@@ -20,7 +20,7 @@
   "saved": {
     "message": "Saved ✓"
   },
-  "intro_greeting":{
+  "intro_greeting": {
     "message": "Hi there and welcome!"
   },
   "intro_text": {
@@ -62,6 +62,39 @@
   "help": {
     "message": "Help"
   },
+  "log": {
+    "message": "Block Log"
+  },
+  "log_link": {
+    "message": "Log"
+  },
+  "log_empty": {
+    "message": "This log is currently empty.<br/>Don't worry, it will build automatically over time."
+  },
+  "match_desc": {
+    "message": "Matched keyword: "
+  },
+  "block_ts": {
+    "message": "Block time: $ts$",
+    "placeholders": {
+      "ts": {
+        "content": "$1",
+        "example": "5/5/2020"
+      }
+    }
+  },
+  "log_intro": {
+    "message": "This log includes up to $count$ most recent blocks performed by DoucheBlock.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "100"
+      }
+    }
+  },
+  "log_loading": {
+    "message": "Loading..."
+  },
   "back": {
     "message": "Back"
   },
@@ -69,7 +102,7 @@
     "message": "Source code, rate & share"
   },
   "configuring_words": {
-    "message": "<h2>Configuring trigger keywords</h2><ul><li>Separate each word, word pair, or expression by a comma; they will be evaluated individually against bios</li><li>Keyword match is case-insensitive &mdash; <code>abc</code> matches <code>AbC</code> <code>aBC</code> ...etc.</li><li>You can use emojis as blocking keywords <span style='font-size:120%'>\uD83E\uDD72</span></li><li>regex patterns are supported: <a href='https://cheatography.com/davechild/cheat-sheets/regular-expressions/' target='_blank' rel='noreferrer noopener' class='link'>here is a cheat sheet</a></li><li>IMPORTANT: when regex contains backslashes, you must escape them - example: <code>\\b</code> should be written as <code>\\\\b</code></li><li>occurrence of a keyword anywhere in the bio counts as match (substring match) - specify regex word boundary to match by whole words.</li></ul>"
+    "message": "<h2>Configuring trigger keywords</h2><ul><li>Separate each word, word pair, or expression by a comma; they will be evaluated individually against bios</li><li>Keyword match is case-insensitive &mdash; <code>abc</code> matches <code>AbC</code> <code>aBC</code> ...etc.</li><li>You can use emojis as blocking keywords <span style='font-size:120%'>\uD83E\uDD72</span></li><li>Regex patterns are supported: <a href='https://cheatography.com/davechild/cheat-sheets/regular-expressions/' target='_blank' rel='noreferrer noopener' class='link'>here is a cheat sheet</a></li><li>IMPORTANT: when regex contains backslashes, you must escape them - example: <code>\\b</code> should be written as <code>\\\\b</code></li><li>Occurrence of a keyword anywhere in the bio counts as match (substring match) - specify regex word boundary to match by whole words</li><li>Keyword evaluation priority is the same as order of words in keyword list</li></ul>"
   },
   "whitelist_help": {
     "message": "<h2>Whitelisting</h2><p>When using \"confirm before blocking\" mode, if you choose not to block someone when alerted by choosing \"cancel\", that handle will be added to a whitelist. You will not receive further alerts about that handle. You can still always block that user later on twitter.<br/><br/>When using automatic blocking mode, whitelist does not apply.</p>"

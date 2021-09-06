@@ -245,29 +245,33 @@ export default class AutoBlocker {
     }
 
     /**
-     * Check if user should be blocked
+     * Check if user should be blocked. If yes, user will
+     * contain a truthy match property indicating a keyword
+     * was matched.
      *
      * @param {Object} user
-     * @returns {boolean}
+     * @returns {boolean} true if blockable
      */
     static isBlockMatch(user) {
-        const {bio, id, name} = user;
-        return id &&
-            !bs.whiteList.contains(id) &&
-            AutoBlocker.checkWords(bs.keyList, bio, name);
+        return user.id &&
+            !bs.whiteList.contains(user.id) &&
+            AutoBlocker.checkWords(bs.keyList, user);
     }
 
     /**
-     * Match bio against keywords
+     * Match bio against keywords. Here we record the matched
+     * keyword to be able to log it.
+     *
      * @param {String[]} words - keywords to check
-     * @param {string} bio - twitter bio
-     * @param {string} name - twitter display name
-     * @returns {boolean} true if a douche
+     * @param {Object} user - user object
+     * @returns {boolean} true for a douche
      */
-    static checkWords(words, bio, name) {
+    static checkWords(words, user) {
+        const {bio, name} = user;
         for (let i = 0; i < words.length; i++) {
             const exp = new RegExp(words[i], 'gmi');
             if (exp.test(bio) || exp.test(name)) {
+                user.match = words[i];
                 return true;
             }
         }
@@ -344,14 +348,17 @@ export default class AutoBlocker {
 
     /**
      * Block a user
-     *
-     * @param {string} bio - user's bio text
-     * @param {string} id - user's twitter id
-     * @param {string} handle - handle
-     * @param {string} name - display name
+     * @param {Object} user - twitter user object
+     * @param {string} user.bio - bio text
+     * @param {string} user.id - twitter id
+     * @param {string} user.handle - handle
+     * @param {string} user.name - display name
+     * @param {string} user.match - matched keyword
+     * @param {string} user.img - profile image
      * @returns {Promise}
      */
-    static executeBlock({bio, id, handle, name}) {
+    static executeBlock(user) {
+        const {bio, id, handle, name} = user;
         return new Promise((resolve) => {
             // user picked cancel -> whitelist this handle
             if (bs.confirmBlocks &&
@@ -362,7 +369,8 @@ export default class AutoBlocker {
             else {
                 TwitterApi.doTheBlock(id,
                     bs.tokens.bearerToken,
-                    bs.tokens.csrfToken);
+                    bs.tokens.csrfToken,
+                    user);
             }
             // add some latency
             return window.setTimeout(resolve, 500);

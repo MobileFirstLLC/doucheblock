@@ -1,6 +1,6 @@
 // noinspection JSUnresolvedVariable,JSUnresolvedFunction
 
-import {defaultConfig, isOpera, isFirefox, browserVariant} from "../config";
+import {defaultConfig, isOpera, isFirefox, browserVariant, maxLogSize} from '../config';
 
 /**
  * @description
@@ -23,7 +23,8 @@ export default class Storage {
             blockWords: 'blockWords',
             confirm: 'confirm',
             count: 'count',
-            whiteList: 'whiteList'
+            whiteList: 'whiteList',
+            log: 'log'
         };
     };
 
@@ -35,10 +36,11 @@ export default class Storage {
      * @returns - storage implementation; either local or sync
      */
     static get storageImplementation() {
-        if (isOpera || isFirefox)
+        if (isOpera || isFirefox) {
             return chrome.storage.local;
-        else
+        } else {
             return chrome.storage.sync;
+        }
     }
 
     /**
@@ -51,25 +53,27 @@ export default class Storage {
     static parseKeywords(input) {
         return (input[Storage.keys.blockWords] ||
             defaultConfig.blockWords)
-            .split(',')
+            .split(',');
     }
 
     /**
      * @static
-     * @description Get all user settings
+     * @description Get all user settings (except log)
      * @param {function} callback
      */
     static getSettings(callback) {
-        Storage.get(null, res => {
-            const {confirm: c, blockWords: bw, whiteList: wl} = Storage.keys
+        const keys = Object.values(Storage.keys)
+            .filter(val => val !== Storage.keys.log);
+        Storage.get(keys, res => {
+            const {confirm: c, blockWords: bw, whiteList: wl} = Storage.keys;
             const result = {
                 ...defaultConfig, ...res,
                 [c]: res[c] === undefined ? defaultConfig.confirm : res[c],
                 [bw]: Storage.parseKeywords(res),
-                [wl]: res[wl] || {},
-            }
+                [wl]: res[wl] || {}
+            };
             callback(result);
-        })
+        });
     }
 
     /**
@@ -93,7 +97,7 @@ export default class Storage {
      * @param {function} done - callback
      */
     static setBlockedWords(words, done = undefined) {
-        const list = (words || '').toLowerCase().split(',')
+        const list = (words || '').toLowerCase().split(',');
         const strList = list.map(w => (w || '')
             .trim()).filter(f => f.length).join(',');
         Storage.save(Storage.keys.blockWords, strList, done);
@@ -133,9 +137,36 @@ export default class Storage {
     static addWhiteList(entry, callback) {
         Storage.get(Storage.keys.whiteList, res => {
             const initList = res[Storage.keys.whiteList] || {};
-            const newList = {...initList, ...entry}
+            const newList = {...initList, ...entry};
             Storage.save(Storage.keys.whiteList, newList);
-            callback(newList)
+            callback(newList);
+        });
+    }
+
+    /**
+     * @static
+     * @description Get the block log
+     * @param {function} callback - current log
+     */
+    static getLog(callback) {
+        Storage.get(Storage.keys.log, res =>
+            callback(res[Storage.keys.log] || defaultConfig.log));
+    }
+
+    /**
+     * @static
+     * @description
+     * Update the block log
+     * @param {Object} entry - entry to add to the log
+     * @param {function?} callback - returns updated log
+     */
+    static addLog(entry, callback = () => false) {
+        Storage.getLog(oldList => {
+            if (!entry) return callback(oldList);
+            entry.ts = Date.now(); // record log timestamp
+            const newList = ([entry, ...oldList]).slice(0, maxLogSize);
+            Storage.save(Storage.keys.log, newList);
+            callback(newList);
         });
     }
 

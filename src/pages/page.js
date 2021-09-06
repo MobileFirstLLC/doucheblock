@@ -12,6 +12,7 @@ export default class Page {
     constructor(title) {
         Page.setTitle(title);
         Page.setupShare();
+        Page.setupBackButton();
     }
 
     /**
@@ -63,5 +64,28 @@ export default class Page {
     static makeShareLink({label, url, svgPath}) {
         const icon = `<svg viewBox="0 0 24 24"><path d="${svgPath}" /></svg>`;
         return `<a href="${url}" title="${Page.translate(label)}">${icon}</a>`;
+    }
+
+    /**
+     * Bind back button behavior
+     */
+    static setupBackButton() {
+        if(Page.backButton) {
+            Page.backButton.onclick = Page.backButton.onkeypress = Page.onBackClick;
+        }
+    }
+
+    /**
+     * All but index page will have a back button
+     */
+    static get backButton() {
+        return Page.getElement('back');
+    }
+
+    /**
+     * Clicking back button goes to index page
+     */
+    static onBackClick() {
+        window.location.assign('index.html');
     }
 }
