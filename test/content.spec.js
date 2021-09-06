@@ -32,25 +32,30 @@ describe('Content script', () => {
     it('Matches keywords', () => {
         expect(AutoBlocker.checkWords(
             ['Serial Entrepreneur'],
-            'CEO Keynote Speaker, GoogleDevExpert, MSFT MVP, Serial Entrepreneur, Investor'),
+            {bio: 'CEO Keynote Speaker, GoogleDevExpert, MSFT MVP, Serial Entrepreneur, Investor'}),
             'plaintext').to.be.true;
         expect(AutoBlocker.checkWords(
             ['micros*'],
-            '@Microsoft by day Aspiring to bloom where planted.'),
+            {bio: '@Microsoft by day Aspiring to bloom where planted.'}),
             'micros* (wildcard)').to.be.true;
         expect(AutoBlocker.checkWords(
             ['\\bmicrosoft*'],
-            'Microsoft for Startups provides #cloud services and #software to help #startups grow faster.'),
+            {bio: 'Microsoft for Startups provides #cloud services and #software to help #startups grow faster.'}),
             '\\bmicrosoft* (wildcard)').to.be.true;
         expect(AutoBlocker.checkWords(
             ['\\bvision'],
-            'Entrepreneur | Innovator with a ViSiOn to eliminate diagnostic errors using Artificial Intelligence'),
+            {bio: 'Entrepreneur | Innovator with a ViSiOn to eliminate diagnostic errors using Artificial Intelligence'}),
             '\\bvision (case)').to.be.true;
         expect(AutoBlocker.checkWords(
             ['micros*'],
-            'Choose the browser that puts you first. Microsoft Edge is the fast and secure browser that helps you save time and money.'),
+            {bio: 'Choose the browser that puts you first. Microsoft Edge is the fast and secure browser that helps you save time and money.'}),
             'micros* (wildcard)').to.be.true;
+    });
 
+    it('Matches display names', () => {
+        expect(AutoBlocker.checkWords(['sadness'], {name: 'Bob the Builder'}), 'no match').to.be.false;
+        expect(AutoBlocker.checkWords(['Burglar'], {name: 'Ham Burglar'}), 'plaintext display name').to.be.true;
+        expect(AutoBlocker.checkWords(['🔥'], {name: 'Emoji 🔥 name 🔥'}), 'emoji name').to.be.true;
     });
 });
 

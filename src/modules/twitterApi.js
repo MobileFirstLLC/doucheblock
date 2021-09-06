@@ -22,10 +22,12 @@ export default class TwitterApi {
      * @param screen_name - handle
      * @param id_str - unique id str
      * @param name - user's display name
+     * @param profile_image_url_https - user profile image url
      * @returns {{name: string, bio: string, handle: string, id: string}}
      */
-    static mapUser({description, screen_name, id_str, name}) {
+    static mapUser({description, screen_name, id_str, name, profile_image_url_https}) {
         return {
+            img: profile_image_url_https,
             bio: description,
             id: id_str,
             name: name,
@@ -77,8 +79,9 @@ export default class TwitterApi {
      * @param {string} id - user id str
      * @param {string} bearer - authentication bearer token
      * @param {string} csrf - csrf token
+     * @param {Object} user - log entry for blocked user
      */
-    static doTheBlock(id, bearer, csrf) {
+    static doTheBlock(id, bearer, csrf, user) {
         const xhr = new XMLHttpRequest();
         xhr.open('POST', requestConfigs.blockEndpoint, true);
         xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
@@ -89,6 +92,7 @@ export default class TwitterApi {
         xhr.onload = _ => {
             if (xhr.status === 200) {
                 Storage.incrementCount();
+                Storage.addLog(user);
             }
         };
         xhr.send('user_id=' + id);

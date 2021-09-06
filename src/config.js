@@ -54,7 +54,13 @@ export const defaultConfig = {
      * @constant
      * @type {Object<string, string>}
      */
-    whiteList: {}
+    whiteList: {},
+    /**
+     * Block log contains history of blocks
+     * @constant
+     * @type {Array<Object>}
+     */
+    log:[]
 };
 
 /*
@@ -182,6 +188,13 @@ export const classFlag = 'dbt___seen-it-b4';
  * @type {number}
  */
 export const alertCap = 3;
+
+/**
+ * Size of block log: maximum number of entries to log
+ * @constant
+ * @type {number}
+ */
+export const maxLogSize = 100;
 
 /**
  * URLs for rating extension, depends on the current browser.

@@ -17,6 +17,10 @@
       "src": "./src/help.js"
     },
     {
+      "name": "log",
+      "src": "./src/log.js"
+    },
+    {
       "name": "background",
       "src": "./src/background.js"
     }
