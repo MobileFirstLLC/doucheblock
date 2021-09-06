@@ -348,12 +348,13 @@ export default class AutoBlocker {
 
     /**
      * Block a user
-     *
-     * @param {string} user.bio - user's bio text
-     * @param {string} user.id - user's twitter id
+     * @param {Object} user - twitter user object
+     * @param {string} user.bio - bio text
+     * @param {string} user.id - twitter id
      * @param {string} user.handle - handle
      * @param {string} user.name - display name
      * @param {string} user.match - matched keyword
+     * @param {string} user.img - profile image
      * @returns {Promise}
      */
     static executeBlock(user) {

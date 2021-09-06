@@ -23,7 +23,7 @@ export default class TwitterApi {
      * @param id_str - unique id str
      * @param name - user's display name
      * @param profile_image_url_https - user profile image url
-     * @returns {{name: string, bio: string, handle: string, id: string}}
+     * @returns {{name: string, bio: string, handle: string, id: string, img:string}}
      */
     static mapUser({description, screen_name, id_str, name, profile_image_url_https}) {
         return {

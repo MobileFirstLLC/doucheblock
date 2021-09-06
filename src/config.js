@@ -16,7 +16,7 @@ export const OptionsPageURL = 'index.html';
 
 /*
  * Options page URL when user has just installed.
- * (Add a flag to the URL distinguish this event)
+ * (Add a flag to the URL to distinguish this event)
  *
  * @constant
  * @type {string}
