@@ -1,0 +1,62 @@
+#log-intro {
+  text-align: center;
+  font-weight: bold;
+}
+
+#log.empty {
+  padding: 2rem;
+  text-align: center;
+  line-height: 2;
+  font-style: italic;
+}
+
+#log .entry {
+  background: #fff;
+  color: #222;
+  padding: 1em;
+  border-radius: .75em;
+  margin-top: 1em;
+  font-size: 90%;
+
+  & .name {
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    & img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    & span.display {
+      font-weight: bold;
+    }
+
+    & span.handle {
+      font-weight: 300;
+      display: inline-block;
+      margin-left: .5em;
+      font-size: 90%;
+    }
+  }
+
+  & .bio {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-weight: 300;
+  }
+
+  & .meta {
+    & > * {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    & > span{
+      font-size: 90%;
+    }
+  }
+}
