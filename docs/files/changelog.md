@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 - Add log feature: shows a list of recent blocks and matched keyword 
 
-### [1.2.1](https://github.com/MobileFirstLLC/doucheblock/compare/v1.2.0...v1.2.1) (2021-08-24)
+## [1.2.1](https://github.com/MobileFirstLLC/doucheblock/compare/v1.2.0...v1.2.1) (2021-08-24)
 
 - Also match against display name
 
