@@ -1,9 +1,10 @@
 const fs = require('fs')
 const path = require('path')
-import OptionPage from '../src/pages/index';
+import OptionPage from '../src/options/index';
+const template = '../src/options/index.html'
 
 // read the page template
-const HTMLTemplate = fs.readFileSync(path.resolve(__dirname, '../src/pages/index.html'), 'utf8');
+const HTMLTemplate = fs.readFileSync(path.resolve(__dirname, template), 'utf8');
 
 describe('Options page', () => {
 

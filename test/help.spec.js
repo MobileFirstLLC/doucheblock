@@ -1,11 +1,11 @@
-import Help from '../src/pages/help';
+import Help from '../src/options/help/help';
 
 const fs = require('fs');
 const path = require('path');
 const {location} = window;
 
 const HTMLTemplate = fs.readFileSync(path.resolve(__dirname,
-    '../src/pages/help.html'), 'utf8');
+    '../src/options/help/help.html'), 'utf8');
 
 describe('Help page', () => {
 
