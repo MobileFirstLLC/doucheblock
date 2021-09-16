@@ -47,13 +47,15 @@ The extension is built with modules, each performing their individual task.
 | BlockerState | Manages blocker state while browsing |
 | BrowserAction | Handle extension icon click |
 | OnInstall | Handle extension install event |
-| Options | Edit user preferences |
 | Storage | Module for persisting data |
 | Tabs | Broadcast preference changes |
 | Tokens | Capture authentication credentials |
 | TwitterApi | Makes API calls |
  
 [Explore modules here](list_module.html) 
+
+Extension HTML pages/UIs are all under `src/options`. 
+These pages are used for configuring user settings and other internal views.
 
 ## Running locally
 

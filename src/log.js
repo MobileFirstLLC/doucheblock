@@ -6,6 +6,6 @@
  * Log page script
  * * * * * * * * * * * * * * * * * * * * */
 
-import Log from './pages/log';
+import Log from './options/log/log';
 
 (() => new Log())();

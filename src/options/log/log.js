@@ -1,8 +1,8 @@
 // noinspection JSUnresolvedVariable,JSUnresolvedFunction
 
-import Page from './page';
-import Storage from '../modules/storage';
-import {maxLogSize} from '../config';
+import Storage from '../../modules/storage';
+import {maxLogSize} from '../../config';
+import Page from '../page';
 
 /**
  * Log page shows a list of recent blocks.

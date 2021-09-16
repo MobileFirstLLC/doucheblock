@@ -6,6 +6,6 @@
  * Options page script
  * * * * * * * * * * * * * * * * * * * * */
 
-import OptionPage from './pages/index';
+import OptionPage from './options/index';
 
 (() => new OptionPage())();
