@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - "14.18.0"
+  - "14.18.1"
 
 cache:
   directories:
