@@ -132,7 +132,7 @@ export default class Storage {
     /**
      * @static
      * @description
-     * Update the count of completed block requests
+     * Add new entry to whitelist
      */
     static addWhiteList(entry, callback) {
         Storage.get(Storage.keys.whiteList, res => {
