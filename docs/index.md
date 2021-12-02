@@ -36,6 +36,12 @@ DoucheBlock for Twitter is available for **Chrome, Firefox, Edge, Brave, Opera a
 
 <img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/user_comment2.png" style="margin:2rem auto 8rem auto; background:#ddd; border:2px solid #555; box-shadow:6px 6px 0 #0004; border-radius:12px; width:500px; display:block; max-width:90%;" />
 
+## Wall of Love ♥
+
+<script type="text/javascript" src="https://testimonial.to/js/iframeResizer.min.js"></script>
+<iframe id="testimonialto-carousel-all-doucheblock-for-twitter-light" src="https://embed.testimonial.to/carousel/all/doucheblock-for-twitter?theme=light&autoplay=off&showmore=off&one-row=off&same-height=off" frameborder="0" scrolling="no" width="100%"></iframe>
+<script type="text/javascript">iFrameResize({log: false, checkOrigin: false}, "#testimonialto-carousel-all-doucheblock-for-twitter-light");</script>
+
 ## How does it work?
 
 Configure DoucheBlock to watch for your top trigger words. After that, whenever you browse Twitter, 
