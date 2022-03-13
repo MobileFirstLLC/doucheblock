@@ -24,5 +24,9 @@
       "name": "background",
       "src": "./src/background.js"
     }
+  ],
+  "locales_list": [
+    "en",
+    "tr"
   ]
 }
