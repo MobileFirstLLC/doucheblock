@@ -1,0 +1,110 @@
+{
+  "appName": {
+    "message": "Twitter için DenyoEngelleyici"
+  },
+  "appShortName": {
+    "message": "DenyoEngelleyici"
+  },
+  "appDescription": {
+    "message": "Twitter biyografisinde belirli anahtar sözcükler olan herkesi otomatik olarak engelleyin."
+  },
+  "blockedWords": {
+    "message": "Tüm tetikleyici sözcüklerinizi listeleyin (virgülle ayırın):"
+  },
+  "confirmBlock": {
+    "message": "Engellemeden önce onayla"
+  },
+  "saveChanges": {
+    "message": "Kaydet"
+  },
+  "saved": {
+    "message": "Kaydedildi ✓"
+  },
+  "intro_greeting": {
+    "message": "Merhaba ve hoş geldiniz!"
+  },
+  "intro_text": {
+    "message": "DenyoEngelleyici, Twitter biyografilerinde belirli anahtar sözcükleri kullanan kişileri engeller. Aşağıda anahtar sözcük seçiminizi belirtin, ardından DenyoEngelleyici'yi kullanmaya hazırsınız."
+  },
+  "blockCount": {
+    "message": "Bu uzantı sizin için $count$ denyoyu engelledi.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "100"
+      }
+    }
+  },
+  "doucheAlert": {
+    "message": "⚠️ AĞIR DENYO UYARISI ⚠️"
+  },
+  "proceedToBlock": {
+    "message": "$name$ KULLANICISINI ENGELLEMEK İSTİYOR MUSUNUZ?️",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "this user"
+      }
+    }
+  },
+  "share_and_rate": {
+    "message": "Paylaş veya Değerlendir: "
+  },
+  "rate_extension": {
+    "message": "Uzantıyı değerlendir"
+  },
+  "rate_addon": {
+    "message": "Eklentiyi değerlendir"
+  },
+  "share_twitter": {
+    "message": "Twitter'da paylaş"
+  },
+  "help": {
+    "message": "Yardım"
+  },
+  "log": {
+    "message": "Engelleme Günlüğü"
+  },
+  "log_link": {
+    "message": "Günlük"
+  },
+  "log_empty": {
+    "message": "Bu günlük şu anda boş.<br/>Endişelenmeyin, zamanla otomatik olarak oluşturulacaktır."
+  },
+  "match_desc": {
+    "message": "Eşleşen anahtar sözcük: "
+  },
+  "block_ts": {
+    "message": "Engelleme zamanı: $ts$",
+    "placeholders": {
+      "ts": {
+        "content": "$1",
+        "example": "5/5/2020"
+      }
+    }
+  },
+  "log_intro": {
+    "message": "Bu günlük, DenyoEngelleyici tarafından gerçekleştirilen en son $count$ engellemeyi içerir.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "100"
+      }
+    }
+  },
+  "log_loading": {
+    "message": "Yükleniyor..."
+  },
+  "back": {
+    "message": "Geri"
+  },
+  "links": {
+    "message": "Kaynak kodları, değerlendir & paylaş"
+  },
+  "configuring_words": {
+    "message": "<h2>Tetikleyici anahtar sözcükleri yapılandırma</h2><ul><li>Her sözcüğü, sözcük çiftini veya ifadeyi virgülle ayırın; biyografilere karşı ayrı ayrı değerlendirileceklerdir</li><li>Anahtar sözcük eşleşmesi büyük/küçük harfe duyarsızdır &mdash; <code>abc</code> ile <code>AbC</code> <code>aBC</code> ...vs. eşleşir</li><li>Engellenecek anahtar sözcükler olarak emojileri kullanabilirsiniz <span style='font-size:120%'>\uD83E\uDD72</span></li><li>Düzenli ifade kalıpları desteklenir: <a href='https://cheatography.com/davechild/cheat-sheets/regular-expressions/' target='_blank' rel='noreferrer noopener' class='link'>kısa bir özetini burada bulabilirsiniz</a></li><li>ÖNEMLİ: düzenli ifade ters eğik çizgi içeriyorsa bunları kaçırmanız gerekir - örnek: <code>\\b</code> şu şekilde yazılmalıdır: <code>\\\\b</code></li><li>Biyografinin herhangi bir yerinde bir anahtar sözcüğün bulunması, eşleşme olarak sayılır (alt dizge eşleşmesi) - tam sözcüklerle eşleşmek için düzenli ifade sözcük sınırını belirtin</li><li>Anahtar sözcük değerlendirme önceliği, anahtar sözcük listesindeki sözcüklerin sırası ile aynıdır.</li></ul>"
+  },
+  "whitelist_help": {
+    "message": "<h2>Beyaz listeye alma</h2><p>\"Engellemeden önce onayla\" modu kullanılırken, uyarıldığında \"cancel\" diyerek birini engellememeyi seçerseniz, o kullanıcı beyaz listeye eklenecektir. O kullanıcı hakkında daha fazla uyarı almayacaksınız. Yine de o kullanıcıyı daha sonra Twitter'da engelleyebilirsiniz.<br/><br/>Otomatik engelleme modu kullanılırken beyaz liste uygulanmaz.</p>"
+  }
+}
