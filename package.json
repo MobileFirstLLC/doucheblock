@@ -33,7 +33,7 @@
   ],
   "devDependencies": {
     "cws-publish": "2.0.8",
-    "extension-cli": "1.2.4",
+    "extension-cli": "^1.2.5-alpha.0",
     "foodoc": "0.0.9",
     "web-ext-submit": "6.7.0"
   }
