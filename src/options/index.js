@@ -21,6 +21,7 @@ export default class Index extends Page {
 
         // translate text elements
         Index.getElement('block-label').innerText = Index.translate('blockedWords');
+        Index.getElement('allow-label').innerText = Index.translate('allowedWords');
         Index.getElement('confirm-label').innerText = Index.translate('confirmBlock');
         Index.getElement('help').innerText = Index.translate('help');
         Index.getElement('log-link').innerText = Index.translate('log_link');
@@ -49,6 +50,14 @@ export default class Index extends Page {
      */
     static get blockInput() {
         return Index.getElement('block-words');
+    }
+
+    /**
+     * Get allow keywords input DOM element
+     * @returns {HTMLElement}
+     */
+    static get allowInput() {
+        return Index.getElement('allow-words');
     }
 
     /**
