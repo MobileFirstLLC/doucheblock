@@ -126,6 +126,8 @@ export const requestConfigs = {
      * Example: POST https://api.twitter.com/1.1/mutes/users/create.json?screen_name=evilpiper
      *
      * This differs from blocks, in that it always returns a JSON array for status... no skip_status flag available for mutes
+     *
+     * ref: https://developer.twitter.com/en/docs/twitter-api/v1/accounts-and-users/mute-block-report-users/api-reference/post-mutes-users-create
      */
     muteEndpoint: 'https://api.twitter.com/1.1/mutes/users/create.json',
     /**
