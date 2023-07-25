@@ -43,7 +43,7 @@ export const defaultConfig = {
      * @constant
      * @type {string}
      */
-    allowWords: 'VoteBlue,vote blue',
+    allowWords: 'VoteBlue',
     /**
      * Ask user to manually confirm all blocks
      * @constant
