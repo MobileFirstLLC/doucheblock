@@ -21,6 +21,7 @@ export default class Storage {
     static get keys() {
         return {
             blockWords: 'blockWords',
+            allowWords: 'allowWords',
             confirm: 'confirm',
             count: 'count',
             whiteList: 'whiteList',
@@ -58,6 +59,19 @@ export default class Storage {
 
     /**
      * @static
+     * @private
+     * @description Convert allowed keywords string into an array
+     * @param input
+     * @returns {string[]}
+     */
+    static parseAllowedKeywords(input) {
+        return (input[Storage.keys.allowWords] ||
+            defaultConfig.allowWords)
+            .split(',');
+    }
+    
+    /**
+     * @static
      * @description Get all user settings (except log)
      * @param {function} callback
      */
@@ -65,11 +79,12 @@ export default class Storage {
         const keys = Object.values(Storage.keys)
             .filter(val => val !== Storage.keys.log);
         Storage.get(keys, res => {
-            const {confirm: c, blockWords: bw, whiteList: wl} = Storage.keys;
+            const {confirm: c, blockWords: bw, allowWords: aw, whiteList: wl} = Storage.keys;
             const result = {
                 ...defaultConfig, ...res,
                 [c]: res[c] === undefined ? defaultConfig.confirm : res[c],
                 [bw]: Storage.parseKeywords(res),
+                [aw]: Storage.parseAllowedKeywords(res),
                 [wl]: res[wl] || {}
             };
             callback(result);
@@ -102,7 +117,23 @@ export default class Storage {
             .trim()).filter(f => f.length).join(',');
         Storage.save(Storage.keys.blockWords, strList, done);
     }
-
+    
+    /**
+     * @static
+     * @description
+     * Update the list of allowed keywords; this function
+     * will sanitize and strip the input
+     *
+     * @param {string} words - list of words to block
+     * @param {function} done - callback
+     */
+    static setAllowedWords(words, done = undefined) {
+        const list = (words || '').toLowerCase().split(',');
+        const strList = list.map(w => (w || '')
+            .trim()).filter(f => f.length).join(',');
+        Storage.save(Storage.keys.allowWords, strList, done);
+    }
+    
     /**
      * @static
      * @description
