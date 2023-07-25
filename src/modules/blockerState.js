@@ -270,6 +270,18 @@ export default class BlockerState {
     }
 
     /**
+     * Get/set the list of allowed words that prevent blocking
+     * @returns {string[]}
+     */
+    static get keyAllowList() {
+        return this._keyAllowList;
+    }
+
+    static set keyAllowList(value) {
+        this._keyAllowList = value;
+    }
+
+    /**
      * Get/set confirmation setting
      * @returns {Boolean}
      */
