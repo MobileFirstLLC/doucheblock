@@ -74,6 +74,7 @@ export default class AutoBlocker {
     static loadSettings(callback) {
         Storage.getSettings(settings => {
             bs.keyList = settings[Storage.keys.blockWords];
+            bs.keyAllowList = settings[Storage.keys.allowWords];
             bs.confirmBlocks = settings[Storage.keys.confirm];
             bs.whiteList.whiteList = settings[Storage.keys.whiteList];
             if (callback) callback();
@@ -255,7 +256,8 @@ export default class AutoBlocker {
     static isBlockMatch(user) {
         return user.id &&
             !bs.whiteList.contains(user.id) &&
-            AutoBlocker.checkWords(bs.keyList, user);
+            AutoBlocker.checkWords(bs.keyList, user) &&
+            !AutoBlocker.checkWords(bs.keyAllowList, user);
     }
 
     /**
