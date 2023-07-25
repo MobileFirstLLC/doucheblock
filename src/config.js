@@ -45,19 +45,19 @@ export const defaultConfig = {
      */
     allowWords: 'VoteBlue',
     /**
-     * Ask user to manually confirm all blocks
-     * @constant
-     * @type {Boolean}
-     */
-    confirm: true,
-    /**
      * mute instead of block
      * @constant
      * @type {Boolean}
      */
     mute: false,
     /**
-     * Number of accounts blocked by this extension
+     * Ask user to manually confirm all blocks or mutes
+     * @constant
+     * @type {Boolean}
+     */
+    confirm: true,
+    /**
+     * Number of accounts blocked or muted by this extension
      * @constant
      * @type {number}
      */
