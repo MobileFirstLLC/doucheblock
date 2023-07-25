@@ -11,8 +11,14 @@
   "blockedWords": {
     "message": "List all your trigger words (separate by comma):"
   },
+  "allowedWords": {
+    "message": "Do not flag when these are present (separate by comma):"
+  },
   "confirmBlock": {
     "message": "Confirm before blocking"
+  },
+  "muteInstead": {
+    "message": "Mute instead of blocking"
   },
   "saveChanges": {
     "message": "Save"
