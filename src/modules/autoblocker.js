@@ -349,7 +349,7 @@ export default class AutoBlocker {
                     if (isMuting) {
                         AutoBlocker.sequentiallyMute(users);
                     } else {
-                        AutoBlocker.executeBlock(first)
+                        AutoBlocker.executeMute(first)
                             .then(_ => AutoBlocker.sequentiallyMute(users))
                             .catch();
                     }
@@ -397,23 +397,46 @@ export default class AutoBlocker {
             }
             // auto-block or user clicked OK to block
             else {
-                // mute selected
-                if (bs.confirmMute){
-                    TwitterApi.doTheMute(id,
-                        bs.tokens.bearerToken,
-                        bs.tokens.csrfToken,
-                        user);
-                }
-                // mute not selected, proceed with a block
-                else {
-                    TwitterApi.doTheBlock(id,
-                        bs.tokens.bearerToken,
-                        bs.tokens.csrfToken,
-                        user);
+                TwitterApi.doTheBlock(id,
+                    bs.tokens.bearerToken,
+                    bs.tokens.csrfToken,
+                    user);
+            }
+            // add some latency
+            return window.setTimeout(resolve, 500);
+        });
+    }
+
+    /**
+     * Mute a user
+     * @param {Object} user - twitter user object
+     * @param {string} user.bio - bio text
+     * @param {string} user.id - twitter id
+     * @param {string} user.handle - handle
+     * @param {string} user.name - display name
+     * @param {string} user.match - matched keyword
+     * @param {string} user.img - profile image
+     * @returns {Promise}
+     */
+    static executeMute(user) {
+        const {bio, id, handle, name} = user;
+        return new Promise((resolve) => {
+            // user picked cancel -> whitelist this handle
+            if (bs.confirmBlocks &&
+                !window.confirm(AutoBlocker.buildAlert(bio, name))) {
+                bs.whiteList.add(id, handle);
+            }
+            // auto-block or user clicked OK to block
+            else {
+                TwitterApi.doTheMute(id,
+                    bs.tokens.bearerToken,
+                    bs.tokens.csrfToken,
+                    user);
                 }
             }
             // add some latency
             return window.setTimeout(resolve, 500);
         });
     }
+
 }
