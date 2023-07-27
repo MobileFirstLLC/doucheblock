@@ -270,6 +270,18 @@ export default class BlockerState {
     }
 
     /**
+     * Get/set the list of allowed words that prevent blocking
+     * @returns {string[]}
+     */
+    static get keyAllowList() {
+        return this._keyAllowList;
+    }
+
+    static set keyAllowList(value) {
+        this._keyAllowList = value;
+    }
+
+    /**
      * Get/set confirmation setting
      * @returns {Boolean}
      */
@@ -279,6 +291,18 @@ export default class BlockerState {
 
     static set confirmBlocks(value) {
         this._confirm = value;
+    }
+
+    /**
+     * Get/set mute setting
+     * @returns {Boolean}
+     */
+    static get confirmMute() {
+        return this._mute;
+    }
+
+    static set confirmMute(value) {
+        this._mute = value;
     }
 }
 

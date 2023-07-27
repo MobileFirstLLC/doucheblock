@@ -11,8 +11,14 @@
   "blockedWords": {
     "message": "List all your trigger words (separate by comma):"
   },
+  "allowedWords": {
+    "message": "Don't flag when these are present (separate by comma):"
+  },
   "confirmBlock": {
     "message": "Confirm before blocking"
+  },
+  "muteInstead": {
+    "message": "Mute instead of block"
   },
   "saveChanges": {
     "message": "Save"
@@ -40,6 +46,15 @@
   },
   "proceedToBlock": {
     "message": "DO YOU WANT TO BLOCK $name$?️",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "this user"
+      }
+    }
+  },
+  "proceedToMute": {
+    "message": "DO YOU WANT TO MUTE $name$?️",
     "placeholders": {
       "name": {
         "content": "$1",
