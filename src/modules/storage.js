@@ -148,6 +148,17 @@ export default class Storage {
     /**
      * @static
      * @description
+     * Update mute user preference
+     * @param {Boolean} value - set true to mute instead of block
+     * @param {function} done - callback
+     */
+    static setMuteSetting(value, done = undefined) {
+        Storage.save(Storage.keys.mute, !!value, done);
+    }
+
+    /**
+     * @static
+     * @description
      * Update the count of completed block requests
      */
     static incrementCount() {
