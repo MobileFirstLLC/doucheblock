@@ -76,6 +76,7 @@ export default class AutoBlocker {
             bs.keyList = settings[Storage.keys.blockWords];
             bs.keyAllowList = settings[Storage.keys.allowWords];
             bs.confirmBlocks = settings[Storage.keys.confirm];
+            bs.confirmMute = settings[Storage.keys.mute];
             bs.whiteList.whiteList = settings[Storage.keys.whiteList];
             if (callback) callback();
         });
@@ -369,6 +370,7 @@ export default class AutoBlocker {
             }
             // auto-block or user clicked OK to block
             else {
+                // ADD CODE TO MUTE INSTEAD HERE IF THAT OPTION IS SELECTED... NEED TO ADD TO TWITTER API
                 TwitterApi.doTheBlock(id,
                     bs.tokens.bearerToken,
                     bs.tokens.csrfToken,
