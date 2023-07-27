@@ -43,7 +43,7 @@ export const defaultConfig = {
      * @constant
      * @type {string}
      */
-    allowWords: '',
+    allowWords: 'magazine',
     /**
      * mute instead of block
      * @constant
