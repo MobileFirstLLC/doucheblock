@@ -147,4 +147,30 @@ export default class TwitterApi {
         xhr.onerror = onError;
         xhr.send();
     }
+
+    /**
+     * Check in real-time if user is already being muted.
+     *
+     * @param {String} handle - screen name to check
+     * @param {string} bearer - authentication Bearer token
+     * @param {string} csrf - csrf token
+     * @param {function} callback
+     * @returns {boolean} True if already muting and False otherwise
+     */
+    static isMuting(handle, bearer, csrf, callback) {
+        const xhr = new XMLHttpRequest();
+        const onError = () => callback(false);
+        xhr.open('GET', requestConfigs.friendshipEndpoint(handle), true);
+        xhr.setRequestHeader('Authorization', bearer);
+        xhr.setRequestHeader('x-csrf-token', csrf);
+        xhr.onload = _ => {
+            if (xhr.readyState === 4) {
+                TwitterApi.parseResponse(xhr.response,
+                    resp => resp.data.user.legacy.muting,
+                    callback, onError);
+            }
+        };
+        xhr.onerror = onError;
+        xhr.send();
+    }
 }
