@@ -370,11 +370,20 @@ export default class AutoBlocker {
             }
             // auto-block or user clicked OK to block
             else {
-                // ADD CODE HERE TO MUTE INSTEAD OF BLOCK IF THAT OPTION IS SELECTED... NEED TO ALSO ADD A METHOD TO TWITTER API
-                TwitterApi.doTheBlock(id,
-                    bs.tokens.bearerToken,
-                    bs.tokens.csrfToken,
-                    user);
+                // mute selected
+                if (bs.confirmMute){
+                    TwitterApi.doTheMute(id,
+                        bs.tokens.bearerToken,
+                        bs.tokens.csrfToken,
+                        user);
+                }
+                // mute not selected, proceed with a block
+                else {
+                    TwitterApi.doTheBlock(id,
+                        bs.tokens.bearerToken,
+                        bs.tokens.csrfToken,
+                        user);
+                }
             }
             // add some latency
             return window.setTimeout(resolve, 500);
