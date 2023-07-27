@@ -242,8 +242,13 @@ export default class AutoBlocker {
         const blockable = users.filter(AutoBlocker.isBlockMatch);
         // remaining users after applying max alerts cap
         const limited = AutoBlocker.limitAlertCount(blockable);
-        // proceed to block
-        AutoBlocker.sequentiallyBlock(limited);
+        // proceed to block or mute
+        if (bs.confirmMute){
+            AutoBlocker.sequentiallyMute(limited);
+        }
+        else {
+            AutoBlocker.sequentiallyBlock(limited);
+        }
     }
 
     /**
@@ -324,6 +329,28 @@ export default class AutoBlocker {
                     } else {
                         AutoBlocker.executeBlock(first)
                             .then(_ => AutoBlocker.sequentiallyBlock(users))
+                            .catch();
+                    }
+                });
+        }
+    }
+
+    /**
+     * Recursively mute a list of users
+     *
+     * @param {Object[]} users
+     */
+    static sequentiallyMute(users) {
+        if (users && users.length) {
+            const first = users.shift();
+            // filter out users that are already blocked
+            TwitterApi.isMuting(first.handle, bs.tokens.bearerToken,
+                bs.tokens.csrfToken, isMuting => {
+                    if (isMuting) {
+                        AutoBlocker.sequentiallyMute(users);
+                    } else {
+                        AutoBlocker.executeBlock(first)
+                            .then(_ => AutoBlocker.sequentiallyMute(users))
                             .catch();
                     }
                 });
