@@ -121,15 +121,11 @@ export const requestConfigs = {
      * @constant
      * @type {string}
      *
-     * CURRENTLY, BASICALLY A PLACEHOLDER, STILL BLOCKS UNTIL OTHER CODE CAN BE CHANGED TO HANDLE MUTING CORRECTLY
-     *
-     * Proper Endpoint with Example User: POST https://api.twitter.com/1.1/mutes/users/create.json?screen_name=evilpiper
-     *
      * This differs from blocks, in that it always returns a JSON array for status... no skip_status flag available for mutes
      *
      * ref: https://developer.twitter.com/en/docs/twitter-api/v1/accounts-and-users/mute-block-report-users/api-reference/post-mutes-users-create
      */
-    muteEndpoint: 'https://twitter.com/i/api/1.1/blocks/create.json',
+    muteEndpoint: 'https://api.twitter.com/1.1/mutes/users/create.json',
     /**
      * Endpoint for checking current friendship status between self and some other user.
      * @param {string} handle - specify only 1 username
