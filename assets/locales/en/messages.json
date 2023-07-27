@@ -18,7 +18,7 @@
     "message": "Confirm before blocking"
   },
   "muteInstead": {
-    "message": "Mute instead of blocking"
+    "message": "Mute instead of block"
   },
   "saveChanges": {
     "message": "Save"
