@@ -43,7 +43,7 @@ export const defaultConfig = {
      * @constant
      * @type {string}
      */
-    allowWords: 'VoteBlue',
+    allowWords: '',
     /**
      * mute instead of block
      * @constant
