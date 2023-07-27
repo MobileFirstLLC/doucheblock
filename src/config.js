@@ -121,7 +121,7 @@ export const requestConfigs = {
      * @constant
      * @type {string}
      *
-     * CURRENTLY, BASICALLY A PLACEHOLDER, STILL BLOCKS REGARDLESS UNTIL OTHER CODE CAN BE CHANGED TO HANDLE CHECKING THE RELATIONSHIP, ETC
+     * CURRENTLY, BASICALLY A PLACEHOLDER, STILL BLOCKS UNTIL OTHER CODE CAN BE CHANGED TO HANDLE MUTING CORRECTLY
      *
      * Proper Endpoint with Example User: POST https://api.twitter.com/1.1/mutes/users/create.json?screen_name=evilpiper
      *
