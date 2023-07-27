@@ -53,6 +53,15 @@
       }
     }
   },
+  "proceedToMute": {
+    "message": "DO YOU WANT TO MUTE $name$?️",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "this user"
+      }
+    }
+  },
   "share_and_rate": {
     "message": "Share or Rate: "
   },
