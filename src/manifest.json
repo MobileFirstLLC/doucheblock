@@ -28,7 +28,8 @@
         "https://*.x.com/*"
       ],
       "exclude_globs": [
-        "https://twitter.com/settings/blocked/*"
+        "https://twitter.com/settings/blocked/*",
+        "https://twitter.com/settings/muted/*"
       ],
       "js": [
         "content.js"
