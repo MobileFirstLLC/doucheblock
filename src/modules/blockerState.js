@@ -292,5 +292,17 @@ export default class BlockerState {
     static set confirmBlocks(value) {
         this._confirm = value;
     }
+
+    /**
+     * Get/set mute setting
+     * @returns {Boolean}
+     */
+    static get confirmMute() {
+        return this._mute;
+    }
+
+    static set confirmMute(value) {
+        this._mute = value;
+    }
 }
 
