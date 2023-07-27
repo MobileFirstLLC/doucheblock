@@ -217,14 +217,14 @@ export const classFlag = 'dbt___seen-it-b4';
  * @constant
  * @type {number}
  */
-export const alertCap = 5;
+export const alertCap = 3;
 
 /**
  * Size of block log: maximum number of entries to log
  * @constant
  * @type {number}
  */
-export const maxLogSize = 500;
+export const maxLogSize = 100;
 
 /**
  * URLs for rating extension, depends on the current browser.
