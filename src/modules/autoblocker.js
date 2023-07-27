@@ -370,7 +370,7 @@ export default class AutoBlocker {
             }
             // auto-block or user clicked OK to block
             else {
-                // ADD CODE TO MUTE INSTEAD HERE IF THAT OPTION IS SELECTED... NEED TO ADD TO TWITTER API
+                // ADD CODE HERE TO MUTE INSTEAD OF BLOCK IF THAT OPTION IS SELECTED... NEED TO ALSO ADD A METHOD TO TWITTER API
                 TwitterApi.doTheBlock(id,
                     bs.tokens.bearerToken,
                     bs.tokens.csrfToken,
