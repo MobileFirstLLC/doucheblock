@@ -80,10 +80,11 @@ export default class Storage {
         const keys = Object.values(Storage.keys)
             .filter(val => val !== Storage.keys.log);
         Storage.get(keys, res => {
-            const {confirm: c, blockWords: bw, allowWords: aw, whiteList: wl} = Storage.keys;
+            const {confirm: c, mute: m, blockWords: bw, allowWords: aw, whiteList: wl} = Storage.keys;
             const result = {
                 ...defaultConfig, ...res,
                 [c]: res[c] === undefined ? defaultConfig.confirm : res[c],
+                [m]: res[m] === undefined ? defaultConfig.mute : res[m],
                 [bw]: Storage.parseKeywords(res),
                 [aw]: Storage.parseAllowedKeywords(res),
                 [wl]: res[wl] || {}
