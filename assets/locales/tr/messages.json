@@ -11,6 +11,9 @@
   "blockedWords": {
     "message": "Tüm tetikleyici sözcüklerinizi listeleyin (virgülle ayırın):"
   },
+  "allowedWords": {
+    "message": "Bunlar varken işaretlemeyin (virgülle ayırın):"
+  },
   "confirmBlock": {
     "message": "Engellemeden önce onayla"
   },
