@@ -24,7 +24,8 @@
   "content_scripts": [
     {
       "matches": [
-        "https://*.twitter.com/*"
+        "https://*.twitter.com/*",
+        "https://*.x.com/*"
       ],
       "exclude_globs": [
         "https://twitter.com/settings/blocked/*"
