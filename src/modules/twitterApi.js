@@ -99,30 +99,6 @@ export default class TwitterApi {
     }
 
     /**
-     * Mute a specific user
-     * @param {string} id - user id str
-     * @param {string} bearer - authentication bearer token
-     * @param {string} csrf - csrf token
-     * @param {Object} user - log entry for blocked user
-     */
-    static doTheMute(id, bearer, csrf, user) {
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', requestConfigs.muteEndpoint, true);
-        xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-        xhr.setRequestHeader('Authorization', bearer);
-        xhr.setRequestHeader('x-csrf-token', csrf);
-        xhr.setRequestHeader('x-twitter-active-user', 'yes');
-        xhr.setRequestHeader('x-twitter-auth-type', 'OAuth2Session');
-        xhr.onload = _ => {
-            if (xhr.status === 200) {
-                Storage.incrementCount();
-                Storage.addLog(user);
-            }
-        };
-        xhr.send('user_id=' + id);
-    }
-
-    /**
      * Check in real-time if user is already being blocked.
      *
      * @param {String} handle - screen name to check
@@ -146,6 +122,30 @@ export default class TwitterApi {
         };
         xhr.onerror = onError;
         xhr.send();
+    }
+
+    /**
+     * Mute a specific user
+     * @param {string} id - user id str
+     * @param {string} bearer - authentication bearer token
+     * @param {string} csrf - csrf token
+     * @param {Object} user - log entry for blocked user
+     */
+    static doTheMute(id, bearer, csrf, user) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', requestConfigs.muteEndpoint, true);
+        xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+        xhr.setRequestHeader('Authorization', bearer);
+        xhr.setRequestHeader('x-csrf-token', csrf);
+        xhr.setRequestHeader('x-twitter-active-user', 'yes');
+        xhr.setRequestHeader('x-twitter-auth-type', 'OAuth2Session');
+        xhr.onload = _ => {
+            if (xhr.status === 200) {
+                Storage.incrementCount();
+                Storage.addLog(user);
+            }
+        };
+        xhr.send('user_id=' + id);
     }
 
     /**
