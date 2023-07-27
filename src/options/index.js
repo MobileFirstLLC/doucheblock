@@ -23,6 +23,7 @@ export default class Index extends Page {
         Index.getElement('block-label').innerText = Index.translate('blockedWords');
         Index.getElement('allow-label').innerText = Index.translate('allowedWords');
         Index.getElement('confirm-label').innerText = Index.translate('confirmBlock');
+        Index.getElement('mute-label').innerText = Index.translate('muteInstead');
         Index.getElement('help').innerText = Index.translate('help');
         Index.getElement('log-link').innerText = Index.translate('log_link');
         Index.resetButtonText();
