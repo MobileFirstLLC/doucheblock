@@ -17,6 +17,9 @@
   "confirmBlock": {
     "message": "Engellemeden önce onayla"
   },
+  "muteInstead": {
+    "message": "Engellemek yerine sessize al"
+  },
   "saveChanges": {
     "message": "Kaydet"
   },
