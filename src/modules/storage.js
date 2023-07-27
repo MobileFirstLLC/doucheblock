@@ -23,6 +23,7 @@ export default class Storage {
             blockWords: 'blockWords',
             allowWords: 'allowWords',
             confirm: 'confirm',
+            mute: 'mute',
             count: 'count',
             whiteList: 'whiteList',
             log: 'log'
