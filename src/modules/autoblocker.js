@@ -426,7 +426,7 @@ export default class AutoBlocker {
                 !window.confirm(AutoBlocker.buildAlert(bio, name))) {
                 bs.whiteList.add(id, handle);
             }
-            // auto-block or user clicked OK to block
+            // auto-mute or user clicked OK to mute
             else {
                 TwitterApi.doTheMute(id,
                     bs.tokens.bearerToken,
