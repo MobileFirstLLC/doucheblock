@@ -123,4 +123,54 @@ export default class TwitterApi {
         xhr.onerror = onError;
         xhr.send();
     }
+
+    /**
+     * Mute a specific user
+     * @param {string} id - user id str
+     * @param {string} bearer - authentication bearer token
+     * @param {string} csrf - csrf token
+     * @param {Object} user - log entry for blocked user
+     */
+    static doTheMute(id, bearer, csrf, user) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', requestConfigs.muteEndpoint, true);
+        xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+        xhr.setRequestHeader('Authorization', bearer);
+        xhr.setRequestHeader('x-csrf-token', csrf);
+        xhr.setRequestHeader('x-twitter-active-user', 'yes');
+        xhr.setRequestHeader('x-twitter-auth-type', 'OAuth2Session');
+        xhr.onload = _ => {
+            if (xhr.status === 200) {
+                Storage.incrementCount();
+                Storage.addLog(user);
+            }
+        };
+        xhr.send('user_id=' + id);
+    }
+
+    /**
+     * Check in real-time if user is already being muted.
+     *
+     * @param {String} handle - screen name to check
+     * @param {string} bearer - authentication Bearer token
+     * @param {string} csrf - csrf token
+     * @param {function} callback
+     * @returns {boolean} True if already muting and False otherwise
+     */
+    static isMuting(handle, bearer, csrf, callback) {
+        const xhr = new XMLHttpRequest();
+        const onError = () => callback(false);
+        xhr.open('GET', requestConfigs.friendshipEndpoint(handle), true);
+        xhr.setRequestHeader('Authorization', bearer);
+        xhr.setRequestHeader('x-csrf-token', csrf);
+        xhr.onload = _ => {
+            if (xhr.readyState === 4) {
+                TwitterApi.parseResponse(xhr.response,
+                    resp => resp.data.user.legacy.muting,
+                    callback, onError);
+            }
+        };
+        xhr.onerror = onError;
+        xhr.send();
+    }
 }

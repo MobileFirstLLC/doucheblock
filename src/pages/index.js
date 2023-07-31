@@ -21,7 +21,9 @@ export default class Index extends Page {
 
         // translate text elements
         Index.getElement('block-label').innerText = Index.translate('blockedWords');
+        Index.getElement('allow-label').innerText = Index.translate('allowedWords');
         Index.getElement('confirm-label').innerText = Index.translate('confirmBlock');
+        Index.getElement('mute-label').innerText = Index.translate('muteInstead');
         Index.getElement('help').innerText = Index.translate('help');
         Index.getElement('log-link').innerText = Index.translate('log_link');
         Index.resetButtonText();
@@ -29,6 +31,7 @@ export default class Index extends Page {
         // bind actions
         Index.saveButton.onclick = Index.saveButton.onkeypress = Index.saveSettings;
         Index.getElement('confirm_slider').onkeypress = Index.toggleConfirm;
+        Index.getElement('mute_slider').onkeypress = Index.toggleMute;
 
         // load user settings
         Index.loadSettings();
@@ -52,6 +55,14 @@ export default class Index extends Page {
     }
 
     /**
+     * Get allow keywords input DOM element
+     * @returns {HTMLElement}
+     */
+    static get allowInput() {
+        return Index.getElement('allow-words');
+    }
+
+    /**
      * Get "confirm blocks" checkbox DOM element
      * @returns {HTMLElement}
      */
@@ -59,6 +70,14 @@ export default class Index extends Page {
         return Index.getElement('confirm');
     }
 
+    /**
+     * Get "mute instead of block" checkbox DOM element
+     * @returns {HTMLElement}
+     */
+    static get muteInput() {
+        return Index.getElement('mute');
+    }
+    
     /**
      * Check if user has just installed.
      * @returns {boolean}
@@ -85,14 +104,28 @@ export default class Index extends Page {
     }
 
     /**
+     * Toggle checkbox on enter click
+     * @param e
+     */
+    static toggleMute(e) {
+        if (e && e.key === 'Enter') {
+            Index.muteInput.checked = !Index.muteInput.checked;
+        }
+    }
+    
+    /**
      * Update user preferences
      */
     static saveSettings() {
         Storage.setBlockedWords(Index.blockInput.value, () => {
-            Storage.setConfirmationSetting(Index.confirmInput.checked, () => {
-                Index.saveButton.innerText = Index.translate('saved');
-                Tabs.notifyTabsOfUpdate();
-                window.setTimeout(Index.resetButtonText, 1000);
+            Storage.setAllowedWords(Index.allowInput.value, () => {
+                Storage.setConfirmationSetting(Index.confirmInput.checked, () => {
+                    Storage.setMuteSetting(Index.muteInput.checked, () => {
+                        Index.saveButton.innerText = Index.translate('saved');
+                        Tabs.notifyTabsOfUpdate();
+                        window.setTimeout(Index.resetButtonText, 1000);
+                    });
+                });
             });
         });
     }
@@ -107,8 +140,12 @@ export default class Index extends Page {
             // set the inputs
             Index.blockInput.value =
                 (settings[Storage.keys.blockWords] || []).join(', ');
+            Index.allowInput.value =
+                (settings[Storage.keys.allowWords] || []).join(', ');
             Index.confirmInput.checked =
                 settings[Storage.keys.confirm];
+            Index.muteInput.checked =
+                settings[Storage.keys.mute];
 
             // if enough blocks -> reveal additional content
             if (count > 1 && !Index.isIntro) {

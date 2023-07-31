@@ -10,7 +10,8 @@
   "permissions": [
     "webRequest",
     "storage",
-    "https://*.twitter.com/*"
+    "https://*.twitter.com/*",
+    "https://*.x.com/*"
   ],
   "icons": {
     "128": "assets/128x128.png"
@@ -24,7 +25,8 @@
   "content_scripts": [
     {
       "matches": [
-        "https://*.twitter.com/*"
+        "https://*.twitter.com/*",
+        "https://*.x.com/*"
       ],
       "exclude_globs": [
         "https://twitter.com/settings/blocked/*"

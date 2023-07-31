@@ -74,7 +74,9 @@ export default class AutoBlocker {
     static loadSettings(callback) {
         Storage.getSettings(settings => {
             bs.keyList = settings[Storage.keys.blockWords];
+            bs.keyAllowList = settings[Storage.keys.allowWords];
             bs.confirmBlocks = settings[Storage.keys.confirm];
+            bs.confirmMute = settings[Storage.keys.mute];
             bs.whiteList.whiteList = settings[Storage.keys.whiteList];
             if (callback) callback();
         });
@@ -240,8 +242,13 @@ export default class AutoBlocker {
         const blockable = users.filter(AutoBlocker.isBlockMatch);
         // remaining users after applying max alerts cap
         const limited = AutoBlocker.limitAlertCount(blockable);
-        // proceed to block
-        AutoBlocker.sequentiallyBlock(limited);
+        // proceed to block or mute
+        if (bs.confirmMute){
+            AutoBlocker.sequentiallyMute(limited);
+        }
+        else {
+            AutoBlocker.sequentiallyBlock(limited);
+        }
     }
 
     /**
@@ -255,7 +262,8 @@ export default class AutoBlocker {
     static isBlockMatch(user) {
         return user.id &&
             !bs.whiteList.contains(user.id) &&
-            AutoBlocker.checkWords(bs.keyList, user);
+            AutoBlocker.checkWords(bs.keyList, user) &&
+            !AutoBlocker.checkWords(bs.keyAllowList, user);
     }
 
     /**
@@ -328,6 +336,28 @@ export default class AutoBlocker {
     }
 
     /**
+     * Recursively mute a list of users
+     *
+     * @param {Object[]} users
+     */
+    static sequentiallyMute(users) {
+        if (users && users.length) {
+            const first = users.shift();
+            // filter out users that are already blocked
+            TwitterApi.isMuting(first.handle, bs.tokens.bearerToken,
+                bs.tokens.csrfToken, isMuting => {
+                    if (isMuting) {
+                        AutoBlocker.sequentiallyMute(users);
+                    } else {
+                        AutoBlocker.executeMute(first)
+                            .then(_ => AutoBlocker.sequentiallyMute(users))
+                            .catch();
+                    }
+                });
+        }
+    }
+
+    /**
      * Construct a window alert
      *
      * @param {string} bio - user's bio text
@@ -376,4 +406,36 @@ export default class AutoBlocker {
             return window.setTimeout(resolve, 500);
         });
     }
+
+    /**
+     * Mute a user
+     * @param {Object} user - twitter user object
+     * @param {string} user.bio - bio text
+     * @param {string} user.id - twitter id
+     * @param {string} user.handle - handle
+     * @param {string} user.name - display name
+     * @param {string} user.match - matched keyword
+     * @param {string} user.img - profile image
+     * @returns {Promise}
+     */
+    static executeMute(user) {
+        const {bio, id, handle, name} = user;
+        return new Promise((resolve) => {
+            // user picked cancel -> whitelist this handle
+            if (bs.confirmBlocks &&
+                !window.confirm(AutoBlocker.buildAlert(bio, name))) {
+                bs.whiteList.add(id, handle);
+            }
+            // auto-mute or user clicked OK to mute
+            else {
+                TwitterApi.doTheMute(id,
+                    bs.tokens.bearerToken,
+                    bs.tokens.csrfToken,
+                    user);
+            }
+            // add some latency
+            return window.setTimeout(resolve, 500);
+        });
+    }
+
 }

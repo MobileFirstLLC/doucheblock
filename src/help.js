@@ -6,6 +6,6 @@
  * Help page script
  * * * * * * * * * * * * * * * * * * * * */
 
-import Help from './options/help/help';
+import Help from './pages/help';
 
 (() => new Help())();

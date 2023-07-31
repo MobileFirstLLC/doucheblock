@@ -38,13 +38,26 @@ export const defaultConfig = {
      */
     blockWords: 'catalyst,innovator,futurist,serial entrepreneur,midas list',
     /**
-     * Ask user to manually confirm all blocks
+     * Default list of keywords that will prevent blocking until user
+     * defines their own allow list.
+     * @constant
+     * @type {string}
+     */
+    allowWords: 'magazine',
+    /**
+     * mute instead of block
+     * @constant
+     * @type {Boolean}
+     */
+    mute: false,
+    /**
+     * Ask user to manually confirm all blocks or mutes
      * @constant
      * @type {Boolean}
      */
     confirm: true,
     /**
-     * Number of accounts blocked by this extension
+     * Number of accounts blocked or muted by this extension
      * @constant
      * @type {number}
      */
@@ -98,8 +111,21 @@ export const requestConfigs = {
      *
      * @constant
      * @type {string}
+     *
+     * Example: POST https://api.twitter.com/1.1/blocks/create.json?screen_name=theSeanCook&skip_status=1
      */
     blockEndpoint: 'https://twitter.com/i/api/1.1/blocks/create.json',
+    /**
+     * API endpoint for muting a user
+     *
+     * @constant
+     * @type {string}
+     *
+     * This differs from blocks, in that it always returns a JSON array for status... no skip_status flag available for mutes
+     *
+     * ref: https://developer.twitter.com/en/docs/twitter-api/v1/accounts-and-users/mute-block-report-users/api-reference/post-mutes-users-create
+     */
+    muteEndpoint: 'https://api.twitter.com/1.1/mutes/users/create.json',
     /**
      * Endpoint for checking current friendship status between self and some other user.
      * @param {string} handle - specify only 1 username

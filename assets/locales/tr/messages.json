@@ -11,8 +11,14 @@
   "blockedWords": {
     "message": "Tüm tetikleyici sözcüklerinizi listeleyin (virgülle ayırın):"
   },
+  "allowedWords": {
+    "message": "Bunlar varken işaretlemeyin (virgülle ayırın):"
+  },
   "confirmBlock": {
     "message": "Engellemeden önce onayla"
+  },
+  "muteInstead": {
+    "message": "Engellemek yerine sessize al"
   },
   "saveChanges": {
     "message": "Kaydet"
@@ -40,6 +46,15 @@
   },
   "proceedToBlock": {
     "message": "$name$ KULLANICISINI ENGELLEMEK İSTİYOR MUSUNUZ?️",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "this user"
+      }
+    }
+  },
+  "proceedToMute": {
+    "message": "$name$ KULLANICIYI SUSTURMAK İSTER MİSİNİZ?️",
     "placeholders": {
       "name": {
         "content": "$1",

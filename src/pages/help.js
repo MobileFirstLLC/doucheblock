@@ -1,6 +1,6 @@
 // noinspection JSUnresolvedVariable,JSUnresolvedFunction
 
-import Page from '../page';
+import Page from './page';
 
 /**
  * User help page with FAQ/instructions type stuff.
