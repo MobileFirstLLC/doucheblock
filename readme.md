@@ -22,7 +22,6 @@
 <h3 align="center">What real users thought about DoucheBlock? &nbsp; &nbsp; 🤔 💬 </h3>
 
 <p align="center">
-<br/><br/>  
 <img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/user_comment.jpg" alt="user comment" width="500" />
 <br/><br/>  
 <img src="https://raw.githubusercontent.com/MobileFirstLLC/doucheblock/master/.github/user_comment2.png" alt="user comment" width="500" />
