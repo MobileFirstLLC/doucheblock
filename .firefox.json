@@ -10,15 +10,15 @@
     },
     {
       "name": "options",
-      "src": "./src/options/index.js"
+      "src": "./src/options.js"
     },
     {
       "name": "help",
-      "src": "./src/options/help/help.js"
+      "src": "./src/help.js"
     },
     {
       "name": "log",
-      "src": "./src/options/log/log.js"
+      "src": "./src/log.js"
     },
     {
       "name": "background",
